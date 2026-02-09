@@ -10,7 +10,7 @@ export const LucasProfile: React.FC = () => {
                     <h2 className="text-3xl md:text-4xl font-bold mb-6 font-mono">
                         Identificando o <span className="text-red-400">Erro no Sistema</span>...
                     </h2>
-                    <p className="text-gray-400 mt-4 font-light text-lg">
+                    <p className="text-gray-400 mt-4 font-light text-md">
                         Lucas é inteligente e altamente competente. Ele pensa em uma carreira em tech há meses, mas está paralisado pela incerteza.
                     </p>
                 </div>
@@ -79,12 +79,6 @@ export const LucasProfile: React.FC = () => {
                                 <p className="mt-4 text-white font-bold text-base"><span className="text-blue-400">➜</span> ~ recomendação: <span className="text-primary">./init_test_protocol.sh</span></p>
                                 <p className="mt-4 text-blue-400 font-bold text-base"><span className="text-blue-400">➜</span> ~ diagnóstico: <span className="text-primary">Pronto para começar!</span></p>
                             </div>
-                            <button
-                                onClick={() => scrollToSection('pricing')}
-                                className="mt-8 w-full py-4 rounded bg-white text-[#0D1117] font-bold hover:bg-gray-200 transition-colors font-mono uppercase tracking-wide"
-                            >
-                                &gt; Executar Teste
-                            </button>
                         </div>
                     </div>
                 </div>

@@ -19,7 +19,7 @@ export const Hero: React.FC = () => {
             Você tem a <span className="text-primary">Lógica</span> para se tornar Programador ou estão te <span className="text-red-400">Iludindo</span> com o desejo pelo salário?
           </h1>
           <p className="text-gray-400 font-light text-md md:text-lg max-w-3xl mx-auto lg:mx-0 font-light">
-            6 em cada 10 alunos desistem da TI no primeiro ano, perdendo tempo e dinheiro. Na <span className="text-primary font-bold">Masterclass Da Carreira Tech</span> você vai descobrir se tem perfil e o que realmente é preciso para se tornar <span className="text-primary font-bold">Programador</span>.
+            Participe da Masterclass Da Carreira Tech e descubra em 3 horas se tem o perfil lógico para ser programador — ANTES de gastar milhares de reais em uma faculdade, bootcamp ou cursos que nunca vai terminar.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
             <button

@@ -9,6 +9,9 @@ export const RealityCheck: React.FC = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-6 font-mono">
             O "Cemitério dos Devs" está cheio de gente que confundiu <span className="text-gray-600 line-through decoration-red-500 decoration-2">Hype</span> com Vocação.
           </h2>
+          <p className="text-gray-400 mt-4 font-light text-md">
+            Influenciadores Digitais faturam alto vendendo cursos e promessas, mas a realidade é que a maioria é enganada pelo Hype do mercado.
+          </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -20,7 +23,7 @@ export const RealityCheck: React.FC = () => {
                 A Fantasia dos Influenciadores
               </h4>
               <p className="text-gray-400">
-                "Trabalhe da praia", "Ganhe 5k em 6 meses", "Aprenda Python dormindo", "Compre meu curso e seja contratado" e "Trabalhe no exterior e ganhe em dólar".
+                "Trabalhe da praia", "Ganhe 5k em 6 meses", "Aprenda IA sem ser programador", "Compre meu curso e seja contratado", "Trabalhe no exterior e ganhe em dólar".
               </p>
             </div>
 
@@ -28,10 +31,10 @@ export const RealityCheck: React.FC = () => {
               <div className="absolute left-0 top-0 w-1 h-full bg-primary"></div>
               <h4 className="text-primary font-bold font-mono mb-2 flex items-center gap-2">
                 <VerifiedIcon />
-                A Descoberta Da Vocação
+                A Realidade do Mercado
               </h4>
               <p className="text-gray-400">
-                Você não precisa de mais promessas. Você precisa descobrir se tem perfil para ser programador, entender o mercado - e o dia-a-dia de um dev -, e ter as respostas para as suas dúvidas.
+                Você precisa descobrir se tem perfil para ser programador, entender o mercado, o dia-a-dia de um dev e ter as respostas para as suas dúvidas.
               </p>
             </div>
           </div>
@@ -44,24 +47,24 @@ export const RealityCheck: React.FC = () => {
               {/* Combined SVG for both lines */}
               <svg className="absolute inset-0 h-full w-full" viewBox="0 0 400 260" preserveAspectRatio="none">
                 {/* Labels for Estrategyst */}
-                <text x="335" y="10" fill="#19e65e" fontSize="13" fontFamily="monospace" fontWeight="bold">Validado</text>
+                <text x="335" y="10" fill="#19e65e" fontSize="13" fontFamily="monospace" fontWeight="bold">Realidade</text>
 
                 {/* Green Line (Estrategista) - starts from origin with smoother curves */}
                 <path d="M0,260 C40,250 80,230 120,180 C160,130 220,70 280,40 C320,20 350,40 370,20" fill="none" stroke="#19e65e" strokeWidth="3" />
 
                 {/* Labels for Pato */}
-                <text x="345" y="200" fill="#ef4444" fontSize="13" fontFamily="monospace" fontWeight="bold">Iludido</text>
+                <text x="340" y="230" fill="#ef4444" fontSize="13" fontFamily="monospace" fontWeight="bold">Fantasia</text>
 
                 {/* Red Line (Pato) - starts from origin */}
-                <path d="M0,260 C50,210 100,160 150,160 C200,160 250,260 370,210" fill="none" stroke="#ef4444" strokeWidth="3" strokeDasharray="5,5" />
+                <path d="M0,260 C50,210 100,160 150,160 C200,160 250,260 370,240" fill="none" stroke="#ef4444" strokeWidth="3" strokeDasharray="5,5" />
               </svg>
 
               {/* Origin point marker */}
               <div className="absolute bottom-0 left-0 w-2 h-2 bg-gray-500 rounded-full -ml-1 -mb-1"></div>
             </div>
             <div className="flex justify-between text-xs text-gray-500 font-mono mt-4">
-              <span>Início</span>
-              <span>Tempo / Investimento</span>
+              <span>Resultado</span>
+              <span>Tempo</span>
             </div>
           </div>
         </div>

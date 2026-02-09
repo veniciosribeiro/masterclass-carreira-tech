@@ -7,7 +7,7 @@ export const Pricing: React.FC = () => {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-black mb-4 font-mono">A Matemática da sua Decisão</h2>
-          <p className="text-gray-400 text-lg">Por menos de uma pizza, você blinda seu patrimônio contra o erro.</p>
+          <p className="text-gray-400 text-md">Por menos de uma pizza, você blinda seu patrimônio contra o erro.</p>
         </div>
 
         <div className="overflow-hidden rounded-xl border border-border-dark bg-surface-dark shadow-2xl">
