@@ -31,7 +31,7 @@ export const RealityCheck: React.FC = () => {
                 A Descoberta Da Vocação
               </h4>
               <p className="text-gray-400">
-                Você não precisa de mais um curso aleatório. Você precisa testar sua aptidão, validar se o seu cérebro processa lógica e ter as respostas honestas que os vendedores de curso escondem.
+                Você não precisa de mais promessas. Você precisa descobrir se tem perfil para ser programador, entender o mercado - e o dia-a-dia de um dev -, e ter as respostas para as suas dúvidas.
               </p>
             </div>
           </div>

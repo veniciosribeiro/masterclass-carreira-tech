@@ -7,7 +7,7 @@ export const Modules: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <span className="text-primary font-bold tracking-widest uppercase text-xs font-mono border border-primary/30 px-2 py-1 rounded bg-primary/10">The Black Box</span>
-          <h2 className="text-3xl md:text-4xl font-black mt-6 text-white font-mono">Conheça o Protocolo de Validação da Carreira Tech™</h2>
+          <h2 className="text-3xl md:text-4xl font-black mt-6 text-white font-mono">Conheça o Protocolo de Validação da <span className="text-primary">Carreira Tech™</span></h2>
           <p className="text-gray-400 mt-4 font-light text-lg">Não é uma aula. É um laboratório prático de 3 etapas.</p>
         </div>
 

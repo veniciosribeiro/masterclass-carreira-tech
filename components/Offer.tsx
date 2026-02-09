@@ -16,7 +16,7 @@ export const Offer: React.FC = () => {
           <ArrowForwardIcon className="text-3xl" />
         </button>
 
-        <p className="mt-8 text-gray-500 font-mono text-sm">
+        <p className="mt-8 text-gray-500 font-mono text-MD">
           Acesso imediato • Pagamento Único • Garantia Total
         </p>
       </div>

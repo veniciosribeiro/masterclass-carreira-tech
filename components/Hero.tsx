@@ -13,28 +13,24 @@ export const Hero: React.FC = () => {
         <div className="flex flex-col gap-6 text-center lg:text-left">
           <div className="inline-flex items-center gap-2 self-center lg:self-start px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-mono font-medium text-primary uppercase tracking-wider">
             <TerminalIcon className="text-sm" />
-            PROTOCOLO DE VALIDAÇÃO DA CARREIRA TECH
+            PROTOCOLO DE VALIDAÇÃO
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-5xl font-black leading-tight tracking-tight font-mono">
             Você tem a <span className="text-primary">Lógica</span> para se tornar Programador ou estão te <span className="text-red-400">Iludindo</span> com o desejo pelo salário?
           </h1>
           <p className="text-gray-400 font-light text-md md:text-lg max-w-3xl mx-auto lg:mx-0 font-light">
-            6 em cada 10 alunos desistem da TI no primeiro ano, perdendo tempo e dinheiro. <span className="text-red-400 font-bold">Não entre nessa estatística.</span>
-          </p>
-          <p className="text-gray-400 font-light text-md md:text-lg max-w-3xl mx-auto lg:mx-0 font-light">
-            Na <span className="text-primary font-bold">Masterclass</span> você vai entender o que realmente é preciso para ser <span className="text-primary font-bold">Programador</span> e se você tem o perfil para entrar na área.
+            6 em cada 10 alunos desistem da TI no primeiro ano, perdendo tempo e dinheiro. Na <span className="text-primary font-bold">Masterclass Da Carreira Tech</span> você vai descobrir se tem perfil e o que realmente é preciso para se tornar <span className="text-primary font-bold">Programador</span>.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
             <button
               onClick={() => scrollToSection('pricing')}
               className="flex items-center justify-center h-14 px-8 rounded-lg bg-primary hover:bg-green-400 text-[#0D1117] text-base font-bold transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(25,230,94,0.2)] font-mono uppercase"
             >
-              &gt; Participar da Masterclass
-              <ArrowForwardIcon className="ml-2" />
+              &gt; Participar da Masterclass &lt;
             </button>
             <div className="flex items-center justify-center sm:justify-start gap-2 text-md text-primary px-4 font-mono">
               <VerifiedIcon className="text-primary" />
-              Garantia Total de 30 Dias
+              Garantia de 30 Dias
             </div>
           </div>
         </div>

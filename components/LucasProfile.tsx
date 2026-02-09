@@ -8,7 +8,7 @@ export const LucasProfile: React.FC = () => {
             <div className="max-w-7xl mx-auto flex flex-col gap-12">
                 <div className="text-center max-w-4xl mx-auto">
                     <h2 className="text-3xl md:text-4xl font-bold mb-6 font-mono">
-                        Identificando o Erro no Sistema...
+                        Identificando o <span className="text-red-400">Erro no Sistema</span>...
                     </h2>
                     <p className="text-gray-400 mt-4 font-light text-lg">
                         Lucas é inteligente e altamente competente. Ele pensa em uma carreira em tech há meses, mas está paralisado pela incerteza.

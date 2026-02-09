@@ -11,14 +11,14 @@ export const Guarantee: React.FC = () => {
         </div>
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 font-mono">Garantia de Diagnóstico ou Reembolso</h2>
         <p className="text-gray-400 max-w-2xl mx-auto mb-10 text-lg leading-relaxed">
-          Faça a Masterclass. Participe dos testes. <br />
-          Se ao final você ainda estiver com dúvida, ou se achar que não valeu a pena, <strong className="text-white">eu devolvo 100% dos seus R$ 97</strong>.
+          Participe da Masterclass. Realize os testes. <br />
+          Se ao final você ainda estiver com dúvida, ou se achar que não valeu a pena, eu devolvo 100% dos seus R$ 97.
         </p>
         <div className="p-6 bg-surface-dark border border-border-dark rounded-xl max-w-lg mx-auto">
-          <p className="font-mono text-primary text-sm">
+          <p className="font-mono text-primary text-md">
             O risco financeiro é meu.
           </p>
-          <p className="font-mono text-primary text-sm">
+          <p className="font-mono text-primary text-md">
             O seu único risco é continuar na dúvida.
           </p>
         </div>

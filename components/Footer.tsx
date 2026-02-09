@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex items-center gap-2">
           <TerminalIcon className="text-primary" />
-          <span className="font-bold text-white font-mono">TechCareer Test-Drive</span>
+          <span className="font-bold text-white font-mono">Masterclass da Carreira Tech</span>
         </div>
         <div className="flex gap-6 text-sm font-mono">
           <a className="hover:text-primary transition-colors" href="#">./Termos</a>
@@ -15,7 +15,7 @@ export const Footer: React.FC = () => {
           <a className="hover:text-primary transition-colors" href="#">./Contato</a>
         </div>
         <div className="text-sm font-mono">
-          © 2023 TechCareer Inc.
+          © 2026 Media Labs.
         </div>
       </div>
     </footer>

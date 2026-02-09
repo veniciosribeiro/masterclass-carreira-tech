@@ -11,7 +11,7 @@ export const Header: React.FC = () => {
             <TerminalIcon className="text-3xl" />
           </div>
           <h2 className="text-lg font-bold tracking-tight text-white hidden sm:block font-mono">
-            Test Drive da <span className="text-primary">Carreira Tech</span>_
+            Masterclass da <span className="text-primary">Carreira Tech</span>_
           </h2>
         </div>
         <nav className="hidden md:flex items-center gap-8 font-mono text-sm">

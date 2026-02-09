@@ -15,22 +15,38 @@ export const Authority: React.FC = () => {
           </h2>
           <div className="space-y-6 text-lg text-gray-400">
             <p className="border-l-4 border-primary pl-4 italic text-white">
-              Eu criei a Masterclass Test-Drive da Carreira Tech porque cansei de ver pessoas competentes e com potencial
+              Criei a Masterclass Test-Drive da Carreira Tech porque cansei de ver pessoas competentes e com potencial
               completamente perdidas, sem saber se tem aptidão e como ingressar na tecnologia.
-              Eu quero te dar a clareza que eles não tiveram.
+              A Masterclass vai te dar a clareza que você precisa para tomar a decisão certa.
             </p>
-            <ul className="space-y-4 mt-6">
+            <ul className="space-y-4 mt-6 text-md">
               <li className="flex items-center gap-3">
                 <CheckCircleIcon className="text-primary" />
                 <span>Coordenador de Engenharia de Software.</span>
               </li>
               <li className="flex items-center gap-3">
                 <CheckCircleIcon className="text-primary" />
-                <span>20 Anos de Experiência no Campo de Batalha.</span>
+                <span>+20 Anos de Experiência no Campo de Batalha.</span>
               </li>
               <li className="flex items-center gap-3">
                 <CheckCircleIcon className="text-primary" />
-                <span>Mais de 400 Sessões de Mentorias Individuais.</span>
+                <span>+400 Sessões de Mentorias Individuais Realizadas.</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <CheckCircleIcon className="text-primary" />
+                <span>+200 Planos de Desenvolvimento Individual Criados.</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <CheckCircleIcon className="text-primary" />
+                <span>+900 currículos analisados.</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <CheckCircleIcon className="text-primary" />
+                <span>+500 candidatos entrevistados.</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <CheckCircleIcon className="text-primary" />
+                <span>Responsável por contratar do Estagiário ao Dev Sênior.</span>
               </li>
             </ul>
           </div>
