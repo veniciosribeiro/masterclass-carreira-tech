@@ -40,10 +40,17 @@ export const Hero: React.FC = () => {
         </div>
         <div className="relative">
           <div className="absolute -inset-4 bg-primary/10 rounded-2xl blur-2xl"></div>
-          <div
-            className="relative rounded-xl overflow-hidden border border-border-dark shadow-2xl bg-surface-dark aspect-video flex items-center justify-center bg-cover bg-center"
-            style={{ backgroundImage: "url('/assets/images/hero-bg.webp')" }}
-          >
+          <div className="relative rounded-xl overflow-hidden border border-border-dark shadow-2xl bg-surface-dark aspect-video">
+            <img
+              src="/assets/images/hero-bg.webp"
+              alt="Masterclass Preview"
+              width={640}
+              height={360}
+              fetchPriority="high"
+              loading="eager"
+              decoding="async"
+              className="w-full h-full object-cover"
+            />
             <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
               <button className="size-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all cursor-pointer group">
                 <PlayArrowIcon className="text-white text-4xl ml-1 group-hover:scale-110 transition-transform" />
