@@ -1,5 +1,6 @@
 import { scrollToSection } from '@/utils/scroll';
 import React from 'react';
+import { TerminalIcon } from './icons';
 
 export const Header: React.FC = () => {
   return (
@@ -7,7 +8,7 @@ export const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="size-8 text-primary">
-            <span className="material-symbols-outlined text-3xl">terminal</span>
+            <TerminalIcon className="text-3xl" />
           </div>
           <h2 className="text-lg font-bold tracking-tight text-white hidden sm:block font-mono">
             Test Drive da <span className="text-primary">Carreira Tech</span>_

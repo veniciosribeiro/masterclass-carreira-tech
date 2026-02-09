@@ -1,4 +1,5 @@
 import React from 'react';
+import { PsychologyIcon, SettingsSystemDaydreamIcon, VisibilityIcon, TimerIcon } from './icons';
 
 export const Modules: React.FC = () => {
   return (
@@ -14,7 +15,7 @@ export const Modules: React.FC = () => {
           {/* Card 1 */}
           <div className="bg-surface-dark p-8 rounded-xl shadow-lg border border-border-dark hover:border-primary/50 transition-all duration-300 group flex flex-col">
             <div className="size-14 rounded bg-blue-900/20 border border-blue-900/50 text-blue-400 flex items-center justify-center mb-6 group-hover:text-blue-300">
-              <span className="material-symbols-outlined text-3xl">psychology</span>
+              <PsychologyIcon className="text-3xl" />
             </div>
             <h3 className="font-bold text-xl mb-4 text-white font-mono">1. O Teste de Processamento</h3>
             <p className="text-gray-400 mb-4 flex-1">Vamos testar o "Hardware" do seu cérebro. Usaremos exercícios de lógica pura para saber se você tem o raciocínio sequencial de um programador sênior.</p>
@@ -24,7 +25,7 @@ export const Modules: React.FC = () => {
           {/* Card 2 */}
           <div className="bg-surface-dark p-8 rounded-xl shadow-lg border border-border-dark hover:border-primary/50 transition-all duration-300 group flex flex-col">
             <div className="size-14 rounded bg-purple-900/20 border border-purple-900/50 text-purple-400 flex items-center justify-center mb-6 group-hover:text-purple-300">
-              <span className="material-symbols-outlined text-3xl">settings_system_daydream</span>
+              <SettingsSystemDaydreamIcon className="text-3xl" />
             </div>
             <h3 className="font-bold text-xl mb-4 text-white font-mono">2. Auditoria de Hardware</h3>
             <p className="text-gray-400 mb-4 flex-1">Você realmente precisa de um computador de R$ 10k? Vamos auditar seu setup atual. Spoiler: Você vai economizar milhares de reais descobrindo o que é mito e o que é essencial.</p>
@@ -34,10 +35,10 @@ export const Modules: React.FC = () => {
           {/* Card 3 */}
           <div className="bg-surface-dark p-8 rounded-xl shadow-lg border border-border-dark hover:border-primary/50 transition-all duration-300 group flex flex-col relative overflow-hidden">
             <div className="absolute top-0 right-0 p-2 opacity-10">
-              <span className="material-symbols-outlined text-8xl">visibility</span>
+              <VisibilityIcon className="text-8xl" />
             </div>
             <div className="size-14 rounded bg-primary/10 border border-primary/30 text-primary flex items-center justify-center mb-6">
-              <span className="material-symbols-outlined text-3xl">timer</span>
+              <TimerIcon className="text-3xl" />
             </div>
             <h3 className="font-bold text-xl mb-4 text-white font-mono">3. O Raio-X da Rotina</h3>
             <p className="text-gray-400 mb-4 flex-1">Vou te colocar na cadeira de um Dev por 40 minutos. Você vai sentir a pressão de resolver um problema real. Se sentir pânico, eu te salvei de um erro caro.</p>

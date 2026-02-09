@@ -1,4 +1,5 @@
 import React from 'react';
+import { ExpandMoreIcon } from './icons';
 
 export const FAQ: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ export const FAQ: React.FC = () => {
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">&gt; Como recebo o acesso?</span>
               <span className="transition group-open:rotate-180 text-primary">
-                <span className="material-symbols-outlined">expand_more</span>
+                <ExpandMoreIcon />
               </span>
             </summary>
             <div className="text-gray-400 p-6 pt-0 leading-relaxed border-t border-transparent group-open:border-border-dark group-open:pt-6 font-light">
@@ -25,7 +26,7 @@ export const FAQ: React.FC = () => {
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">&gt; Por quanto tempo o conteúdo fica disponível?</span>
               <span className="transition group-open:rotate-180 text-primary">
-                <span className="material-symbols-outlined">expand_more</span>
+                <ExpandMoreIcon />
               </span>
             </summary>
             <div className="text-gray-400 p-6 pt-0 leading-relaxed border-t border-transparent group-open:border-border-dark group-open:pt-6 font-light">
@@ -37,7 +38,7 @@ export const FAQ: React.FC = () => {
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">&gt; Tem suporte para dúvidas?</span>
               <span className="transition group-open:rotate-180 text-primary">
-                <span className="material-symbols-outlined">expand_more</span>
+                <ExpandMoreIcon />
               </span>
             </summary>
             <div className="text-gray-400 p-6 pt-0 leading-relaxed border-t border-transparent group-open:border-border-dark group-open:pt-6 font-light">
@@ -49,7 +50,7 @@ export const FAQ: React.FC = () => {
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">&gt; Já comprei cursos, serve para mim?</span>
               <span className="transition group-open:rotate-180 text-primary">
-                <span className="material-symbols-outlined">expand_more</span>
+                <ExpandMoreIcon />
               </span>
             </summary>
             <div className="text-gray-400 p-6 pt-0 leading-relaxed border-t border-transparent group-open:border-border-dark group-open:pt-6 font-light">
@@ -61,7 +62,7 @@ export const FAQ: React.FC = () => {
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">&gt; O teste de lógica emite certificado?</span>
               <span className="transition group-open:rotate-180 text-primary">
-                <span className="material-symbols-outlined">expand_more</span>
+                <ExpandMoreIcon />
               </span>
             </summary>
             <div className="text-gray-400 p-6 pt-0 leading-relaxed border-t border-transparent group-open:border-border-dark group-open:pt-6 font-light">

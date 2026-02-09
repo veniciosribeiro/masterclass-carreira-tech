@@ -1,5 +1,6 @@
 import React from 'react';
 import { scrollToSection } from '../utils/scroll';
+import { PsychologyAltIcon, SentimentWorriedIcon, LaptopIcon } from './icons';
 
 export const LucasProfile: React.FC = () => {
     return (
@@ -19,7 +20,7 @@ export const LucasProfile: React.FC = () => {
                         <div className="space-y-6">
                             <div className="flex gap-4 p-4 rounded-lg bg-background-dark border border-border-dark">
                                 <div className="size-10 rounded bg-red-900/20 flex items-center justify-center shrink-0 text-red-400 border border-red-900/30">
-                                    <span className="material-symbols-outlined">psychology_alt</span>
+                                    <PsychologyAltIcon />
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-lg text-white font-mono">Error: Math_Module_Missing</h4>
@@ -28,7 +29,7 @@ export const LucasProfile: React.FC = () => {
                             </div>
                             <div className="flex gap-4 p-4 rounded-lg bg-background-dark border border-border-dark">
                                 <div className="size-10 rounded bg-red-900/20 flex items-center justify-center shrink-0 text-red-400 border border-red-900/30">
-                                    <span className="material-symbols-outlined">sentiment_worried</span>
+                                    <SentimentWorriedIcon />
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-lg text-white font-mono">Error: Age_Limit_Exceeded?</h4>
@@ -37,7 +38,7 @@ export const LucasProfile: React.FC = () => {
                             </div>
                             <div className="flex gap-4 p-4 rounded-lg bg-background-dark border border-border-dark">
                                 <div className="size-10 rounded bg-red-900/20 flex items-center justify-center shrink-0 text-red-400 border border-red-900/30">
-                                    <span className="material-symbols-outlined">psychology_alt</span>
+                                    <PsychologyAltIcon />
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-lg text-white font-mono">Error: Infinite_Research_Loop</h4>
@@ -48,7 +49,7 @@ export const LucasProfile: React.FC = () => {
                             </div>
                             <div className="flex gap-4 p-4 rounded-lg bg-background-dark border border-border-dark">
                                 <div className="size-10 rounded bg-red-900/20 flex items-center justify-center shrink-0 text-red-400 border border-red-900/30">
-                                    <span className="material-symbols-outlined">laptop_mac</span>
+                                    <LaptopIcon />
                                 </div>
                                 <div>
                                     <h4 className="font-bold text-lg text-white font-mono">Error: Hardware_Check_Failed</h4>
@@ -64,7 +65,7 @@ export const LucasProfile: React.FC = () => {
                             <div className="flex items-center gap-4 mb-6 border-b border-border-dark pb-6">
                                 <div
                                     className="size-14 bg-gray-800 rounded bg-cover bg-center border border-gray-700"
-                                    style={{ backgroundImage: "url('/assets/images/venicios-profile.png')" }}
+                                    style={{ backgroundImage: "url('/assets/images/venicios-profile.webp')" }}
                                 ></div>
                                 <div>
                                     <div className="text-base font-bold text-lg text-primary">user_lucas</div>

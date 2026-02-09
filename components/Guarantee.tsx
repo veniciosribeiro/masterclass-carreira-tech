@@ -1,4 +1,5 @@
 import React from 'react';
+import { ShieldLockIcon } from './icons';
 
 export const Guarantee: React.FC = () => {
   return (
@@ -6,7 +7,7 @@ export const Guarantee: React.FC = () => {
       <div className="max-w-4xl mx-auto px-6 text-center">
         <div className="inline-flex items-center justify-center p-6 rounded-full bg-[#19e65e]/5 border border-[#19e65e]/20 mb-8 relative">
           <div className="absolute inset-0 bg-[#19e65e]/20 blur-xl rounded-full"></div>
-          <span className="material-symbols-outlined text-5xl text-primary relative z-10">shield_lock</span>
+          <ShieldLockIcon className="text-5xl text-primary relative z-10" />
         </div>
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 font-mono">Garantia de Diagnóstico ou Reembolso</h2>
         <p className="text-gray-400 max-w-2xl mx-auto mb-10 text-lg leading-relaxed">

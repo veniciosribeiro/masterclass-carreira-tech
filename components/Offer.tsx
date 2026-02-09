@@ -1,5 +1,6 @@
 import { scrollToSection } from '@/utils/scroll';
 import React from 'react';
+import { ArrowForwardIcon } from './icons';
 
 export const Offer: React.FC = () => {
   return (
@@ -12,7 +13,7 @@ export const Offer: React.FC = () => {
           onClick={() => scrollToSection('pricing')}
           className="w-full md:w-auto h-20 px-12 rounded-lg bg-primary hover:bg-green-400 text-[#0D1117] text-xl md:text-2xl font-black shadow-[0_0_40px_rgba(25,230,94,0.4)] transition-all transform hover:scale-105 font-mono uppercase tracking-wide flex items-center justify-center gap-4 mx-auto">
           <span>QUERO MEU DIAGNÓSTICO AGORA</span>
-          <span className="material-symbols-outlined text-3xl">arrow_forward</span>
+          <ArrowForwardIcon className="text-3xl" />
         </button>
 
         <p className="mt-8 text-gray-500 font-mono text-sm">

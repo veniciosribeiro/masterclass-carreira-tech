@@ -1,4 +1,5 @@
 import React from 'react';
+import { ErrorIcon, VerifiedIcon } from './icons';
 
 export const RealityCheck: React.FC = () => {
   return (
@@ -15,7 +16,7 @@ export const RealityCheck: React.FC = () => {
             <div className="p-10 rounded-xl bg-surface-dark border border-red-900/30 relative overflow-hidden group">
               <div className="absolute left-0 top-0 w-1 h-full bg-red-600"></div>
               <h4 className="text-red-400 font-bold font-mono mb-2 flex items-center gap-2">
-                <span className="material-symbols-outlined">error</span>
+                <ErrorIcon />
                 A Fantasia dos Influenciadores
               </h4>
               <p className="text-gray-400">
@@ -26,7 +27,7 @@ export const RealityCheck: React.FC = () => {
             <div className="p-10 rounded-xl bg-surface-dark border border-primary/30 relative overflow-hidden group">
               <div className="absolute left-0 top-0 w-1 h-full bg-primary"></div>
               <h4 className="text-primary font-bold font-mono mb-2 flex items-center gap-2">
-                <span className="material-symbols-outlined">verified</span>
+                <VerifiedIcon />
                 A Descoberta Da Vocação
               </h4>
               <p className="text-gray-400">

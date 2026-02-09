@@ -1,4 +1,5 @@
 import React from 'react';
+import { VerifiedUserIcon, CheckCircleIcon } from './icons';
 
 export const Authority: React.FC = () => {
   return (
@@ -6,7 +7,7 @@ export const Authority: React.FC = () => {
       <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         <div className="order-2 lg:order-1">
           <div className="inline-flex items-center gap-2 mb-4 text-primary font-mono text-sm tracking-widest uppercase">
-            <span className="material-symbols-outlined text-sm">verified_user</span>
+            <VerifiedUserIcon className="text-sm" />
             Validado por quem contrata
           </div>
           <h2 className="text-3xl md:text-5xl font-bold mb-6 font-mono leading-tight">
@@ -20,15 +21,15 @@ export const Authority: React.FC = () => {
             </p>
             <ul className="space-y-4 mt-6">
               <li className="flex items-center gap-3">
-                <span className="material-symbols-outlined text-primary">check_circle</span>
+                <CheckCircleIcon className="text-primary" />
                 <span>Coordenador de Engenharia de Software.</span>
               </li>
               <li className="flex items-center gap-3">
-                <span className="material-symbols-outlined text-primary">check_circle</span>
+                <CheckCircleIcon className="text-primary" />
                 <span>20 Anos de Experiência no Campo de Batalha.</span>
               </li>
               <li className="flex items-center gap-3">
-                <span className="material-symbols-outlined text-primary">check_circle</span>
+                <CheckCircleIcon className="text-primary" />
                 <span>Mais de 400 Sessões de Mentorias Individuais.</span>
               </li>
             </ul>
@@ -39,9 +40,9 @@ export const Authority: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl transform rotate-3 scale-105 opacity-50"></div>
           <div className="relative rounded-xl overflow-hidden border border-border-dark shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">
             <img
-              src="/assets/images/venicios-profile.png"
-              width={64}
-              height={64}
+              src="/assets/images/venicios-profile.webp"
+              width={400}
+              height={500}
               alt="Venicios - Hiring Manager"
               className="w-full h-auto object-cover aspect-[4/5]"
             />

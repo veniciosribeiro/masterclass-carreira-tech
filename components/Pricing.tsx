@@ -1,4 +1,5 @@
 import React from 'react';
+import { CancelIcon, CheckCircleIcon, ArrowForwardIcon } from './icons';
 
 export const Pricing: React.FC = () => {
   return (
@@ -14,7 +15,7 @@ export const Pricing: React.FC = () => {
             {/* Left Side: Traditional */}
             <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-border-dark bg-[#0d1117]/50">
               <h3 className="text-gray-500 font-mono font-bold uppercase tracking-widest text-sm mb-6 flex items-center gap-2">
-                <span className="material-symbols-outlined text-red-500">cancel</span>
+                <CancelIcon className="text-red-500" />
                 O Caminho da Dúvida
               </h3>
 
@@ -44,7 +45,7 @@ export const Pricing: React.FC = () => {
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-[50px] rounded-full pointer-events-none"></div>
 
               <h3 className="text-primary font-mono font-bold uppercase tracking-widest text-sm mb-6 flex items-center gap-2">
-                <span className="material-symbols-outlined">check_circle</span>
+                <CheckCircleIcon />
                 O Caminho da Clareza
               </h3>
 
@@ -70,7 +71,7 @@ export const Pricing: React.FC = () => {
 
               <button className="w-full mt-8 h-14 rounded bg-primary hover:bg-green-400 text-[#0D1117] font-bold shadow-[0_0_15px_rgba(25,230,94,0.3)] transition-all font-mono uppercase text-lg tracking-wide flex items-center justify-center gap-2">
                 <span>GARANTIR MEU DIAGNÓSTICO</span>
-                <span className="material-symbols-outlined">arrow_forward</span>
+                <ArrowForwardIcon />
               </button>
             </div>
           </div>
