@@ -41,7 +41,7 @@ export const Hero: React.FC = () => {
           <div className="absolute -inset-4 bg-primary/10 rounded-2xl blur-2xl"></div>
           <div
             className="relative rounded-xl overflow-hidden border border-border-dark shadow-2xl bg-surface-dark aspect-video flex items-center justify-center bg-cover bg-center"
-            style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuBiArg1nrDatXPCZjYPhF7A8RDiwUS7EccgR96RDdjdYRr-YYRBpRdPRzcvxOaTd2vWd8zuSCj12_sYhYuCPKA14_eibMR8P1zxb48Ow2SNPXNpJVCv6bctgxs3_faz-mujs0vcWwWMg9ocAL9Aeycsr0GOza3o7RlGtPdWWXxDZi3YfzIzuf5ApIykAsYiyrEUJ14V1qaIOP-llgVLZ9g3IXAedf-YQ0FQQsIC9B7848JvW2El7Vp9WCrnAUd1EX8nQ093ZtVl9pet')" }}
+            style={{ backgroundImage: "url('/assets/images/hero-bg.png')" }}
           >
             <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
               <button className="size-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all cursor-pointer group">

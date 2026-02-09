@@ -64,7 +64,7 @@ export const LucasProfile: React.FC = () => {
                             <div className="flex items-center gap-4 mb-6 border-b border-border-dark pb-6">
                                 <div
                                     className="size-14 bg-gray-800 rounded bg-cover bg-center border border-gray-700"
-                                    style={{ backgroundImage: "url('https://lh3.googleusercontent.com/aida-public/AB6AXuCqpb_0oUzVPAruddM7T2MnkSCKyotyxWcn1BBnZEa2yugilb_Tbt9Pe4GA73P4RbgmxanJ4o0lGe6WbtGNnnJ0VRi3lcdTKnFVCE5IFU_dfTZzEOZ5MaBRt_NVkFiYG9Re4AXpQcMMNlPoClzWZzYSvP6nwlQPp_5Q6brmVOUxBXcj1lIhUxDWg-BnjkFoETkZ_v8WQpBXDk0h-7DCpWJ-2_TlWZkBaap8mNA1vDpbPykwPr6tHYTtGoi4n5TSf5xaLPn0wr-cjwFa')" }}
+                                    style={{ backgroundImage: "url('/assets/images/venicios-profile.png')" }}
                                 ></div>
                                 <div>
                                     <div className="text-base font-bold text-lg text-primary">user_lucas</div>

@@ -39,7 +39,9 @@ export const Authority: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl transform rotate-3 scale-105 opacity-50"></div>
           <div className="relative rounded-xl overflow-hidden border border-border-dark shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">
             <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqpb_0oUzVPAruddM7T2MnkSCKyotyxWcn1BBnZEa2yugilb_Tbt9Pe4GA73P4Rbgmxan4o0lGe6WbtGNnn2J0VRi3lcdTKnFVCE5IFU_dfTZzEOZ5MaBRt_NVkFiYG9Re4AXpQcMMNlPoClzWZzYSvP6nwlQPp_5Q6brmVOUxBXcj1lIhUxDWg-BnjkFoETkZ_v8WQpBXDk0h-7DCpWJ-2_TlWZkBaap8mNA1vDpbPykwPr6tHYTtGoi4n5TSf5xaLPn0wr-cjwFa"
+              src="/assets/images/venicios-profile.png"
+              width={64}
+              height={64}
               alt="Venicios - Hiring Manager"
               className="w-full h-auto object-cover aspect-[4/5]"
             />
