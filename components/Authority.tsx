@@ -15,8 +15,8 @@ export const Authority: React.FC = () => {
           </h2>
           <div className="space-y-6 text-lg text-gray-400">
             <p className="border-l-4 border-primary pl-4 italic text-white">
-              Criei a Masterclass Test-Drive da Carreira Tech porque cansei de ver pessoas competentes e com potencial
-              completamente perdidas, sem saber se tem aptidão e como ingressar na tecnologia.
+              Criei a Masterclass Test-Drive Da Carreira Tech porque cansei de ver pessoas competentes e com potencial
+              completamente perdidas, sem orientação, sem saber se tem aptidão e como ingressar na tecnologia.
               A Masterclass vai te dar a clareza que você precisa para tomar a decisão certa.
             </p>
             <ul className="space-y-4 mt-6 text-md">

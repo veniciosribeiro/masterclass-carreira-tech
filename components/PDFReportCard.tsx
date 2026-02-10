@@ -39,8 +39,6 @@ export const PDFReportCard: React.FC = () => {
 
                 {/* PDF Header Section */}
                 <div className="mt-4 text-center space-y-2">
-                    <div className="text-[8px] text-primary tracking-[0.2em] font-sans">PROTOCOLO DE APTIDÃO</div>
-
                     <div>
                         <h3 className="text-2xl font-bold text-white leading-none font-sans">Relatório de</h3>
                         <h3 className="text-2xl font-bold text-white leading-none font-sans">Aptidão Tech</h3>

@@ -31,7 +31,7 @@ export const RealityCheck: React.FC = () => {
               <div className="absolute left-0 top-0 w-1 h-full bg-primary"></div>
               <h4 className="text-primary font-bold font-mono mb-2 flex items-center gap-2">
                 <VerifiedIcon />
-                A Realidade do Mercado
+                A Realidade na Masterclass
               </h4>
               <p className="text-gray-400">
                 Você precisa descobrir se tem perfil para ser programador, entender o mercado, o dia-a-dia de um dev e ter as respostas para as suas dúvidas.
@@ -39,7 +39,7 @@ export const RealityCheck: React.FC = () => {
             </div>
           </div>
 
-          <div className="relative rounded-xl bg-[#161b22] border border-border-dark p-9 shadow-2xl">
+          <div className="relative rounded-xl bg-[#161b22] border border-border-dark p-8 shadow-2xl">
             <h4 className="font-mono text-center text-gray-500 mb-6 text-sm">ANÁLISE DE TRAJETÓRIA</h4>
 
             {/* Simple CSS Graph Visualization */}
@@ -47,13 +47,13 @@ export const RealityCheck: React.FC = () => {
               {/* Combined SVG for both lines */}
               <svg className="absolute inset-0 h-full w-full" viewBox="0 0 400 260" preserveAspectRatio="none">
                 {/* Labels for Estrategyst */}
-                <text x="335" y="10" fill="#19e65e" fontSize="13" fontFamily="monospace" fontWeight="bold">Realidade</text>
+                <text x="315" y="10" fill="#19e65e" fontSize="13" fontFamily="monospace" fontWeight="bold">Masterclass</text>
 
                 {/* Green Line (Estrategista) - starts from origin with smoother curves */}
                 <path d="M0,260 C40,250 80,230 120,180 C160,130 220,70 280,40 C320,20 350,40 370,20" fill="none" stroke="#19e65e" strokeWidth="3" />
 
                 {/* Labels for Pato */}
-                <text x="340" y="230" fill="#ef4444" fontSize="13" fontFamily="monospace" fontWeight="bold">Fantasia</text>
+                <text x="290" y="230" fill="#ef4444" fontSize="13" fontFamily="monospace" fontWeight="bold">Influenciadores</text>
 
                 {/* Red Line (Pato) - starts from origin */}
                 <path d="M0,260 C50,210 100,160 150,160 C200,160 250,260 370,240" fill="none" stroke="#ef4444" strokeWidth="3" strokeDasharray="5,5" />

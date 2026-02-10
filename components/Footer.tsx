@@ -9,13 +9,13 @@ export const Footer: React.FC = () => {
           <TerminalIcon className="text-primary" />
           <span className="font-bold text-white font-mono">Masterclass da Carreira Tech</span>
         </div>
-        <div className="flex gap-6 text-sm font-mono">
+        <div className="flex gap-6 text-md font-mono">
           <a className="hover:text-primary transition-colors" href="#">./Termos</a>
           <a className="hover:text-primary transition-colors" href="#">./Privacidade</a>
           <a className="hover:text-primary transition-colors" href="#">./Contato</a>
         </div>
-        <div className="text-sm font-mono">
-          © 2026 Media Labs.
+        <div className="text-md font-mono">
+          © {new Date().getFullYear()} Media Labs - CNPJ: 16.577.628/0001-94.
         </div>
       </div>
     </footer>

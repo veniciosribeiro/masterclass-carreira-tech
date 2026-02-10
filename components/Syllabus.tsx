@@ -33,9 +33,6 @@ export const Syllabus: React.FC = () => {
                         <p className="text-sm text-gray-400">Uma planilha simples: jogue o valor da faculdade/curso e descubra em quantos meses o investimento se paga.</p>
                     </div>
                     <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-[#1c2128] transition-all duration-300 relative overflow-hidden group">
-                        <div className="absolute top-0 right-0 p-2">
-                            <VerifiedIcon className="text-primary/10 text-6xl -mr-2 -mt-2 group-hover:text-primary/20 transition-colors" />
-                        </div>
                         <div className="size-12 rounded bg-primary/10 border border-primary/30 text-primary flex items-center justify-center mb-4">
                             <QuizIcon />
                         </div>

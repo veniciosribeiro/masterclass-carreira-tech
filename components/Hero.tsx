@@ -12,15 +12,11 @@ export const Hero: React.FC = () => {
       ></div>
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
         <div className="flex flex-col gap-6 text-center lg:text-left">
-          <div className="inline-flex items-center gap-2 self-center lg:self-start px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-mono font-medium text-primary uppercase tracking-wider">
-            <TerminalIcon className="text-sm" />
-            PROTOCOLO DE VALIDAÇÃO
-          </div>
           <h1 className="text-4xl md:text-5xl lg:text-5xl font-black leading-tight tracking-tight font-mono">
             Você tem a <span className="text-primary">Lógica</span> para se tornar Programador ou estão te <span className="text-red-400">Iludindo</span> com o desejo pelo salário?
           </h1>
           <p className="text-gray-400 font-light text-md md:text-lg max-w-3xl mx-auto lg:mx-0 font-light">
-            Participe da Masterclass Da Carreira Tech e descubra se você tem o perfil para ser programador — ANTES de gastar milhares de reais em uma faculdade, bootcamp ou cursos que nunca vai terminar.
+            Participe da Masterclass Da Carreira Tech e descubra qual o seu perfil ANTES de gastar milhares de reais em uma faculdade, bootcamp ou cursos que só te trarão prejuízo.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
             <button

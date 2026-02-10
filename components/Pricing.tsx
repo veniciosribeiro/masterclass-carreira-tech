@@ -14,7 +14,7 @@ export const Pricing: React.FC = () => {
           <div className="grid md:grid-cols-2">
             {/* Left Side: Traditional */}
             <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-border-dark bg-[#0d1117]/50">
-              <h3 className="text-gray-500 font-mono font-bold uppercase tracking-widest text-sm mb-6 flex items-center gap-2">
+              <h3 className="text-gray-500 text-red-500 font-mono font-bold uppercase tracking-widest text-sm mb-6 flex items-center gap-2">
                 <CancelIcon className="text-red-500" />
                 O Caminho da Dúvida
               </h3>
@@ -25,7 +25,7 @@ export const Pricing: React.FC = () => {
                   <span className="font-mono text-red-400 font-bold">R$800/mês</span>
                 </li>
                 <li className="flex justify-between items-center group">
-                  <span className="text-gray-400 group-hover:text-white transition-colors">Bootcamp Famoso</span>
+                  <span className="text-gray-400 group-hover:text-white transition-colors">Curso do Influencer</span>
                   <span className="font-mono text-red-400 font-bold">R$2.500</span>
                 </li>
                 <li className="flex justify-between items-center group">
