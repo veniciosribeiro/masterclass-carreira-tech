@@ -124,7 +124,7 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
 
                     <div className="mt-5 flex items-center justify-center gap-2 text-xs text-text-main/60">
                         <span>🔒</span>
-                        <span>Acesso exclusivo para alunos da masterclass</span>
+                        <span>Acesso exclusivo para alunos da Masterclass</span>
                     </div>
                 </form>
 

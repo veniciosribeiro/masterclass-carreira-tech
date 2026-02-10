@@ -1,6 +1,7 @@
 import React from 'react';
 import { scrollToSection } from '../utils/scroll';
 import { TerminalIcon, ArrowForwardIcon, VerifiedIcon, PlayArrowIcon } from './icons';
+import { PDFReportCard } from './PDFReportCard';
 
 export const Hero: React.FC = () => {
   return (
@@ -19,7 +20,7 @@ export const Hero: React.FC = () => {
             Você tem a <span className="text-primary">Lógica</span> para se tornar Programador ou estão te <span className="text-red-400">Iludindo</span> com o desejo pelo salário?
           </h1>
           <p className="text-gray-400 font-light text-md md:text-lg max-w-3xl mx-auto lg:mx-0 font-light">
-            Participe da Masterclass Da Carreira Tech e descubra em 3 horas se tem o perfil lógico para ser programador — ANTES de gastar milhares de reais em uma faculdade, bootcamp ou cursos que nunca vai terminar.
+            Participe da Masterclass Da Carreira Tech e descubra se você tem o perfil para ser programador — ANTES de gastar milhares de reais em uma faculdade, bootcamp ou cursos que nunca vai terminar.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
             <button
@@ -34,25 +35,9 @@ export const Hero: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="relative">
-          <div className="absolute -inset-4 bg-primary/10 rounded-2xl blur-2xl"></div>
-          <div className="relative rounded-xl overflow-hidden border border-border-dark shadow-2xl bg-surface-dark aspect-video">
-            <img
-              src="/assets/images/hero-bg.webp"
-              alt="Masterclass Preview"
-              width={640}
-              height={360}
-              fetchPriority="high"
-              loading="eager"
-              decoding="async"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-              <button className="size-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-white/20 transition-all cursor-pointer group">
-                <PlayArrowIcon className="text-white text-4xl ml-1 group-hover:scale-110 transition-transform" />
-              </button>
-            </div>
-          </div>
+        <div className="relative flex justify-center items-center">
+          <div className="absolute -inset-4 bg-primary/20 rounded-full blur-3xl opacity-50"></div>
+          <PDFReportCard />
         </div>
       </div>
     </section>
