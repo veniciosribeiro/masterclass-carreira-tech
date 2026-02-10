@@ -1,0 +1,41 @@
+services:
+  # ─── PostgreSQL ──────────────────────────────────────────
+  postgres:
+    image: postgres:15-alpine
+    container_name: techcareer-postgres
+    restart: unless-stopped
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: ${POSTGRES_DB:-techcareer}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./supabase/init.sql:/docker-entrypoint-initdb.d/01-init.sql
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-techcareer}" ]
+      start_period: 30s
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  # ─── PostgREST ───────────────────────────────────────────
+  postgrest:
+    image: postgrest/postgrest:v12.2.3
+    container_name: techcareer-postgrest
+    restart: unless-stopped
+    ports:
+      - "${POSTGREST_PORT:-3001}:3000"
+    environment:
+      PGRST_DB_URI: postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-techcareer}
+      PGRST_DB_SCHEMAS: public
+      PGRST_DB_ANON_ROLE: anon
+      PGRST_JWT_SECRET: ${JWT_SECRET}
+      PGRST_DB_USE_LEGACY_GUCS: "false"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  pgdata:
