@@ -212,28 +212,61 @@ export function generatePDF(result: TestResult) {
 
         cursorY += 3;
         drawBar(doc, margin, cursorY, contentW, value, AREA_COLORS[key] || COLORS.primary);
-        cursorY += 14;
+        cursorY += 10;
+
+        // Explanation text
+        if (result.profile.areaExplanations) {
+            const explanation = result.profile.areaExplanations[key as keyof typeof result.profile.areaExplanations];
+            if (explanation) {
+                setColor(doc, COLORS.text);
+                doc.setFontSize(8); // Slightly larger for readability
+                doc.setFont('helvetica', 'italic');
+
+                const expLines = doc.splitTextToSize(explanation, contentW);
+                // Check if explanation fits, otherwise push whole block to next page? 
+                // Actually the bar is already drawn. We should check BEFORE drawing bar if we wanted perfect block cohesion.
+                // But let's check just for the text now.
+                checkPageBreak(expLines.length * 4 + 5);
+
+                doc.text(expLines, margin, cursorY);
+                cursorY += expLines.length * 4 + 8; // spacing after text
+            }
+        } else {
+            cursorY += 8;
+        }
     }
 
     // Explanatory text for independent percentages
-    cursorY -= 5;
-    setColor(doc, COLORS.text);
-    doc.setFontSize(7);
-    doc.setFont('helvetica', 'italic');
-    doc.text('* As porcentagens são independentes e medem sua afinidade com cada área isoladamente. Não somam 100%.', margin, cursorY);
-    cursorY += 10;
+    // ... (rest of function) ...
 
+    // Section: Behavioral
     cursorY += 5;
     checkPageBreak(50);
     setColor(doc, COLORS.primary);
     doc.setFontSize(10);
     doc.setFont('helvetica', 'bold');
     doc.text('PERFIL COMPORTAMENTAL', margin, cursorY);
-    cursorY += 10;
 
+    cursorY += 10;
     const behavioral = result.scores.behavioralPercent;
     for (const [key, value] of Object.entries(behavioral) as [string, number][]) {
-        checkPageBreak(15);
+        // Estimate height: header + bar + explanation
+        // We need to look ahead to see if the whole block fits
+        let explanationHeight = 0;
+        let expLines: string[] = [];
+
+        if (result.profile.behavioralExplanations) {
+            const explanation = result.profile.behavioralExplanations[key as keyof typeof result.profile.behavioralExplanations];
+            if (explanation) {
+                doc.setFontSize(8);
+                expLines = doc.splitTextToSize(explanation, contentW);
+                explanationHeight = expLines.length * 4;
+            }
+        }
+
+        const totalBlockHeight = 25 + explanationHeight;
+        checkPageBreak(totalBlockHeight);
+
         setColor(doc, COLORS.text);
         doc.setFontSize(10);
         doc.setFont('helvetica', 'normal');
@@ -245,7 +278,17 @@ export function generatePDF(result: TestResult) {
 
         cursorY += 3;
         drawBar(doc, margin, cursorY, contentW, value, COLORS.primary);
-        cursorY += 14;
+        cursorY += 10;
+
+        if (expLines.length > 0) {
+            setColor(doc, COLORS.text);
+            doc.setFontSize(8);
+            doc.setFont('helvetica', 'italic');
+            doc.text(expLines, margin, cursorY);
+            cursorY += explanationHeight + 8;
+        } else {
+            cursorY += 8;
+        }
     }
 
     // Description

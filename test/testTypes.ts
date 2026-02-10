@@ -89,6 +89,9 @@ export interface ProfileResult {
     description: string;
     strengths: string[];
     recommendation: string;
+    /** Dynamic explanations based on score levels */
+    areaExplanations?: Record<AreaKey, string>;
+    behavioralExplanations?: Record<keyof BehavioralScores, string>;
 }
 
 export interface TestResult {

@@ -262,6 +262,8 @@ const profileData: Record<string, Omit<ProfileResult, 'primary'>> = {
     },
 };
 
+import { generateExplanations } from './explanations';
+
 export function determineProfile(scores: NormalizedScores): ProfileResult {
     const { areasPercent } = scores;
     const entries: [string, number][] = [
@@ -288,8 +290,11 @@ export function determineProfile(scores: NormalizedScores): ProfileResult {
         profileKey = 'generalist';
     }
 
+    const explanations = generateExplanations(scores);
+
     return {
         primary: profileKey,
         ...profileData[profileKey],
+        ...explanations,
     };
 }
