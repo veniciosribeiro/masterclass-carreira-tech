@@ -1,20 +1,49 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Masterclass Test-Drive Da Carreira Tech
 
-# Run and deploy your AI Studio app
+Landing page oficial da **Masterclass "Test-Drive da Carreira Tech"**, ministrada por Venicios Ribeiro.
 
-This contains everything you need to run your app locally.
+O objetivo do projeto é oferecer um "test-drive" prático para quem deseja ingressar na área de tecnologia, ajudando a identificar o perfil ideal e evitar frustrações antes de investir tempo e dinheiro em cursos caros.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1dYbm7PhLllVV8b_vGXUJlYH27dKMvn7B
+## 🚀 Tecnologias
 
-## Run Locally
+-   [React](https://reactjs.org/)
+-   [TypeScript](https://www.typescriptlang.org/)
+-   [Vite](https://vitejs.dev/)
+-   [Tailwind CSS](https://tailwindcss.com/)
+-   [Google Gemini AI](https://deepmind.google/technologies/gemini/) (Integração para geração de relatórios e análises de perfil)
 
-**Prerequisites:**  Node.js
+## 🛠️ Instalação e Execução
 
+Certifique-se de ter o [Node.js](https://nodejs.org/) instalado.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+1.  **Instale as dependências:**
+
+    ```bash
+    npm install
+    ```
+
+2.  **Configuração de Variáveis de Ambiente:**
+
+    Crie um arquivo `.env.local` na raiz do projeto e adicione sua chave da API do Gemini (necessária para as funcionalidades de IA):
+
+    ```env
+    VITE_GEMINI_API_KEY=sua_chave_aqui
+    ```
+
+3.  **Execute o servidor de desenvolvimento:**
+
+    ```bash
+    npm run dev
+    ```
+
+    O projeto estará rodando em `http://localhost:5173`.
+
+## 📂 Estrutura do Projeto
+
+-   `components/`: Componentes da landing page (Hero, Authority, Pricing, PDFReportCard, etc.).
+-   `services/`: Integrações com APIs externas.
+-   `utils/`: Funções utilitárias e helpers.
+
+---
+
+Desenvolvido para ajudar futuros devs a tomarem a decisão certa.
