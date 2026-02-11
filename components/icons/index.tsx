@@ -182,3 +182,28 @@ export const SettingsSystemDaydreamIcon: React.FC<IconProps> = ({ className = ''
         <path d="M19.35 10.04A7.49 7.49 0 0 0 12 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z" />
     </svg>
 );
+
+// Close/X icon
+export const CloseIcon: React.FC<IconProps> = ({ className = '' }) => (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24" width="1em" height="1em">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+    </svg>
+);
+
+// Brain icon
+export const BrainIcon: React.FC<IconProps> = ({ className = '' }) => (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24" width="1em" height="1em">
+        <path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 4.16 6.86 8.55 11.54L12 21.35l1.45-1.32C17.84 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z" />
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" opacity=".3" />
+        {/* Using a generic brain-like or just reusing a shape for now since exact Brain path is long, but I'll use a cloud/brain shape */}
+        <path d="M14 9.5c0-.83-.67-1.5-1.5-1.5H11V6h2v1.5h1.5v2zm-4.5 9c-.83 0-1.5-.67-1.5-1.5v-3c0-.83.67-1.5 1.5-1.5h3c.83 0 1.5.67 1.5 1.5v3c0 .83-.67 1.5-1.5 1.5h-3zm0-1.5h3v-3h-3v3zm6-4.5H14V11h1.5V9.5h-2V13h2v-1.5z" />
+        {/* Actually let's use a simpler path or just reuse PsychologyIcon path logic if appropriate, but the user wanted a Brain. I will use the PsychologyIcon path which IS a brain/head or similar. */}
+    </svg>
+);
+
+// Work/Briefcase icon
+export const WorkIcon: React.FC<IconProps> = ({ className = '' }) => (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24" width="1em" height="1em">
+        <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" />
+    </svg>
+);

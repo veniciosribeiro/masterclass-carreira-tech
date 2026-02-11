@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { LandingPage } from './components/LandingPage';
+import { LandingPageV2 } from './components/v2/LandingPageV2';
 
 const AptitudeTest = React.lazy(() =>
   import('./components/test/AptitudeTest').then((m) => ({ default: m.AptitudeTest }))
@@ -12,6 +13,7 @@ const App: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<LandingPage />} />
+      <Route path="/v2" element={<LandingPageV2 />} />
       <Route
         path="/teste"
         element={<Suspense fallback={LoadingFallback}><AptitudeTest /></Suspense>}
