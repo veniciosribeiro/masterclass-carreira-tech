@@ -5,7 +5,7 @@ export const FAQ: React.FC = () => {
   return (
     <section className="px-6 py-10 bg-background-dark border-t border-border-dark" id="faq">
       <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-10">
           <span className="text-primary font-bold tracking-widest uppercase text-xs font-mono border border-primary/30 px-2 py-1 rounded bg-primary/10">Central de Suporte</span>
           <h2 className="text-3xl font-bold text-center mt-6 text-white font-mono">Perguntas Frequentes</h2>
         </div>

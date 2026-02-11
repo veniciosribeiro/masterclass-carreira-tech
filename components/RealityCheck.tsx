@@ -7,7 +7,7 @@ export const RealityCheck: React.FC = () => {
       <div className="max-w-7xl mx-auto flex flex-col gap-12">
         <div className="text-center max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 font-mono">
-            O "Cemitério dos Devs" está cheio de gente que confundiu <span className="text-gray-600 line-through decoration-red-500 decoration-2">Hype</span> com Vocação.
+            O "Cemitério dos Devs" está cheio de gente que confundiu <span className="text-gray-600 line-through decoration-red-500 decoration-2">Hype</span> com <span className="text-primary">Aptidão</span>.
           </h2>
           <p className="text-gray-400 mt-4 font-light text-md">
             Influenciadores Digitais faturam alto vendendo cursos e promessas, mas a realidade é que a maioria é enganada pelo Hype do mercado.
@@ -34,7 +34,7 @@ export const RealityCheck: React.FC = () => {
                 A Realidade na Masterclass
               </h4>
               <p className="text-gray-400">
-                Você precisa descobrir se tem perfil para ser programador, entender o mercado, o dia-a-dia de um dev e ter as respostas para as suas dúvidas.
+                Troque promessas vazias por critérios técnicos. Vamos validar sua lógica, testar sua aderência à rotina real e te dar uma resposta binária: você serve ou não para o jogo.
               </p>
             </div>
           </div>
@@ -47,16 +47,16 @@ export const RealityCheck: React.FC = () => {
               {/* Combined SVG for both lines */}
               <svg className="absolute inset-0 h-full w-full" viewBox="0 0 400 260" preserveAspectRatio="none">
                 {/* Labels for Estrategyst */}
-                <text x="315" y="10" fill="#19e65e" fontSize="13" fontFamily="monospace" fontWeight="bold">Masterclass</text>
+                <text x="190" y="10" fill="#19e65e" fontSize="13" fontFamily="monospace" fontWeight="bold">Crescimento Sólido e Seguro</text>
 
                 {/* Green Line (Estrategista) - starts from origin with smoother curves */}
                 <path d="M0,260 C40,250 80,230 120,180 C160,130 220,70 280,40 C320,20 350,40 370,20" fill="none" stroke="#19e65e" strokeWidth="3" />
 
                 {/* Labels for Pato */}
-                <text x="290" y="230" fill="#ef4444" fontSize="13" fontFamily="monospace" fontWeight="bold">Influenciadores</text>
+                <text x="190" y="250" fill="#ef4444" fontSize="13" fontFamily="monospace" fontWeight="bold">Euforia seguida de Frustração</text>
 
                 {/* Red Line (Pato) - starts from origin */}
-                <path d="M0,260 C50,210 100,160 150,160 C200,160 250,260 370,240" fill="none" stroke="#ef4444" strokeWidth="3" strokeDasharray="5,5" />
+                <path d="M0,260 C50,210 100,160 150,160 C200,160 250,260 370,230" fill="none" stroke="#ef4444" strokeWidth="3" strokeDasharray="5,5" />
               </svg>
 
               {/* Origin point marker */}

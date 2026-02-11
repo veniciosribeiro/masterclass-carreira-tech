@@ -16,8 +16,8 @@ export const ProtocolOverview: React.FC = () => {
                     <h2 className="text-3xl md:text-4xl font-black mt-6 text-white font-mono leading-tight">
                         Para cada trava mental, <span className="text-primary">uma chave de acesso.</span>
                     </h2>
-                    <p className="text-gray-400 mt-6 font-light text-lg">
-                        Você não precisa de "talento". Você precisa de um método que elimine as variáveis desconhecidas.
+                    <p className="text-gray-400 mt-6 font-light text-md">
+                        Você precisa de um método que elimine as suas dúvidas.
                     </p>
                 </div>
 

@@ -3,7 +3,7 @@ import { VerifiedUserIcon } from './icons';
 
 export const Authority: React.FC = () => {
   return (
-    <section className="bg-background-dark py-20 px-6 text-white border-y border-border-dark" id="authority">
+    <section className="bg-background-dark py-10 px-6 text-white border-y border-border-dark" id="authority">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         {/* Image Column - Moved to Left */}
         <div className="order-1 lg:order-1 relative">
@@ -27,16 +27,22 @@ export const Authority: React.FC = () => {
         <div className="order-2 lg:order-2">
           <div className="inline-flex items-center gap-2 mb-2 text-primary font-mono text-sm tracking-widest uppercase font-bold">
             <VerifiedUserIcon className="text-sm" />
-            Seu Mentor
+            Quem Vai Conduzir Essa Masterclass
           </div>
 
           <h2 className="text-3xl md:text-5xl font-bold mb-4 font-mono leading-tight text-white">
             Venicios <span className="text-gray-500">[Ribeiro]</span>
           </h2>
 
-          <p className="text-gray-400 text-lg mb-8 font-light">
-            Coordenador de Engenharia de Software, mentor e especialista em transição de carreira.
-          </p>
+          <div className="relative mb-8">
+            <p className="text-gray-400 text-lg mb-8 font-light">
+              Coordenador de Engenharia de Software, mentor e especialista em evolução de carreira.
+            </p>
+
+            <p className="text-gray-400 italic text-lg leading-relaxed">
+              Não sou influencer vendedor de curso. Sou Gestor e uso essa visão para blindar profissionais contra erros de carreira, ajudando-os a encontrar seu caminho na área de tecnologia e a se desenvolverem profissionalmente.
+            </p>
+          </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8 border-y border-border-dark py-6">
             <div>
@@ -44,8 +50,8 @@ export const Authority: React.FC = () => {
               <div className="text-xs text-gray-400 uppercase tracking-wider">Anos de Experiência</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-white mb-1 font-mono">+400</div>
-              <div className="text-xs text-gray-400 uppercase tracking-wider">Mentorias Realizadas</div>
+              <div className="text-3xl md:text-4xl font-bold text-white mb-1 font-mono">+500</div>
+              <div className="text-xs text-gray-400 uppercase tracking-wider">Sessões de Mentoria Realizadas</div>
             </div>
             <div>
               <div className="text-3xl md:text-4xl font-bold text-white mb-1 font-mono">+700</div>
@@ -55,7 +61,7 @@ export const Authority: React.FC = () => {
 
           <div className="relative">
             <p className="text-gray-400 italic text-lg leading-relaxed border-l-4 border-primary pl-6">
-              Criei a Masterclass Test-Drive Da Carreira Tech porque cansei de ver pessoas competentes e com potencial completamente perdidas, sem orientação, sem saber se tem aptidão e como ingressar na tecnologia. A Masterclass vai te dar a clareza que você precisa para tomar a decisão certa.
+              Criei a Masterclass Test-Drive Da Carreira Tech porque cansei de ver pessoas competentes e com potencial completamente perdidas, sem orientação, sem saber se tem aptidão e como ingressar na tecnologia.
             </p>
           </div>
         </div>

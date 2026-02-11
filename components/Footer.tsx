@@ -15,7 +15,7 @@ export const Footer: React.FC = () => {
           <a className="hover:text-primary transition-colors" href="#">./Contato</a>
         </div>
         <div className="text-md font-mono">
-          © {new Date().getFullYear()} Media Labs - CNPJ: 16.577.628/0001-94.
+          © {new Date().getFullYear()} Media Labs - CNPJ: 16.577.628/0001-94
         </div>
       </div>
     </footer>
