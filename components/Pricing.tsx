@@ -4,7 +4,7 @@ import { CancelIcon, CheckCircleIcon, ArrowForwardIcon } from './icons';
 export const Pricing: React.FC = () => {
   return (
     <section className="px-6 py-10 bg-[#050709] border-t border-border-dark" id="pricing">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-black mb-4 font-mono">A Matemática da sua Decisão</h2>
           <p className="text-gray-400 text-md">Por menos de uma pizza, você blinda seu patrimônio contra o erro.</p>
