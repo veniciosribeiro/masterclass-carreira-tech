@@ -59,25 +59,25 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| DX-01 | - | Pending |
-| DX-02 | - | Pending |
-| DX-03 | - | Pending |
-| DX-04 | - | Pending |
-| DX-05 | - | Pending |
-| DX-06 | - | Pending |
-| DX-07 | - | Pending |
-| CI-01 | - | Pending |
-| CI-02 | - | Pending |
-| CI-03 | - | Pending |
-| EMAIL-01 | - | Pending |
-| EMAIL-02 | - | Pending |
-| EMAIL-03 | - | Pending |
+| DX-01 | Phase 1: ESLint | Pending |
+| DX-02 | Phase 1: ESLint | Pending |
+| DX-03 | Phase 2: Prettier + Integration | Pending |
+| DX-04 | Phase 2: Prettier + Integration | Pending |
+| DX-07 | Phase 2: Prettier + Integration | Pending |
+| DX-05 | Phase 3: Git Hooks | Pending |
+| DX-06 | Phase 3: Git Hooks | Pending |
+| CI-01 | Phase 4: CI Pipeline | Pending |
+| CI-02 | Phase 4: CI Pipeline | Pending |
+| CI-03 | Phase 4: CI Pipeline | Pending |
+| EMAIL-01 | Phase 5: Email Results | Pending |
+| EMAIL-02 | Phase 5: Email Results | Pending |
+| EMAIL-03 | Phase 5: Email Results | Pending |
 
 **Coverage:**
 - v1 requirements: 13 total
-- Mapped to phases: 0
-- Unmapped: 13
+- Mapped to phases: 13
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-02-13*
-*Last updated: 2026-02-13 after initial definition*
+*Last updated: 2026-02-13 after roadmap creation*
