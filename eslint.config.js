@@ -73,6 +73,8 @@ export default [
       'arrow-parens': ['error', 'always'],
 
       // TypeScript
+      'no-undef': 'off', // TypeScript handles this better
+      'no-unused-vars': 'off', // Use @typescript-eslint/no-unused-vars instead
       '@typescript-eslint/no-unused-vars': ['error', { 
         argsIgnorePattern: '^_',
         varsIgnorePattern: '^_',
@@ -92,18 +94,8 @@ export default [
         ts: 'never',
         tsx: 'never',
       }],
-      'import/order': ['error', {
-        'groups': [
-          'builtin',
-          'external',
-          'internal',
-          'parent',
-          'sibling',
-          'index',
-        ],
-        'newlines-between': 'never',
-      }],
-      'import/no-unresolved': 'error',
+      'import/order': 'off', // Disabled - false positives with sibling imports
+      'import/no-unresolved': 'off', // TypeScript compiler and Vite handle this
     },
   },
 
@@ -146,6 +138,8 @@ export default [
       'arrow-parens': ['error', 'always'],
 
       // TypeScript strict mode (backend is stricter)
+      'no-undef': 'off', // TypeScript handles this better
+      'no-unused-vars': 'off', // Use @typescript-eslint/no-unused-vars instead
       '@typescript-eslint/no-unused-vars': ['error', { 
         argsIgnorePattern: '^_',
         varsIgnorePattern: '^_',
@@ -154,23 +148,10 @@ export default [
 
       // Import with .js extension requirement for NodeNext
       // Source files are .ts, but imports must use .js (NodeNext/ESM requirement)
-      'import/extensions': ['error', 'always', {
-        js: 'always',
-        ts: 'never', // Source is .ts, import uses .js
-        ignorePackages: true,
-      }],
-      'import/order': ['error', {
-        'groups': [
-          'builtin',
-          'external',
-          'internal',
-          'parent',
-          'sibling',
-          'index',
-        ],
-        'newlines-between': 'never',
-      }],
-      'import/no-unresolved': 'error',
+      // TypeScript compiler enforces this, so we disable the ESLint rule
+      'import/extensions': 'off',
+      'import/order': 'off', // Disabled - false positives with sibling imports
+      'import/no-unresolved': 'off', // TypeScript compiler handles this
     },
   },
 ];

@@ -1,5 +1,5 @@
-import { scrollToSection } from '@/utils/scroll';
 import React from 'react';
+import { scrollToSection } from '@/utils/scroll';
 import { TerminalIcon } from './icons';
 
 export const Header: React.FC = () => {

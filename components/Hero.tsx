@@ -1,6 +1,6 @@
 import React from 'react';
 import { scrollToSection } from '../utils/scroll';
-import { TerminalIcon, ArrowForwardIcon, VerifiedIcon, PlayArrowIcon } from './icons';
+import { VerifiedIcon } from './icons';
 import { PDFReportCard } from './PDFReportCard';
 
 export const Hero: React.FC = () => {

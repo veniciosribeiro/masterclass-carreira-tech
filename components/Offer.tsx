@@ -1,5 +1,5 @@
-import { scrollToSection } from '@/utils/scroll';
 import React from 'react';
+import { scrollToSection } from '@/utils/scroll';
 import { ArrowForwardIcon } from './icons';
 
 export const Offer: React.FC = () => {

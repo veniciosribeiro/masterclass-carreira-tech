@@ -1,0 +1,44 @@
+import 'dotenv/config';
+import Fastify from 'fastify';
+import cors from '@fastify/cors';
+import sensible from '@fastify/sensible';
+import { jwtPlugin } from './plugins/jwt.js';
+import { prismaPlugin } from './plugins/prisma.js';
+import { authRoutes } from './routes/auth.js';
+import { sessionRoutes } from './routes/sessions.js';
+import { resultRoutes } from './routes/results.js';
+
+const app = Fastify({
+  logger: {
+    level: process.env.NODE_ENV === 'production' ? 'info' : 'debug',
+  },
+});
+
+// --- Plugins ---
+await app.register(cors, {
+  origin: process.env.CORS_ORIGIN || true,
+  credentials: true,
+});
+await app.register(sensible);
+await app.register(jwtPlugin);
+await app.register(prismaPlugin);
+
+// --- Routes ---
+await app.register(authRoutes, { prefix: '/api/auth' });
+await app.register(sessionRoutes, { prefix: '/api/sessions' });
+await app.register(resultRoutes, { prefix: '/api/results' });
+
+// --- Health check ---
+app.get('/api/health', async () => ({ status: 'ok' }));
+
+// --- Start ---
+const port = Number(process.env.PORT) || 4000;
+const host = process.env.HOST || '0.0.0.0';
+
+try {
+  await app.listen({ port, host });
+  app.log.info(`Server listening on ${host}:${port}`);
+} catch (err) {
+  app.log.error(err);
+  process.exit(1);
+}
