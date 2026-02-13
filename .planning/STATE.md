@@ -10,28 +10,28 @@ See: .planning/PROJECT.md (updated 2026-02-13)
 ## Current Position
 
 Phase: 1 of 5 (ESLint)
-Plan: 1 of 2 in current phase
-Status: In progress
-Last activity: 2026-02-13 — Completed 01-01-PLAN.md
+Plan: 2 of 2 in current phase
+Status: Complete
+Last activity: 2026-02-13 — Completed 01-02-PLAN.md
 
-Progress: [██░░░░░░░░] 10%
+Progress: [████░░░░░░] 20%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 8 min
-- Total execution time: 0.13 hours
+- Total plans completed: 2
+- Average duration: 10 min
+- Total execution time: 0.33 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-eslint | 1/2 | 8 min | 8 min |
+| 01-eslint | 2/2 | 20 min | 10 min |
 
 **Recent Trend:**
-- Last 5 plans: 8 min
-- Trend: Starting (need more data)
+- Last 5 plans: 8 min, 12 min
+- Trend: Stable
 
 *Updated after each plan completion*
 
@@ -48,6 +48,9 @@ Recent decisions affecting current work:
 - [01-01]: Installed ESLint binary in both packages for editor support
 - [01-01]: Frontend no import extensions (bundler), backend .js extensions required (NodeNext)
 - [01-01]: Backend uses stricter rules (no-explicit-any: error vs warn)
+- [01-02]: TypeScript-first linting - disabled no-undef, no-unused-vars base rules (TS handles better)
+- [01-02]: Disabled import/no-unresolved and import/order (false positives, TS compiler handles resolution)
+- [01-02]: Single atomic commit strategy for config + auto-fix + manual fixes
 
 ### Pending Todos
 
@@ -55,12 +58,10 @@ None yet.
 
 ### Blockers/Concerns
 
-- Codebase has lint violations from brownfield setup (next plan will address)
-- Missing .js extensions in backend imports (NodeNext requirement)
-- Some code style inconsistencies (trailing commas, etc.)
+None - Phase 1 complete, all lint violations resolved.
 
 ## Session Continuity
 
 Last session: 2026-02-13
-Stopped at: Completed 01-01-PLAN.md
+Stopped at: Completed 01-02-PLAN.md (Phase 1 Complete)
 Resume file: None
