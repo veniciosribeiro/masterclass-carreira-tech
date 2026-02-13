@@ -1,22 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechCareer Test-Drive</title>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TechCareer Test-Drive</title>
+    <!-- Preload critical fonts -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/inter-400.woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="/fonts/inter-700.woff2"
+      crossorigin
+    />
 
-  <!-- Preload critical fonts -->
-  <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-400.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-700.woff2" crossorigin>
+    <!-- Preload hero image with high priority for LCP -->
+    <link
+      rel="preload"
+      as="image"
+      href="/assets/images/hero-bg.webp"
+      fetchpriority="high"
+    />
+  </head>
 
-  <!-- Preload hero image with high priority for LCP -->
-  <link rel="preload" as="image" href="/assets/images/hero-bg.webp" fetchpriority="high">
-</head>
-
-<body>
-  <div id="root"></div>
-  <script type="module" src="/index.tsx"></script>
-</body>
-
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>

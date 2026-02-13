@@ -19,23 +19,35 @@ affects: [02-prettier, 03-git-hooks, 04-ci]
 # Tech tracking
 tech-stack:
   added: []
-  patterns: [Underscore prefix for unused callback parameters, TypeScript-first linting strategy]
+  patterns:
+    [
+      Underscore prefix for unused callback parameters,
+      TypeScript-first linting strategy,
+    ]
 
 key-files:
   created: []
-  modified: [eslint.config.js, vite.config.ts, services/apiClient.ts, components/**/*.tsx, test/**/*.ts, api/src/**/*.ts]
+  modified:
+    [
+      eslint.config.js,
+      vite.config.ts,
+      services/apiClient.ts,
+      components/**/*.tsx,
+      test/**/*.ts,
+      api/src/**/*.ts,
+    ]
 
 key-decisions:
-  - "Disabled no-undef and no-unused-vars base rules - TypeScript handles these better"
-  - "Disabled import/no-unresolved - TypeScript compiler and Vite handle module resolution"
-  - "Disabled import/order - false positives with sibling imports, removed for now"
-  - "Disabled import/extensions for backend - NodeNext .js extension requirement enforced by TS compiler"
-  - "Used underscore prefix convention for intentionally unused callback parameters"
+  - 'Disabled no-undef and no-unused-vars base rules - TypeScript handles these better'
+  - 'Disabled import/no-unresolved - TypeScript compiler and Vite handle module resolution'
+  - 'Disabled import/order - false positives with sibling imports, removed for now'
+  - 'Disabled import/extensions for backend - NodeNext .js extension requirement enforced by TS compiler'
+  - 'Used underscore prefix convention for intentionally unused callback parameters'
 
 patterns-established:
-  - "TypeScript-first linting: disable conflicting JS rules, rely on TS compiler"
-  - "Selective ESLint rules: focus on real issues, disable rules with false positives"
-  - "Single atomic commit for config + auto-fix + manual fixes"
+  - 'TypeScript-first linting: disable conflicting JS rules, rely on TS compiler'
+  - 'Selective ESLint rules: focus on real issues, disable rules with false positives'
+  - 'Single atomic commit for config + auto-fix + manual fixes'
 
 # Metrics
 duration: 12 min
@@ -60,7 +72,7 @@ completed: 2026-02-13
 - Fixed ESLint configuration to work properly with TypeScript (disabled no-undef, no-unused-vars)
 - Applied auto-fix across entire codebase (quotes, semicolons, spacing, trailing commas)
 - Removed unused imports from 5 component files
-- Fixed ESM compatibility issues (vite.config.ts __dirname)
+- Fixed ESM compatibility issues (vite.config.ts \_\_dirname)
 - Cleaned up unused variables and callback parameters
 
 ## Task Commits
@@ -74,10 +86,12 @@ This differs from typical per-task commits because user explicitly requested con
 ## Files Created/Modified
 
 **Configuration:**
+
 - `eslint.config.js` - Disabled no-undef, no-unused-vars, import/order, import/no-unresolved for TypeScript
-- `vite.config.ts` - Added __dirname polyfill for ESM compatibility
+- `vite.config.ts` - Added \_\_dirname polyfill for ESM compatibility
 
 **Frontend (45 files total):**
+
 - `components/Hero.tsx` - Removed unused icon imports (TerminalIcon, ArrowForwardIcon, PlayArrowIcon)
 - `components/ResultsShowcase.tsx` - Removed unused PdfIcon component
 - `components/Syllabus.tsx` - Removed unused VerifiedIcon import
@@ -89,9 +103,11 @@ This differs from typical per-task commits because user explicitly requested con
 - `test/pdfGenerator.ts` - Removed unused boxCenterY variable
 
 **Backend:**
+
 - All `api/src/**/*.ts` files - Already had correct .js import extensions (no changes needed)
 
 **Auto-fixed changes across all files:**
+
 - Single quotes enforced
 - Semicolons added consistently
 - Trailing commas in multiline structures
@@ -101,6 +117,7 @@ This differs from typical per-task commits because user explicitly requested con
 ## Decisions Made
 
 **ESLint rule strategy:** Disabled several ESLint rules that conflict with TypeScript or produce false positives:
+
 - `no-undef` → TypeScript's compiler already catches undefined references
 - `no-unused-vars` → TypeScript's version is more accurate for TS code
 - `import/no-unresolved` → TypeScript compiler and Vite handle module resolution
@@ -118,6 +135,7 @@ This "TypeScript-first" approach reduces noise and relies on TypeScript's superi
 ### Auto-fixed Issues
 
 **1. [Rule 3 - Blocking] ESLint config adjustments required**
+
 - **Found during:** Task 2 (Manual fixes)
 - **Issue:** Several ESLint rules produced false positives or conflicts with TypeScript: no-undef flagging global types, import/extensions confused by NodeNext .js imports, import/order false positive on sibling imports
 - **Fix:** Disabled conflicting rules (no-undef, no-unused-vars base, import/no-unresolved, import/order, backend import/extensions) and added comments explaining why TypeScript handles these better
@@ -125,15 +143,17 @@ This "TypeScript-first" approach reduces noise and relies on TypeScript's superi
 - **Verification:** npm run lint returns 0 errors, tsc --noEmit passes in both frontend and backend
 - **Committed in:** d5cc0ed (Task 3 commit)
 
-**2. [Rule 1 - Bug] Fixed vite.config.ts __dirname undefined**
+**2. [Rule 1 - Bug] Fixed vite.config.ts \_\_dirname undefined**
+
 - **Found during:** Task 2 (Fixing no-undef errors)
-- **Issue:** vite.config.ts used __dirname which is not available in ESM modules, causing no-undef error
-- **Fix:** Added import { fileURLToPath } from 'url' and computed __dirname from import.meta.url
+- **Issue:** vite.config.ts used \_\_dirname which is not available in ESM modules, causing no-undef error
+- **Fix:** Added import { fileURLToPath } from 'url' and computed \_\_dirname from import.meta.url
 - **Files modified:** vite.config.ts
 - **Verification:** tsc --noEmit passes, vite config loads successfully
 - **Committed in:** d5cc0ed (Task 3 commit)
 
 **3. [Rule 2 - Missing Critical] Fixed ApiError.status property**
+
 - **Found during:** Task 2 (Fixing no-unused-vars errors)
 - **Issue:** ApiError constructor had `public status` parameter which ESLint flagged as unused because it wasn't being assigned to a property explicitly
 - **Fix:** Separated property declaration and constructor parameter, then manually assigned status property in constructor body
@@ -161,6 +181,7 @@ None - no external service configuration required.
 ## Next Phase Readiness
 
 Phase 1 (ESLint) is now complete:
+
 - ✅ ESLint configured for TypeScript monorepo (Plan 01-01)
 - ✅ Zero ESLint errors across entire codebase (Plan 01-02)
 - ✅ Backend imports use .js extensions (NodeNext compliant)
@@ -172,5 +193,6 @@ Phase 1 (ESLint) is now complete:
 **Blocker resolved:** The "Codebase has lint violations" blocker from STATE.md is now resolved. All files pass ESLint checks.
 
 ---
-*Phase: 01-eslint*
-*Completed: 2026-02-13*
+
+_Phase: 01-eslint_
+_Completed: 2026-02-13_

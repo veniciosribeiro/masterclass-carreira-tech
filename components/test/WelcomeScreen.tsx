@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { validateEmail } from '../../services/testService';
 
 interface WelcomeScreenProps {
-    onStart: (_name: string, _email: string) => void;
+  onStart: (_name: string, _email: string) => void;
 }
 
 export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
@@ -15,7 +15,8 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
     const e: typeof errors = {};
     if (!name.trim()) e.name = 'Nome é obrigatório';
     if (!email.trim()) e.email = 'Email é obrigatório';
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) e.email = 'Email inválido';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))
+      e.email = 'Email inválido';
     setErrors(e);
     return Object.keys(e).length === 0;
   };
@@ -32,7 +33,8 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
 
       if (!result.authorized) {
         setErrors({
-          email: 'Este email não tem acesso à masterclass. Verifique se usou o email correto do cadastro.',
+          email:
+            'Este email não tem acesso à masterclass. Verifique se usou o email correto do cadastro.',
         });
         setIsValidating(false);
         return;
@@ -56,24 +58,31 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
         <div className="text-center mb-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-mono font-medium text-primary uppercase tracking-wider mb-6">
             <span className="text-sm">⌨️</span>
-                        PROTOCOLO DE APTIDÃO
+            PROTOCOLO DE APTIDÃO
           </div>
           <h1 className="text-3xl md:text-4xl font-black text-text-header font-mono leading-tight">
-                        Teste de <span className="text-primary">Aptidão</span> Tech
+            Teste de <span className="text-primary">Aptidão</span> Tech
           </h1>
           <p className="text-text-main mt-4 text-sm md:text-base max-w-md mx-auto">
-                        Descubra se você tem mais afinidade com <strong className="text-primary">Front-End</strong>,{' '}
+            Descubra se você tem mais afinidade com{' '}
+            <strong className="text-primary">Front-End</strong>,{' '}
             <strong className="text-blue-400">Back-End</strong> ou{' '}
             <strong className="text-purple-400">Dados & IA</strong>.
           </p>
         </div>
 
         {/* Card */}
-        <form onSubmit={handleSubmit} className="bg-surface-dark border border-border-dark rounded-2xl p-8 shadow-glow">
+        <form
+          onSubmit={handleSubmit}
+          className="bg-surface-dark border border-border-dark rounded-2xl p-8 shadow-glow"
+        >
           <div className="space-y-5">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-text-main mb-1.5 font-mono">
-                                Seu Nome
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-text-main mb-1.5 font-mono"
+              >
+                Seu Nome
               </label>
               <input
                 id="name"
@@ -84,11 +93,16 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
                 disabled={isValidating}
                 className="w-full px-4 py-3 rounded-lg bg-background-dark border border-border-dark text-text-header placeholder:text-gray-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors disabled:opacity-50"
               />
-              {errors.name && <p className="text-red-400 text-xs mt-1">{errors.name}</p>}
+              {errors.name && (
+                <p className="text-red-400 text-xs mt-1">{errors.name}</p>
+              )}
             </div>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-text-main mb-1.5 font-mono">
-                                Seu Email
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-text-main mb-1.5 font-mono"
+              >
+                Seu Email
               </label>
               <input
                 id="email"
@@ -99,7 +113,9 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
                 disabled={isValidating}
                 className="w-full px-4 py-3 rounded-lg bg-background-dark border border-border-dark text-text-header placeholder:text-gray-600 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors disabled:opacity-50"
               />
-              {errors.email && <p className="text-red-400 text-xs mt-1">{errors.email}</p>}
+              {errors.email && (
+                <p className="text-red-400 text-xs mt-1">{errors.email}</p>
+              )}
             </div>
           </div>
 
@@ -111,10 +127,22 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
             {isValidating ? (
               <span className="flex items-center justify-center gap-2">
                 <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                    fill="none"
+                  />
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                  />
                 </svg>
-                                Validando acesso...
+                Validando acesso...
               </span>
             ) : (
               '> Iniciar Teste <'
@@ -139,7 +167,9 @@ export const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onStart }) => {
               className="bg-surface-dark/50 border border-border-dark rounded-xl p-3 text-center"
             >
               <div className="text-xl mb-1">{item.icon}</div>
-              <div className="text-xs text-text-main font-mono">{item.label}</div>
+              <div className="text-xs text-text-main font-mono">
+                {item.label}
+              </div>
             </div>
           ))}
         </div>

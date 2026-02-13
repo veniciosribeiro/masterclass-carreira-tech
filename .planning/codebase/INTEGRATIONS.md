@@ -1,6 +1,7 @@
 # Integrations
 
 ## External Services
+
 - **Database**: PostgreSQL (via Prisma ORM in `api/`)
   - Connection string via `DATABASE_URL`
 - **Frontend API**: Internal API Backend (`/api`)
@@ -8,10 +9,12 @@
   - Served via Nginx in production
 
 ## API Integrations
+
 - No third-party API integrations (e.g. Stripe, SendGrid) found in current scan.
 - Authentication is purely internal (whitelist-based, JWT issuance).
 
 ## Data Flow
+
 1. **User input** -> Frontend (`/`)
 2. **API Request** -> Backend (`/api/sessions`, `/api/results`)
 3. **Validation** -> TypeBox schema check

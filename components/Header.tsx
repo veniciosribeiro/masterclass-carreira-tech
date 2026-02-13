@@ -15,15 +15,41 @@ export const Header: React.FC = () => {
           </h2>
         </div>
         <nav className="hidden md:flex items-center gap-8 font-mono text-sm">
-          <a className="text-gray-400 hover:text-primary transition-colors" href="#reality">./Realidade</a>
-          <a className="text-gray-400 hover:text-primary transition-colors" href="#mechanism">./O_Metodo</a>
-          <a className="text-gray-400 hover:text-primary transition-colors" href="#authority">./Mentor</a>
-          <a className="text-gray-400 hover:text-primary transition-colors" href="#pricing">./Decisao</a>
-          <a className="text-gray-400 hover:text-primary transition-colors" href="#faq">./FAQ</a>
+          <a
+            className="text-gray-400 hover:text-primary transition-colors"
+            href="#reality"
+          >
+            ./Realidade
+          </a>
+          <a
+            className="text-gray-400 hover:text-primary transition-colors"
+            href="#mechanism"
+          >
+            ./O_Metodo
+          </a>
+          <a
+            className="text-gray-400 hover:text-primary transition-colors"
+            href="#authority"
+          >
+            ./Mentor
+          </a>
+          <a
+            className="text-gray-400 hover:text-primary transition-colors"
+            href="#pricing"
+          >
+            ./Decisao
+          </a>
+          <a
+            className="text-gray-400 hover:text-primary transition-colors"
+            href="#faq"
+          >
+            ./FAQ
+          </a>
         </nav>
         <button
           onClick={() => scrollToSection('pricing')}
-          className="flex items-center justify-center rounded-lg h-10 px-6 bg-primary hover:bg-green-400 transition-colors text-[#0D1117] text-sm font-bold tracking-wide font-mono uppercase">
+          className="flex items-center justify-center rounded-lg h-10 px-6 bg-primary hover:bg-green-400 transition-colors text-[#0D1117] text-sm font-bold tracking-wide font-mono uppercase"
+        >
           <span>&gt; Garantir_Vaga</span>
         </button>
       </div>

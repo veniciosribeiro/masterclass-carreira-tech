@@ -46,38 +46,40 @@ Deferidos para release futuro.
 
 ## Out of Scope
 
-| Feature | Reason |
-|---------|--------|
-| Mobile app nativo | Web-first, sem necessidade atual |
-| Internacionalizacao | UI apenas em pt-BR, publico brasileiro |
-| Novas landing pages | Foco atual em DX e funcionalidades |
-| Novos tipos de pergunta | Teste atual funciona bem |
+| Feature                 | Reason                                 |
+| ----------------------- | -------------------------------------- |
+| Mobile app nativo       | Web-first, sem necessidade atual       |
+| Internacionalizacao     | UI apenas em pt-BR, publico brasileiro |
+| Novas landing pages     | Foco atual em DX e funcionalidades     |
+| Novos tipos de pergunta | Teste atual funciona bem               |
 
 ## Traceability
 
 Which phases cover which requirements. Updated during roadmap creation.
 
-| Requirement | Phase | Status |
-|-------------|-------|--------|
-| DX-01 | Phase 1: ESLint | Pending |
-| DX-02 | Phase 1: ESLint | Pending |
-| DX-03 | Phase 2: Prettier + Integration | Pending |
-| DX-04 | Phase 2: Prettier + Integration | Pending |
-| DX-07 | Phase 2: Prettier + Integration | Pending |
-| DX-05 | Phase 3: Git Hooks | Pending |
-| DX-06 | Phase 3: Git Hooks | Pending |
-| CI-01 | Phase 4: CI Pipeline | Pending |
-| CI-02 | Phase 4: CI Pipeline | Pending |
-| CI-03 | Phase 4: CI Pipeline | Pending |
-| EMAIL-01 | Phase 5: Email Results | Pending |
-| EMAIL-02 | Phase 5: Email Results | Pending |
-| EMAIL-03 | Phase 5: Email Results | Pending |
+| Requirement | Phase                           | Status  |
+| ----------- | ------------------------------- | ------- |
+| DX-01       | Phase 1: ESLint                 | Pending |
+| DX-02       | Phase 1: ESLint                 | Pending |
+| DX-03       | Phase 2: Prettier + Integration | Pending |
+| DX-04       | Phase 2: Prettier + Integration | Pending |
+| DX-07       | Phase 2: Prettier + Integration | Pending |
+| DX-05       | Phase 3: Git Hooks              | Pending |
+| DX-06       | Phase 3: Git Hooks              | Pending |
+| CI-01       | Phase 4: CI Pipeline            | Pending |
+| CI-02       | Phase 4: CI Pipeline            | Pending |
+| CI-03       | Phase 4: CI Pipeline            | Pending |
+| EMAIL-01    | Phase 5: Email Results          | Pending |
+| EMAIL-02    | Phase 5: Email Results          | Pending |
+| EMAIL-03    | Phase 5: Email Results          | Pending |
 
 **Coverage:**
+
 - v1 requirements: 13 total
 - Mapped to phases: 13
 - Unmapped: 0 ✓
 
 ---
-*Requirements defined: 2026-02-13*
-*Last updated: 2026-02-13 after roadmap creation*
+
+_Requirements defined: 2026-02-13_
+_Last updated: 2026-02-13 after roadmap creation_

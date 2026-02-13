@@ -1,5 +1,8 @@
 import type { FastifyInstance } from 'fastify';
-import { ValidateEmailBody, type ValidateEmailBodyType } from '../schemas/auth.js';
+import {
+  ValidateEmailBody,
+  type ValidateEmailBodyType,
+} from '../schemas/auth.js';
 
 export async function authRoutes(app: FastifyInstance) {
   app.post<{ Body: ValidateEmailBodyType }>(
@@ -32,6 +35,6 @@ export async function authRoutes(app: FastifyInstance) {
         name: authorizedEmail.name ?? undefined,
         token,
       });
-    },
+    }
   );
 }

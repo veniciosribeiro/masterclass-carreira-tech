@@ -52,7 +52,7 @@ export async function sessionRoutes(app: FastifyInstance) {
         shuffled_orderings: {},
         resumed: false,
       });
-    },
+    }
   );
 
   // --- GET /api/sessions/:id — Get session state ---
@@ -85,7 +85,7 @@ export async function sessionRoutes(app: FastifyInstance) {
         status: session.status,
         shuffled_orderings: session.shuffledOrderings,
       });
-    },
+    }
   );
 
   // --- PATCH /api/sessions/:id/progress — Save progress ---
@@ -120,7 +120,7 @@ export async function sessionRoutes(app: FastifyInstance) {
       });
 
       return reply.code(200).send({ ok: true });
-    },
+    }
   );
 
   // --- PATCH /api/sessions/:id/complete — Complete session ---
@@ -149,6 +149,6 @@ export async function sessionRoutes(app: FastifyInstance) {
       });
 
       return reply.code(200).send({ ok: true });
-    },
+    }
   );
 }

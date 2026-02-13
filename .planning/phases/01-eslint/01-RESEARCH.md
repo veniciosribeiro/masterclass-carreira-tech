@@ -19,9 +19,11 @@ The key architectural decision is to use cascading config objects with `files` g
 **Primary recommendation:** Use ESLint 9 flat config with `typescript-eslint` package, separate frontend/backend config objects, and start with `recommended` configs + manual rule customization for existing conventions.
 
 <user_constraints>
+
 ## User Constraints (from CONTEXT.md)
 
 ### Locked Decisions
+
 - **Auto-fix first**: Rodar `eslint --fix` para corrigir automaticamente o que for possivel
 - **Manual fixes second**: Corrigir manualmente os erros que restarem apos auto-fix
 - **Zero erros obrigatorio**: Nenhum erro de lint pode permanecer — phase 1 entrega codebase limpo
@@ -30,12 +32,14 @@ The key architectural decision is to use cascading config objects with `files` g
 - **Prioridade**: Se houver muitos erros manuais, focar primeiro em bugs potenciais (unused vars, no-undef, etc) antes de issues de estilo
 
 ### Claude's Discretion
+
 - Escolha de plugins e extensoes (React, TypeScript, Node, Import, a11y, etc)
 - Nivel de rigor das regras (moderado sugerido — erros em issues importantes, warnings no resto)
 - Estrutura de configuracao (raiz vs separada, shared config vs independente)
 - Quais regras especificas ativar/desativar para respeitar convencoes existentes
 
 ### Project Specifics
+
 - O projeto usa ESM (`"type": "module"`) em ambos os pacotes
 - Backend usa `moduleResolution: "NodeNext"` — imports devem ter extensao `.js`
 - Frontend usa `moduleResolution: "bundler"` — imports sem extensao
@@ -47,43 +51,49 @@ The key architectural decision is to use cascading config objects with `files` g
 ## Standard Stack
 
 ### Core
-| Library | Version | Purpose | Why Standard |
-|---------|---------|---------|--------------|
-| `eslint` | `^9.0.0` | Core linter | Current stable, flat config is default |
-| `@eslint/js` | `latest` | ESLint recommended rules | Provides `eslint.configs.recommended` |
+
+| Library             | Version   | Purpose                          | Why Standard                                             |
+| ------------------- | --------- | -------------------------------- | -------------------------------------------------------- |
+| `eslint`            | `^9.0.0`  | Core linter                      | Current stable, flat config is default                   |
+| `@eslint/js`        | `latest`  | ESLint recommended rules         | Provides `eslint.configs.recommended`                    |
 | `typescript-eslint` | `^8.55.0` | TypeScript linting (unified pkg) | Official TypeScript support, replaces old split packages |
-| `globals` | `^15.0.0` | Environment globals definitions | Required for browser/node globals in flat config |
+| `globals`           | `^15.0.0` | Environment globals definitions  | Required for browser/node globals in flat config         |
 
 **Why typescript-eslint package**: As of v6+, the `typescript-eslint` package is the recommended import that re-exports `parser`, `plugin`, and `configs`. This simplifies installation (one package vs two) and is the pattern shown in official docs.
 
 ### Supporting (Highly Recommended)
-| Library | Version | Purpose | When to Use |
-|---------|---------|---------|-------------|
-| `eslint-plugin-react` | `^7.37.0` | React-specific rules | For React 19 frontend with JSX |
-| `eslint-plugin-react-hooks` | `^7.0.0` | React Hooks rules | React 19 uses hooks extensively |
-| `eslint-plugin-import` | `^2.32.0` | Import/export validation | Module resolution, auto-fix import order |
+
+| Library                     | Version   | Purpose                  | When to Use                              |
+| --------------------------- | --------- | ------------------------ | ---------------------------------------- |
+| `eslint-plugin-react`       | `^7.37.0` | React-specific rules     | For React 19 frontend with JSX           |
+| `eslint-plugin-react-hooks` | `^7.0.0`  | React Hooks rules        | React 19 uses hooks extensively          |
+| `eslint-plugin-import`      | `^2.32.0` | Import/export validation | Module resolution, auto-fix import order |
 
 ### Supporting (Optional)
-| Library | Version | Purpose | When to Use |
-|---------|---------|---------|-------------|
-| `eslint-plugin-jsx-a11y` | `^6.10.0` | Accessibility rules for JSX | If accessibility is a priority |
-| `eslint-plugin-n` | `^17.0.0` | Node.js best practices | For backend-specific Node rules |
+
+| Library                  | Version   | Purpose                     | When to Use                     |
+| ------------------------ | --------- | --------------------------- | ------------------------------- |
+| `eslint-plugin-jsx-a11y` | `^6.10.0` | Accessibility rules for JSX | If accessibility is a priority  |
+| `eslint-plugin-n`        | `^17.0.0` | Node.js best practices      | For backend-specific Node rules |
 
 **Note on import plugin**: While optional, it's highly valuable for:
+
 - Catching unresolved imports early
 - Enforcing consistent import order
 - Detecting unused imports
 - Handling ESM `.js` extension requirement in backend
 
 ### Alternatives Considered
-| Instead of | Could Use | Tradeoff |
-|------------|-----------|----------|
-| typescript-eslint v8 | v7 (or split packages) | v8 is current, v7 uses deprecated patterns |
-| Flat config | Legacy `.eslintrc` | Flat config is ESLint 9 default, better composition |
-| Single root config | Per-package configs | Root config with cascading avoids duplication |
-| `eslint-plugin-import` | No import plugin | Miss out on auto-fix, import validation |
+
+| Instead of             | Could Use              | Tradeoff                                            |
+| ---------------------- | ---------------------- | --------------------------------------------------- |
+| typescript-eslint v8   | v7 (or split packages) | v8 is current, v7 uses deprecated patterns          |
+| Flat config            | Legacy `.eslintrc`     | Flat config is ESLint 9 default, better composition |
+| Single root config     | Per-package configs    | Root config with cascading avoids duplication       |
+| `eslint-plugin-import` | No import plugin       | Miss out on auto-fix, import validation             |
 
 **Installation:**
+
 ```bash
 # Root (frontend)
 npm install --save-dev eslint @eslint/js typescript-eslint globals eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-import
@@ -95,6 +105,7 @@ npm install --save-dev eslint @eslint/js typescript-eslint globals eslint-plugin
 ## Architecture Patterns
 
 ### Recommended Project Structure
+
 ```
 /
 ├── eslint.config.js           # Root flat config (ESM)
@@ -115,6 +126,7 @@ npm install --save-dev eslint @eslint/js typescript-eslint globals eslint-plugin
 ```
 
 **Key points:**
+
 - Single `eslint.config.js` at root (not per-package)
 - ESLint installed in both root and api/ (for editor support in both)
 - Use cascading config objects with `files` patterns to differentiate frontend/backend
@@ -126,6 +138,7 @@ npm install --save-dev eslint @eslint/js typescript-eslint globals eslint-plugin
 **When to use:** Always, for flat config (ESLint 9+).
 
 **Example:**
+
 ```typescript
 // eslint.config.js (root)
 // Source: ESLint official docs + typescript-eslint docs
@@ -160,17 +173,15 @@ export default defineConfig(
     },
     plugins: {
       '@typescript-eslint': tseslint.plugin,
-      'react': reactPlugin,
+      react: reactPlugin,
       'react-hooks': reactHooksPlugin,
-      'import': importPlugin,
+      import: importPlugin,
     },
-    extends: [
-      ...tseslint.configs.recommended,
-    ],
+    extends: [...tseslint.configs.recommended],
     rules: {
-      'semi': ['error', 'always'],
-      'quotes': ['error', 'single'],
-      'indent': ['error', 2],
+      semi: ['error', 'always'],
+      quotes: ['error', 'single'],
+      indent: ['error', 2],
       // ... frontend-specific rules
     },
   },
@@ -191,17 +202,15 @@ export default defineConfig(
     },
     plugins: {
       '@typescript-eslint': tseslint.plugin,
-      'import': importPlugin,
+      import: importPlugin,
     },
-    extends: [
-      ...tseslint.configs.strictTypeChecked,
-    ],
+    extends: [...tseslint.configs.strictTypeChecked],
     rules: {
       // Backend uses strict TS, enforce `.js` extensions
       'import/extensions': ['error', 'always', { ignorePackages: true }],
       // ... backend-specific rules
     },
-  },
+  }
 );
 ```
 
@@ -212,6 +221,7 @@ export default defineConfig(
 **When to use:** When using `eslint-plugin-import` in a monorepo with different `moduleResolution` settings.
 
 **Example:**
+
 ```typescript
 // Frontend config object
 {
@@ -267,6 +277,7 @@ export default defineConfig(
 **When to use:** Always, to avoid massive auto-fix churn and respect project decisions.
 
 **Example:**
+
 ```typescript
 {
   rules: {
@@ -274,14 +285,14 @@ export default defineConfig(
     'semi': ['error', 'always'],
     'quotes': ['error', 'single', { avoidEscape: true }],
     'comma-dangle': ['error', 'always-multiline'],
-    
+
     // Spacing
     'indent': ['error', 2, { SwitchCase: 1 }],
     '@typescript-eslint/indent': ['error', 2],
-    
+
     // Arrow functions
     'arrow-parens': ['error', 'always'],
-    
+
     // React-specific (if using React)
     'react/jsx-indent': ['error', 2],
     'react/jsx-indent-props': ['error', 2],
@@ -299,13 +310,13 @@ export default defineConfig(
 
 ## Don't Hand-Roll
 
-| Problem | Don't Build | Use Instead | Why |
-|---------|-------------|-------------|-----|
-| TypeScript parsing | Custom TS parser | `typescript-eslint` package | Official parser, maintained by TS community, handles all TS features |
-| React JSX validation | Custom JSX rules | `eslint-plugin-react` + `react-hooks` | Hundreds of edge cases handled, maintained by React community |
-| Import resolution | Custom resolver | `eslint-plugin-import` with typescript resolver | Handles webpack aliases, monorepos, tsconfig paths |
-| Code formatting | ESLint stylistic rules | Prettier (or no formatter) | ESLint docs explicitly recommend against using ESLint for formatting |
-| Config composition | Manual object merging | Flat config cascading | Built into ESLint 9, handles precedence automatically |
+| Problem              | Don't Build            | Use Instead                                     | Why                                                                  |
+| -------------------- | ---------------------- | ----------------------------------------------- | -------------------------------------------------------------------- |
+| TypeScript parsing   | Custom TS parser       | `typescript-eslint` package                     | Official parser, maintained by TS community, handles all TS features |
+| React JSX validation | Custom JSX rules       | `eslint-plugin-react` + `react-hooks`           | Hundreds of edge cases handled, maintained by React community        |
+| Import resolution    | Custom resolver        | `eslint-plugin-import` with typescript resolver | Handles webpack aliases, monorepos, tsconfig paths                   |
+| Code formatting      | ESLint stylistic rules | Prettier (or no formatter)                      | ESLint docs explicitly recommend against using ESLint for formatting |
+| Config composition   | Manual object merging  | Flat config cascading                           | Built into ESLint 9, handles precedence automatically                |
 
 **Key insight:** ESLint ecosystem has mature, well-tested solutions for every common problem. Building custom solutions introduces bugs and maintenance burden. The only custom work should be rule configuration, not rule/parser/plugin implementation.
 
@@ -319,12 +330,14 @@ export default defineConfig(
 
 **How to avoid:** Use `typescript-eslint` (unified package) as shown in official docs since v6+. This package re-exports `parser`, `plugin`, and `configs`.
 
-**Warning signs:** 
+**Warning signs:**
+
 - Seeing `extends: ['plugin:@typescript-eslint/recommended']` in flat config (wrong syntax)
 - Two separate packages in `package.json`
 - Import statements like `import parser from '@typescript-eslint/parser'`
 
 **Correct pattern:**
+
 ```typescript
 import tseslint from 'typescript-eslint';
 // Not: import parser from '@typescript-eslint/parser'
@@ -339,15 +352,17 @@ import tseslint from 'typescript-eslint';
 **How to avoid:** Configure `import/extensions` rule specifically for backend files to require `.js` extension.
 
 **Warning signs:**
+
 - TypeScript compiler errors about module resolution in backend
 - Backend imports like `import { foo } from './utils'` (should be `'./utils.js'`)
 - ESLint not catching missing extensions
 
 **Correct pattern:**
+
 ```typescript
 // Backend (api/) with NodeNext resolution
-import { foo } from './utils.js';  // ✓ Required
-import { bar } from './types.js';  // ✓ Required
+import { foo } from './utils.js'; // ✓ Required
+import { bar } from './types.js'; // ✓ Required
 // NOT: import { foo } from './utils'  // ✗ Will fail at runtime
 ```
 
@@ -357,17 +372,20 @@ import { bar } from './types.js';  // ✓ Required
 
 **Why it happens:** Enabling `strictTypeChecked` or individual type-aware rules without providing `parserOptions.project`.
 
-**How to avoid:** 
+**How to avoid:**
+
 1. Only use type-checked configs where you can provide valid tsconfig path
 2. Backend can use `strictTypeChecked` (has strict mode enabled)
 3. Frontend should stick to `recommended` (non-type-checked) unless willing to add `project` option
 
 **Warning signs:**
+
 - Rules like `@typescript-eslint/no-unsafe-*` not reporting obvious issues
 - Console warnings about missing type information
 - Very slow linting times (scanning entire project)
 
 **Correct pattern:**
+
 ```typescript
 // Backend config object
 {
@@ -389,17 +407,20 @@ import { bar } from './types.js';  // ✓ Required
 
 **Why it happens:** Both root and api/ packages specify `"type": "module"`, so `eslint.config.js` is parsed as ESM, not CommonJS.
 
-**How to avoid:** 
+**How to avoid:**
+
 - Use ESM syntax (`import`/`export default`, not `require`/`module.exports`)
 - Avoid `__dirname` (use `import.meta.url` + `fileURLToPath` if needed)
 - No `.cjs` extension needed since ESM is working
 
 **Warning signs:**
+
 - `require is not defined` error
 - `__dirname is not defined` error
 - Config file not loading
 
 **Correct pattern:**
+
 ```typescript
 // eslint.config.js (ESM, not CJS)
 import eslint from '@eslint/js';
@@ -418,18 +439,21 @@ export default defineConfig([
 
 **Why it happens:** Auto-fix leaves errors that require thought to fix; quickest path is to disable rule.
 
-**How to avoid:** 
+**How to avoid:**
+
 1. Run `eslint --fix` first (auto-fixes easy stuff)
 2. Review remaining errors one by one
 3. Only disable rules that genuinely conflict with project decisions
 4. Prioritize potential bugs (no-undef, no-unused-vars) over style issues
 
 **Warning signs:**
+
 - Config has many `'rule-name': 'off'` entries
 - Disabling rules like `no-unused-vars` or `no-undef` (usually indicates real issues)
 - Changing rule severity to 'warn' for everything
 
 **Correct approach:**
+
 1. Start with `recommended` configs
 2. Run auto-fix
 3. Manually fix real issues (unused vars, type errors)
@@ -445,10 +469,12 @@ export default defineConfig([
 **How to avoid:** Install eslint as devDependency in both root and `api/` packages. Config stays at root, but binary must be available in each package for editor tooling.
 
 **Warning signs:**
+
 - ESLint works in root files but not in `api/` files
 - Editor shows "ESLint not found" warnings in `api/` directory
 
 **Correct approach:**
+
 ```bash
 # Install at root
 npm install --save-dev eslint
@@ -477,12 +503,7 @@ import globals from 'globals';
 export default defineConfig(
   // Global ignores
   {
-    ignores: [
-      '**/dist/**',
-      '**/node_modules/**',
-      '**/.git/**',
-      '**/build/**',
-    ],
+    ignores: ['**/dist/**', '**/node_modules/**', '**/.git/**', '**/build/**'],
   },
 
   // Base recommended config
@@ -492,7 +513,7 @@ export default defineConfig(
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     ignores: ['api/**'],
-    
+
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
@@ -509,9 +530,9 @@ export default defineConfig(
 
     plugins: {
       '@typescript-eslint': tseslint.plugin,
-      'react': reactPlugin,
+      react: reactPlugin,
       'react-hooks': reactHooksPlugin,
-      'import': importPlugin,
+      import: importPlugin,
     },
 
     extends: [
@@ -534,17 +555,20 @@ export default defineConfig(
 
     rules: {
       // Existing conventions
-      'semi': ['error', 'always'],
-      'quotes': ['error', 'single', { avoidEscape: true }],
+      semi: ['error', 'always'],
+      quotes: ['error', 'single', { avoidEscape: true }],
       'comma-dangle': ['error', 'always-multiline'],
-      'indent': ['error', 2],
+      indent: ['error', 2],
       'arrow-parens': ['error', 'always'],
 
       // TypeScript
-      '@typescript-eslint/no-unused-vars': ['error', { 
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-      }],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
       '@typescript-eslint/no-explicit-any': 'warn',
 
       // React
@@ -554,23 +578,30 @@ export default defineConfig(
       'react-hooks/exhaustive-deps': 'warn',
 
       // Import
-      'import/extensions': ['error', 'never', {
-        js: 'never',
-        jsx: 'never',
-        ts: 'never',
-        tsx: 'never',
-      }],
-      'import/order': ['error', {
-        'groups': [
-          'builtin',
-          'external',
-          'internal',
-          'parent',
-          'sibling',
-          'index',
-        ],
-        'newlines-between': 'never',
-      }],
+      'import/extensions': [
+        'error',
+        'never',
+        {
+          js: 'never',
+          jsx: 'never',
+          ts: 'never',
+          tsx: 'never',
+        },
+      ],
+      'import/order': [
+        'error',
+        {
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+          ],
+          'newlines-between': 'never',
+        },
+      ],
       'import/no-unresolved': 'error',
     },
   },
@@ -578,7 +609,7 @@ export default defineConfig(
   // Backend: Fastify + TypeScript (strict)
   {
     files: ['api/**/*.{js,ts}'],
-    
+
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
@@ -593,12 +624,10 @@ export default defineConfig(
 
     plugins: {
       '@typescript-eslint': tseslint.plugin,
-      'import': importPlugin,
+      import: importPlugin,
     },
 
-    extends: [
-      ...tseslint.configs.strictTypeChecked,
-    ],
+    extends: [...tseslint.configs.strictTypeChecked],
 
     settings: {
       'import/resolver': {
@@ -611,39 +640,49 @@ export default defineConfig(
 
     rules: {
       // Existing conventions
-      'semi': ['error', 'always'],
-      'quotes': ['error', 'single', { avoidEscape: true }],
+      semi: ['error', 'always'],
+      quotes: ['error', 'single', { avoidEscape: true }],
       'comma-dangle': ['error', 'always-multiline'],
-      'indent': ['error', 2],
+      indent: ['error', 2],
       'arrow-parens': ['error', 'always'],
 
       // TypeScript strict mode
-      '@typescript-eslint/no-unused-vars': ['error', { 
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-      }],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
       '@typescript-eslint/no-explicit-any': 'error', // Stricter in backend
 
       // Import with .js extension requirement (NodeNext)
-      'import/extensions': ['error', 'always', {
-        js: 'always',
-        ts: 'never', // Source is .ts, import uses .js
-        ignorePackages: true,
-      }],
-      'import/order': ['error', {
-        'groups': [
-          'builtin',
-          'external',
-          'internal',
-          'parent',
-          'sibling',
-          'index',
-        ],
-        'newlines-between': 'never',
-      }],
+      'import/extensions': [
+        'error',
+        'always',
+        {
+          js: 'always',
+          ts: 'never', // Source is .ts, import uses .js
+          ignorePackages: true,
+        },
+      ],
+      'import/order': [
+        'error',
+        {
+          groups: [
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+          ],
+          'newlines-between': 'never',
+        },
+      ],
       'import/no-unresolved': 'error',
     },
-  },
+  }
 );
 ```
 
@@ -681,15 +720,16 @@ npx eslint . --output-file eslint-report.txt
 
 ## State of the Art
 
-| Old Approach | Current Approach | When Changed | Impact |
-|--------------|------------------|--------------|--------|
-| `.eslintrc.js` legacy config | `eslint.config.js` flat config | ESLint 9.0 (2024) | Simpler composition, better type safety, required for ESLint 9+ |
-| Split packages (`@typescript-eslint/parser` + `@typescript-eslint/eslint-plugin`) | Unified `typescript-eslint` package | typescript-eslint v6 (2023) | Single import, easier setup, still works but deprecated |
-| `extends` with string references | Direct config object arrays with `extends` array property | ESLint 9.0 | More explicit, better IDE support |
-| Per-package eslint configs | Root config with cascading | Emerging best practice (2024+) | Less duplication, consistent rules |
-| Formatting rules in ESLint | No formatter or Prettier | ESLint 8.53+ officially recommends | Faster linting, separation of concerns |
+| Old Approach                                                                      | Current Approach                                          | When Changed                       | Impact                                                          |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------- | ---------------------------------- | --------------------------------------------------------------- |
+| `.eslintrc.js` legacy config                                                      | `eslint.config.js` flat config                            | ESLint 9.0 (2024)                  | Simpler composition, better type safety, required for ESLint 9+ |
+| Split packages (`@typescript-eslint/parser` + `@typescript-eslint/eslint-plugin`) | Unified `typescript-eslint` package                       | typescript-eslint v6 (2023)        | Single import, easier setup, still works but deprecated         |
+| `extends` with string references                                                  | Direct config object arrays with `extends` array property | ESLint 9.0                         | More explicit, better IDE support                               |
+| Per-package eslint configs                                                        | Root config with cascading                                | Emerging best practice (2024+)     | Less duplication, consistent rules                              |
+| Formatting rules in ESLint                                                        | No formatter or Prettier                                  | ESLint 8.53+ officially recommends | Faster linting, separation of concerns                          |
 
 **Deprecated/outdated:**
+
 - `.eslintrc` files: Use `eslint.config.js` flat config (ESLint 9+)
 - `@typescript-eslint/parser` separate package: Use `typescript-eslint` unified package (v6+)
 - `plugin:@typescript-eslint/recommended` in extends: Use config object arrays in flat config
@@ -715,6 +755,7 @@ npx eslint . --output-file eslint-report.txt
 ## Sources
 
 ### Primary (HIGH confidence)
+
 - [ESLint official docs - Configuration Files](https://eslint.org/docs/latest/use/configure/configuration-files) - Flat config format, configuration objects
 - [ESLint official docs - Getting Started](https://eslint.org/docs/latest/use/getting-started) - Installation, basic setup
 - [typescript-eslint docs - Getting Started](https://typescript-eslint.io/getting-started/) - Unified package usage, recommended configs
@@ -722,16 +763,19 @@ npx eslint . --output-file eslint-report.txt
 - [typescript-eslint docs - FAQs](https://typescript-eslint.io/troubleshooting/faqs/general) - Common issues, best practices
 
 ### Secondary (MEDIUM confidence)
+
 - [eslint-plugin-react GitHub](https://github.com/jsx-eslint/eslint-plugin-react) - React plugin usage, flat config support
 - [eslint-plugin-react-hooks npm](https://www.npmjs.com/package/eslint-plugin-react-hooks) - React Hooks plugin, current version
 - [eslint-plugin-import GitHub](https://github.com/import-js/eslint-plugin-import) - Import plugin usage, resolvers
 
 ### Tertiary (LOW confidence)
+
 - None - all research verified through official docs
 
 ## Metadata
 
 **Confidence breakdown:**
+
 - Standard stack: HIGH - All information from official docs (ESLint, typescript-eslint, React plugin maintainers)
 - Architecture: HIGH - Flat config patterns documented in ESLint 9 official docs, typescript-eslint provides clear examples
 - Pitfalls: HIGH - Based on official troubleshooting docs and common GitHub issues
@@ -740,6 +784,7 @@ npx eslint . --output-file eslint-report.txt
 **Valid until:** 90 days (ESLint/typescript-eslint are stable; major changes unlikely in 3 months)
 
 **Key findings verified:**
+
 - ✅ ESLint 9 uses flat config as default
 - ✅ typescript-eslint unified package is current standard
 - ✅ Flat config supports cascading with `files` globs

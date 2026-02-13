@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 interface LoadingScreenProps {
-    onComplete: () => void;
+  onComplete: () => void;
 }
 
 const stages = [
@@ -47,9 +47,18 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
       <div className="text-center max-w-md mx-auto">
         {/* Pulsing ring animation */}
         <div className="relative w-32 h-32 mx-auto mb-8">
-          <div className="absolute inset-0 rounded-full border-2 border-primary/20 animate-ping" style={{ animationDuration: '2s' }} />
-          <div className="absolute inset-2 rounded-full border-2 border-primary/30 animate-ping" style={{ animationDuration: '2s', animationDelay: '0.3s' }} />
-          <div className="absolute inset-4 rounded-full border-2 border-primary/40 animate-ping" style={{ animationDuration: '2s', animationDelay: '0.6s' }} />
+          <div
+            className="absolute inset-0 rounded-full border-2 border-primary/20 animate-ping"
+            style={{ animationDuration: '2s' }}
+          />
+          <div
+            className="absolute inset-2 rounded-full border-2 border-primary/30 animate-ping"
+            style={{ animationDuration: '2s', animationDelay: '0.3s' }}
+          />
+          <div
+            className="absolute inset-4 rounded-full border-2 border-primary/40 animate-ping"
+            style={{ animationDuration: '2s', animationDelay: '0.6s' }}
+          />
           <div className="absolute inset-0 flex items-center justify-center">
             <span className="text-5xl" style={{ animationDuration: '1s' }}>
               {stages[currentStage]?.icon}
@@ -76,7 +85,8 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
           {stages.map((_, i) => (
             <div
               key={i}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${i <= currentStage ? 'bg-primary' : 'bg-surface-dark'
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                i <= currentStage ? 'bg-primary' : 'bg-surface-dark'
               }`}
             />
           ))}

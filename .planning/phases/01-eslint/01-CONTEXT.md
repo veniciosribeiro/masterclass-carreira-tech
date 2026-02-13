@@ -14,6 +14,7 @@ Configure ESLint for both frontend (React 19/TypeScript/Vite) and backend (Fasti
 ## Implementation Decisions
 
 ### Estrategia para codigo legado
+
 - **Auto-fix first**: Rodar `eslint --fix` para corrigir automaticamente o que for possivel
 - **Manual fixes second**: Corrigir manualmente os erros que restarem apos auto-fix
 - **Zero erros obrigatorio**: Nenhum erro de lint pode permanecer — phase 1 entrega codebase limpo
@@ -22,6 +23,7 @@ Configure ESLint for both frontend (React 19/TypeScript/Vite) and backend (Fasti
 - **Prioridade**: Se houver muitos erros manuais, focar primeiro em bugs potenciais (unused vars, no-undef, etc) antes de issues de estilo
 
 ### Claude's Discretion
+
 - Escolha de plugins e extensoes (React, TypeScript, Node, Import, a11y, etc)
 - Nivel de rigor das regras (moderado sugerido — erros em issues importantes, warnings no resto)
 - Estrutura de configuracao (raiz vs separada, shared config vs independente)
@@ -49,5 +51,5 @@ None — discussion stayed within phase scope
 
 ---
 
-*Phase: 01-eslint*
-*Context gathered: 2026-02-13*
+_Phase: 01-eslint_
+_Context gathered: 2026-02-13_

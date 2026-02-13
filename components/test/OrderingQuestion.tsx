@@ -2,11 +2,11 @@ import React, { useState, useCallback } from 'react';
 import { OrderingStep } from '../../test/testTypes';
 
 interface OrderingQuestionProps {
-    title: string;
-    description?: string;
-    steps: OrderingStep[];
-    orderedIds: string[];
-    onReorder: (_newOrder: string[]) => void;
+  title: string;
+  description?: string;
+  steps: OrderingStep[];
+  orderedIds: string[];
+  onReorder: (_newOrder: string[]) => void;
 }
 
 export const OrderingQuestion: React.FC<OrderingQuestionProps> = ({
@@ -28,7 +28,7 @@ export const OrderingQuestion: React.FC<OrderingQuestionProps> = ({
       newOrder.splice(toIndex, 0, moved);
       onReorder(newOrder);
     },
-    [orderedIds, onReorder],
+    [orderedIds, onReorder]
   );
 
   const handleDragStart = (e: React.DragEvent, index: number) => {
@@ -61,9 +61,13 @@ export const OrderingQuestion: React.FC<OrderingQuestionProps> = ({
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-xl md:text-2xl font-bold text-text-header font-mono">{title}</h2>
+        <h2 className="text-xl md:text-2xl font-bold text-text-header font-mono">
+          {title}
+        </h2>
         {description && (
-          <p className="text-text-main text-sm md:text-base mt-2">{description}</p>
+          <p className="text-text-main text-sm md:text-base mt-2">
+            {description}
+          </p>
         )}
         <p className="text-xs text-primary/70 font-mono mt-3 flex items-center gap-1.5">
           <span>↕️</span> Arraste os itens para reordenar ou use as setas
@@ -101,7 +105,9 @@ export const OrderingQuestion: React.FC<OrderingQuestionProps> = ({
               <span className="text-text-main/40 text-lg flex-shrink-0">⠿</span>
 
               {/* Step text */}
-              <span className="flex-1 text-sm md:text-base text-text-main">{step.text}</span>
+              <span className="flex-1 text-sm md:text-base text-text-main">
+                {step.text}
+              </span>
 
               {/* Up/Down buttons for mobile */}
               <div className="flex flex-col gap-0.5 flex-shrink-0">
@@ -114,18 +120,19 @@ export const OrderingQuestion: React.FC<OrderingQuestionProps> = ({
                   disabled={index === 0}
                   className="w-7 h-7 rounded-md bg-background-dark text-text-main/40 hover:text-primary hover:bg-primary/10 flex items-center justify-center text-xs transition-colors disabled:opacity-20 disabled:cursor-not-allowed cursor-pointer"
                 >
-                                    ▲
+                  ▲
                 </button>
                 <button
                   type="button"
                   onClick={(e) => {
                     e.stopPropagation();
-                    if (index < orderedIds.length - 1) moveItem(index, index + 1);
+                    if (index < orderedIds.length - 1)
+                      moveItem(index, index + 1);
                   }}
                   disabled={index === orderedIds.length - 1}
                   className="w-7 h-7 rounded-md bg-background-dark text-text-main/40 hover:text-primary hover:bg-primary/10 flex items-center justify-center text-xs transition-colors disabled:opacity-20 disabled:cursor-not-allowed cursor-pointer"
                 >
-                                    ▼
+                  ▼
                 </button>
               </div>
             </div>

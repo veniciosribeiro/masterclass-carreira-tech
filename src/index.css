@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* Self-hosted Inter font with font-display: swap */
 @font-face {
@@ -32,15 +32,17 @@
 
 @theme {
   --color-primary: #19e65e;
-  --color-background-dark: #0D1117;
-  --color-surface-dark: #161B22;
-  --color-border-dark: #30363D;
-  --color-text-main: #C9D1D9;
-  --color-text-header: #FFFFFF;
+  --color-background-dark: #0d1117;
+  --color-surface-dark: #161b22;
+  --color-border-dark: #30363d;
+  --color-text-main: #c9d1d9;
+  --color-text-header: #ffffff;
   --color-glow-purple: #7c3aed;
-  
-  --font-display: "Inter", sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --font-display: 'Inter', sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
 }
 
 @layer base {
@@ -49,8 +51,8 @@
   }
 
   body {
-    background-color: #0D1117;
-    color: #C9D1D9;
+    background-color: #0d1117;
+    color: #c9d1d9;
   }
 }
 

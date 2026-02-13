@@ -1,9 +1,14 @@
 import type { FastifyRequest, FastifyReply } from 'fastify';
 
-export async function authenticate(request: FastifyRequest, reply: FastifyReply) {
+export async function authenticate(
+  request: FastifyRequest,
+  reply: FastifyReply
+) {
   try {
     await request.jwtVerify();
   } catch {
-    reply.code(401).send({ error: 'unauthorized', message: 'Token inválido ou ausente' });
+    reply
+      .code(401)
+      .send({ error: 'unauthorized', message: 'Token inválido ou ausente' });
   }
 }

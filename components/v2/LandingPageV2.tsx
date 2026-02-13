@@ -9,10 +9,15 @@ import { OfferV2 } from './OfferV2';
 import { FinalCTA_V2 } from './FinalCTA_V2';
 // Reuse Footer from v1 as it is generic enough or import lazily
 
-const Footer = React.lazy(() => import('../Footer').then((m) => ({ default: m.Footer })));
-const Guarantee = React.lazy(() => import('../Guarantee').then((m) => ({ default: m.Guarantee })));
-const FAQ = React.lazy(() => import('../FAQ').then((m) => ({ default: m.FAQ })));
-
+const Footer = React.lazy(() =>
+  import('../Footer').then((m) => ({ default: m.Footer }))
+);
+const Guarantee = React.lazy(() =>
+  import('../Guarantee').then((m) => ({ default: m.Guarantee }))
+);
+const FAQ = React.lazy(() =>
+  import('../FAQ').then((m) => ({ default: m.FAQ }))
+);
 
 export const LandingPageV2: React.FC = () => {
   return (

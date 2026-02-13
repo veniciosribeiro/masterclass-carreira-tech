@@ -36,7 +36,7 @@ export default [
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     ignores: ['api/**'],
-    
+
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
@@ -53,9 +53,9 @@ export default [
 
     plugins: {
       '@typescript-eslint': tseslint.plugin,
-      'react': reactPlugin,
+      react: reactPlugin,
       'react-hooks': reactHooksPlugin,
-      'import': importPlugin,
+      import: importPlugin,
     },
 
     settings: {
@@ -72,19 +72,22 @@ export default [
 
     rules: {
       // Existing conventions - match project style
-      'semi': ['error', 'always'],
-      'quotes': ['error', 'single', { avoidEscape: true }],
+      semi: ['error', 'always'],
+      quotes: ['error', 'single', { avoidEscape: true }],
       'comma-dangle': ['error', 'always-multiline'],
-      'indent': ['error', 2, { SwitchCase: 1 }],
+      indent: ['error', 2, { SwitchCase: 1 }],
       'arrow-parens': ['error', 'always'],
 
       // TypeScript
       'no-undef': 'off', // TypeScript handles this better
       'no-unused-vars': 'off', // Use @typescript-eslint/no-unused-vars instead
-      '@typescript-eslint/no-unused-vars': ['error', { 
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-      }],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
       '@typescript-eslint/no-explicit-any': 'warn',
 
       // React
@@ -94,12 +97,16 @@ export default [
       'react-hooks/exhaustive-deps': 'warn',
 
       // Import - no extensions for bundler moduleResolution
-      'import/extensions': ['error', 'never', {
-        js: 'never',
-        jsx: 'never',
-        ts: 'never',
-        tsx: 'never',
-      }],
+      'import/extensions': [
+        'error',
+        'never',
+        {
+          js: 'never',
+          jsx: 'never',
+          ts: 'never',
+          tsx: 'never',
+        },
+      ],
       'import/order': 'off', // Disabled - false positives with sibling imports
       'import/no-unresolved': 'off', // TypeScript compiler and Vite handle this
     },
@@ -108,7 +115,7 @@ export default [
   // Backend: Fastify + TypeScript (strict)
   {
     files: ['api/**/*.{js,ts}'],
-    
+
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
@@ -123,7 +130,7 @@ export default [
 
     plugins: {
       '@typescript-eslint': tseslint.plugin,
-      'import': importPlugin,
+      import: importPlugin,
     },
 
     settings: {
@@ -137,19 +144,22 @@ export default [
 
     rules: {
       // Existing conventions - match project style
-      'semi': ['error', 'always'],
-      'quotes': ['error', 'single', { avoidEscape: true }],
+      semi: ['error', 'always'],
+      quotes: ['error', 'single', { avoidEscape: true }],
       'comma-dangle': ['error', 'always-multiline'],
-      'indent': ['error', 2, { SwitchCase: 1 }],
+      indent: ['error', 2, { SwitchCase: 1 }],
       'arrow-parens': ['error', 'always'],
 
       // TypeScript strict mode (backend is stricter)
       'no-undef': 'off', // TypeScript handles this better
       'no-unused-vars': 'off', // Use @typescript-eslint/no-unused-vars instead
-      '@typescript-eslint/no-unused-vars': ['error', { 
-        argsIgnorePattern: '^_',
-        varsIgnorePattern: '^_',
-      }],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
       '@typescript-eslint/no-explicit-any': 'error', // Error in backend (stricter)
 
       // Import with .js extension requirement for NodeNext

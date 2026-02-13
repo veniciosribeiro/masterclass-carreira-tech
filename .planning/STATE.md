@@ -19,21 +19,23 @@ Progress: [████░░░░░░] 20%
 ## Performance Metrics
 
 **Velocity:**
+
 - Total plans completed: 3
 - Average duration: 7 min
 - Total execution time: 0.35 hours
 
 **By Phase:**
 
-| Phase | Plans | Total | Avg/Plan |
-|-------|-------|-------|----------|
-| 01-eslint | 3/3 | 21 min | 7 min |
+| Phase     | Plans | Total  | Avg/Plan |
+| --------- | ----- | ------ | -------- |
+| 01-eslint | 3/3   | 21 min | 7 min    |
 
 **Recent Trend:**
+
 - Last 5 plans: 8 min, 12 min, 1 min
 - Trend: Decreasing (gap closure task was quick)
 
-*Updated after each plan completion*
+_Updated after each plan completion_
 
 ## Accumulated Context
 
@@ -52,7 +54,7 @@ Recent decisions affecting current work:
 - [01-02]: Disabled import/no-unresolved and import/order (false positives, TS compiler handles resolution)
 - [01-02]: Single atomic commit strategy for config + auto-fix + manual fixes
 - [01-03]: Used import.meta.url for CWD-independent path resolution in ESLint config
-- [01-03]: ESM config files should use import.meta.url for __dirname equivalent instead of process.cwd()
+- [01-03]: ESM config files should use import.meta.url for \_\_dirname equivalent instead of process.cwd()
 
 ### Pending Todos
 

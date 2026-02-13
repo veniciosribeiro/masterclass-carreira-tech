@@ -52,12 +52,13 @@ Usuarios autorizados completam o teste vocacional e recebem um perfil tech perso
 
 ## Key Decisions
 
-| Decision | Rationale | Outcome |
-|----------|-----------|---------|
-| Monorepo sem workspaces npm | Simplicidade — frontend na raiz, backend em api/ | — Pending |
-| ESM everywhere | Alinhamento com Node.js moderno | ✓ Good |
-| Sem framework de testes | Velocidade inicial de entrega | ⚠️ Revisit |
-| Sem linter/formatter | Velocidade inicial, agora precisa ser adicionado | ⚠️ Revisit |
+| Decision                    | Rationale                                        | Outcome    |
+| --------------------------- | ------------------------------------------------ | ---------- |
+| Monorepo sem workspaces npm | Simplicidade — frontend na raiz, backend em api/ | — Pending  |
+| ESM everywhere              | Alinhamento com Node.js moderno                  | ✓ Good     |
+| Sem framework de testes     | Velocidade inicial de entrega                    | ⚠️ Revisit |
+| Sem linter/formatter        | Velocidade inicial, agora precisa ser adicionado | ⚠️ Revisit |
 
 ---
-*Last updated: 2026-02-13 after initialization*
+
+_Last updated: 2026-02-13 after initialization_

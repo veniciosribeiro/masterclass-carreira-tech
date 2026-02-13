@@ -67,14 +67,17 @@ export function generateResultJSON(result: TestResult): object {
  * Validates if an email is authorized to take the quiz.
  * On success, stores the JWT token for subsequent requests.
  */
-export async function validateEmail(email: string): Promise<{ authorized: boolean; name?: string }> {
-  const result = await apiFetch<{ authorized: boolean; name?: string; token?: string }>(
-    '/auth/validate-email',
-    {
-      method: 'POST',
-      body: JSON.stringify({ email: email.toLowerCase().trim() }),
-    },
-  );
+export async function validateEmail(
+  email: string
+): Promise<{ authorized: boolean; name?: string }> {
+  const result = await apiFetch<{
+    authorized: boolean;
+    name?: string;
+    token?: string;
+  }>('/auth/validate-email', {
+    method: 'POST',
+    body: JSON.stringify({ email: email.toLowerCase().trim() }),
+  });
 
   if (result.authorized && result.token) {
     setAuthToken(result.token);
@@ -91,15 +94,15 @@ export async function validateEmail(email: string): Promise<{ authorized: boolea
 // ═══════════════════════════════════════════════════
 
 export interface SessionData {
-    session_id: string;
-    user_email?: string;
-    user_name?: string;
-    answers: Answer[];
-    current_question: number;
-    status?: string;
-    shuffled_orderings: Record<string, string[]>;
-    resumed?: boolean;
-    error?: string;
+  session_id: string;
+  user_email?: string;
+  user_name?: string;
+  answers: Answer[];
+  current_question: number;
+  status?: string;
+  shuffled_orderings: Record<string, string[]>;
+  resumed?: boolean;
+  error?: string;
 }
 
 /**
@@ -108,7 +111,7 @@ export interface SessionData {
  */
 export async function createSession(
   _email: string,
-  name: string,
+  name: string
 ): Promise<SessionData | { error: string }> {
   try {
     const data = await apiFetch<SessionData>('/sessions', {
@@ -129,7 +132,7 @@ export async function saveProgress(
   sessionId: string,
   answers: Answer[],
   currentQuestion: number,
-  shuffledOrderings?: Record<string, string[]>,
+  shuffledOrderings?: Record<string, string[]>
 ): Promise<boolean> {
   try {
     await apiFetch(`/sessions/${sessionId}/progress`, {
@@ -150,7 +153,9 @@ export async function saveProgress(
 /**
  * Retrieves a session for state restoration (e.g. after F5).
  */
-export async function getSession(sessionId: string): Promise<SessionData | null> {
+export async function getSession(
+  sessionId: string
+): Promise<SessionData | null> {
   try {
     const data = await apiFetch<SessionData>(`/sessions/${sessionId}`);
     if (data.error) return null;

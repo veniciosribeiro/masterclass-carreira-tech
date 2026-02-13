@@ -63,7 +63,14 @@ function drawBackground(doc: jsPDF) {
   doc.rect(0, 0, w, h, 'F');
 }
 
-function drawBar(doc: jsPDF, x: number, y: number, width: number, percent: number, color: string) {
+function drawBar(
+  doc: jsPDF,
+  x: number,
+  y: number,
+  width: number,
+  percent: number,
+  color: string
+) {
   // Background bar
   setFillColor(doc, COLORS.surface);
   doc.roundedRect(x, y, width, 6, 3, 3, 'F');
@@ -107,7 +114,7 @@ export function generatePDF(result: TestResult) {
       'Masterclass Test-Drive Da Carreira Tech — Venicios Ribeiro',
       pageW / 2,
       pageH - 10,
-      { align: 'center' },
+      { align: 'center' }
     );
   }
 
@@ -210,19 +217,29 @@ export function generatePDF(result: TestResult) {
     doc.text(`${value}%`, pageW - margin, cursorY, { align: 'right' });
 
     cursorY += 3;
-    drawBar(doc, margin, cursorY, contentW, value, AREA_COLORS[key] || COLORS.primary);
+    drawBar(
+      doc,
+      margin,
+      cursorY,
+      contentW,
+      value,
+      AREA_COLORS[key] || COLORS.primary
+    );
     cursorY += 10;
 
     // Explanation text
     if (result.profile.areaExplanations) {
-      const explanation = result.profile.areaExplanations[key as keyof typeof result.profile.areaExplanations];
+      const explanation =
+        result.profile.areaExplanations[
+          key as keyof typeof result.profile.areaExplanations
+        ];
       if (explanation) {
         setColor(doc, COLORS.text);
         doc.setFontSize(8); // Slightly larger for readability
         doc.setFont('helvetica', 'italic');
 
         const expLines = doc.splitTextToSize(explanation, contentW);
-        // Check if explanation fits, otherwise push whole block to next page? 
+        // Check if explanation fits, otherwise push whole block to next page?
         // Actually the bar is already drawn. We should check BEFORE drawing bar if we wanted perfect block cohesion.
         // But let's check just for the text now.
         checkPageBreak(expLines.length * 4 + 5);
@@ -255,7 +272,10 @@ export function generatePDF(result: TestResult) {
     let expLines: string[] = [];
 
     if (result.profile.behavioralExplanations) {
-      const explanation = result.profile.behavioralExplanations[key as keyof typeof result.profile.behavioralExplanations];
+      const explanation =
+        result.profile.behavioralExplanations[
+          key as keyof typeof result.profile.behavioralExplanations
+        ];
       if (explanation) {
         doc.setFontSize(8);
         expLines = doc.splitTextToSize(explanation, contentW);
@@ -334,7 +354,10 @@ export function generatePDF(result: TestResult) {
   // Recommendation
   cursorY += 8;
   doc.setFontSize(8);
-  const recLines = doc.splitTextToSize(result.profile.recommendation, contentW - 10);
+  const recLines = doc.splitTextToSize(
+    result.profile.recommendation,
+    contentW - 10
+  );
   // Box height must accommodate text + padding
   const recTextHeight = recLines.length * 4;
   const boxHeight = Math.max(30, recTextHeight + 20);
@@ -395,7 +418,9 @@ export function generatePDF(result: TestResult) {
     doc.setFont('helvetica', 'normal');
 
     if (answer.selectedOptionId && question.options) {
-      const opt = question.options.find((o) => o.id === answer.selectedOptionId);
+      const opt = question.options.find(
+        (o) => o.id === answer.selectedOptionId
+      );
       if (opt) {
         ansLines = doc.splitTextToSize(opt.text, contentW - 8);
         ansHeight = ansLines.length * 4;

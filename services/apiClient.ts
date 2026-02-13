@@ -2,11 +2,8 @@ const API_BASE = import.meta.env.VITE_API_URL || '/api';
 
 export class ApiError extends Error {
   public status: number;
-  
-  constructor(
-    status: number,
-    message: string,
-  ) {
+
+  constructor(status: number, message: string) {
     super(message);
     this.name = 'ApiError';
     this.status = status;
@@ -38,7 +35,10 @@ export function clearAuthToken(): void {
  * Centralized HTTP client for the Fastify API.
  * Automatically injects the JWT Authorization header when available.
  */
-export async function apiFetch<T>(path: string, options: RequestInit = {}): Promise<T> {
+export async function apiFetch<T>(
+  path: string,
+  options: RequestInit = {}
+): Promise<T> {
   const token = getAuthToken();
 
   const headers: Record<string, string> = {

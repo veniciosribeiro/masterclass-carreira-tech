@@ -1,4 +1,10 @@
-import React, { useState, useCallback, useMemo, useEffect, useRef } from 'react';
+import React, {
+  useState,
+  useCallback,
+  useMemo,
+  useEffect,
+  useRef,
+} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { questions } from '../../test/questions';
 import { Answer } from '../../test/testTypes';
@@ -7,11 +13,11 @@ import { MultipleChoiceQuestion } from './MultipleChoiceQuestion';
 import { OrderingQuestion } from './OrderingQuestion';
 
 interface QuestionStepperProps {
-    sessionId: string | null;
-    initialAnswers?: Answer[];
-    initialQuestion?: number;
-    initialOrderings?: Record<string, string[]>;
-    onComplete: (_answers: Answer[]) => void;
+  sessionId: string | null;
+  initialAnswers?: Answer[];
+  initialQuestion?: number;
+  initialOrderings?: Record<string, string[]>;
+  onComplete: (_answers: Answer[]) => void;
 }
 
 function shuffleArray<T>(arr: T[]): T[] {
@@ -72,29 +78,39 @@ export const QuestionStepper: React.FC<QuestionStepperProps> = ({
     });
 
     orderingsSavedRef.current = true;
-    saveProgress(sessionId, initialAnswers, initialQuestion, orderingsObj).catch(console.error);
-  }, [sessionId, shuffledOrderings, initialOrderings, initialAnswers, initialQuestion]);
+    saveProgress(
+      sessionId,
+      initialAnswers,
+      initialQuestion,
+      orderingsObj
+    ).catch(console.error);
+  }, [
+    sessionId,
+    shuffledOrderings,
+    initialOrderings,
+    initialAnswers,
+    initialQuestion,
+  ]);
 
   const question = questions[currentIndex];
   const total = questions.length;
   const progress = ((currentIndex + 1) / total) * 100;
   const currentAnswer = answers.get(question.id);
 
-  const setAnswer = useCallback(
-    (answer: Answer) => {
-      setAnswers((prev) => {
-        const next = new Map(prev);
-        next.set(answer.questionId, answer);
-        return next;
-      });
-    },
-    [],
-  );
+  const setAnswer = useCallback((answer: Answer) => {
+    setAnswers((prev) => {
+      const next = new Map(prev);
+      next.set(answer.questionId, answer);
+      return next;
+    });
+  }, []);
 
   const canProceed = useMemo(() => {
     if (!currentAnswer) return false;
-    if (question.type === 'multiple_choice') return !!currentAnswer.selectedOptionId;
-    if (question.type === 'ordering') return (currentAnswer.orderedStepIds?.length ?? 0) > 0;
+    if (question.type === 'multiple_choice')
+      return !!currentAnswer.selectedOptionId;
+    if (question.type === 'ordering')
+      return (currentAnswer.orderedStepIds?.length ?? 0) > 0;
     return false;
   }, [currentAnswer, question.type]);
 
@@ -146,9 +162,11 @@ export const QuestionStepper: React.FC<QuestionStepperProps> = ({
   }, [currentIndex, sessionId, navigate]);
 
   const orderingIds =
-        question.type === 'ordering'
-          ? currentAnswer?.orderedStepIds ?? shuffledOrderings.get(question.id) ?? []
-          : [];
+    question.type === 'ordering'
+      ? (currentAnswer?.orderedStepIds ??
+        shuffledOrderings.get(question.id) ??
+        [])
+      : [];
 
   return (
     <div className="min-h-screen bg-background-dark flex flex-col">
@@ -157,8 +175,9 @@ export const QuestionStepper: React.FC<QuestionStepperProps> = ({
         <div className="max-w-2xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between text-xs font-mono text-text-main/60 mb-2">
             <span>
-                            Pergunta <span className="text-primary font-bold">{currentIndex + 1}</span> de{' '}
-              {total}
+              Pergunta{' '}
+              <span className="text-primary font-bold">{currentIndex + 1}</span>{' '}
+              de {total}
             </span>
             <span>{Math.round(progress)}%</span>
           </div>
@@ -174,9 +193,10 @@ export const QuestionStepper: React.FC<QuestionStepperProps> = ({
       {/* Question content */}
       <div className="flex-1 flex items-start justify-center px-4 py-8">
         <div
-          className={`w-full max-w-2xl transition-all duration-300 ${direction === 'next'
-            ? 'animate-[slideInRight_0.3s_ease-out]'
-            : 'animate-[slideInLeft_0.3s_ease-out]'
+          className={`w-full max-w-2xl transition-all duration-300 ${
+            direction === 'next'
+              ? 'animate-[slideInRight_0.3s_ease-out]'
+              : 'animate-[slideInLeft_0.3s_ease-out]'
           }`}
           key={question.id}
         >
@@ -184,14 +204,19 @@ export const QuestionStepper: React.FC<QuestionStepperProps> = ({
           <div className="mb-4">
             <span
               className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-mono font-medium uppercase tracking-wider
-                ${question.category === 'logic'
-      ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20'
-      : question.category === 'affinity'
-        ? 'bg-purple-500/10 text-purple-400 border border-purple-500/20'
-        : 'bg-orange-500/10 text-orange-400 border border-orange-500/20'
-    }`}
+                ${
+                  question.category === 'logic'
+                    ? 'bg-blue-500/10 text-blue-400 border border-blue-500/20'
+                    : question.category === 'affinity'
+                      ? 'bg-purple-500/10 text-purple-400 border border-purple-500/20'
+                      : 'bg-orange-500/10 text-orange-400 border border-orange-500/20'
+                }`}
             >
-              {question.category === 'logic' ? '🧠 Lógica' : question.category === 'affinity' ? '🎯 Afinidade' : '💪 Comportamental'}
+              {question.category === 'logic'
+                ? '🧠 Lógica'
+                : question.category === 'affinity'
+                  ? '🎯 Afinidade'
+                  : '💪 Comportamental'}
             </span>
           </div>
 
@@ -237,16 +262,17 @@ export const QuestionStepper: React.FC<QuestionStepperProps> = ({
             disabled={currentIndex === 0}
             className="h-11 px-6 rounded-lg border border-border-dark text-text-main font-mono text-sm hover:border-primary/40 hover:text-primary transition-colors disabled:opacity-30 disabled:cursor-not-allowed cursor-pointer"
           >
-                        ← Voltar
+            ← Voltar
           </button>
           <button
             onClick={handleNext}
             disabled={!canProceed}
             className={`h-11 px-8 rounded-lg font-mono text-sm font-bold transition-all cursor-pointer
-              ${canProceed
-      ? 'bg-primary hover:bg-green-400 text-[#0D1117] shadow-[0_0_15px_rgba(25,230,94,0.2)] hover:scale-[1.02]'
-      : 'bg-surface-dark text-text-main/30 cursor-not-allowed'
-    }`}
+              ${
+                canProceed
+                  ? 'bg-primary hover:bg-green-400 text-[#0D1117] shadow-[0_0_15px_rgba(25,230,94,0.2)] hover:scale-[1.02]'
+                  : 'bg-surface-dark text-text-main/30 cursor-not-allowed'
+              }`}
           >
             {currentIndex === total - 1 ? 'Finalizar →' : 'Próxima →'}
           </button>

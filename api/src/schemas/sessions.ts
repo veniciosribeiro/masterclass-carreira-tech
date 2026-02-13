@@ -11,7 +11,9 @@ export type CreateSessionBodyType = Static<typeof CreateSessionBody>;
 export const SaveProgressBody = Type.Object({
   answers: Type.Array(Type.Any()),
   currentQuestion: Type.Integer({ minimum: 0 }),
-  shuffledOrderings: Type.Optional(Type.Record(Type.String(), Type.Array(Type.String()))),
+  shuffledOrderings: Type.Optional(
+    Type.Record(Type.String(), Type.Array(Type.String()))
+  ),
 });
 
 export type SaveProgressBodyType = Static<typeof SaveProgressBody>;

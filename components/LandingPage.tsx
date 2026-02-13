@@ -8,9 +8,13 @@ import { Authority } from './Authority';
 import { Pricing } from './Pricing';
 
 // Lazy load below-fold components for better initial load
-const Guarantee = React.lazy(() => import('./Guarantee').then((m) => ({ default: m.Guarantee })));
+const Guarantee = React.lazy(() =>
+  import('./Guarantee').then((m) => ({ default: m.Guarantee }))
+);
 const FAQ = React.lazy(() => import('./FAQ').then((m) => ({ default: m.FAQ })));
-const Footer = React.lazy(() => import('./Footer').then((m) => ({ default: m.Footer })));
+const Footer = React.lazy(() =>
+  import('./Footer').then((m) => ({ default: m.Footer }))
+);
 
 export const LandingPage: React.FC = () => {
   return (

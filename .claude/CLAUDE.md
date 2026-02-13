@@ -9,17 +9,20 @@ Monorepo with a **React SPA frontend** (Vite + Tailwind v4) and a **Fastify API 
 ## High-Level Architecture
 
 ### System Components
+
 - **Frontend (/)**: React 19 SPA using Vite 6, Tailwind CSS v4, React Router DOM v7
 - **Backend (api/)**: Fastify API with TypeBox validation, Prisma ORM, JWT authentication
 - **Database**: PostgreSQL with schema in `api/prisma/schema.prisma`
 - **Infra**: Docker Compose for local development, Nginx for production serving
 
 ### Data Flow
+
 ```
 User Input (email) → Whitelist validation → JWT token → Test session creation → Answer collection → Score calculation → PDF report generation
 ```
 
 ### Authentication Flow
+
 1. User submits email on landing page
 2. Backend validates against `authorized_emails` table
 3. JWT issued with email (`sub`) and name in payload
@@ -29,6 +32,7 @@ User Input (email) → Whitelist validation → JWT token → Test session creat
 ## Common Commands
 
 ### Frontend (root `/`)
+
 ```bash
 npm run dev          # Start Vite dev server on :3000 (proxies /api → :4000)
 npm run build        # Production build → dist/
@@ -37,6 +41,7 @@ npx tsc --noEmit     # Type-check only (no emit)
 ```
 
 ### Backend (`api/`)
+
 ```bash
 npm run dev              # Start with tsx watch on :4000 (hot-reload)
 npm run build            # Compile TypeScript via tsc → dist/
@@ -47,11 +52,13 @@ npm run prisma:studio    # Open Prisma Studio GUI
 ```
 
 ### Docker (full stack)
+
 ```bash
 docker compose --env-file .env.docker up --build   # postgres + api + frontend
 ```
 
 ### Setup
+
 ```bash
 # Initial setup
 npm install && cd api && npm install && cd ..
@@ -83,12 +90,16 @@ supabase/init.sql          # DB init script (DDL + seed data)
 ## Critical Implementation Details
 
 ### Module System
+
 Both packages use ESM (`"type": "module"`):
+
 - **Frontend**: `moduleResolution: "bundler"` — **No file extensions** on imports
 - **Backend**: `moduleResolution: "NodeNext"` — **Always use `.js` extensions** on relative imports (`from './plugins/jwt.js'`)
 
 ### TypeBox + Fastify Pattern
+
 TypeBox schemas define both runtime validation and static types:
+
 ```ts
 export const FooBody = Type.Object({ bar: Type.String() });
 export type FooBodyType = Static<typeof FooBody>;
@@ -99,11 +110,13 @@ app.post<{ Body: FooBodyType; Params: BarType }>('/foo', {
 ```
 
 ### Vite Configuration
+
 - Path alias: `@/*` maps to project root
 - Dev proxy: `/api` → `http://localhost:4000`
 - Build: cssCodeSplit enabled, vendor chunk for react/react-dom
 
 ### Environment Variables
+
 - **Frontend**: Prefix with `VITE_`, access via `import.meta.env.VITE_*`
 - **Backend**: Access via `process.env.*`, import `'dotenv/config'` at top of `server.ts`
 - Required files: `.env.local` (frontend dev), `api/.env` (backend dev), `.env.docker` (docker-compose)
@@ -111,17 +124,22 @@ app.post<{ Body: FooBodyType; Params: BarType }>('/foo', {
 ## Error Handling Patterns
 
 **Backend routes** — Return explicit HTTP codes with structured JSON:
+
 ```ts
 return reply.code(404).send({ error: 'not_found' });
-return reply.code(401).send({ error: 'unauthorized', message: 'Token inválido ou ausente' });
+return reply
+  .code(401)
+  .send({ error: 'unauthorized', message: 'Token inválido ou ausente' });
 ```
 
 **Frontend services** — Try/catch with fallback, log via console.error:
+
 ```ts
 try { ... } catch (err) { console.error('context:', err); return null; }
 ```
 
 **Fire-and-forget** — `.catch(console.error)`:
+
 ```ts
 saveProgress(sessionId, answers, idx).catch(console.error);
 ```
@@ -130,18 +148,18 @@ saveProgress(sessionId, answers, idx).catch(console.error);
 
 ## Naming Conventions
 
-| Type | Convention | Example |
-|------|-----------|---------|
-| React components | PascalCase `.tsx` | `WelcomeScreen.tsx` |
-| Services/utils | camelCase `.ts` | `apiClient.ts` |
-| Backend files | lowercase `.ts` | `server.ts`, `auth.ts` |
-| Variables/functions | camelCase | `handleSubmit` |
-| Constants | UPPER_SNAKE_CASE | `HYBRID_THRESHOLD` |
-| TypeBox schemas | PascalCase noun | `ValidateEmailBody` |
-| TypeBox types | Schema + `Type` | `ValidateEmailBodyType` |
-| Prisma models | PascalCase singular | `AuthorizedEmail` |
-| DB tables | snake_case plural | `authorized_emails` |
-| DB columns | snake_case | `user_email` |
+| Type                | Convention          | Example                 |
+| ------------------- | ------------------- | ----------------------- |
+| React components    | PascalCase `.tsx`   | `WelcomeScreen.tsx`     |
+| Services/utils      | camelCase `.ts`     | `apiClient.ts`          |
+| Backend files       | lowercase `.ts`     | `server.ts`, `auth.ts`  |
+| Variables/functions | camelCase           | `handleSubmit`          |
+| Constants           | UPPER_SNAKE_CASE    | `HYBRID_THRESHOLD`      |
+| TypeBox schemas     | PascalCase noun     | `ValidateEmailBody`     |
+| TypeBox types       | Schema + `Type`     | `ValidateEmailBodyType` |
+| Prisma models       | PascalCase singular | `AuthorizedEmail`       |
+| DB tables           | snake_case plural   | `authorized_emails`     |
+| DB columns          | snake_case          | `user_email`            |
 
 ## Formatting Standards
 
@@ -152,6 +170,7 @@ saveProgress(sessionId, answers, idx).catch(console.error);
 - **Arrow params**: Always parenthesized — `(x) =>` not `x =>`
 
 Import order:
+
 1. Side-effect imports (`import 'dotenv/config'`)
 2. React / React DOM
 3. Third-party libraries
@@ -171,7 +190,7 @@ Import order:
 - Props interface declared immediately above component
 - `React.lazy()` for code splitting with named-export adapter:
   ```ts
-  React.lazy(() => import('./Foo').then((m) => ({ default: m.Foo })))
+  React.lazy(() => import('./Foo').then((m) => ({ default: m.Foo })));
   ```
 - Routing via React Router DOM v7
 - Styling via Tailwind CSS v4 utility classes (no CSS modules/styled-components)
@@ -187,6 +206,7 @@ Import order:
 ## Test Details
 
 The aptitude test evaluates 3 pillars to determine 1 of 7 tech profiles:
+
 1. **Áreas Técnicas (70%)**: Front, Back, Dados/IA
 2. **Comportamental (30%)**: Resiliência, Lógica, Proatividade
 
@@ -195,6 +215,7 @@ Business logic (questions, scoring) lives in `/test` directory — NOT test suit
 ## Database
 
 **Models**: `AuthorizedEmail`, `TestSession`, `UserAnswer`
+
 - Tables: `authorized_emails`, `test_sessions`, `user_answers`
 - All database access via Prisma in backend only
 - Seed data in `supabase/init.sql`
@@ -210,6 +231,7 @@ Business logic (questions, scoring) lives in `/test` directory — NOT test suit
 ## Authentication
 
 Access controlled by **email whitelist**:
+
 1. User enters email
 2. Backend validates against `authorized_emails` table
 3. If authorized, JWT generated
@@ -219,11 +241,14 @@ Access controlled by **email whitelist**:
 ## Site Structure & Styling
 
 ### Landing Pages
+
 Two versions available via routing:
+
 - **V1** (`/`): Original landing page with sections: Hero, RealityCheck, ProtocolOverview, Syllabus, Pricing, Authority, Guarantee, FAQ, Footer
 - **V2** (`/v2`): Redesigned version with sections: HeroV2, DiagnosisV2, MindsetShiftV2, MethodologyV2, AuthorityV2, OfferV2, FinalCTA_V2, Guarantee, FAQ, Footer
 
 ### App Routes
+
 ```
 /                    → LandingPage (V1)
 /v2                  → LandingPageV2
@@ -233,7 +258,9 @@ Two versions available via routing:
 ```
 
 ### Design System (Dark Theme)
+
 **Tailwind CSS v4** with custom tokens:
+
 - **Primary**: `#19e65e` (green accent)
 - **Background Dark**: `#0D1117` (main background)
 - **Surface Dark**: `#161B22` (cards/sections)
@@ -243,23 +270,28 @@ Two versions available via routing:
 - **Glow Purple**: `#7c3aed` (glow effects)
 
 **Typography**:
+
 - **Font Display**: Inter (weights: 400, 500, 700, 900) - self-hosted via `@font-face`
 - **Font Mono**: ui-monospace/SFMono-Regular
 - **Base Size**: 14px
 
 **Visual Effects**:
+
 - `shadow-glow`: Purple glow effect (`0 0 40px -10px rgba(124, 58, 237, 0.5)`)
 - Animations: `slideInRight`, `slideInLeft` keyframes
 - **Anti-aliasing**: `antialiased` class on body
 - **Overflow**: `overflow-x-hidden` on main containers
 
 ### Component Architecture
+
 **Landing page sections** are modular components:
+
 - **Above-fold**: Header, Hero (loaded immediately)
 - **Below-fold**: Lazy loaded with `React.lazy()` and `Suspense`
   - Guarantee, FAQ, Footer are shared between V1 and V2
 
 **Test flow components** (in `/components/test/`):
+
 - `WelcomeScreen` → email input + JWT auth
 - `AptitudeTest` → main test container with stepper
 - `QuestionStepper` → progress indicator
@@ -267,6 +299,7 @@ Two versions available via routing:
 - `ResultsScreen` → results display + PDF generation
 
 ### Styling Conventions
+
 - **Dark theme mandatory**: All pages use `bg-background-dark` and `text-text-main`
 - **Font family**: Always apply `font-display` class
 - **Animations**: Use Tailwind animation utilities or defined keyframes

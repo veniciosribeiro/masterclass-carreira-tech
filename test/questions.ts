@@ -10,7 +10,7 @@ export const questions: Question[] = [
     category: 'logic',
     title: 'Lógica do Sanduíche',
     description:
-            'Você precisa programar um robô para fazer um sanduíche. Selecione os passos na ordem correta.',
+      'Você precisa programar um robô para fazer um sanduíche. Selecione os passos na ordem correta.',
     steps: [
       { id: 's1', text: 'Pegar o pão', correctPosition: 0 },
       { id: 's2', text: 'Cortar o pão ao meio', correctPosition: 1 },
@@ -19,7 +19,11 @@ export const questions: Question[] = [
       { id: 's5', text: 'Colocar alface no pão', correctPosition: 4 },
       { id: 's6', text: 'Colocar fatia de queijo', correctPosition: 5 },
       { id: 's7', text: 'Colocar fatia de presunto', correctPosition: 6 },
-      { id: 's8', text: 'Fechar o sanduíche com a outra metade do pão', correctPosition: 7 },
+      {
+        id: 's8',
+        text: 'Fechar o sanduíche com a outra metade do pão',
+        correctPosition: 7,
+      },
     ],
     orderingWeights: { backend: 3, dataAI: 2, frontend: 1 },
     orderingBehavioral: { logic: 5, proactivity: 0, resilience: 0 },
@@ -31,7 +35,7 @@ export const questions: Question[] = [
     category: 'behavioral',
     title: 'Tolerância à Frustração',
     description:
-            'Você passou 6 horas debugando um código. Descobre que o erro era uma vírgula no lugar errado. Qual sua reação?',
+      'Você passou 6 horas debugando um código. Descobre que o erro era uma vírgula no lugar errado. Qual sua reação?',
     options: [
       {
         id: 'a',
@@ -69,7 +73,7 @@ export const questions: Question[] = [
     category: 'affinity',
     title: 'Problema de E-commerce',
     description:
-            'Um e-commerce está perdendo vendas. Clientes abandonam o carrinho. Como você atacaria o problema?',
+      'Um e-commerce está perdendo vendas. Clientes abandonam o carrinho. Como você atacaria o problema?',
     options: [
       {
         id: 'a',
@@ -104,7 +108,7 @@ export const questions: Question[] = [
     category: 'affinity',
     title: 'O que te Atrai num App?',
     description:
-            'Ao usar um aplicativo pela primeira vez, o que mais chama sua atenção?',
+      'Ao usar um aplicativo pela primeira vez, o que mais chama sua atenção?',
     options: [
       {
         id: 'a',
@@ -135,7 +139,7 @@ export const questions: Question[] = [
     category: 'affinity',
     title: 'Bug em Produção',
     description:
-            'Um bug crítico foi reportado em produção. Usuários estão reclamando. Qual sua primeira ação?',
+      'Um bug crítico foi reportado em produção. Usuários estão reclamando. Qual sua primeira ação?',
     options: [
       {
         id: 'a',
@@ -169,7 +173,8 @@ export const questions: Question[] = [
     type: 'multiple_choice',
     category: 'affinity',
     title: 'Projeto dos Sonhos',
-    description: 'Se pudesse escolher qualquer projeto, qual te empolgaria mais?',
+    description:
+      'Se pudesse escolher qualquer projeto, qual te empolgaria mais?',
     options: [
       {
         id: 'a',
@@ -204,7 +209,7 @@ export const questions: Question[] = [
     category: 'affinity',
     title: 'Organizando Receitas',
     description:
-            'Você precisa organizar 1.000 receitas de cozinha num sistema. Como faria?',
+      'Você precisa organizar 1.000 receitas de cozinha num sistema. Como faria?',
     options: [
       {
         id: 'a',
@@ -240,13 +245,33 @@ export const questions: Question[] = [
     category: 'behavioral',
     title: 'Debug por Eliminação',
     description:
-            'Sua página web aparece completamente em branco. Ordene os passos de investigação do mais lógico ao menos lógico.',
+      'Sua página web aparece completamente em branco. Ordene os passos de investigação do mais lógico ao menos lógico.',
     steps: [
-      { id: 'd1', text: 'Abrir o console do navegador e verificar erros', correctPosition: 0 },
-      { id: 'd2', text: 'Verificar se o arquivo HTML está carregando', correctPosition: 1 },
-      { id: 'd3', text: 'Checar se o JavaScript está sendo executado', correctPosition: 2 },
-      { id: 'd4', text: 'Verificar se a API está respondendo', correctPosition: 3 },
-      { id: 'd5', text: 'Checar se o CSS não está escondendo tudo', correctPosition: 4 },
+      {
+        id: 'd1',
+        text: 'Abrir o console do navegador e verificar erros',
+        correctPosition: 0,
+      },
+      {
+        id: 'd2',
+        text: 'Verificar se o arquivo HTML está carregando',
+        correctPosition: 1,
+      },
+      {
+        id: 'd3',
+        text: 'Checar se o JavaScript está sendo executado',
+        correctPosition: 2,
+      },
+      {
+        id: 'd4',
+        text: 'Verificar se a API está respondendo',
+        correctPosition: 3,
+      },
+      {
+        id: 'd5',
+        text: 'Checar se o CSS não está escondendo tudo',
+        correctPosition: 4,
+      },
       { id: 'd6', text: 'Perguntar no StackOverflow', correctPosition: 5 },
     ],
     orderingWeights: { backend: 2, dataAI: 1, frontend: 2 },
@@ -259,7 +284,7 @@ export const questions: Question[] = [
     category: 'behavioral',
     title: 'Priorização sob Pressão',
     description:
-            'Sexta-feira, 17h. Você tem 3 tarefas urgentes: um bug que afeta 100 usuários, uma feature para o demo do CEO na segunda, e um relatório de performance atrasado. Qual atacar primeiro?',
+      'Sexta-feira, 17h. Você tem 3 tarefas urgentes: um bug que afeta 100 usuários, uma feature para o demo do CEO na segunda, e um relatório de performance atrasado. Qual atacar primeiro?',
     options: [
       {
         id: 'a',
@@ -293,7 +318,8 @@ export const questions: Question[] = [
     type: 'multiple_choice',
     category: 'affinity',
     title: 'Estilo de Aprendizado',
-    description: 'Quando precisa aprender uma tecnologia nova, qual abordagem prefere?',
+    description:
+      'Quando precisa aprender uma tecnologia nova, qual abordagem prefere?',
     options: [
       {
         id: 'a',

@@ -17,7 +17,10 @@ import { ResultsScreen } from './ResultsScreen';
 type TestPhase = 'welcome' | 'questions' | 'loading' | 'results' | 'restoring';
 
 export const AptitudeTest: React.FC = () => {
-  const { sessionId, step } = useParams<{ sessionId?: string; step?: string }>();
+  const { sessionId, step } = useParams<{
+    sessionId?: string;
+    step?: string;
+  }>();
   const navigate = useNavigate();
 
   const [phase, setPhase] = useState<TestPhase>('welcome');
@@ -27,7 +30,9 @@ export const AptitudeTest: React.FC = () => {
   const [currentSessionId, setCurrentSessionId] = useState<string | null>(null);
   const [restoredAnswers, setRestoredAnswers] = useState<Answer[]>([]);
   const [restoredQuestion, setRestoredQuestion] = useState<number>(0);
-  const [restoredOrderings, setRestoredOrderings] = useState<Record<string, string[]>>({});
+  const [restoredOrderings, setRestoredOrderings] = useState<
+    Record<string, string[]>
+  >({});
 
   // Restore session on mount if URL has sessionId
   useEffect(() => {
@@ -91,7 +96,10 @@ export const AptitudeTest: React.FC = () => {
         setRestoredQuestion(session.current_question);
         setRestoredOrderings(session.shuffled_orderings || {});
         setPhase('questions');
-        navigate(`/teste/${session.session_id}/${session.current_question + 1}`, { replace: true });
+        navigate(
+          `/teste/${session.session_id}/${session.current_question + 1}`,
+          { replace: true }
+        );
       } else {
         setRestoredAnswers([]);
         setRestoredQuestion(0);
@@ -102,7 +110,7 @@ export const AptitudeTest: React.FC = () => {
 
       window.scrollTo(0, 0);
     },
-    [navigate],
+    [navigate]
   );
 
   const handleQuestionsComplete = useCallback(
@@ -130,7 +138,7 @@ export const AptitudeTest: React.FC = () => {
       setResult(testResult);
       saveTestResult(testResult).catch(console.error);
     },
-    [userName, userEmail, currentSessionId, navigate],
+    [userName, userEmail, currentSessionId, navigate]
   );
 
   const handleLoadingComplete = useCallback(() => {
@@ -146,7 +154,9 @@ export const AptitudeTest: React.FC = () => {
       <div className="min-h-screen bg-background-dark flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin h-8 w-8 border-2 border-primary border-t-transparent rounded-full mx-auto mb-4" />
-          <p className="text-text-main font-mono text-sm">Restaurando sessão...</p>
+          <p className="text-text-main font-mono text-sm">
+            Restaurando sessão...
+          </p>
         </div>
       </div>
     );
@@ -164,7 +174,9 @@ export const AptitudeTest: React.FC = () => {
           onComplete={handleQuestionsComplete}
         />
       )}
-      {phase === 'loading' && <LoadingScreen onComplete={handleLoadingComplete} />}
+      {phase === 'loading' && (
+        <LoadingScreen onComplete={handleLoadingComplete} />
+      )}
       {phase === 'results' && result && <ResultsScreen result={result} />}
     </>
   );

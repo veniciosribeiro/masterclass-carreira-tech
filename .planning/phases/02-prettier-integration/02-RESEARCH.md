@@ -20,10 +20,10 @@ Prettier v3 is the latest stable version for code formatting. The integration wi
 
 ### Core
 
-| Library | Version | Purpose | Why Standard |
-|---------|---------|---------|--------------|
-| `prettier` | `^3.x.x` | Code formatter | Current stable, opinionated formatting |
-| `eslint-config-prettier` | `^9.1.0` | ESLint integration | Disables conflicting ESLint rules |
+| Library                  | Version  | Purpose            | Why Standard                           |
+| ------------------------ | -------- | ------------------ | -------------------------------------- |
+| `prettier`               | `^3.x.x` | Code formatter     | Current stable, opinionated formatting |
+| `eslint-config-prettier` | `^9.1.0` | ESLint integration | Disables conflicting ESLint rules      |
 
 **Why Prettier v3**: Latest stable version with improved performance and ESM support. The project uses ESM (`"type": "module"`), making v3 the natural choice.
 
@@ -79,6 +79,7 @@ Based on CONVENTIONS.md and Phase 01 ESLint setup, configure Prettier to match t
 ```
 
 **Field explanations**:
+
 - `"semi": true` — Always add semicolons (matches existing code)
 - `"singleQuote": true` — Use single quotes for strings (matches existing code)
 - `"tabWidth": 2` — 2-space indentation (matches existing code)
@@ -146,6 +147,7 @@ api/prisma/migrations/
 Add format scripts to both `package.json` files:
 
 **Root package.json**:
+
 ```json
 {
   "scripts": {
@@ -158,6 +160,7 @@ Add format scripts to both `package.json` files:
 ```
 
 **api/package.json**:
+
 ```json
 {
   "scripts": {
@@ -168,6 +171,7 @@ Add format scripts to both `package.json` files:
 ```
 
 **Script explanations**:
+
 - `format` — Format all files (auto-fix)
 - `format:check` — Check if files are formatted (CI-friendly, exits with error if formatting needed)
 - `format:frontend` — Format only frontend files
@@ -228,6 +232,7 @@ After setup, verify integration:
 ### TypeScript Import Extensions
 
 Prettier does NOT add or remove `.js` extensions on imports. It preserves them as-written. This means:
+
 - Backend imports still need `.js` extensions (per `moduleResolution: "NodeNext"`)
 - Frontend imports remain without extensions (per `moduleResolution: "bundler"`)
 
@@ -235,7 +240,7 @@ Prettier will format the import statement, but won't change the extension:
 
 ```ts
 // Before Prettier
-import { foo } from './bar.js'
+import { foo } from './bar.js';
 
 // After Prettier (reformatted, extension preserved)
 import { foo } from './bar.js';
@@ -244,6 +249,7 @@ import { foo } from './bar.js';
 ### JSX and TSX Files
 
 Prettier has excellent React/JSX support out of the box. No special configuration needed. It will:
+
 - Format JSX attributes consistently
 - Break long JSX expressions across multiple lines
 - Preserve React fragments and other JSX syntax
@@ -251,6 +257,7 @@ Prettier has excellent React/JSX support out of the box. No special configuratio
 ### JSON Files
 
 Prettier formats `.json` files by default. This includes:
+
 - `package.json`
 - `tsconfig.json`
 - `.prettierrc` itself (if using JSON format)
@@ -258,6 +265,7 @@ Prettier formats `.json` files by default. This includes:
 This is generally good, but be aware that comments in JSON files (like `tsconfig.json`) will be **removed** since JSON doesn't officially support comments.
 
 **Solution**: Use `jsonc` parser for files that need comments:
+
 ```json
 {
   "overrides": [

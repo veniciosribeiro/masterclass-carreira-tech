@@ -7,26 +7,29 @@ O objetivo do projeto é oferecer um "test-drive" prático para quem deseja ingr
 ## 📊 Visão Geral
 
 Este **aplicativo full-stack** combina:
+
 - **Landing pages otimizadas** para conversão (V1 e V2)
 - **Teste de aptidão** interativo com 10 perguntas (Lógica, Afinidade e Comportamental)
 - **Relatórios em PDF** personalizados com gráficos e recomendações
 - **Sistema de Autenticação** via whitelist de emails
 
-
 ## 🏗️ Arquitetura e Tecnologias
 
 ### Frontend (React SPA)
+
 - **Core:** React 19, TypeScript, Vite 6
 - **Estilo:** Tailwind CSS v4
 - **Routing:** React Router DOM v7
 - **PDF:** jsPDF
 
 ### Backend (Fastify API)
+
 - **Core:** Node.js, Fastify
 - **DB:** PostgreSQL, Prisma ORM
 - **Valid:** TypeBox, JWT
 
 ### Infraestrutura
+
 - **DevOps:** Docker, Docker Compose, Nginx
 
 ## 📁 Estrutura do Projeto
@@ -82,12 +85,14 @@ npm run prisma:migrate
 Você pode rodar o projeto de duas formas:
 
 **Opção A: Docker (Recomendado)**
+
 ```bash
 # Sobe banco, api e frontend juntos
 docker compose --env-file .env.docker up --build
 ```
 
 **Opção B: Manualmente (Terminais Separados)**
+
 ```bash
 # Terminal 1 (Backend)
 cd api && npm run dev
@@ -98,20 +103,21 @@ npm run dev
 
 ### 📜 Comandos Disponíveis
 
-| Escopo | Comando | Descrição |
-|--------|---------|-----------|
-| **Geral** | `npm run dev` | Inicia servidor de desenvolvimento |
-| | `npm run build` | Gera build de produção |
-| **Backend** (`/api`) | `npm run prisma:studio` | Interface visual do banco de dados |
-| | `npm run prisma:migrate` | Executa migrações do banco |
-| | `npm run start` | Inicia servidor de produção |
-| | `npm run build` | Compila TypeScript |
-| **Docker** | `docker compose up` | Inicia todos os serviços |
-| | `docker compose down` | Para e remove containers |
+| Escopo               | Comando                  | Descrição                          |
+| -------------------- | ------------------------ | ---------------------------------- |
+| **Geral**            | `npm run dev`            | Inicia servidor de desenvolvimento |
+|                      | `npm run build`          | Gera build de produção             |
+| **Backend** (`/api`) | `npm run prisma:studio`  | Interface visual do banco de dados |
+|                      | `npm run prisma:migrate` | Executa migrações do banco         |
+|                      | `npm run start`          | Inicia servidor de produção        |
+|                      | `npm run build`          | Compila TypeScript                 |
+| **Docker**           | `docker compose up`      | Inicia todos os serviços           |
+|                      | `docker compose down`    | Para e remove containers           |
 
 ## 🔑 Autenticação e Segurança
 
 O acesso ao teste é controlado por uma **whitelist de emails**:
+
 1. O usuário insere o email.
 2. O backend valida se o email consta na tabela `AuthorizedEmail`.
 3. Se autorizado, um JWT é gerado.
@@ -121,6 +127,7 @@ O acesso ao teste é controlado por uma **whitelist de emails**:
 ## 📝 Detalhes do Teste
 
 O protocolo avalia 3 pilares para definir um dos **7 perfis técnicos** (ex: Front-End Specialist, Data Scientist):
+
 1. **Áreas Técnicas (70%)**: Front, Back, Dados/IA.
 2. **Comportamental (30%)**: Resiliência, Lógica, Proatividade.
 
