@@ -3,12 +3,17 @@
 // Frontend: React + TypeScript (moduleResolution: bundler, no extensions)
 // Backend: Fastify + TypeScript (moduleResolution: NodeNext, .js extensions required)
 
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 import eslint from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import importPlugin from 'eslint-plugin-import';
 import globals from 'globals';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export default [
   // Global ignores
@@ -108,7 +113,7 @@ export default [
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
-        project: './api/tsconfig.json',
+        project: join(__dirname, 'api/tsconfig.json'),
       },
       globals: {
         ...globals.node,
@@ -124,7 +129,7 @@ export default [
       'import/resolver': {
         typescript: {
           alwaysTryTypes: true,
-          project: './api/tsconfig.json',
+          project: join(__dirname, 'api/tsconfig.json'),
         },
       },
     },
