@@ -11,6 +11,7 @@ import reactPlugin from 'eslint-plugin-react';
 import reactHooksPlugin from 'eslint-plugin-react-hooks';
 import importPlugin from 'eslint-plugin-import';
 import globals from 'globals';
+import prettierConfig from 'eslint-config-prettier';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -159,4 +160,7 @@ export default [
       'import/no-unresolved': 'off', // TypeScript compiler handles this
     },
   },
+
+  // Prettier integration - MUST be last to override formatting rules
+  prettierConfig,
 ];
