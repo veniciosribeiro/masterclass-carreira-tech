@@ -29,11 +29,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. Running ESLint on the backend codebase reports real issues or passes clean (no config errors)
   3. ESLint rules respect existing conventions (semicolons, single quotes, 2 spaces)
   4. ESLint understands TypeScript and React JSX in frontend, TypeScript and Node/ESM in backend
-**Plans**: 2 plans in 2 waves
+**Plans**: 3 plans in 1 wave
 
 Plans:
 - [x] 01-01-PLAN.md — Install ESLint 9 dependencies and create root flat config for monorepo
-- [ ] 01-02-PLAN.md — Auto-fix violations and manually resolve remaining errors to achieve zero
+- [x] 01-02-PLAN.md — Auto-fix violations and manually resolve remaining errors to achieve zero
+- [ ] 01-03-PLAN.md — Fix backend tsconfig path for CWD-independent linting (gap closure)
 
 ### Phase 2: Prettier + Integration
 **Goal**: Code formatting is automated and consistent, with no conflicts between linter and formatter
