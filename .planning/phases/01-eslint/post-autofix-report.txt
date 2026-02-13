@@ -1,0 +1,82 @@
+
+> techcareer-test-drive@0.0.0 lint
+> eslint .
+
+
+/home/mvrdu/projetos/techcareer-test-drive/api/src/routes/auth.ts
+  2:63  error  Missing file extension "ts" for "../schemas/auth.js"  import/extensions
+
+/home/mvrdu/projetos/techcareer-test-drive/api/src/routes/results.ts
+  2:30  error  Missing file extension "ts" for "../hooks/auth.js"       import/extensions
+  3:57  error  Missing file extension "ts" for "../schemas/results.js"  import/extensions
+
+/home/mvrdu/projetos/techcareer-test-drive/api/src/routes/sessions.ts
+   2:30  error  Missing file extension "ts" for "../hooks/auth.js"        import/extensions
+  10:8   error  Missing file extension "ts" for "../schemas/sessions.js"  import/extensions
+
+/home/mvrdu/projetos/techcareer-test-drive/api/src/server.ts
+  5:27  error  Missing file extension "ts" for "./plugins/jwt.js"      import/extensions
+  6:30  error  Missing file extension "ts" for "./plugins/prisma.js"   import/extensions
+  7:28  error  Missing file extension "ts" for "./routes/auth.js"      import/extensions
+  8:31  error  Missing file extension "ts" for "./routes/sessions.js"  import/extensions
+  9:30  error  Missing file extension "ts" for "./routes/results.js"   import/extensions
+
+/home/mvrdu/projetos/techcareer-test-drive/components/Hero.tsx
+  3:10  error  'TerminalIcon' is defined but never used                                            no-unused-vars
+  3:10  error  'TerminalIcon' is defined but never used. Allowed unused vars must match /^_/u      @typescript-eslint/no-unused-vars
+  3:24  error  'ArrowForwardIcon' is defined but never used                                        no-unused-vars
+  3:24  error  'ArrowForwardIcon' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  3:56  error  'PlayArrowIcon' is defined but never used                                           no-unused-vars
+  3:56  error  'PlayArrowIcon' is defined but never used. Allowed unused vars must match /^_/u     @typescript-eslint/no-unused-vars
+
+/home/mvrdu/projetos/techcareer-test-drive/components/PDFReportCard.tsx
+  79:27  error  Unnecessary escape character: \[  no-useless-escape
+  79:35  error  Unnecessary escape character: \]  no-useless-escape
+  80:27  error  Unnecessary escape character: \[  no-useless-escape
+  80:33  error  Unnecessary escape character: \]  no-useless-escape
+
+/home/mvrdu/projetos/techcareer-test-drive/components/ResultsShowcase.tsx
+    4:7   error  'PdfIcon' is assigned a value but never used                                        no-unused-vars
+    4:7   error  'PdfIcon' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+  134:27  error  Unnecessary escape character: \[                                                    no-useless-escape
+  134:35  error  Unnecessary escape character: \]                                                    no-useless-escape
+  135:27  error  Unnecessary escape character: \[                                                    no-useless-escape
+  135:33  error  Unnecessary escape character: \]                                                    no-useless-escape
+
+/home/mvrdu/projetos/techcareer-test-drive/components/Syllabus.tsx
+  2:52  error  'VerifiedIcon' is defined but never used                                        no-unused-vars
+  2:52  error  'VerifiedIcon' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+/home/mvrdu/projetos/techcareer-test-drive/components/test/MultipleChoiceQuestion.tsx
+  9:16  error  'optionId' is defined but never used  no-unused-vars
+
+/home/mvrdu/projetos/techcareer-test-drive/components/test/OrderingQuestion.tsx
+  9:17  error  'newOrder' is defined but never used  no-unused-vars
+
+/home/mvrdu/projetos/techcareer-test-drive/components/test/QuestionStepper.tsx
+  14:18  error  'answers' is defined but never used  no-unused-vars
+
+/home/mvrdu/projetos/techcareer-test-drive/components/test/WelcomeScreen.tsx
+  5:15  error  'name' is defined but never used   no-unused-vars
+  5:29  error  'email' is defined but never used  no-unused-vars
+
+/home/mvrdu/projetos/techcareer-test-drive/components/v2/HeroV2.tsx
+  3:10  error  'VerifiedIcon' is defined but never used                                        no-unused-vars
+  3:10  error  'VerifiedIcon' is defined but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+/home/mvrdu/projetos/techcareer-test-drive/services/apiClient.ts
+   5:12  error  'status' is defined but never used  no-unused-vars
+  38:58  error  'RequestInit' is not defined        no-undef
+
+/home/mvrdu/projetos/techcareer-test-drive/test/pdfGenerator.ts
+  155:9  error  'boxCenterY' is assigned a value but never used                                        no-unused-vars
+  155:9  error  'boxCenterY' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+/home/mvrdu/projetos/techcareer-test-drive/test/scoring.ts
+  2:1  error  There should be no empty line between import groups  import/order
+
+/home/mvrdu/projetos/techcareer-test-drive/vite.config.ts
+  23:25  error  '__dirname' is not defined  no-undef
+
+✖ 41 problems (41 errors, 0 warnings)
+

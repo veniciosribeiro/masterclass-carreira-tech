@@ -2,48 +2,137 @@
 
 Landing page oficial da **Masterclass "Test-Drive da Carreira Tech"**, ministrada por Venicios Ribeiro.
 
-O objetivo do projeto é oferecer um "test-drive" prático para quem deseja ingressar na área de tecnologia, ajudando a identificar o perfil ideal e evitar frustrações antes de investir tempo e dinheiro em cursos caros.
+O objetivo do projeto é oferecer um "test-drive" prático para quem deseja ingressar na área de tecnologia, ajudando a identificar o perfil ideal e evitar frustrações antes de investir tempo e dinheiro em cursos.
 
-## 🚀 Tecnologias
+## 📊 Visão Geral
 
--   [React](https://reactjs.org/)
--   [TypeScript](https://www.typescriptlang.org/)
--   [Vite](https://vitejs.dev/)
--   [Tailwind CSS](https://tailwindcss.com/)
--   [Google Gemini AI](https://deepmind.google/technologies/gemini/) (Integração para geração de relatórios e análises de perfil)
+Este **aplicativo full-stack** combina:
+- **Landing pages otimizadas** para conversão (V1 e V2)
+- **Teste de aptidão** interativo com 10 perguntas (Lógica, Afinidade e Comportamental)
+- **Relatórios em PDF** personalizados com gráficos e recomendações
+- **Sistema de Autenticação** via whitelist de emails
 
-## 🛠️ Instalação e Execução
 
-Certifique-se de ter o [Node.js](https://nodejs.org/) instalado.
+## 🏗️ Arquitetura e Tecnologias
 
-1.  **Instale as dependências:**
+### Frontend (React SPA)
+- **Core:** React 19, TypeScript, Vite 6
+- **Estilo:** Tailwind CSS v4
+- **Routing:** React Router DOM v7
+- **PDF:** jsPDF
 
-    ```bash
-    npm install
-    ```
+### Backend (Fastify API)
+- **Core:** Node.js, Fastify
+- **DB:** PostgreSQL, Prisma ORM
+- **Valid:** TypeBox, JWT
 
-2.  **Configuração de Variáveis de Ambiente:**
+### Infraestrutura
+- **DevOps:** Docker, Docker Compose, Nginx
 
-    Crie um arquivo `.env.local` na raiz do projeto e adicione sua chave da API do Gemini (necessária para as funcionalidades de IA):
+## 📁 Estrutura do Projeto
 
-    ```env
-    VITE_GEMINI_API_KEY=sua_chave_aqui
-    ```
+```
+techcareer-test-drive/
+├── 📂 components/          # Componentes React (V1, V2, Teste)
+├── 📂 services/            # API client e lógica de serviços
+├── 📂 test/                # Lógica de negócio do teste (perguntas, scoring)
+├── 📂 api/                 # Backend Fastify (server, plugins, routes)
+│   └── prisma/             # Schema do banco de dados
+├── 📂 supabase/            # Scripts de inicialização do DB
+└── 📄 docker-compose.yml   # Orquestração de containers
+```
 
-3.  **Execute o servidor de desenvolvimento:**
+## 🚀 Guia de Desenvolvimento
 
-    ```bash
-    npm run dev
-    ```
+### 1. Preparação (Setup)
 
-    O projeto estará rodando em `http://localhost:5173`.
+Pré-requisitos: Node.js 18+, Docker (opcional, mas recomendado).
 
-## 📂 Estrutura do Projeto
+```bash
+# Clone e instale dependências
+git clone <repo-url>
+cd techcareer-test-drive
+npm install        # Frontend
+cd api && npm install && cd ..
+```
 
--   `components/`: Componentes da landing page (Hero, Authority, Pricing, PDFReportCard, etc.).
--   `services/`: Integrações com APIs externas.
--   `utils/`: Funções utilitárias e helpers.
+### 2. Configuração (.env)
+
+Crie o arquivo `.env.local` na raiz:
+
+```env
+# Frontend
+VITE_API_URL=http://localhost:4000
+# Backend
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/techcareer
+JWT_SECRET=seu_segredo_aqui
+CORS_ORIGIN=http://localhost:3000
+```
+
+### 3. Banco de Dados
+
+```bash
+# Na pasta /api
+npm run prisma:generate
+npm run prisma:migrate
+```
+
+### 4. Executando o Projeto
+
+Você pode rodar o projeto de duas formas:
+
+**Opção A: Docker (Recomendado)**
+```bash
+# Sobe banco, api e frontend juntos
+docker compose --env-file .env.docker up --build
+```
+
+**Opção B: Manualmente (Terminais Separados)**
+```bash
+# Terminal 1 (Backend)
+cd api && npm run dev
+
+# Terminal 2 (Frontend)
+npm run dev
+```
+
+### 📜 Comandos Disponíveis
+
+| Escopo | Comando | Descrição |
+|--------|---------|-----------|
+| **Geral** | `npm run dev` | Inicia servidor de desenvolvimento |
+| | `npm run build` | Gera build de produção |
+| **Backend** (`/api`) | `npm run prisma:studio` | Interface visual do banco de dados |
+| | `npm run prisma:migrate` | Executa migrações do banco |
+| | `npm run start` | Inicia servidor de produção |
+| | `npm run build` | Compila TypeScript |
+| **Docker** | `docker compose up` | Inicia todos os serviços |
+| | `docker compose down` | Para e remove containers |
+
+## 🔑 Autenticação e Segurança
+
+O acesso ao teste é controlado por uma **whitelist de emails**:
+1. O usuário insere o email.
+2. O backend valida se o email consta na tabela `AuthorizedEmail`.
+3. Se autorizado, um JWT é gerado.
+
+**Para autorizar emails:** Use o `npm run prisma:studio` na pasta `api` ou insira diretamente no banco.
+
+## 📝 Detalhes do Teste
+
+O protocolo avalia 3 pilares para definir um dos **7 perfis técnicos** (ex: Front-End Specialist, Data Scientist):
+1. **Áreas Técnicas (70%)**: Front, Back, Dados/IA.
+2. **Comportamental (30%)**: Resiliência, Lógica, Proatividade.
+
+## 🤝 Contribuindo
+
+1. Crie uma branch: `git checkout -b feature/minha-feature`
+2. Commit: `git commit -m 'Minha feature'`
+3. Push: `git push origin feature/minha-feature`
+4. Abra um PR.
+
+**Padrões:** ESM, TypeScript Strict (backend), PascalCase (componentes), camelCase (funções).
 
 ---
 
-Desenvolvido para ajudar futuros devs a tomarem a decisão certa.
+**Desenvolvido com ❤️ para a Masterclass Test-Drive**.

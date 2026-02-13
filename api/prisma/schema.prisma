@@ -1,0 +1,48 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model AuthorizedEmail {
+  id        String   @id @default(uuid()) @db.Uuid
+  email     String   @unique
+  name      String?
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("authorized_emails")
+  @@index([email])
+}
+
+model TestResult {
+  id               String   @id @default(uuid()) @db.Uuid
+  userName         String   @map("user_name")
+  userEmail        String   @map("user_email")
+  answers          Json
+  areaScores       Json     @map("area_scores")
+  profile          String
+  behavioralScores Json     @map("behavioral_scores")
+  resultJson       Json     @map("result_json")
+  createdAt        DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("test_results")
+}
+
+model TestSession {
+  id                String   @id @default(uuid()) @db.Uuid
+  userEmail         String   @map("user_email")
+  userName          String   @map("user_name")
+  answers           Json     @default("[]")
+  currentQuestion   Int      @default(0) @map("current_question")
+  status            String   @default("in_progress")
+  shuffledOrderings Json     @default("{}") @map("shuffled_orderings")
+  createdAt         DateTime @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt         DateTime @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+
+  @@map("test_sessions")
+  @@index([userEmail, status])
+}

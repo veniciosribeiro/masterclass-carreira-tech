@@ -4,8 +4,7 @@ services:
     image: postgres:15-alpine
     container_name: techcareer-postgres
     restart: unless-stopped
-    ports:
-      - "${POSTGRES_PORT:-5432}:5432"
+    # Porta NÃO exposta externamente — só acessível pela rede interna Docker
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
@@ -20,22 +19,33 @@ services:
       timeout: 5s
       retries: 20
 
-  # ─── PostgREST ───────────────────────────────────────────
-  postgrest:
-    image: postgrest/postgrest:v12.2.3
-    container_name: techcareer-postgrest
+  # ─── Fastify API ─────────────────────────────────────────
+  api:
+    build: ./api
+    container_name: techcareer-api
     restart: unless-stopped
+    # Port exposed for direct access during development; in production
+    # the frontend Nginx reverse-proxies /api → api:4000.
     ports:
-      - "${POSTGREST_PORT:-3001}:3000"
+      - "${API_PORT:-4000}:4000"
     environment:
-      PGRST_DB_URI: postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-techcareer}
-      PGRST_DB_SCHEMAS: public
-      PGRST_DB_ANON_ROLE: anon
-      PGRST_JWT_SECRET: ${JWT_SECRET}
-      PGRST_DB_USE_LEGACY_GUCS: "false"
+      DATABASE_URL: postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-techcareer}
+      JWT_SECRET: ${JWT_SECRET}
+      NODE_ENV: production
+      PORT: 4000
     depends_on:
       postgres:
         condition: service_healthy
+
+  # ─── Frontend (Nginx + SPA) ────────────────────────────────
+  frontend:
+    build: .
+    container_name: techcareer-frontend
+    restart: unless-stopped
+    ports:
+      - "${FRONTEND_PORT:-8080}:8080"
+    depends_on:
+      - api
 
 volumes:
   pgdata:

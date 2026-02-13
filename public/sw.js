@@ -5,7 +5,7 @@ const urlsToCache = [
   '/src/index.css',
   '/src/App.tsx',
   'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap',
-  'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap'
+  'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap',
 ];
 
 // Install event - cache resources
@@ -15,7 +15,7 @@ self.addEventListener('install', (event) => {
       .then((cache) => {
         console.log('Opened cache');
         return cache.addAll(urlsToCache);
-      })
+      }),
   );
 });
 
@@ -29,8 +29,8 @@ self.addEventListener('fetch', (event) => {
           return response;
         }
         return fetch(event.request);
-      }
-    )
+      },
+      ),
   );
 });
 
@@ -44,8 +44,8 @@ self.addEventListener('activate', (event) => {
             console.log('Deleting old cache:', cacheName);
             return caches.delete(cacheName);
           }
-        })
+        }),
       );
-    })
+    }),
   );
 });
