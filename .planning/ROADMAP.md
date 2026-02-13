@@ -32,7 +32,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 2 plans in 2 waves
 
 Plans:
-- [ ] 01-01-PLAN.md — Install ESLint 9 dependencies and create root flat config for monorepo
+- [x] 01-01-PLAN.md — Install ESLint 9 dependencies and create root flat config for monorepo
 - [ ] 01-02-PLAN.md — Auto-fix violations and manually resolve remaining errors to achieve zero
 
 ### Phase 2: Prettier + Integration
@@ -96,7 +96,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|---------------|--------|-----------|
-| 1. ESLint | 0/2 | Ready to execute | - |
+| 1. ESLint | 1/2 | In progress | - |
 | 2. Prettier + Integration | 0/1 | Not started | - |
 | 3. Git Hooks | 0/1 | Not started | - |
 | 4. CI Pipeline | 0/1 | Not started | - |
