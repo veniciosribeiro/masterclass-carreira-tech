@@ -44,10 +44,10 @@ Plans:
   1. Running Prettier formats files according to project conventions (semicolons, single quotes, 2 spaces, trailing commas)
   2. ESLint and Prettier never disagree on the same file — no conflicting rules
   3. `npm run lint` and `npm run format` scripts work from root and from api/ directory
-**Plans**: TBD
+**Plans**: 1 plan in 1 wave
 
 Plans:
-- [ ] 02-01: Configure Prettier and integrate with ESLint, add npm scripts
+- [ ] 02-01-PLAN.md — Install Prettier, configure, integrate with ESLint, format codebase
 
 ### Phase 3: Git Hooks
 **Goal**: Code quality is enforced automatically before every commit — no bad code reaches the repo
