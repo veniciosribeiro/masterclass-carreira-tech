@@ -1,0 +1,60 @@
+# GitHub Actions CI Workflow for TechCareer Test Drive
+# Validates code quality (ESLint) and type safety (TypeScript) on every push/PR
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Install API dependencies
+        run: npm ci --prefix api
+
+      - name: Run ESLint on all files
+        run: npm run lint
+
+  typecheck:
+    name: TypeScript Type-Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Install API dependencies
+        run: npm ci --prefix api
+
+      - name: Type-check frontend
+        run: npx tsc --noEmit
+
+      - name: Type-check backend (with build)
+        run: npm run build --workspace=api
