@@ -14,7 +14,17 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "format:frontend": "prettier --write --ignore-pattern 'api/**' .",
-    "format:backend": "prettier --write api/"
+    "format:backend": "prettier --write api/",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yml,yaml,css,html}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "jspdf": "^4.1.0",
@@ -36,6 +46,8 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "globals": "^15.15.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.2",
     "prettier": "3.8.1",
     "typescript": "~5.8.2",
     "typescript-eslint": "^8.55.0",
