@@ -83,11 +83,11 @@ Plans:
 2. CI runs ESLint on all files in both frontend and backend
 3. CI runs TypeScript type-check (tsc --noEmit) on both frontend and backend
 4. When lint or type-check fails, the CI run fails with clear error output showing what's wrong
-   **Plans**: TBD
+   **Plans**: 1 plan in 1 wave
 
 Plans:
 
-- [ ] 04-01: Create GitHub Actions workflow for lint and type-check
+- [ ] 04-01-PLAN.md — Create GitHub Actions CI workflow with lint and type-check jobs
 
 ### Phase 5: Email Results
 
