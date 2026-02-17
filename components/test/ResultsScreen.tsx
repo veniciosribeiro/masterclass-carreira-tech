@@ -2,9 +2,11 @@ import React from 'react';
 import { TestResult } from '../../test/testTypes';
 import { generatePDF } from '../../test/pdfGenerator';
 import { generateResultJSON } from '../../services/testService';
+import { sendEmailResult } from '../../services/apiClient';
 
 interface ResultsScreenProps {
   result: TestResult;
+  sessionId?: string;
 }
 
 const areaLabels: Record<
@@ -34,9 +36,17 @@ const behavioralLabels: Record<string, { label: string; emoji: string }> = {
   proactivity: { label: 'Proatividade', emoji: '🚀' },
 };
 
-export const ResultsScreen: React.FC<ResultsScreenProps> = ({ result }) => {
+export const ResultsScreen: React.FC<ResultsScreenProps> = ({
+  result,
+  sessionId,
+}) => {
   const handleDownloadPDF = () => {
     generatePDF(result);
+
+    // Optionally send email with results
+    if (sessionId) {
+      sendEmailResult(sessionId).catch(console.error);
+    }
   };
 
   const handleDownloadJSON = () => {
