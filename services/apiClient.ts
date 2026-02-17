@@ -32,6 +32,21 @@ export function clearAuthToken(): void {
 }
 
 /**
+ * Sends the test results via email after test completion.
+ * Fire-and-forget operation - logs errors but doesn't block the test results flow.
+ */
+export async function sendEmailResult(sessionId: string): Promise<void> {
+  try {
+    await fetch('http://localhost:4000/api/send-results/' + sessionId, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    });
+  } catch (err) {
+    console.error('Email API call error:', err);
+  }
+}
+
+/**
  * Centralized HTTP client for the Fastify API.
  * Automatically injects the JWT Authorization header when available.
  */
