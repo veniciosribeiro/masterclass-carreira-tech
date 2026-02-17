@@ -177,7 +177,9 @@ export const AptitudeTest: React.FC = () => {
       {phase === 'loading' && (
         <LoadingScreen onComplete={handleLoadingComplete} />
       )}
-      {phase === 'results' && result && <ResultsScreen result={result} />}
+      {phase === 'results' && result && (
+        <ResultsScreen result={result} sessionId={currentSessionId} />
+      )}
     </>
   );
 };

@@ -36,13 +36,31 @@ export function clearAuthToken(): void {
  * Fire-and-forget operation - logs errors but doesn't block the test results flow.
  */
 export async function sendEmailResult(sessionId: string): Promise<void> {
+  console.log('[SEND_EMAIL] Attempting to send email for session:', sessionId);
+
   try {
-    await fetch('http://localhost:4000/api/send-results/' + sessionId, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-    });
+    // Backend expects sessionId in URL, not body
+    const response = await fetch(
+      'http://localhost:4000/api/send-results/' + sessionId,
+      {
+        method: 'POST',
+      }
+    );
+
+    console.log(
+      '[SEND_EMAIL] Response status:',
+      response.status,
+      response.statusText
+    );
+
+    if (!response.ok) {
+      const errorText = await response.text().catch(() => 'Unknown error');
+      console.error('[SEND_EMAIL] Failed to send email. Response:', errorText);
+    } else {
+      console.log('[SEND_EMAIL] ✅ Email queued successfully');
+    }
   } catch (err) {
-    console.error('Email API call error:', err);
+    console.error('[SEND_EMAIL] ❌ Exception during email API call:', err);
   }
 }
 
