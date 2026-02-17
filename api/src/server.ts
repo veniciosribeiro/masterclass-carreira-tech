@@ -7,7 +7,7 @@ import { prismaPlugin } from './plugins/prisma.js';
 import { authRoutes } from './routes/auth.js';
 import { sessionRoutes } from './routes/sessions.js';
 import { resultRoutes } from './routes/results.js';
-// import { emailRoutes } from './routes/email.js'; // TODO: Register in integration phase with database
+import { emailRoutes } from './routes/email.js';
 
 const app = Fastify({
   logger: {
@@ -28,6 +28,7 @@ await app.register(prismaPlugin);
 await app.register(authRoutes, { prefix: '/api/auth' });
 await app.register(sessionRoutes, { prefix: '/api/sessions' });
 await app.register(resultRoutes, { prefix: '/api/results' });
+await app.register(emailRoutes, { prefix: '/api/send-results' });
 
 // --- Health check ---
 app.get('/api/health', async () => ({ status: 'ok' }));
