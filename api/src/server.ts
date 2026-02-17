@@ -28,7 +28,7 @@ await app.register(prismaPlugin);
 await app.register(authRoutes, { prefix: '/api/auth' });
 await app.register(sessionRoutes, { prefix: '/api/sessions' });
 await app.register(resultRoutes, { prefix: '/api/results' });
-await app.register(emailRoutes, { prefix: '/api/send-results' });
+await app.register(emailRoutes); // Email route handles its own prefix in route definition
 
 // --- Health check ---
 app.get('/api/health', async () => ({ status: 'ok' }));

@@ -1,5 +1,4 @@
 import type { FastifyInstance } from 'fastify';
-import { SendResultsBody, type SendResultsBodyType } from '../schemas/email.js';
 import { sendResults } from '../services/email.js';
 
 interface TestResultData {
@@ -20,18 +19,37 @@ async function getTestResults(
 ): Promise<{ result: TestResultData; session: TestSessionData } | null> {
   // TODO: Fetch test results, profile, scores from database using Prisma
   // This will be implemented in the next integration phase
-  return null;
+  console.log(
+    '[EMAIL_ROUTE] getTestResults called with sessionId:',
+    _sessionId
+  );
+
+  // For now, return dummy data for testing
+  return {
+    result: {
+      profile: 'Dev Full Stack',
+      technicalScore: 85,
+      behavioralScore: 90,
+      technicalAreas: ['Frontend', 'Backend', 'Dados/IA'],
+      behavioralTraits: ['Resiliência', 'Lógica', 'Proatividade'],
+    },
+    session: {
+      userEmail: 'test@example.com',
+      userName: 'Test User',
+    },
+  };
 }
 
 export async function emailRoutes(app: FastifyInstance) {
-  app.post<{ Body: SendResultsBodyType; Params: { sessionId: string } }>(
+  app.post<{ Params: { sessionId: string } }>(
     '/send-results/:sessionId',
-    {
-      schema: { body: SendResultsBody },
-    },
     async (request, reply) => {
       const { sessionId: _sessionId } = request.params;
-      const { email } = request.body;
+
+      console.log(
+        '[EMAIL_ROUTE] Processing email request for sessionId:',
+        _sessionId
+      );
 
       // Fetch test results and session from database
       const data = await getTestResults(_sessionId);
@@ -42,7 +60,7 @@ export async function emailRoutes(app: FastifyInstance) {
 
       // Prepare email data
       const emailData = {
-        to: email || data.session.userEmail,
+        to: data.session.userEmail,
         name: data.session.userName,
         sessionId: _sessionId,
         profile: data.result.profile,
@@ -52,6 +70,11 @@ export async function emailRoutes(app: FastifyInstance) {
           areas: data.result.technicalAreas,
         },
       };
+
+      console.log(
+        '[EMAIL_ROUTE] Sending email via nodemailer to:',
+        emailData.to
+      );
 
       // Call email service to send results
       await sendResults(emailData);
