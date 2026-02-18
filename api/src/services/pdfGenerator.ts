@@ -1,8 +1,10 @@
 import { jsPDF } from 'jspdf';
 import {
   TestResult,
+  Question,
   QuestionOption,
   OrderingStep,
+  Answer,
 } from '../common/testTypes.js';
 import { questions } from '../common/questions.js';
 
@@ -86,7 +88,215 @@ function drawBar(
   }
 }
 
+// ... existing imports ...
+
+// ─── NEW STYLING CONSTANTS ───
+const CATEGORY_COLORS: Record<string, string> = {
+  logic: '#7c3aed', // Purple
+  behavioral: '#ef4444', // Red (or maybe blue based on preference, using Red for behavior/emotion)
+  affinity: '#3b82f6', // Blue
+};
+
+const CATEGORY_LABELS: Record<string, string> = {
+  logic: 'RACIOCÍNIO LÓGICO',
+  behavioral: 'PERFIL COMPORTAMENTAL',
+  affinity: 'AFINIDADE DE ÁREA',
+};
+
+// ... existing code ...
+
+function drawQuestionCard(
+  doc: jsPDF,
+  question: Question,
+  answer: Answer,
+  startY: number,
+  pageW: number,
+  pageH: number,
+  margin: number,
+  checkPageBreak: (h: number) => boolean
+): number {
+  const contentW = pageW - margin * 2;
+  let cursorY = startY;
+
+  // 1. Calculate height needed
+  doc.setFontSize(14);
+  doc.setFont('helvetica', 'bold');
+  const titleLines = doc.splitTextToSize(question.title, contentW);
+  const titleHeight = titleLines.length * 6;
+
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+  const descLines = doc.splitTextToSize(question.description || '', contentW);
+  const descHeight = descLines.length * 4;
+
+  // Options height calculation
+  let optionsHeight = 0;
+  const options = question.options || [];
+  const renderedOptions: {
+    lines: string | string[];
+    height: number;
+    id: string;
+  }[] = [];
+
+  if (options.length > 0) {
+    options.forEach((opt: QuestionOption) => {
+      doc.setFontSize(10);
+      doc.setFont('helvetica', 'normal');
+      // 30px for letter box, 10px padding
+      const textWidth = contentW - 50;
+      const lines = doc.splitTextToSize(opt.text, textWidth);
+      const h = Math.max(12, lines.length * 4 + 8); // Min height 12mm
+      renderedOptions.push({ lines, height: h, id: opt.id });
+      optionsHeight += h + 4; // 4mm gap
+    });
+  } else if (question.steps) {
+    // Ordering steps
+    question.steps.forEach(() => {
+      optionsHeight += 12; // Fixed height approx
+    });
+  }
+
+  const totalHeight =
+    15 + titleHeight + 5 + descHeight + 10 + optionsHeight + 10;
+
+  // 2. Check Page Break
+  if (checkPageBreak(totalHeight)) {
+    cursorY = 20; // Reset to top margin if new page
+  }
+
+  // 3. Draw Content
+
+  // Category Pill
+  const catColor = CATEGORY_COLORS[question.category] || COLORS.text;
+  const catLabel =
+    CATEGORY_LABELS[question.category] || question.category.toUpperCase();
+
+  doc.setFontSize(8);
+  doc.setFont('helvetica', 'bold');
+  const badgeW = doc.getTextWidth(catLabel) + 6;
+
+  setFillColor(doc, catColor);
+  doc.roundedRect(margin, cursorY, badgeW, 6, 3, 3, 'F');
+
+  setColor(doc, '#FFFFFF');
+  doc.text(catLabel, margin + 3, cursorY + 4.2);
+
+  cursorY += 10;
+
+  // Title
+  setColor(doc, COLORS.textBright);
+  doc.setFontSize(14);
+  doc.setFont('helvetica', 'bold');
+  doc.text(titleLines, margin, cursorY);
+  cursorY += titleHeight + 2;
+
+  // Description
+  setColor(doc, COLORS.text);
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'normal');
+  doc.text(descLines, margin, cursorY);
+  cursorY += descHeight + 8;
+
+  // Options
+  if (options.length > 0) {
+    renderedOptions.forEach((opt, idx) => {
+      const isSelected = answer.selectedOptionId === opt.id;
+      const letter = String.fromCharCode(65 + idx); // A, B, C...
+
+      // Card Background
+      if (isSelected) {
+        setDrawColor(doc, COLORS.primary);
+        doc.setLineWidth(0.5);
+        setFillColor(doc, COLORS.surface); // Keep dark background
+      } else {
+        setDrawColor(doc, COLORS.border);
+        doc.setLineWidth(0.2);
+        setFillColor(doc, COLORS.surface);
+      }
+
+      // Draw box
+      doc.roundedRect(margin, cursorY, contentW, opt.height, 2, 2, 'FD');
+
+      // Letter Box
+      const letterBoxSize = 8;
+      const letterBoxX = margin + 4;
+      const letterBoxY = cursorY + (opt.height - letterBoxSize) / 2;
+
+      if (isSelected) {
+        setFillColor(doc, COLORS.primary);
+        doc.roundedRect(
+          letterBoxX,
+          letterBoxY,
+          letterBoxSize,
+          letterBoxSize,
+          1,
+          1,
+          'F'
+        );
+        setColor(doc, '#000000'); // Black text on green
+        doc.setFont('helvetica', 'bold');
+      } else {
+        setFillColor(doc, '#30363D'); // Dark grey
+        doc.roundedRect(
+          letterBoxX,
+          letterBoxY,
+          letterBoxSize,
+          letterBoxSize,
+          1,
+          1,
+          'F'
+        );
+        setColor(doc, COLORS.text);
+        doc.setFont('helvetica', 'normal');
+      }
+
+      doc.setFontSize(9);
+      doc.text(letter, letterBoxX + 2.5, letterBoxY + 5.5);
+
+      // Text
+      if (isSelected) {
+        setColor(doc, COLORS.textBright);
+      } else {
+        setColor(doc, COLORS.text);
+      }
+      doc.setFontSize(10);
+      doc.text(opt.lines, margin + 18, cursorY + 5); // Align text
+
+      cursorY += opt.height + 4;
+    });
+  } else if (question.steps && answer.orderedStepIds) {
+    // Ordering Logic (Simplified for now, just list them)
+    answer.orderedStepIds.forEach((stepId: string, idx: number) => {
+      const step = question.steps!.find((s: OrderingStep) => s.id === stepId);
+      if (!step) return;
+
+      // const isCorrect = step.correctPosition === idx; // Simplification
+
+      setDrawColor(doc, COLORS.border);
+      doc.setLineWidth(0.2);
+      setFillColor(doc, COLORS.surface);
+
+      const h = 10;
+      doc.roundedRect(margin, cursorY, contentW, h, 2, 2, 'FD');
+
+      // Number
+      setFillColor(doc, COLORS.primary);
+      // Logic for ordering is complex visually, let's keep it simple: List with numbers
+      // Maybe highlighted if correct? The prompt didn't specify ordering details, assuming like multiple choice
+
+      setColor(doc, COLORS.text);
+      doc.setFontSize(10);
+      doc.text(`${idx + 1}. ${step.text}`, margin + 5, cursorY + 6.5);
+
+      cursorY += h + 3;
+    });
+  }
+
+  return cursorY + 5; // Return next Y with padding
+}
+
 export function generatePDFBuffer(result: TestResult): Buffer {
+  // ...
   const doc = new jsPDF('p', 'mm', 'a4');
   const pageW = doc.internal.pageSize.getWidth();
   const pageH = doc.internal.pageSize.getHeight();
@@ -440,70 +650,16 @@ export function generatePDFBuffer(result: TestResult): Buffer {
     const question = questions.find((q) => q.id === answer.questionId);
     if (!question) continue;
 
-    // Calculate heights
-    doc.setFontSize(9);
-    doc.setFont('helvetica', 'bold');
-    const titleLines = doc.splitTextToSize(question.title, contentW);
-    const titleHeight = titleLines.length * 4.5; // slightly more line height
-
-    let ansHeight = 0;
-    let ansLines: string | string[] = [];
-
-    doc.setFontSize(8);
-    doc.setFont('helvetica', 'normal');
-
-    if (answer.selectedOptionId && question.options) {
-      const opt = question.options.find(
-        (o: QuestionOption) => o.id === answer.selectedOptionId
-      );
-      if (opt) {
-        ansLines = doc.splitTextToSize(opt.text, contentW - 8);
-        ansHeight = ansLines.length * 4;
-      }
-    } else if (answer.orderedStepIds && question.steps) {
-      ansHeight = answer.orderedStepIds.length * 5;
-    }
-
-    const blockHeight = titleHeight + ansHeight + 15; // padding
-
-    checkPageBreak(blockHeight);
-
-    // Title
-    setColor(doc, COLORS.textBright);
-    doc.setFontSize(9);
-    doc.setFont('helvetica', 'bold');
-    doc.text(titleLines, margin, cursorY);
-    cursorY += titleHeight;
-
-    // Content
-    setColor(doc, COLORS.text);
-    doc.setFontSize(8);
-    doc.setFont('helvetica', 'normal');
-
-    if (answer.selectedOptionId) {
-      setColor(doc, COLORS.primary);
-      doc.text('>', margin, cursorY);
-      setColor(doc, COLORS.text);
-      doc.text(ansLines, margin + 6, cursorY);
-      cursorY += ansHeight;
-    } else if (answer.orderedStepIds && question.steps) {
-      answer.orderedStepIds.forEach((stepId, idx) => {
-        const step = question.steps!.find((s: OrderingStep) => s.id === stepId);
-        if (step) {
-          setColor(doc, COLORS.primary);
-          doc.text(`${idx + 1}.`, margin, cursorY);
-          setColor(doc, COLORS.text);
-          doc.text(step.text, margin + 8, cursorY);
-          cursorY += 5;
-        }
-      });
-    }
-
-    cursorY += 5;
-    setDrawColor(doc, COLORS.border);
-    doc.setLineWidth(0.1);
-    doc.line(margin, cursorY, pageW - margin, cursorY);
-    cursorY += 6;
+    cursorY = drawQuestionCard(
+      doc,
+      question,
+      answer,
+      cursorY,
+      pageW,
+      pageH,
+      margin,
+      checkPageBreak
+    );
   }
 
   drawFooter();
