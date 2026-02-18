@@ -155,15 +155,37 @@ export function generatePDFBuffer(result: TestResult): Buffer {
   cursorY += 7;
   doc.setFontSize(9);
   doc.text(result.userEmail, pageW / 2, cursorY, { align: 'center' });
+  cursorY += 5;
+  setColor(doc, COLORS.text);
+  doc.setFontSize(7);
+  doc.text(`ID: ${result.id}`, pageW / 2, cursorY, { align: 'center' });
 
-  cursorY += 25;
+  cursorY += 20;
+
+  // Profile Box
+  const profileBoxHeight = 40;
   setFillColor(doc, COLORS.surface);
-  doc.roundedRect(margin + 30, cursorY, contentW - 60, 40, 5, 5, 'F');
+  doc.roundedRect(
+    margin + 30,
+    cursorY,
+    contentW - 60,
+    profileBoxHeight,
+    5,
+    5,
+    'F'
+  );
   setDrawColor(doc, COLORS.primary);
   doc.setLineWidth(0.5);
-  doc.roundedRect(margin + 30, cursorY, contentW - 60, 40, 5, 5, 'S');
+  doc.roundedRect(
+    margin + 30,
+    cursorY,
+    contentW - 60,
+    profileBoxHeight,
+    5,
+    5,
+    'S'
+  );
 
-  // We'll just manually place text inside relative to box top
   let boxTextY = cursorY + 12;
 
   doc.setFontSize(10);
@@ -175,12 +197,67 @@ export function generatePDFBuffer(result: TestResult): Buffer {
   setColor(doc, COLORS.textBright);
   doc.setFontSize(20);
   doc.setFont('helvetica', 'bold');
-  // Emojis might not render well in standard fonts — consider stripping or using specific font.
-  // Standard helvetica usually ignores emoji or shows weird chars.
-  // For now, we try showing it. If it fails, we might need to remove it.
   doc.text(result.profile.label, pageW / 2, boxTextY, { align: 'center' });
 
-  cursorY += 40 + 30; // box height + spacing
+  cursorY += profileBoxHeight + 15;
+
+  // ─── INSERTED SECTIONS FROM PAGE 2 ───
+
+  // Description (Analysis)
+  setColor(doc, COLORS.text);
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'normal');
+  const descLines = doc.splitTextToSize(result.profile.description, contentW);
+  const descHeight = descLines.length * 4.5;
+
+  checkPageBreak(30 + descHeight);
+
+  setColor(doc, COLORS.primary);
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'bold');
+  doc.text('ANÁLISE DO PERFIL', margin, cursorY);
+  cursorY += 8;
+
+  setColor(doc, COLORS.text);
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'normal');
+  doc.text(descLines, margin, cursorY);
+  cursorY += descHeight + 10;
+
+  // Recommendation
+  doc.setFontSize(8);
+  const recLines = doc.splitTextToSize(
+    result.profile.recommendation,
+    contentW - 10
+  );
+  const recTextHeight = recLines.length * 4;
+  const boxHeight = Math.max(25, recTextHeight + 15);
+
+  checkPageBreak(boxHeight + 10);
+
+  setFillColor(doc, COLORS.surface);
+  doc.roundedRect(margin, cursorY, contentW, boxHeight, 3, 3, 'F');
+  setDrawColor(doc, COLORS.primary);
+  doc.setLineWidth(0.3);
+  doc.roundedRect(margin, cursorY, contentW, boxHeight, 3, 3, 'S');
+
+  const recStartY = cursorY;
+  cursorY += 8;
+  setColor(doc, COLORS.primary);
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'bold');
+  doc.text('PRÓXIMOS PASSOS RECOMENDADOS', margin + 5, cursorY);
+
+  cursorY += 6;
+  setColor(doc, COLORS.text);
+  doc.setFontSize(8);
+  doc.setFont('helvetica', 'normal');
+  doc.text(recLines, margin + 5, cursorY);
+
+  cursorY = recStartY + boxHeight + 15;
+
+  // ─────────────────────────────────────
+
   setColor(doc, COLORS.text);
   doc.setFontSize(8);
   doc.setFont('helvetica', 'normal');
@@ -189,6 +266,15 @@ export function generatePDFBuffer(result: TestResult): Buffer {
     month: 'long',
     year: 'numeric',
   });
+
+  // Position date at bottom of page if possible, else after content
+  const bottomDateY = pageH - 30;
+  if (cursorY < bottomDateY) {
+    cursorY = bottomDateY;
+  } else {
+    checkPageBreak(10);
+  }
+
   doc.text(`Gerado em ${dateStr}`, pageW / 2, cursorY, { align: 'center' });
 
   drawFooter();
@@ -314,29 +400,6 @@ export function generatePDFBuffer(result: TestResult): Buffer {
     }
   }
 
-  // Description
-  cursorY += 5;
-  setColor(doc, COLORS.text);
-  doc.setFontSize(9);
-  doc.setFont('helvetica', 'normal');
-  // Split text
-  const descLines = doc.splitTextToSize(result.profile.description, contentW);
-  const descHeight = descLines.length * 4.5; // Approx height
-
-  checkPageBreak(30 + descHeight);
-
-  setColor(doc, COLORS.primary);
-  doc.setFontSize(10);
-  doc.setFont('helvetica', 'bold');
-  doc.text('ANÁLISE DO PERFIL', margin, cursorY);
-  cursorY += 8;
-
-  setColor(doc, COLORS.text);
-  doc.setFontSize(9);
-  doc.setFont('helvetica', 'normal');
-  doc.text(descLines, margin, cursorY);
-  cursorY += descHeight + 8;
-
   // Strengths
   const strengthHeight = result.profile.strengths.length * 6;
   checkPageBreak(20 + strengthHeight);
@@ -355,39 +418,7 @@ export function generatePDFBuffer(result: TestResult): Buffer {
     cursorY += 6;
   });
 
-  // Recommendation
-  cursorY += 8;
-  doc.setFontSize(8);
-  const recLines = doc.splitTextToSize(
-    result.profile.recommendation,
-    contentW - 10
-  );
-  // Box height must accommodate text + padding
-  const recTextHeight = recLines.length * 4;
-  const boxHeight = Math.max(30, recTextHeight + 20);
-
-  checkPageBreak(boxHeight + 10);
-
-  setFillColor(doc, COLORS.surface);
-  doc.roundedRect(margin, cursorY, contentW, boxHeight, 3, 3, 'F');
-  setDrawColor(doc, COLORS.primary);
-  doc.setLineWidth(0.3);
-  doc.roundedRect(margin, cursorY, contentW, boxHeight, 3, 3, 'S');
-
-  const recStartY = cursorY;
-  cursorY += 8;
-  setColor(doc, COLORS.primary);
-  doc.setFontSize(9);
-  doc.setFont('helvetica', 'bold');
-  doc.text('PRÓXIMOS PASSOS RECOMENDADOS', margin + 5, cursorY);
-
-  cursorY += 6;
-  setColor(doc, COLORS.text);
-  doc.setFontSize(8);
-  doc.setFont('helvetica', 'normal');
-  doc.text(recLines, margin + 5, cursorY);
-
-  cursorY = recStartY + boxHeight + 10;
+  cursorY += 10;
 
   drawFooter();
 

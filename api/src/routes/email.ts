@@ -45,8 +45,8 @@ async function getTestResult(
   const behavioralPercent: Record<string, number> = {};
 
   if (storedJson.scores && storedJson.scores.areas) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     Object.entries(storedJson.scores.areas).forEach(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ([key, val]: [string, any]) => {
         areas[key] = val.raw || 0;
         areasPercent[key] = val.percent || 0;
@@ -55,8 +55,8 @@ async function getTestResult(
   }
 
   if (storedJson.scores && storedJson.scores.behavioral) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     Object.entries(storedJson.scores.behavioral).forEach(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ([key, val]: [string, any]) => {
         behavioral[key] = val.raw || 0;
         behavioralPercent[key] = val.percent || 0;
@@ -113,6 +113,8 @@ export async function emailRoutes(app: FastifyInstance) {
         name: testResult.userName,
         sessionId: _sessionId,
         profile: testResult.profile.label,
+        description: testResult.profile.description,
+        recommendation: testResult.profile.recommendation,
         scores: {
           technical: Math.round(
             (testResult.scores.areasPercent.frontend +

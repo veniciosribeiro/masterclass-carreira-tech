@@ -12,6 +12,8 @@ export interface EmailResults {
   name: string;
   sessionId: string;
   profile: string;
+  description: string;
+  recommendation: string;
   scores: {
     technical: number;
     behavioral: number;
@@ -19,6 +21,8 @@ export interface EmailResults {
   };
   pdfBuffer?: Buffer;
 }
+
+// ... (interfaces remain same) ...
 
 const emailTemplate = (data: EmailResults): string => {
   const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
@@ -47,8 +51,8 @@ const emailTemplate = (data: EmailResults): string => {
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
           }
           .header {
-            background: linear-gradient(135deg, #161B22 0%, #0D1117 100%);
-            padding: 40px 30px;
+            background-color: #0D1117; /* Darker header as per screenshot */
+            padding: 40px 30px 20px 30px;
             text-align: center;
             border-bottom: 2px solid #19e65e;
           }
@@ -81,7 +85,7 @@ const emailTemplate = (data: EmailResults): string => {
             background-color: #0D1117;
             border: 1px solid #30363D;
             border-radius: 8px;
-            padding: 24px;
+            padding: 30px; /* Increased padding */
             margin-bottom: 24px;
           }
           .profile-label {
@@ -92,32 +96,39 @@ const emailTemplate = (data: EmailResults): string => {
             margin-bottom: 8px;
           }
           .profile-value {
-            font-size: 28px;
+            font-size: 32px; /* Larger font */
             font-weight: 700;
             color: #FFFFFF;
-            margin: 0;
+            margin: 0 0 20px 0;
           }
-          .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid #30363D;
+          .separator {
+            border-top: 1px solid #30363D; 
+            margin: 20px 0;
           }
-          .stat-item {
-            display: flex;
-            flex-direction: column;
-          }
-          .stat-label {
-            font-size: 12px;
+          .stats-row {
+            margin-bottom: 15px;
+            font-size: 14px;
             color: #8B949E;
-            margin-bottom: 4px;
           }
-          .stat-value {
-            font-size: 18px;
-            font-weight: 600;
+          .stats-value {
+            font-size: 16px;
+            font-weight: 700;
             color: #19e65e;
+            margin-left: 8px;
+          }
+          .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #19e65e;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          }
+          .section-text {
+            font-size: 14px;
+            color: #C9D1D9;
+            line-height: 1.6;
           }
           .cta-container {
             text-align: center;
@@ -166,20 +177,24 @@ const emailTemplate = (data: EmailResults): string => {
               <div class="profile-label">Seu Perfil Principal</div>
               <h2 class="profile-value">${data.profile}</h2>
               
-              <div class="stats-grid">
-                <div class="stat-item">
-                  <span class="stat-label">Aptidão Técnica</span>
-                  <span class="stat-value">${data.scores.technical}%</span>
-                </div>
-                <div class="stat-item">
-                  <span class="stat-label">Perfil Comportamental</span>
-                  <span class="stat-value">${data.scores.behavioral}%</span>
-                </div>
+              <div class="stats-row">
+                Aptidão Técnica <span class="stats-value">${data.scores.technical}%</span>
               </div>
+              <div class="stats-row">
+                Perfil Comportamental <span class="stats-value">${data.scores.behavioral}%</span>
+              </div>
+
+              <div class="separator"></div>
+              
+              <div class="section-title">Análise do Perfil</div>
+              <p class="section-text">${data.description}</p>
+              
+              <div class="section-title">Próximos Passos Recomendados</div>
+              <p class="section-text">${data.recommendation}</p>
             </div>
 
             <p class="text">
-              O relatório PDF em anexo contém a análise detalhada de todas as suas respostas, sua afinidade com Front-end, Back-end e Dados/IA, além de recomendações personalizadas para sua carreira.
+              O relatório PDF em anexo contém a análise detalhada de todas as suas respostas, sua afinidade com Front-end, Back-end e Dados/IA.
             </p>
 
             <div class="cta-container">
