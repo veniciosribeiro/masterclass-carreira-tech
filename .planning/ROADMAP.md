@@ -118,3 +118,13 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 | 3. Git Hooks              | 0/1            | Not started | -         |
 | 4. CI Pipeline            | 0/1            | Not started | -         |
 | 5. Email Results          | 0/2            | Not started | -         |
+
+### Phase 6: Adicionar botão de Receber por E-mail na página de resultados de testes
+
+**Goal:** [To be planned]
+**Depends on:** Phase 5
+**Plans:** 1 plan
+
+Plans:
+
+- [x] 06-01-PLAN.md — Adicionar botão "Receber por E-mail" na tela de resultados e integrar com endpoint existente
