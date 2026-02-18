@@ -181,7 +181,7 @@ function drawQuestionCard(
   setColor(doc, '#FFFFFF');
   doc.text(catLabel, margin + 3, cursorY + 4.2);
 
-  cursorY += 16;
+  cursorY += 12;
 
   // Title
   setColor(doc, COLORS.textBright);
@@ -217,10 +217,13 @@ function drawQuestionCard(
       // Draw box
       doc.roundedRect(margin, cursorY, contentW, opt.height, 2, 2, 'FD');
 
-      // Letter Box
+      // Center Y of the card
+      const centerY = cursorY + opt.height / 2;
+
+      // Letter Box (Centered Vertically)
       const letterBoxSize = 8;
       const letterBoxX = margin + 4;
-      const letterBoxY = cursorY + (opt.height - letterBoxSize) / 2;
+      const letterBoxY = centerY - letterBoxSize / 2;
 
       if (isSelected) {
         setFillColor(doc, COLORS.primary);
@@ -250,17 +253,28 @@ function drawQuestionCard(
         doc.setFont('helvetica', 'normal');
       }
 
+      // Center letter inside box
       doc.setFontSize(9);
-      doc.text(letter, letterBoxX + 2.5, letterBoxY + 5.5);
+      doc.text(letter, letterBoxX + 2.5, letterBoxY + 5.5); // 5.5 offset seems fine for 8mm box
 
-      // Text
+      // Text (Vertically Centered)
       if (isSelected) {
         setColor(doc, COLORS.textBright);
       } else {
         setColor(doc, COLORS.text);
       }
       doc.setFontSize(10);
-      doc.text(opt.lines, margin + 18, cursorY + 5); // Align text
+
+      // Calculate text Y start position to center the block
+      const textLineHeight = 4;
+      const textBlockHeight =
+        typeof opt.lines === 'string'
+          ? textLineHeight
+          : opt.lines.length * textLineHeight;
+      // Heuristic: StartY = centerY - halfBlock + baselineOffset (approx 3mm for 10pt)
+      const textY = centerY - textBlockHeight / 2 + 3;
+
+      doc.text(opt.lines, margin + 18, textY);
 
       cursorY += opt.height + 4;
     });
