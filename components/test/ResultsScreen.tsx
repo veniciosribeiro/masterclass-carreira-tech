@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TestResult } from '../../test/testTypes';
 import { generatePDF } from '../../test/pdfGenerator';
 import { generateResultJSON } from '../../services/testService';
@@ -40,12 +40,28 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
   result,
   sessionId,
 }) => {
+  const [emailStatus, setEmailStatus] = useState<
+    'idle' | 'sending' | 'success' | 'error'
+  >('idle');
+
   const handleDownloadPDF = () => {
     generatePDF(result);
+  };
 
-    // Optionally send email with results
-    if (sessionId) {
-      sendEmailResult(sessionId).catch(console.error);
+  const handleSendEmail = async () => {
+    if (!sessionId) return;
+
+    setEmailStatus('sending');
+    try {
+      await sendEmailResult(sessionId);
+      setEmailStatus('success');
+
+      // Reset status after 3 seconds
+      setTimeout(() => setEmailStatus('idle'), 3000);
+    } catch (error) {
+      console.error('Error sending email:', error);
+      setEmailStatus('error');
+      setTimeout(() => setEmailStatus('idle'), 3000);
     }
   };
 
@@ -198,19 +214,58 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
         </div>
 
         {/* Download Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3">
-          <button
-            onClick={handleDownloadPDF}
-            className="flex-1 h-14 rounded-xl bg-primary hover:bg-green-400 text-[#0D1117] font-bold font-mono text-sm uppercase transition-all hover:scale-[1.02] shadow-[0_0_20px_rgba(25,230,94,0.2)] cursor-pointer flex items-center justify-center gap-2"
-          >
-            <span>📄</span> Baixar Relatório PDF
-          </button>
-          <button
-            onClick={handleDownloadJSON}
-            className="flex-1 h-14 rounded-xl border border-border-dark bg-surface-dark hover:border-primary/40 text-text-main font-mono text-sm transition-all hover:scale-[1.02] cursor-pointer flex items-center justify-center gap-2"
-          >
-            <span>📋</span> Baixar JSON Estruturado
-          </button>
+        {/* Actions */}
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button
+              onClick={handleDownloadPDF}
+              className="w-full sm:flex-1 h-14 px-6 rounded-xl bg-primary hover:bg-green-400 text-[#0D1117] font-bold font-mono text-sm uppercase transition-all hover:scale-[1.02] shadow-[0_0_20px_rgba(25,230,94,0.2)] cursor-pointer flex items-center justify-center gap-2"
+            >
+              <span>📄</span> Baixar Relatório PDF
+            </button>
+
+            <button
+              onClick={handleDownloadJSON}
+              className="w-full sm:flex-1 h-14 px-6 rounded-xl border border-border-dark bg-surface-dark hover:border-primary/40 text-text-main font-mono text-sm transition-all hover:scale-[1.02] cursor-pointer flex items-center justify-center gap-2"
+            >
+              <span>📋</span> Baixar JSON
+            </button>
+          </div>
+
+          {sessionId && (
+            <button
+              onClick={handleSendEmail}
+              disabled={emailStatus === 'sending' || emailStatus === 'success'}
+              className={`
+                w-full h-14 px-6 rounded-xl font-mono text-sm font-bold transition-all flex items-center justify-center gap-2
+                ${
+                  emailStatus === 'success'
+                    ? 'bg-green-500/20 text-green-400 border border-green-500/50 cursor-default'
+                    : emailStatus === 'error'
+                      ? 'bg-red-500/20 text-red-400 border border-red-500/50 hover:scale-[1.02] cursor-pointer'
+                      : 'bg-surface-dark border border-border-dark text-text-main hover:border-primary/40 hover:text-primary active:scale-95 hover:scale-[1.02] cursor-pointer'
+                }
+              `}
+            >
+              {emailStatus === 'sending' ? (
+                <>
+                  <span className="animate-spin">⏳</span> Enviando...
+                </>
+              ) : emailStatus === 'success' ? (
+                <>
+                  <span>✅</span> Enviado!
+                </>
+              ) : emailStatus === 'error' ? (
+                <>
+                  <span>❌</span> Erro. Tentar?
+                </>
+              ) : (
+                <>
+                  <span>✉️</span> Receber por E-mail
+                </>
+              )}
+            </button>
+          )}
         </div>
 
         {/* Footer branding */}

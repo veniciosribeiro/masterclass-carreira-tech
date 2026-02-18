@@ -39,13 +39,9 @@ export async function sendEmailResult(sessionId: string): Promise<void> {
   console.log('[SEND_EMAIL] Attempting to send email for session:', sessionId);
 
   try {
-    // Backend expects sessionId in URL, not body
-    const response = await fetch(
-      'http://localhost:4000/api/send-results/' + sessionId,
-      {
-        method: 'POST',
-      }
-    );
+    const response = await fetch(`${API_BASE}/send-results/${sessionId}`, {
+      method: 'POST',
+    });
 
     console.log(
       '[SEND_EMAIL] Response status:',
@@ -56,11 +52,15 @@ export async function sendEmailResult(sessionId: string): Promise<void> {
     if (!response.ok) {
       const errorText = await response.text().catch(() => 'Unknown error');
       console.error('[SEND_EMAIL] Failed to send email. Response:', errorText);
+      throw new Error(
+        `Failed to send email: ${response.status} ${response.statusText}`
+      );
     } else {
       console.log('[SEND_EMAIL] ✅ Email queued successfully');
     }
   } catch (err) {
     console.error('[SEND_EMAIL] ❌ Exception during email API call:', err);
+    throw err;
   }
 }
 
