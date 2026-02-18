@@ -4,6 +4,7 @@ export interface EmailData {
   to: string;
   subject: string;
   htmlBody: string;
+  attachments?: { filename: string; content: Buffer }[];
 }
 
 export interface EmailResults {
@@ -16,128 +17,181 @@ export interface EmailResults {
     behavioral: number;
     areas: string[];
   };
+  pdfBuffer?: Buffer;
 }
 
 const emailTemplate = (data: EmailResults): string => {
+  const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+
   return `
     <!DOCTYPE html>
     <html>
       <head>
+        <meta charset="utf-8">
         <style>
           body {
-            font-family: Helvetica, Arial, sans-serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             background-color: #0D1117;
             color: #C9D1D9;
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
           }
           .container {
             max-width: 600px;
-            margin: 0 auto;
+            margin: 40px auto;
             background-color: #161B22;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            border: 1px solid #30363D;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
           }
           .header {
-            background: linear-gradient(135deg, #19e65e 0%, #0D1117 100%);
-            padding: 30px;
-            border-radius: 8px 8px 0 0;
+            background: linear-gradient(135deg, #161B22 0%, #0D1117 100%);
+            padding: 40px 30px;
+            text-align: center;
+            border-bottom: 2px solid #19e65e;
           }
-          .header h1 {
-            margin: 0;
+          .logo-text {
+             font-family: monospace;
+             font-weight: 700;
+             font-size: 24px;
+             color: #FFFFFF;
+             letter-spacing: -0.5px;
+          }
+          .highlight {
             color: #19e65e;
-            font-size: 28px;
-            font-weight: 700;
           }
           .content {
-            padding: 30px;
+            padding: 40px 30px;
           }
           .greeting {
-            font-size: 20px;
-            margin-bottom: 20px;
+            font-size: 22px;
+            font-weight: 600;
+            color: #FFFFFF;
+            margin-bottom: 16px;
           }
-          .profile {
+          .text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #8B949E;
+            margin-bottom: 24px;
+          }
+          .card {
             background-color: #0D1117;
             border: 1px solid #30363D;
-            border-radius: 6px;
-            padding: 20px;
-            margin: 20px 0;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
           }
-          .profile-title {
+          .profile-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8B949E;
+            margin-bottom: 8px;
+          }
+          .profile-value {
+            font-size: 28px;
+            font-weight: 700;
             color: #FFFFFF;
-            margin: 0 0 10px 0;
-            font-size: 18px;
+            margin: 0;
           }
-          .score-breakdown {
-            margin: 20px 0;
+          .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #30363D;
           }
-          .score-item {
-            margin: 10px 0;
+          .stat-item {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
           }
-          .score-value {
+          .stat-label {
+            font-size: 12px;
+            color: #8B949E;
+            margin-bottom: 4px;
+          }
+          .stat-value {
+            font-size: 18px;
             font-weight: 600;
+            color: #19e65e;
+          }
+          .cta-container {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 20px;
           }
           .cta-button {
             display: inline-block;
             background-color: #19e65e;
             color: #0D1117;
-            padding: 15px 30px;
+            padding: 16px 32px;
             text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            margin-top: 20px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 16px;
+            transition: background-color 0.2s;
+          }
+          .cta-button:hover {
+            background-color: #12a843;
           }
           .footer {
-            padding: 20px;
+            background-color: #0D1117;
+            padding: 24px;
             text-align: center;
+            font-size: 12px;
+            color: #484F58;
             border-top: 1px solid #30363D;
-            font-size: 14px;
-            color: #8B949E;
           }
         </style>
       </head>
       <body>
         <div class="container">
           <div class="header">
-            <h1>Seus Resultados do TechCareer Test</h1>
+            <div class="logo-text">TechCareer <span class="highlight">Test Drive</span></div>
           </div>
           <div class="content">
-            <p class="greeting">Olá, ${data.name}!</p>
-            <p>Recebemos com carinho a sua participação no TechCareer Test. Seu resultado detalhado foi preparado e está disponível abaixo:</p>
-
-            <div class="profile">
-              <h2 class="profile-title">Seu Perfil Tech</h2>
-              <p style="margin: 0 0 10px 0; font-size: 22px; color: #FFFFFF;">${data.profile}</p>
-            </div>
-
-            <h2 style="color: #FFFFFF; margin: 20px 0;">Resumo dos Pontos</h2>
-
-            <div class="score-breakdown">
-              <div class="score-item">
-                <span>Áreas Técnicas:</span>
-                <span class="score-value">${data.scores.technical}%</span>
-              </div>
-              <div class="score-item">
-                <span>Comportamental:</span>
-                <span class="score-value">${data.scores.behavioral}%</span>
-              </div>
-            </div>
-
-            <p>Para visualizar sua análise completa e os detalhes técnicos, clique no botão abaixo:</p>
-
-            <a href="http://localhost:3000/teste/${data.sessionId}" class="cta-button">
-              Ver Relatório Completo
-            </a>
-
-            <p style="margin-top: 30px; font-size: 14px; color: #8B949E;">
-              Este email foi enviado automaticamente pelo TechCareer Test. Se tiver dúvidas, entre em contato conosco.
+            <div class="greeting">Olá, ${data.name}!</div>
+            <p class="text">
+              Parabéns por concluir o Test Drive da Carreira Tech! Seu relatório completo de aptidão foi gerado e <strong>está anexado neste e-mail (PDF).</strong>
             </p>
+            <p class="text">
+              Aqui está um resumo rápido do seu resultado:
+            </p>
+
+            <div class="card">
+              <div class="profile-label">Seu Perfil Principal</div>
+              <h2 class="profile-value">${data.profile}</h2>
+              
+              <div class="stats-grid">
+                <div class="stat-item">
+                  <span class="stat-label">Aptidão Técnica</span>
+                  <span class="stat-value">${data.scores.technical}%</span>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Perfil Comportamental</span>
+                  <span class="stat-value">${data.scores.behavioral}%</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="text">
+              O relatório PDF em anexo contém a análise detalhada de todas as suas respostas, sua afinidade com Front-end, Back-end e Dados/IA, além de recomendações personalizadas para sua carreira.
+            </p>
+
+            <div class="cta-container">
+              <a href="${frontendUrl}" class="cta-button">
+                Realizar Novo Teste
+              </a>
+            </div>
           </div>
 
           <div class="footer">
-            &copy; ${new Date().getFullYear()} TechCareer Test. Todos os direitos reservados.
+            &copy; ${new Date().getFullYear()} TechCareer Test. Todos os direitos reservados.<br>
+            Este e-mail foi enviado automaticamente.
           </div>
         </div>
       </body>
@@ -146,7 +200,7 @@ const emailTemplate = (data: EmailResults): string => {
 };
 
 async function sendEmail(data: EmailData): Promise<void> {
-  const { to, subject, htmlBody } = data;
+  const { to, subject, htmlBody, attachments } = data;
 
   // Validate email
   if (!to || !to.includes('@')) {
@@ -170,6 +224,7 @@ async function sendEmail(data: EmailData): Promise<void> {
       to,
       subject,
       html: htmlBody,
+      attachments,
     });
 
     console.log('Email sent successfully:', info.messageId);
@@ -181,10 +236,20 @@ async function sendEmail(data: EmailData): Promise<void> {
 
 async function sendResults(data: EmailResults): Promise<void> {
   const htmlBody = emailTemplate(data);
+  const attachments = data.pdfBuffer
+    ? [
+        {
+          filename: `Relatorio-Aptidao-${data.name.replace(/\s+/g, '-')}.pdf`,
+          content: data.pdfBuffer,
+        },
+      ]
+    : [];
+
   await sendEmail({
     to: data.to,
-    subject: 'Seus Resultados do TechCareer Test',
+    subject: 'Relatório de Aptidão - Masterclass da Carreira Tech',
     htmlBody,
+    attachments,
   });
 }
 
