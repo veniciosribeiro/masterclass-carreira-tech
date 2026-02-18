@@ -1,4 +1,4 @@
-import { Question } from './testTypes';
+import { Question } from './testTypes.js';
 
 export const questions: Question[] = [
   // ═══════════════════════════════════════════
