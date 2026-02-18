@@ -121,10 +121,11 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 ### Phase 6: Adicionar botão de Receber por E-mail na página de resultados de testes
 
-**Goal:** [To be planned]
+**Goal:** Botão de resultados dispara envio por e-mail sem erro de rota (POST /api/send-results/:sessionId)
 **Depends on:** Phase 5
-**Plans:** 1 plan
+**Plans:** 2 plans
 
 Plans:
 
 - [x] 06-01-PLAN.md — Adicionar botão "Receber por E-mail" na tela de resultados e integrar com endpoint existente
+- [ ] 06-02-PLAN.md — Corrigir mismatch de rota no backend (remover segmento duplicado /send-results)
