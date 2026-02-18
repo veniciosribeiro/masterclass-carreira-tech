@@ -11,30 +11,28 @@ services:
       POSTGRES_DB: ${POSTGRES_DB:-techcareer}
     volumes:
       - pgdata:/var/lib/postgresql/data
-      - ./supabase/init.sql:/docker-entrypoint-initdb.d/01-init.sql
+      - ./apps/backend/supabase/init.sql:/docker-entrypoint-initdb.d/01-init.sql
     healthcheck:
-      test:
-        [
-          'CMD-SHELL',
-          'pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-techcareer}',
-        ]
+      test: [ 'CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-techcareer}' ]
       start_period: 30s
       interval: 5s
       timeout: 5s
       retries: 20
 
   # ─── Fastify API ─────────────────────────────────────────
-  api:
-    build: ./api
-    container_name: techcareer-api
+  backend:
+    build:
+      context: .
+      dockerfile: apps/backend/Dockerfile
+    container_name: techcareer-backend
     restart: unless-stopped
     # Port exposed for direct access during development; in production
     # the frontend Nginx reverse-proxies /api → api:4000.
     ports:
-      - '${API_PORT:-4000}:4000'
+      - '${BACKEND_PORT:-4000}:4000'
     environment:
       DATABASE_URL: postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-techcareer}
-      JWT_SECRET: ${JWT_SECRET}
+      JWT_SECRET: ${JWT_SECRET:-_X-iYqwFNHF8VtANRxeA-5E-hgiR3PwboAm4HVBWoRQ}
       NODE_ENV: production
       PORT: 4000
     depends_on:
@@ -43,13 +41,15 @@ services:
 
   # ─── Frontend (Nginx + SPA) ────────────────────────────────
   frontend:
-    build: .
+    build:
+      context: .
+      dockerfile: apps/frontend/Dockerfile
     container_name: techcareer-frontend
     restart: unless-stopped
     ports:
-      - '${FRONTEND_PORT:-8080}:8080'
+      - '${FRONTEND_PORT:-3000}:3000'
     depends_on:
-      - api
+      - backend
 
 volumes:
   pgdata:

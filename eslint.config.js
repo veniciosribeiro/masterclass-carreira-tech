@@ -34,8 +34,8 @@ export default [
 
   // Frontend: React + TypeScript
   {
-    files: ['**/*.{js,jsx,ts,tsx}'],
-    ignores: ['api/**'],
+    files: ['apps/frontend/**/*.{js,jsx,ts,tsx}'],
+    ignores: ['apps/frontend/dist/**'],
 
     languageOptions: {
       parser: tseslint.parser,
@@ -48,6 +48,9 @@ export default [
       },
       globals: {
         ...globals.browser,
+      },
+      parserOptions: {
+        project: './apps/frontend/tsconfig.json',
       },
     },
 
@@ -65,7 +68,7 @@ export default [
       'import/resolver': {
         typescript: {
           alwaysTryTypes: true,
-          project: './tsconfig.json',
+          project: './apps/frontend/tsconfig.json',
         },
       },
     },
@@ -105,6 +108,7 @@ export default [
           jsx: 'never',
           ts: 'never',
           tsx: 'never',
+          css: 'always',
         },
       ],
       'import/order': 'off', // Disabled - false positives with sibling imports
@@ -114,14 +118,14 @@ export default [
 
   // Backend: Fastify + TypeScript (strict)
   {
-    files: ['api/**/*.{js,ts}'],
+    files: ['apps/backend/**/*.{js,ts}'],
 
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
-        project: join(__dirname, 'api/tsconfig.json'),
+        project: join(__dirname, 'apps/backend/tsconfig.json'),
       },
       globals: {
         ...globals.node,
@@ -137,7 +141,7 @@ export default [
       'import/resolver': {
         typescript: {
           alwaysTryTypes: true,
-          project: join(__dirname, 'api/tsconfig.json'),
+          project: join(__dirname, 'apps/backend/tsconfig.json'),
         },
       },
     },
