@@ -450,11 +450,9 @@ export function generatePDFBuffer(result: TestResult): Buffer {
     contentW - 10
   );
   const recTextHeight = recLines.length * 5; // 5mm per line at fontSize 10
-  // Total box: padding(8) + title1(7) + gap(4) + descText + gap(8) + divider(4) + title2(7) + gap(4) + recText + padding(8)
-  const unifiedBoxHeight = Math.max(
-    50,
-    8 + 7 + 4 + descHeight + 8 + 4 + 7 + 4 + recTextHeight + 8
-  );
+  // Total box: top(8) + title1(7) + gap(3) + descText + divider(8) + title2(7) + gap(3) + recText + bottom(8)
+  const unifiedBoxHeight =
+    8 + 7 + 3 + descHeight + 8 + 7 + 3 + recTextHeight + 8;
 
   // Draw unified box (always on page 1)
   setFillColor(doc, COLORS.surface);
@@ -477,13 +475,13 @@ export function generatePDFBuffer(result: TestResult): Buffer {
   doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
   doc.text(descLines, margin + 5, cursorY);
-  cursorY += descHeight + 6;
+  cursorY += descHeight + 3; // gap before divider
 
   // Divider line
   setDrawColor(doc, COLORS.border);
   doc.setLineWidth(0.2);
   doc.line(margin + 5, cursorY, margin + contentW - 5, cursorY);
-  cursorY += 6;
+  cursorY += 5; // gap after divider
 
   // Section 2: Próximos Passos
   setColor(doc, COLORS.primary);
@@ -496,6 +494,7 @@ export function generatePDFBuffer(result: TestResult): Buffer {
   doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
   doc.text(recLines, margin + 5, cursorY);
+  // No cursorY increment here — box height handles the bottom padding
 
   cursorY = boxStartY + unifiedBoxHeight + 15;
 
