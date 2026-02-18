@@ -1,0 +1,16 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: apps/backend/Dockerfile
+    container_name: techcareer-backend
+    restart: unless-stopped
+    ports:
+      - '${API_PORT:-4000}:4000'
+    environment:
+      # In Coolify, inject the internal database URL provided by the PostgreSQL resource
+      DATABASE_URL: ${DATABASE_URL}
+      JWT_SECRET: ${JWT_SECRET}
+      NODE_ENV: production
+      PORT: 4000
+    # No depends_on: postgres here, assuming DB is a separate resource in Coolify

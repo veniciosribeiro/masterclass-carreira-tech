@@ -1,0 +1,13 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: apps/frontend/Dockerfile
+    container_name: techcareer-frontend
+    restart: unless-stopped
+    ports:
+      - '${FRONTEND_PORT:-3000}:3000'
+    # API URL should be configured via environment variable if frontend needs it build-time or run-time
+    # For SPA + Nginx, we might need to proxy or bake env vars.
+    # Currently vite config proxies /api to localhost:4000, which works for local dev.
+    # For prod, Nginx usually handles routing or we assume strict separate domains.
