@@ -441,51 +441,63 @@ export function generatePDFBuffer(result: TestResult): Buffer {
   const descLines = doc.splitTextToSize(result.profile.description, contentW);
   const descHeight = descLines.length * 4.5;
 
-  checkPageBreak(30 + descHeight);
-
-  setColor(doc, COLORS.primary);
-  doc.setFontSize(10);
-  doc.setFont('helvetica', 'bold');
-  doc.text('ANÁLISE DO PERFIL', margin, cursorY);
-  cursorY += 8;
-
-  setColor(doc, COLORS.text);
-  doc.setFontSize(9);
-  doc.setFont('helvetica', 'normal');
-  doc.text(descLines, margin, cursorY);
-  cursorY += descHeight + 10;
-
-  // Recommendation
+  // Unified Analysis + Recommendation Box
   doc.setFontSize(8);
   const recLines = doc.splitTextToSize(
     result.profile.recommendation,
     contentW - 10
   );
   const recTextHeight = recLines.length * 4;
-  const boxHeight = Math.max(25, recTextHeight + 15);
+  // Total box: padding(8) + title1(7) + gap(4) + descText + gap(8) + divider(4) + title2(7) + gap(4) + recText + padding(8)
+  const unifiedBoxHeight = Math.max(
+    50,
+    8 + 7 + 4 + descHeight + 8 + 4 + 7 + 4 + recTextHeight + 8
+  );
 
-  checkPageBreak(boxHeight + 10);
+  checkPageBreak(unifiedBoxHeight + 10);
 
+  // Draw unified box
   setFillColor(doc, COLORS.surface);
-  doc.roundedRect(margin, cursorY, contentW, boxHeight, 3, 3, 'F');
+  doc.roundedRect(margin, cursorY, contentW, unifiedBoxHeight, 3, 3, 'F');
   setDrawColor(doc, COLORS.primary);
   doc.setLineWidth(0.3);
-  doc.roundedRect(margin, cursorY, contentW, boxHeight, 3, 3, 'S');
+  doc.roundedRect(margin, cursorY, contentW, unifiedBoxHeight, 3, 3, 'S');
 
-  const recStartY = cursorY;
+  const boxStartY = cursorY;
   cursorY += 8;
+
+  // Section 1: Análise do Perfil
+  setColor(doc, COLORS.primary);
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'bold');
+  doc.text('ANÁLISE DO PERFIL', margin + 5, cursorY);
+  cursorY += 7;
+
+  setColor(doc, COLORS.text);
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'normal');
+  doc.text(descLines, margin + 5, cursorY);
+  cursorY += descHeight + 6;
+
+  // Divider line
+  setDrawColor(doc, COLORS.border);
+  doc.setLineWidth(0.2);
+  doc.line(margin + 5, cursorY, margin + contentW - 5, cursorY);
+  cursorY += 6;
+
+  // Section 2: Próximos Passos
   setColor(doc, COLORS.primary);
   doc.setFontSize(9);
   doc.setFont('helvetica', 'bold');
   doc.text('PRÓXIMOS PASSOS RECOMENDADOS', margin + 5, cursorY);
+  cursorY += 7;
 
-  cursorY += 6;
   setColor(doc, COLORS.text);
   doc.setFontSize(8);
   doc.setFont('helvetica', 'normal');
   doc.text(recLines, margin + 5, cursorY);
 
-  cursorY = recStartY + boxHeight + 15;
+  cursorY = boxStartY + unifiedBoxHeight + 15;
 
   // ─────────────────────────────────────
 
@@ -645,7 +657,7 @@ export function generatePDFBuffer(result: TestResult): Buffer {
   doc.setFontSize(9);
   doc.setFont('helvetica', 'normal');
   result.profile.strengths.forEach((s) => {
-    doc.text(`✓  ${s}`, margin + 2, cursorY);
+    doc.text(`• ${s}`, margin + 2, cursorY);
     cursorY += 6;
   });
 
