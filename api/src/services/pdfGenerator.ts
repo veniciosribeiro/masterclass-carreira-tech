@@ -454,9 +454,7 @@ export function generatePDFBuffer(result: TestResult): Buffer {
     8 + 7 + 4 + descHeight + 8 + 4 + 7 + 4 + recTextHeight + 8
   );
 
-  checkPageBreak(unifiedBoxHeight + 10);
-
-  // Draw unified box
+  // Draw unified box (always on page 1)
   setFillColor(doc, COLORS.surface);
   doc.roundedRect(margin, cursorY, contentW, unifiedBoxHeight, 3, 3, 'F');
   setDrawColor(doc, COLORS.primary);
