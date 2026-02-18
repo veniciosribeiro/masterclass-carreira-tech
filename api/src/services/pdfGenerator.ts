@@ -379,16 +379,16 @@ export function generatePDFBuffer(result: TestResult): Buffer {
 
   cursorY += 15;
   setColor(doc, COLORS.text);
-  doc.setFontSize(12);
+  doc.setFontSize(13);
   doc.setFont('helvetica', 'normal');
   // Ensure text is sanitized for PDF
   doc.text(result.userName, pageW / 2, cursorY, { align: 'center' });
   cursorY += 7;
-  doc.setFontSize(9);
+  doc.setFontSize(10);
   doc.text(result.userEmail, pageW / 2, cursorY, { align: 'center' });
   cursorY += 5;
   setColor(doc, COLORS.text);
-  doc.setFontSize(7);
+  doc.setFontSize(9);
   doc.text(`ID: ${result.id}`, pageW / 2, cursorY, { align: 'center' });
 
   cursorY += 20;
@@ -434,20 +434,22 @@ export function generatePDFBuffer(result: TestResult): Buffer {
 
   // ─── INSERTED SECTIONS FROM PAGE 2 ───
 
-  // Description (Analysis)
-  setColor(doc, COLORS.text);
-  doc.setFontSize(9);
+  // Description (Analysis) — use fontSize 10 to match rendering
+  doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
-  const descLines = doc.splitTextToSize(result.profile.description, contentW);
-  const descHeight = descLines.length * 4.5;
+  const descLines = doc.splitTextToSize(
+    result.profile.description,
+    contentW - 10
+  );
+  const descHeight = descLines.length * 5; // 5mm per line at fontSize 10
 
-  // Unified Analysis + Recommendation Box
-  doc.setFontSize(8);
+  // Recommendation — use fontSize 10 to match rendering
+  doc.setFontSize(10);
   const recLines = doc.splitTextToSize(
     result.profile.recommendation,
     contentW - 10
   );
-  const recTextHeight = recLines.length * 4;
+  const recTextHeight = recLines.length * 5; // 5mm per line at fontSize 10
   // Total box: padding(8) + title1(7) + gap(4) + descText + gap(8) + divider(4) + title2(7) + gap(4) + recText + padding(8)
   const unifiedBoxHeight = Math.max(
     50,
@@ -466,13 +468,13 @@ export function generatePDFBuffer(result: TestResult): Buffer {
 
   // Section 1: Análise do Perfil
   setColor(doc, COLORS.primary);
-  doc.setFontSize(9);
+  doc.setFontSize(10);
   doc.setFont('helvetica', 'bold');
   doc.text('ANÁLISE DO PERFIL', margin + 5, cursorY);
   cursorY += 7;
 
   setColor(doc, COLORS.text);
-  doc.setFontSize(9);
+  doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
   doc.text(descLines, margin + 5, cursorY);
   cursorY += descHeight + 6;
@@ -485,13 +487,13 @@ export function generatePDFBuffer(result: TestResult): Buffer {
 
   // Section 2: Próximos Passos
   setColor(doc, COLORS.primary);
-  doc.setFontSize(9);
+  doc.setFontSize(10);
   doc.setFont('helvetica', 'bold');
   doc.text('PRÓXIMOS PASSOS RECOMENDADOS', margin + 5, cursorY);
   cursorY += 7;
 
   setColor(doc, COLORS.text);
-  doc.setFontSize(8);
+  doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
   doc.text(recLines, margin + 5, cursorY);
 
@@ -500,7 +502,7 @@ export function generatePDFBuffer(result: TestResult): Buffer {
   // ─────────────────────────────────────
 
   setColor(doc, COLORS.text);
-  doc.setFontSize(8);
+  doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
   const dateStr = new Date(result.timestamp).toLocaleDateString('pt-BR', {
     day: '2-digit',
@@ -652,7 +654,7 @@ export function generatePDFBuffer(result: TestResult): Buffer {
   cursorY += 8;
 
   setColor(doc, COLORS.text);
-  doc.setFontSize(9);
+  doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
   result.profile.strengths.forEach((s) => {
     doc.text(`• ${s}`, margin + 2, cursorY);
