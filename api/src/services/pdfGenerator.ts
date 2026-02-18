@@ -255,7 +255,14 @@ function drawQuestionCard(
 
       // Center letter inside box
       doc.setFontSize(9);
-      doc.text(letter, letterBoxX + 2.5, letterBoxY + 5.5); // 5.5 offset seems fine for 8mm box
+      // Center X: letterBoxX + size/2
+      // Center Y: letterBoxY + size/2 + approx cap-height/2 correction (1.5mm)
+      doc.text(
+        letter,
+        letterBoxX + letterBoxSize / 2,
+        letterBoxY + letterBoxSize / 2 + 1.2,
+        { align: 'center' }
+      );
 
       // Text (Vertically Centered)
       if (isSelected) {
