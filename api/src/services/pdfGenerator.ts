@@ -157,7 +157,7 @@ function drawQuestionCard(
   }
 
   const totalHeight =
-    15 + titleHeight + 5 + descHeight + 10 + optionsHeight + 10;
+    22 + titleHeight + 5 + descHeight + 10 + optionsHeight + 10;
 
   // 2. Check Page Break
   if (checkPageBreak(totalHeight)) {
@@ -181,7 +181,7 @@ function drawQuestionCard(
   setColor(doc, '#FFFFFF');
   doc.text(catLabel, margin + 3, cursorY + 4.2);
 
-  cursorY += 10;
+  cursorY += 16;
 
   // Title
   setColor(doc, COLORS.textBright);
