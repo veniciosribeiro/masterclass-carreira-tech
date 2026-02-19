@@ -61,8 +61,8 @@ services:
       - '${FRONTEND_PORT:-3000}:3000'
     environment:
       - API_UPSTREAM=http://backend:4000
-    depends_on:
-      - backend
+      #depends_on:
+      #- backend
 
 volumes:
   pgdata:
