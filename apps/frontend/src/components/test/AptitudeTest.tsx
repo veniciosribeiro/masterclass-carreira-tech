@@ -43,7 +43,65 @@ export const AptitudeTest: React.FC = () => {
 
     setPhase('restoring');
 
+    const mapSavedResultToTestResult = (saved: any): TestResult => ({
+      userName: saved.student?.name || '',
+      userEmail: saved.student?.email || '',
+      timestamp: saved.generatedAt || new Date().toISOString(),
+      answers: saved.answers || [],
+      profile: {
+        primary: saved.profile?.type || 'generalist',
+        label: saved.profile?.label || 'Perfil Técnico',
+        description: saved.profile?.description || '',
+        strengths: saved.profile?.strengths || [],
+        recommendation: saved.profile?.recommendation || '',
+        emoji: '🎯', // Default fallback since it's not saved
+      },
+      scores: {
+        areas: {
+          frontend: saved.scores?.areas?.frontend?.raw || 0,
+          backend: saved.scores?.areas?.backend?.raw || 0,
+          dataAI: saved.scores?.areas?.dataAI?.raw || 0,
+        },
+        areasPercent: {
+          frontend: saved.scores?.areas?.frontend?.percent || 0,
+          backend: saved.scores?.areas?.backend?.percent || 0,
+          dataAI: saved.scores?.areas?.dataAI?.percent || 0,
+        },
+        behavioral: {
+          resilience: saved.scores?.behavioral?.resilience?.raw || 0,
+          logic: saved.scores?.behavioral?.logic?.raw || 0,
+          proactivity: saved.scores?.behavioral?.proactivity?.raw || 0,
+        },
+        behavioralPercent: {
+          resilience: saved.scores?.behavioral?.resilience?.percent || 0,
+          logic: saved.scores?.behavioral?.logic?.percent || 0,
+          proactivity: saved.scores?.behavioral?.proactivity?.percent || 0,
+        },
+      },
+    });
+
     const restore = async () => {
+      const API =
+        (import.meta as { env: Record<string, string> }).env.VITE_API_URL ||
+        '/api';
+
+      // ── Fast path: /resultado URL → fetch saved result directly (no JWT needed) ──
+      if (step === 'resultado') {
+        try {
+          const res = await fetch(`${API}/results/by-session/${sessionId}`);
+          if (res.ok) {
+            const savedResult = await res.json();
+            setCurrentSessionId(sessionId);
+            setResult(mapSavedResultToTestResult(savedResult));
+            setPhase('results');
+            return;
+          }
+        } catch {
+          // fall through to session-based restore below
+        }
+      }
+
+      // ── Normal path: restore in-progress session (requires JWT) ──
       const session = await getSession(sessionId);
 
       if (!session) {
@@ -56,16 +114,13 @@ export const AptitudeTest: React.FC = () => {
       if (session.status === 'completed') {
         // Session already completed — try to recover the saved result
         try {
-          const API =
-            (import.meta as { env: Record<string, string> }).env.VITE_API_URL ||
-            '/api';
           const res = await fetch(`${API}/results/by-session/${sessionId}`);
           if (res.ok) {
-            const savedResult: TestResult = await res.json();
+            const savedResult = await res.json();
             setCurrentSessionId(session.session_id);
             setUserName(session.user_name || '');
             setUserEmail(session.user_email || '');
-            setResult(savedResult);
+            setResult(mapSavedResultToTestResult(savedResult));
             setPhase('results');
             return;
           }
