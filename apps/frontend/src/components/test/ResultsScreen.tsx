@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { TestResult } from '../../test/testTypes';
-import { generatePDF } from '../../test/pdfGenerator';
+// generatePDF import removed
 import { generateResultJSON } from '../../services/testService';
-import { sendEmailResult } from '../../services/apiClient';
+import { sendEmailResult, getPublicPdfUrl } from '../../services/apiClient';
 
 interface ResultsScreenProps {
   result: TestResult;
@@ -45,7 +45,12 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
   >('idle');
 
   const handleDownloadPDF = () => {
-    generatePDF(result);
+    if (!sessionId) {
+      alert('Sessão não encontrada para gerar PDF.');
+      return;
+    }
+    const url = getPublicPdfUrl(sessionId);
+    window.open(url, '_blank');
   };
 
   const handleSendEmail = async () => {

@@ -64,6 +64,10 @@ export async function sendEmailResult(sessionId: string): Promise<void> {
   }
 }
 
+export const getPublicPdfUrl = (sessionId: string) => {
+  return `${API_BASE}/public/results/${sessionId}/pdf`;
+};
+
 /**
  * Centralized HTTP client for the Fastify API.
  * Automatically injects the JWT Authorization header when available.
