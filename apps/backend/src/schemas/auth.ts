@@ -1,7 +1,7 @@
-import { Type, type Static } from '@sinclair/typebox';
+import { Type, type Static } from "@sinclair/typebox";
 
 export const ValidateEmailBody = Type.Object({
-  email: Type.String({ format: 'email' }),
+  email: Type.String({ format: "email" }),
 });
 
 export type ValidateEmailBodyType = Static<typeof ValidateEmailBody>;

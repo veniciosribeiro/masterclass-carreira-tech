@@ -1,15 +1,15 @@
-import fp from 'fastify-plugin';
-import { PrismaClient } from '@prisma/client';
-import type { FastifyInstance } from 'fastify';
+import fp from "fastify-plugin";
+import { PrismaClient } from "@prisma/client";
+import type { FastifyInstance } from "fastify";
 
-declare module 'fastify' {
+declare module "fastify" {
   interface FastifyInstance {
     prisma: PrismaClient;
   }
 }
 
-import { Pool } from 'pg';
-import { PrismaPg } from '@prisma/adapter-pg';
+import { Pool } from "pg";
+import { PrismaPg } from "@prisma/adapter-pg";
 
 export const prismaPlugin = fp(async (app: FastifyInstance) => {
   const connectionString = `${process.env.DATABASE_URL}`;
@@ -18,12 +18,12 @@ export const prismaPlugin = fp(async (app: FastifyInstance) => {
   const prisma = new PrismaClient({ adapter });
 
   await prisma.$connect();
-  app.log.info('Prisma connected to database');
+  app.log.info("Prisma connected to database");
 
-  app.decorate('prisma', prisma);
+  app.decorate("prisma", prisma);
 
-  app.addHook('onClose', async () => {
+  app.addHook("onClose", async () => {
     await prisma.$disconnect();
-    app.log.info('Prisma disconnected');
+    app.log.info("Prisma disconnected");
   });
 });

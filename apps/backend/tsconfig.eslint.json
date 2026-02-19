@@ -1,15 +1,15 @@
 {
-    "extends": "./tsconfig.json",
-    "compilerOptions": {
-        "allowJs": true,
-        "noEmit": true,
-        "rootDir": "."
-    },
-    "include": [
-        "src/**/*",
-        "scripts/**/*",
-        "prisma/**/*",
-        "prisma.config.ts",
-        "esbuild.config.cjs"
-    ]
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "noEmit": true,
+    "rootDir": "."
+  },
+  "include": [
+    "src/**/*",
+    "scripts/**/*",
+    "prisma/**/*",
+    "prisma.config.ts",
+    "esbuild.config.cjs"
+  ]
 }

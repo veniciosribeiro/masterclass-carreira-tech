@@ -1,6 +1,6 @@
-export type QuestionType = 'multiple_choice' | 'ordering';
+export type QuestionType = "multiple_choice" | "ordering";
 
-export type AreaKey = 'frontend' | 'backend' | 'dataAI';
+export type AreaKey = "frontend" | "backend" | "dataAI";
 
 export interface AreaWeights {
   frontend: number;
@@ -29,7 +29,7 @@ export interface OrderingStep {
 export interface Question {
   id: string;
   type: QuestionType;
-  category: 'logic' | 'affinity' | 'behavioral';
+  category: "logic" | "affinity" | "behavioral";
   title: string;
   description?: string;
   /** For multiple_choice questions */
@@ -74,13 +74,13 @@ export interface NormalizedScores {
 }
 
 export type ProfileType =
-  | 'frontend'
-  | 'backend'
-  | 'dataAI'
-  | 'frontend_backend'
-  | 'frontend_dataAI'
-  | 'backend_dataAI'
-  | 'generalist';
+  | "frontend"
+  | "backend"
+  | "dataAI"
+  | "frontend_backend"
+  | "frontend_dataAI"
+  | "backend_dataAI"
+  | "generalist";
 
 export interface ProfileResult {
   primary: ProfileType;
