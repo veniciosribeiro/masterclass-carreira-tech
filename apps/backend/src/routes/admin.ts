@@ -49,6 +49,21 @@ export async function adminRoutes(app: FastifyInstance) {
     },
   );
 
+  // GET /api/admin/results/:id — Full result detail (for admin student profile page)
+  app.get<{ Params: { id: string } }>(
+    '/results/:id',
+    async (request, reply) => {
+      const { id } = request.params;
+      const { getTestResultById } =
+        await import('../services/resultService.js');
+      const result = await getTestResultById(app, id);
+      if (!result) {
+        return reply.code(404).send({ error: 'Result not found' });
+      }
+      return reply.send(result);
+    },
+  );
+
   app.post<{ Body: AddEmailBodyType }>(
     '/emails',
     {

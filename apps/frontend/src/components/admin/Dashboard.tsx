@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
 import { getProfileLabel, getProfileEmoji } from '../../test/profileLabels';
@@ -22,6 +23,8 @@ interface DashboardData {
 }
 
 export const AdminDashboard: React.FC = () => {
+  const navigate = useNavigate();
+
   // Auth State
   const [authHeader, setAuthHeader] = useState<string | null>(
     localStorage.getItem('admin_auth')
@@ -350,7 +353,16 @@ export const AdminDashboard: React.FC = () => {
                           )}
                         </span>
                       </td>
-                      <td className="p-4 font-medium">{result.userName}</td>
+                      <td className="p-4 font-medium">
+                        <button
+                          onClick={() =>
+                            navigate(`/admin/resultado/${result.id}`)
+                          }
+                          className="text-left hover:text-primary transition-colors underline decoration-dotted underline-offset-2 cursor-pointer bg-transparent border-none font-medium font-inherit text-inherit"
+                        >
+                          {result.userName}
+                        </button>
+                      </td>
                       <td className="p-4 text-gray-400">{result.userEmail}</td>
                       <td className="p-4">
                         <span
@@ -417,7 +429,7 @@ export const AdminDashboard: React.FC = () => {
                           className="text-primary hover:underline text-sm font-medium bg-transparent border-none cursor-pointer"
                           title="Baixar PDF"
                         >
-                          Ver PDF
+                          Baixar PDF
                         </button>
                       </td>
                     </tr>

@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { LandingPage } from './components/LandingPage';
 import { LandingPageV2 } from './components/v2/LandingPageV2';
 import { AdminDashboard } from './components/admin/Dashboard';
+import { AdminResultDetail } from './components/admin/AdminResultDetail';
 
 const AptitudeTest = React.lazy(() =>
   import('./components/test/AptitudeTest').then((m) => ({
@@ -42,6 +43,7 @@ const App: React.FC = () => {
         }
       />
       <Route path="/admin" element={<AdminDashboard />} />
+      <Route path="/admin/resultado/:id" element={<AdminResultDetail />} />
     </Routes>
   );
 };
