@@ -342,6 +342,18 @@ export function generatePDFBuffer(result: TestResult): Buffer {
     return false;
   }
 
+  function forceNewPage() {
+    if (cursorY > 25) {
+      // Only break if we've actually written content on this page
+      drawFooter();
+      doc.addPage();
+      drawBackground(doc);
+      setFillColor(doc, COLORS.primary);
+      doc.rect(0, 0, pageW, 3, 'F');
+      cursorY = 20;
+    }
+  }
+
   function drawFooter() {
     setColor(doc, COLORS.text);
     doc.setFontSize(7);
@@ -454,14 +466,16 @@ export function generatePDFBuffer(result: TestResult): Buffer {
   const unifiedBoxHeight =
     8 + 7 + 3 + descHeight + 8 + 7 + 3 + recTextHeight + 8;
 
-  // Draw unified box (always on page 1)
+  // Ensure it fits on the current page, otherwise move it entirely to the next page
+  checkPageBreak(unifiedBoxHeight);
+
+  // Draw unified box
+  const boxStartY = cursorY;
   setFillColor(doc, COLORS.surface);
   doc.roundedRect(margin, cursorY, contentW, unifiedBoxHeight, 3, 3, 'F');
   setDrawColor(doc, COLORS.primary);
   doc.setLineWidth(0.3);
   doc.roundedRect(margin, cursorY, contentW, unifiedBoxHeight, 3, 3, 'S');
-
-  const boxStartY = cursorY;
   cursorY += 8;
 
   // Section 1: Análise do Perfil
@@ -518,15 +532,10 @@ export function generatePDFBuffer(result: TestResult): Buffer {
   }
 
   doc.text(`Gerado em ${dateStr}`, pageW / 2, cursorY, { align: 'center' });
-
-  drawFooter();
+  cursorY += 10;
 
   // ═══════ PAGE 2: ANALYSIS ═══════
-  doc.addPage();
-  drawBackground(doc);
-  setFillColor(doc, COLORS.primary);
-  doc.rect(0, 0, pageW, 3, 'F');
-  cursorY = 20;
+  forceNewPage();
 
   // Scores
   checkPageBreak(50);
@@ -665,11 +674,7 @@ export function generatePDFBuffer(result: TestResult): Buffer {
   drawFooter();
 
   // ═══════ PAGE 3: ANSWERS ═══════
-  doc.addPage();
-  drawBackground(doc);
-  setFillColor(doc, COLORS.primary);
-  doc.rect(0, 0, pageW, 3, 'F');
-  cursorY = 20;
+  forceNewPage();
 
   checkPageBreak(20);
   setColor(doc, COLORS.primary);
