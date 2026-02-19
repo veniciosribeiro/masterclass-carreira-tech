@@ -183,13 +183,17 @@ export async function completeSession(sessionId: string): Promise<boolean> {
  * Saves the test result to the backend.
  * Returns true if saved successfully, false on error.
  */
-export async function saveTestResult(result: TestResult): Promise<boolean> {
+export async function saveTestResult(
+  result: TestResult,
+  sessionId?: string | null
+): Promise<boolean> {
   const resultJSON = generateResultJSON(result);
 
   try {
     await apiFetch('/results', {
       method: 'POST',
       body: JSON.stringify({
+        sessionId: sessionId ?? undefined,
         userName: result.userName,
         userEmail: result.userEmail,
         answers: result.answers,

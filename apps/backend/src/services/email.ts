@@ -198,8 +198,8 @@ const emailTemplate = (data: EmailResults): string => {
             </p>
 
             <div class="cta-container">
-              <a href="${frontendUrl}" class="cta-button">
-                Realizar Novo Teste
+              <a href="${frontendUrl}/teste/${data.sessionId}/resultado" class="cta-button">
+                Ver Resultado Online
               </a>
             </div>
           </div>

@@ -43,7 +43,9 @@ export const AptitudeTest: React.FC = () => {
 
     setPhase('restoring');
 
-    getSession(sessionId).then((session) => {
+    const restore = async () => {
+      const session = await getSession(sessionId);
+
       if (!session) {
         // Invalid session — go to welcome
         navigate('/teste', { replace: true });
@@ -52,7 +54,24 @@ export const AptitudeTest: React.FC = () => {
       }
 
       if (session.status === 'completed') {
-        // Already completed — go to welcome for new attempt
+        // Session already completed — try to recover the saved result
+        try {
+          const API =
+            (import.meta as { env: Record<string, string> }).env.VITE_API_URL ||
+            '/api';
+          const res = await fetch(`${API}/results/by-session/${sessionId}`);
+          if (res.ok) {
+            const savedResult: TestResult = await res.json();
+            setCurrentSessionId(session.session_id);
+            setUserName(session.user_name || '');
+            setUserEmail(session.user_email || '');
+            setResult(savedResult);
+            setPhase('results');
+            return;
+          }
+        } catch {
+          // Fallback to welcome if recovery fails
+        }
         navigate('/teste', { replace: true });
         setPhase('welcome');
         return;
@@ -73,7 +92,9 @@ export const AptitudeTest: React.FC = () => {
       } else {
         setPhase('questions');
       }
-    });
+    };
+
+    restore();
   }, [sessionId, currentSessionId, navigate, step]);
 
   const handleStart = useCallback(
@@ -136,7 +157,7 @@ export const AptitudeTest: React.FC = () => {
       };
 
       setResult(testResult);
-      saveTestResult(testResult).catch(console.error);
+      saveTestResult(testResult, currentSessionId).catch(console.error);
     },
     [userName, userEmail, currentSessionId, navigate]
   );
