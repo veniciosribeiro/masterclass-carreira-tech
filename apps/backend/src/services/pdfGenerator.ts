@@ -462,9 +462,9 @@ export function generatePDFBuffer(result: TestResult): Buffer {
     contentW - 10,
   );
   const recTextHeight = recLines.length * 5; // 5mm per line at fontSize 10
-  // Total box: top(5) + title1(7) + gap(3) + descText + divider(5) + title2(7) + gap(3) + recText + bottom(4)
+  // Total box: top(8) + title1(7) + gap(3) + descText + divider(6) + title2(7) + gap(3) + recText + bottom(2)
   const unifiedBoxHeight =
-    5 + 7 + 3 + descHeight + 5 + 7 + 3 + recTextHeight + 4;
+    8 + 7 + 3 + descHeight + 6 + 7 + 3 + recTextHeight + 2;
 
   // Ensure it fits on the current page, otherwise move it entirely to the next page
   checkPageBreak(unifiedBoxHeight);
@@ -476,7 +476,7 @@ export function generatePDFBuffer(result: TestResult): Buffer {
   setDrawColor(doc, COLORS.primary);
   doc.setLineWidth(0.3);
   doc.roundedRect(margin, cursorY, contentW, unifiedBoxHeight, 3, 3, 'S');
-  cursorY += 5; // top padding
+  cursorY += 8; // top padding
 
   // Section 1: Análise do Perfil
   setColor(doc, COLORS.primary);
@@ -489,7 +489,7 @@ export function generatePDFBuffer(result: TestResult): Buffer {
   doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
   doc.text(descLines, margin + 5, cursorY);
-  cursorY += descHeight + 2; // gap before divider
+  cursorY += descHeight + 3; // gap before divider
 
   // Divider line
   setDrawColor(doc, COLORS.border);
