@@ -1,12 +1,12 @@
-import type { FastifyInstance } from "fastify";
-import { AddEmailBody, type AddEmailBodyType } from "../schemas/admin.js";
+import type { FastifyInstance } from 'fastify';
+import { AddEmailBody, type AddEmailBodyType } from '../schemas/admin.js';
 
 export async function adminRoutes(app: FastifyInstance) {
   // Protect all routes in this scope with Basic Auth
-  app.addHook("preHandler", app.basicAuth);
+  app.addHook('preHandler', app.basicAuth);
 
   app.post<{ Body: AddEmailBodyType }>(
-    "/emails",
+    '/emails',
     {
       schema: {
         body: AddEmailBody,
@@ -23,9 +23,9 @@ export async function adminRoutes(app: FastifyInstance) {
 
       if (existing) {
         return reply.code(200).send({
-          message: "Email already registered",
+          message: 'Email already registered',
           email: existing.email,
-          status: existing.active ? "active" : "inactive",
+          status: existing.active ? 'active' : 'inactive',
           created_at: existing.createdAt,
         });
       }
@@ -40,9 +40,9 @@ export async function adminRoutes(app: FastifyInstance) {
       });
 
       return reply.code(201).send({
-        message: "Email authorized successfully",
+        message: 'Email authorized successfully',
         email: newEmail.email,
-        status: "active",
+        status: 'active',
         created_at: newEmail.createdAt,
       });
     },

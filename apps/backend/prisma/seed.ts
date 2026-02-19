@@ -1,7 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 
-import { Pool } from "pg";
-import { PrismaPg } from "@prisma/adapter-pg";
+import { Pool } from 'pg';
+import { PrismaPg } from '@prisma/adapter-pg';
 
 const connectionString = `${process.env.DATABASE_URL}`;
 const pool = new Pool({ connectionString });
@@ -9,10 +9,10 @@ const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
 
 async function main() {
-  console.log("Start seeding ...");
+  console.log('Start seeding ...');
 
-  const email = "mvrdutra@gmail.com";
-  const name = "Venicios Ribeiro";
+  const email = 'mvrdutra@gmail.com';
+  const name = 'Venicios Ribeiro';
 
   const user = await prisma.authorizedEmail.upsert({
     where: { email },
@@ -25,7 +25,7 @@ async function main() {
   });
 
   console.log(`Created authorized email: ${user.email}`);
-  console.log("Seeding finished.");
+  console.log('Seeding finished.');
 }
 
 main()

@@ -1,4 +1,4 @@
-import nodemailer from "nodemailer";
+import nodemailer from 'nodemailer';
 
 export interface EmailData {
   to: string;
@@ -25,7 +25,7 @@ export interface EmailResults {
 // ... (interfaces remain same) ...
 
 const emailTemplate = (data: EmailResults): string => {
-  const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+  const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
 
   return `
     <!DOCTYPE html>
@@ -218,34 +218,34 @@ async function sendEmail(data: EmailData): Promise<void> {
   const { to, subject, htmlBody, attachments } = data;
 
   // Validate email
-  if (!to || !to.includes("@")) {
+  if (!to || !to.includes('@')) {
     throw new Error(`Invalid email address: ${to}`);
   }
 
   // Create transporter with SMTP configuration
   const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST || "smtp.gmail.com",
+    host: process.env.SMTP_HOST || 'smtp.gmail.com',
     port: Number(process.env.SMTP_PORT) || 587,
-    secure: process.env.SMTP_SECURE === "true",
+    secure: process.env.SMTP_SECURE === 'true',
     auth: {
-      user: process.env.SMTP_USER || "",
-      pass: process.env.SMTP_PASS || "",
+      user: process.env.SMTP_USER || '',
+      pass: process.env.SMTP_PASS || '',
     },
   });
 
   try {
     const info = await transporter.sendMail({
-      from: process.env.SMTP_FROM || "noreply@techcareer.com",
+      from: process.env.SMTP_FROM || 'noreply@techcareer.com',
       to,
       subject,
       html: htmlBody,
       attachments,
     });
 
-    console.log("Email sent successfully:", info.messageId);
+    console.log('Email sent successfully:', info.messageId);
   } catch (error) {
-    console.error("Email send error:", error);
-    throw new Error("Failed to send email");
+    console.error('Email send error:', error);
+    throw new Error('Failed to send email');
   }
 }
 
@@ -254,7 +254,7 @@ async function sendResults(data: EmailResults): Promise<void> {
   const attachments = data.pdfBuffer
     ? [
         {
-          filename: `Relatorio-Aptidao-${data.name.replace(/\s+/g, "-")}.pdf`,
+          filename: `Relatorio-Aptidao-${data.name.replace(/\s+/g, '-')}.pdf`,
           content: data.pdfBuffer,
         },
       ]
@@ -262,7 +262,7 @@ async function sendResults(data: EmailResults): Promise<void> {
 
   await sendEmail({
     to: data.to,
-    subject: "Relatório de Aptidão - Masterclass da Carreira Tech",
+    subject: 'Relatório de Aptidão - Masterclass da Carreira Tech',
     htmlBody,
     attachments,
   });

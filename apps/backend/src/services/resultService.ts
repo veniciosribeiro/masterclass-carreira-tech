@@ -1,5 +1,5 @@
-import type { FastifyInstance } from "fastify";
-import { TestResult } from "../common/testTypes.js";
+import type { FastifyInstance } from 'fastify';
+import { TestResult } from '../common/testTypes.js';
 
 export async function getTestResult(
   app: FastifyInstance,
@@ -18,7 +18,7 @@ export async function getTestResult(
   // 2. Fetch the latest TestResult for this user
   const result = await app.prisma.testResult.findFirst({
     where: { userEmail: session.userEmail },
-    orderBy: { createdAt: "desc" },
+    orderBy: { createdAt: 'desc' },
   });
 
   if (!result) {

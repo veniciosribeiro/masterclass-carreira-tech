@@ -1,4 +1,4 @@
-import { Type, type Static } from "@sinclair/typebox";
+import { Type, type Static } from '@sinclair/typebox';
 
 // --- Create Session ---
 export const CreateSessionBody = Type.Object({
@@ -20,7 +20,7 @@ export type SaveProgressBodyType = Static<typeof SaveProgressBody>;
 
 // --- Params with session ID ---
 export const SessionParams = Type.Object({
-  id: Type.String({ format: "uuid" }),
+  id: Type.String({ format: 'uuid' }),
 });
 
 export type SessionParamsType = Static<typeof SessionParams>;
