@@ -1,25 +1,34 @@
 {
-    "name": "techcareer-monorepo",
-    "private": true,
-    "type": "module",
-    "workspaces": [
-        "apps/*"
+  "name": "techcareer-monorepo",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:frontend": "npm run dev -w @techcareer/frontend",
+    "dev:backend": "npm run dev -w @techcareer/backend",
+    "build": "npm run build --workspaces",
+    "lint": "npm run lint --workspaces",
+    "format": "npm run format --workspaces",
+    "format:check": "npm run format:check --workspaces",
+    "test": "npm run test --workspaces",
+    "typecheck": "npm run typecheck --workspaces",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.2",
+    "prettier": "3.8.1",
+    "eslint": "^9.39.2"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
     ],
-    "scripts": {
-        "dev:frontend": "npm run dev -w @techcareer/frontend",
-        "dev:backend": "npm run dev -w @techcareer/backend",
-        "build": "npm run build --workspaces",
-        "lint": "npm run lint --workspaces",
-        "format": "npm run format --workspaces",
-        "format:check": "npm run format:check --workspaces",
-        "test": "npm run test --workspaces",
-        "typecheck": "npm run typecheck --workspaces",
-        "prepare": "husky"
-    },
-    "devDependencies": {
-        "husky": "^9.1.7",
-        "lint-staged": "^15.5.2",
-        "prettier": "3.8.1",
-        "eslint": "^9.39.2"
-    }
+    "*.{json,css,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  }
 }
