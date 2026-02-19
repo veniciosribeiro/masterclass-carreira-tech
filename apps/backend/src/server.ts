@@ -11,6 +11,7 @@ import { resultRoutes } from './routes/results.js';
 import { emailRoutes } from './routes/email.js';
 import { adminRoutes } from './routes/admin.js';
 import { publicRoutes } from './routes/public.js';
+import { healthRoutes } from './routes/health.js';
 
 const app = Fastify({
   logger: {
@@ -34,6 +35,7 @@ const start = async () => {
     await app.register(basicAuthPlugin);
 
     // --- Routes ---
+    await app.register(healthRoutes);
     await app.register(authRoutes, { prefix: '/api/auth' });
     await app.register(sessionRoutes, { prefix: '/api/sessions' });
     await app.register(resultRoutes, { prefix: '/api/results' });
