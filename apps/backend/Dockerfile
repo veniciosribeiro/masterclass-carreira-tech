@@ -32,7 +32,7 @@ ENV NODE_ENV=production
 COPY --from=prisma-libs /app/node_modules ./node_modules
 
 # Copy built app and config
-COPY --from=builder /app/apps/backend/dist/server.js ./dist/server.js
+COPY --from=builder /app/apps/backend/dist/server.cjs ./dist/server.cjs
 COPY --from=builder /app/apps/backend/package.json ./
 COPY --from=builder /app/apps/backend/prisma.config.ts ./
 COPY --from=builder /app/apps/backend/prisma ./prisma
@@ -40,4 +40,4 @@ COPY --from=builder /app/apps/backend/prisma/seed.cjs ./prisma/seed.cjs
 
 EXPOSE 4000
 # Invoke prisma directly from the clean node_modules
-CMD ["sh", "-c", "node node_modules/prisma/build/index.js migrate deploy && node prisma/seed.cjs && node dist/server.js"]
+CMD ["sh", "-c", "node node_modules/prisma/build/index.js migrate deploy && node prisma/seed.cjs && node dist/server.cjs"]

@@ -5,7 +5,7 @@ esbuild.build({
     bundle: true,
     platform: 'node',
     target: 'node20', // Align with Docker base image
-    outfile: 'dist/server.js',
+    outfile: 'dist/server.cjs',
     external: [
         // Native modules or things that should not be bundled
         '@prisma/client', // We will copy the generated client manually or rely on its standard behavior
