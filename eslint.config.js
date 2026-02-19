@@ -50,7 +50,7 @@ export default [
         ...globals.browser,
       },
       parserOptions: {
-        project: './apps/frontend/tsconfig.json',
+        project: join(__dirname, 'apps/frontend/tsconfig.json'),
       },
     },
 
@@ -68,7 +68,7 @@ export default [
       'import/resolver': {
         typescript: {
           alwaysTryTypes: true,
-          project: './apps/frontend/tsconfig.json',
+          project: join(__dirname, 'apps/frontend/tsconfig.json'),
         },
       },
     },
@@ -118,14 +118,14 @@ export default [
 
   // Backend: Fastify + TypeScript (strict)
   {
-    files: ['apps/backend/**/*.{js,ts}'],
+    files: ['apps/backend/**/*.{js,mjs,cjs,ts}'],
 
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
-        project: join(__dirname, 'apps/backend/tsconfig.json'),
+        project: join(__dirname, 'apps/backend/tsconfig.eslint.json'),
       },
       globals: {
         ...globals.node,
@@ -141,7 +141,7 @@ export default [
       'import/resolver': {
         typescript: {
           alwaysTryTypes: true,
-          project: join(__dirname, 'apps/backend/tsconfig.json'),
+          project: join(__dirname, 'apps/backend/tsconfig.eslint.json'),
         },
       },
     },

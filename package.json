@@ -1,6 +1,7 @@
 {
     "name": "techcareer-monorepo",
     "private": true,
+    "type": "module",
     "workspaces": [
         "apps/*"
     ],
