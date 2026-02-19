@@ -331,6 +331,7 @@ export const AdminDashboard: React.FC = () => {
                     <th className="p-4">Nome</th>
                     <th className="p-4">E-mail</th>
                     <th className="p-4">Perfil</th>
+                    <th className="p-4">Afinidade</th>
                     <th className="p-4 text-center">Ações</th>
                   </tr>
                 </thead>
@@ -360,6 +361,53 @@ export const AdminDashboard: React.FC = () => {
                           {getProfileEmoji(result.profile)}{' '}
                           {getProfileLabel(result.profile)}
                         </span>
+                      </td>
+                      <td className="p-4">
+                        <div className="flex flex-col gap-1 min-w-[120px]">
+                          {(
+                            [
+                              {
+                                key: 'frontend',
+                                label: '🎨 FE',
+                                color: '#3b82f6',
+                              },
+                              {
+                                key: 'backend',
+                                label: '⚙️ BE',
+                                color: '#22c55e',
+                              },
+                              {
+                                key: 'dataAI',
+                                label: '📊 AI',
+                                color: '#eab308',
+                              },
+                            ] as const
+                          ).map(({ key, label, color }) => {
+                            const pct = result.areaScores?.[key] ?? 0;
+                            return (
+                              <div
+                                key={key}
+                                className="flex items-center gap-2"
+                              >
+                                <span className="text-[10px] text-gray-400 w-9 shrink-0">
+                                  {label}
+                                </span>
+                                <div className="flex-1 h-1.5 bg-background-dark rounded-full overflow-hidden">
+                                  <div
+                                    className="h-full rounded-full"
+                                    style={{
+                                      width: `${pct}%`,
+                                      backgroundColor: color,
+                                    }}
+                                  />
+                                </div>
+                                <span className="text-[10px] font-mono text-gray-400 w-7 text-right">
+                                  {pct}%
+                                </span>
+                              </div>
+                            );
+                          })}
+                        </div>
                       </td>
                       <td className="p-4 text-center">
                         <button
