@@ -85,7 +85,7 @@ export const AdminResultDetail: React.FC = () => {
   const [downloading, setDownloading] = useState(false);
 
   // Retrieve Basic Auth header stored during login
-  const authHeader = sessionStorage.getItem('admin_auth');
+  const authHeader = localStorage.getItem('admin_auth');
 
   const fetchResult = useCallback(async () => {
     if (!authHeader) {
