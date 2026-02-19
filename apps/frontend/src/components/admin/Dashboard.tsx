@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
+import { getProfileLabel, getProfileEmoji } from '../../test/profileLabels';
 
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
 
@@ -99,16 +100,18 @@ export const AdminDashboard: React.FC = () => {
     setAuthHeader(null);
   };
 
-  // Helper: Profile Colors
-  const getProfileColor = (profile: string) => {
-    const p = profile.toLowerCase();
-    if (p.includes('frontend') || p.includes('front-end'))
-      return 'bg-blue-900/30 text-blue-300 border-blue-500/20';
-    if (p.includes('backend') || p.includes('back-end'))
-      return 'bg-green-900/30 text-green-300 border-green-500/20';
-    if (p.includes('fullstack') || p.includes('full-stack'))
-      return 'bg-purple-900/30 text-purple-300 border-purple-500/20';
-    return 'bg-gray-800 text-gray-300 border-gray-600';
+  // Helper: Profile Colors (keyed off exact profile keys from DB)
+  const getProfileColor = (profile: string): string => {
+    const colors: Record<string, string> = {
+      frontend: 'bg-blue-900/30 text-blue-300 border-blue-500/20',
+      backend: 'bg-green-900/30 text-green-300 border-green-500/20',
+      dataAI: 'bg-yellow-900/30 text-yellow-300 border-yellow-500/20',
+      frontend_backend: 'bg-purple-900/30 text-purple-300 border-purple-500/20',
+      frontend_dataAI: 'bg-pink-900/30 text-pink-300 border-pink-500/20',
+      backend_dataAI: 'bg-orange-900/30 text-orange-300 border-orange-500/20',
+      generalist: 'bg-gray-800 text-gray-300 border-gray-600',
+    };
+    return colors[profile] ?? 'bg-gray-800 text-gray-300 border-gray-600';
   };
 
   // Handle PDF Download
@@ -135,9 +138,9 @@ export const AdminDashboard: React.FC = () => {
       a.click();
       window.URL.revokeObjectURL(url);
       document.body.removeChild(a);
-    } catch (err) {
-      setAddStatus(err);
-      alert('Erro ao baixar PDF. Tente novamente.');
+    } catch {
+      setAddStatus('error');
+      setAddMessage('Erro ao baixar PDF. Tente novamente.');
     }
   };
 
@@ -171,8 +174,8 @@ export const AdminDashboard: React.FC = () => {
         setAddMessage(`Erro: ${json.message || 'Falha ao adicionar'}`);
         if (res.status === 401) logout();
       }
-    } catch (err) {
-      setAddStatus(err);
+    } catch {
+      setAddStatus('error');
       setAddMessage('Erro de conexão ao servidor.');
     }
   };
@@ -354,7 +357,8 @@ export const AdminDashboard: React.FC = () => {
                             result.profile
                           )}`}
                         >
-                          {result.profile}
+                          {getProfileEmoji(result.profile)}{' '}
+                          {getProfileLabel(result.profile)}
                         </span>
                       </td>
                       <td className="p-4 text-center">
