@@ -2,6 +2,7 @@ import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { LandingPage } from './components/LandingPage';
 import { LandingPageV2 } from './components/v2/LandingPageV2';
+import { AdminDashboard } from './components/admin/Dashboard';
 
 const AptitudeTest = React.lazy(() =>
   import('./components/test/AptitudeTest').then((m) => ({
@@ -40,6 +41,7 @@ const App: React.FC = () => {
           </Suspense>
         }
       />
+      <Route path="/admin" element={<AdminDashboard />} />
     </Routes>
   );
 };

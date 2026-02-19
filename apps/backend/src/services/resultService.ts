@@ -74,3 +74,58 @@ export async function getTestResult(
 
   return testResult;
 }
+
+export async function getTestResultById(
+  app: FastifyInstance,
+  resultId: string,
+): Promise<TestResult | null> {
+  const result = await app.prisma.testResult.findUnique({
+    where: { id: resultId },
+  });
+
+  if (!result) return null;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const storedJson = result.resultJson as any;
+
+  const areas: Record<string, number> = {};
+  const areasPercent: Record<string, number> = {};
+  const behavioral: Record<string, number> = {};
+  const behavioralPercent: Record<string, number> = {};
+
+  if (storedJson.scores && storedJson.scores.areas) {
+    Object.entries(storedJson.scores.areas).forEach(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ([key, val]: [string, any]) => {
+        areas[key] = val.raw || 0;
+        areasPercent[key] = val.percent || 0;
+      },
+    );
+  }
+
+  if (storedJson.scores && storedJson.scores.behavioral) {
+    Object.entries(storedJson.scores.behavioral).forEach(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ([key, val]: [string, any]) => {
+        behavioral[key] = val.raw || 0;
+        behavioralPercent[key] = val.percent || 0;
+      },
+    );
+  }
+
+  const testResult: TestResult = {
+    ...storedJson,
+    id: result.id,
+    userName: result.userName,
+    userEmail: result.userEmail,
+    timestamp: result.createdAt.toISOString(),
+    scores: {
+      areas,
+      areasPercent,
+      behavioral,
+      behavioralPercent,
+    },
+  };
+
+  return testResult;
+}
