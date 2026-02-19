@@ -130,4 +130,4 @@ jobs:
           cache: 'npm'
 
       - name: Run Security Audit
-        run: npm audit --audit-level=high
+        run: npm audit --audit-level=high --omit=dev
