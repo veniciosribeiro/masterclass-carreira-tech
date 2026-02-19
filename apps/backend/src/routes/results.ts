@@ -71,7 +71,7 @@ export async function resultRoutes(app: FastifyInstance) {
           (id, session_id, user_name, user_email, answers, area_scores, profile, behavioral_scores, result_json)
         VALUES (
           gen_random_uuid(),
-          ${sessionId ? `${sessionId}::uuid` : null}::uuid,
+          ${sessionId ?? null}::uuid,
           ${userName},
           ${userEmail},
           ${JSON.stringify(answers)}::jsonb,
