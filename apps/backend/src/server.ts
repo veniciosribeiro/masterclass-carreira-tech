@@ -18,36 +18,36 @@ const app = Fastify({
   },
 });
 
-// --- Plugins ---
-await app.register(cors, {
-  origin: process.env.CORS_ORIGIN || true,
-  credentials: true,
-});
-await app.register(sensible);
-await app.register(jwtPlugin);
-await app.register(prismaPlugin);
-await app.register(basicAuthPlugin);
+const start = async () => {
+  const port = Number(process.env.PORT) || 4000;
+  const host = process.env.HOST || '0.0.0.0';
 
-// --- Routes ---
-await app.register(authRoutes, { prefix: '/api/auth' });
-await app.register(sessionRoutes, { prefix: '/api/sessions' });
-await app.register(resultRoutes, { prefix: '/api/results' });
-await app.register(emailRoutes, { prefix: '/api' });
-await app.register(publicRoutes, { prefix: '/api/public' });
-// Let's stick to adding admin routes only and not changing email routes unless necessary.
-await app.register(adminRoutes, { prefix: '/api/admin' });
+  try {
+    // --- Plugins ---
+    await app.register(cors, {
+      origin: process.env.CORS_ORIGIN || true,
+      credentials: true,
+    });
+    await app.register(sensible);
+    await app.register(jwtPlugin);
+    await app.register(prismaPlugin);
+    await app.register(basicAuthPlugin);
 
-// --- Health check ---
-app.get('/api/health', async () => ({ status: 'ok' }));
+    // --- Routes ---
+    await app.register(authRoutes, { prefix: '/api/auth' });
+    await app.register(sessionRoutes, { prefix: '/api/sessions' });
+    await app.register(resultRoutes, { prefix: '/api/results' });
+    await app.register(emailRoutes, { prefix: '/api' });
+    await app.register(publicRoutes, { prefix: '/api/public' });
+    // Let's stick to adding admin routes only and not changing email routes unless necessary.
+    await app.register(adminRoutes, { prefix: '/api/admin' });
 
-// --- Start ---
-const port = Number(process.env.PORT) || 4000;
-const host = process.env.HOST || '0.0.0.0';
+    await app.listen({ port, host });
+    app.log.info(`Server listening on ${host}:${port}`);
+  } catch (err) {
+    app.log.error(err);
+    process.exit(1);
+  }
+};
 
-try {
-  await app.listen({ port, host });
-  app.log.info(`Server listening on ${host}:${port}`);
-} catch (err) {
-  app.log.error(err);
-  process.exit(1);
-}
+start();
