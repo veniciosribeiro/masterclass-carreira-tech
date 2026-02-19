@@ -8,13 +8,14 @@ declare module 'fastify' {
   }
 }
 
+import { Pool } from 'pg';
+import { PrismaPg } from '@prisma/adapter-pg';
+
 export const prismaPlugin = fp(async (app: FastifyInstance) => {
-  const prisma = new PrismaClient({
-    log:
-      process.env.NODE_ENV === 'development'
-        ? ['query', 'warn', 'error']
-        : ['warn', 'error'],
-  });
+  const connectionString = `${process.env.DATABASE_URL}`;
+  const pool = new Pool({ connectionString });
+  const adapter = new PrismaPg(pool);
+  const prisma = new PrismaClient({ adapter });
 
   await prisma.$connect();
   app.log.info('Prisma connected to database');

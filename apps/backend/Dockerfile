@@ -24,5 +24,7 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/apps/backend/prisma ./prisma
 # Copy backend package.json LAST to ensure type:module is active
 COPY --from=builder /app/apps/backend/package.json ./
+COPY --from=builder /app/apps/backend/prisma.config.ts ./
+
 EXPOSE 4000
 CMD ["sh", "-c", "npm run prisma:deploy && node dist/server.js"]
