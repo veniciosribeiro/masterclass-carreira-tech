@@ -13,4 +13,13 @@ services:
       JWT_SECRET: ${JWT_SECRET}
       NODE_ENV: production
       PORT: 4000
+      # SMTP Configuration
+      SMTP_HOST: ${SMTP_HOST:-mail.foconoobjetivo.com}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-contato}
+      SMTP_PASS: ${SMTP_PASS:-senha123}
+      SMTP_FROM: ${SMTP_FROM:-contato@foconoobjetivo.com}
+      # Admin Authentication
+      ADMIN_USER: ${ADMIN_USER:-admin}
+      ADMIN_PASS: ${ADMIN_PASS:-secret123}
     # No depends_on: postgres here, assuming DB is a separate resource in Coolify

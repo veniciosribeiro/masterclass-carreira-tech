@@ -11,12 +11,14 @@ RUN npm install
 COPY apps/frontend ./apps/frontend
 # Build frontend
 WORKDIR /app/apps/frontend
+ARG VITE_API_URL
+ENV VITE_API_URL=$VITE_API_URL
 RUN npm run build
 
 # Stage 2: Serve the application with Nginx
 FROM nginx:alpine
 COPY --from=builder /app/apps/frontend/dist /usr/share/nginx/html
-COPY apps/frontend/nginx.conf /etc/nginx/conf.d/default.conf
+COPY apps/frontend/nginx.conf /etc/nginx/templates/default.conf.template
 EXPOSE 3000
 CMD ["nginx", "-g", "daemon off;"]
 
