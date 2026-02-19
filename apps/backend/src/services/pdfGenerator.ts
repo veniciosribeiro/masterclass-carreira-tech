@@ -370,13 +370,13 @@ export function generatePDFBuffer(result: TestResult): Buffer {
   setFillColor(doc, COLORS.primary);
   doc.rect(0, 0, pageW, 3, 'F');
 
-  cursorY = 50;
+  cursorY = 40;
   setColor(doc, COLORS.primary);
   doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
   doc.text('PROTOCOLO DE APTIDÃO', pageW / 2, cursorY, { align: 'center' });
 
-  cursorY += 15;
+  cursorY += 10;
   setColor(doc, COLORS.textBright);
   doc.setFontSize(28);
   doc.setFont('helvetica', 'bold');
@@ -384,12 +384,12 @@ export function generatePDFBuffer(result: TestResult): Buffer {
   cursorY += 12;
   doc.text('Aptidão Tech', pageW / 2, cursorY, { align: 'center' });
 
-  cursorY += 15;
+  cursorY += 10;
   setDrawColor(doc, COLORS.border);
   doc.setLineWidth(0.3);
   doc.line(margin + 40, cursorY, pageW - margin - 40, cursorY);
 
-  cursorY += 15;
+  cursorY += 10;
   setColor(doc, COLORS.text);
   doc.setFontSize(13);
   doc.setFont('helvetica', 'normal');
@@ -403,7 +403,7 @@ export function generatePDFBuffer(result: TestResult): Buffer {
   doc.setFontSize(9);
   doc.text(`ID: ${result.id}`, pageW / 2, cursorY, { align: 'center' });
 
-  cursorY += 20;
+  cursorY += 12;
 
   // Profile Box
   const profileBoxHeight = 40;
@@ -442,7 +442,7 @@ export function generatePDFBuffer(result: TestResult): Buffer {
   doc.setFont('helvetica', 'bold');
   doc.text(result.profile.label, pageW / 2, boxTextY, { align: 'center' });
 
-  cursorY += profileBoxHeight + 15;
+  cursorY += profileBoxHeight + 10;
 
   // ─── INSERTED SECTIONS FROM PAGE 2 ───
 
@@ -462,9 +462,9 @@ export function generatePDFBuffer(result: TestResult): Buffer {
     contentW - 10,
   );
   const recTextHeight = recLines.length * 5; // 5mm per line at fontSize 10
-  // Total box: top(8) + title1(7) + gap(3) + descText + divider(8) + title2(7) + gap(3) + recText + bottom(8)
+  // Total box: top(5) + title1(7) + gap(3) + descText + divider(5) + title2(7) + gap(3) + recText + bottom(4)
   const unifiedBoxHeight =
-    8 + 7 + 3 + descHeight + 8 + 7 + 3 + recTextHeight + 8;
+    5 + 7 + 3 + descHeight + 5 + 7 + 3 + recTextHeight + 4;
 
   // Ensure it fits on the current page, otherwise move it entirely to the next page
   checkPageBreak(unifiedBoxHeight);
@@ -476,7 +476,7 @@ export function generatePDFBuffer(result: TestResult): Buffer {
   setDrawColor(doc, COLORS.primary);
   doc.setLineWidth(0.3);
   doc.roundedRect(margin, cursorY, contentW, unifiedBoxHeight, 3, 3, 'S');
-  cursorY += 8;
+  cursorY += 5; // top padding
 
   // Section 1: Análise do Perfil
   setColor(doc, COLORS.primary);
@@ -489,13 +489,13 @@ export function generatePDFBuffer(result: TestResult): Buffer {
   doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
   doc.text(descLines, margin + 5, cursorY);
-  cursorY += descHeight + 3; // gap before divider
+  cursorY += descHeight + 2; // gap before divider
 
   // Divider line
   setDrawColor(doc, COLORS.border);
   doc.setLineWidth(0.2);
   doc.line(margin + 5, cursorY, margin + contentW - 5, cursorY);
-  cursorY += 5; // gap after divider
+  cursorY += 3; // gap after divider
 
   // Section 2: Próximos Passos
   setColor(doc, COLORS.primary);
