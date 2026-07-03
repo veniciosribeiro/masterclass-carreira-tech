@@ -28,9 +28,10 @@ export const AptitudeReportHighlight: React.FC = () => {
                 </span>
               </h2>
               <p className="text-gray-400 text-lg leading-relaxed font-light">
-                Isso não é um "certificado de participação". É um laudo técnico
-                completo, gerado a partir do seu desempenho nos testes,
-                mostrando exatamente onde você se encaixa no mercado.
+                Você sai sabendo exatamente onde se encaixa no mercado. Não é
+                opinião — é baseado em{' '}
+                <strong className="text-primary">dados.</strong> Seu perfil, sua
+                afinidade, seus próximos passos.
               </p>
             </div>
 
