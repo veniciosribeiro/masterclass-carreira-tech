@@ -16,19 +16,19 @@ export const Hero: React.FC = () => {
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
         <div className="flex flex-col gap-6 text-center lg:text-left">
           <h1 className="text-4xl md:text-5xl lg:text-5xl font-black leading-tight tracking-tight font-mono">
-            Você tem o <span className="text-primary">Raciocínio Lógico</span>{' '}
-            para se tornar Programador ou foi{' '}
+            Você tem <span className="text-primary">Aptidão</span> para se
+            tornar Programador ou foi{' '}
             <span className="text-red-400">seduzido</span> pela promessa de
             altos salários?
           </h1>
           <p className="text-gray-400 font-light text-lg md:text-lg max-w-3xl mx-auto lg:mx-0 font-light">
-            Você sente que a tecnologia é seu futuro, mas está hesitante?
             Participe da{' '}
             <span className="text-primary font-bold">
-              Masterclass Da Carreira Tech
+              Masterclass Test-Drive da Carreira Tech
             </span>{' '}
-            e descubra se esse caminho é para você ANTES de se comprometer com
-            faculdades ou cursos caros.
+            e descubra em 1 noite se você tem aptidão para tech e qual área faz
+            mais sentido pro seu perfil. Se o resultado for 'não é pra você',
+            você economiza 4 anos em uma faculdade errada.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
             <button

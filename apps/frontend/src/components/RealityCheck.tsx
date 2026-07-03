@@ -40,8 +40,8 @@ export const RealityCheck: React.FC = () => {
               </h4>
               <p className="text-gray-400">
                 Troque promessas vazias por critérios técnicos. Vamos validar
-                sua lógica, testar sua aderência à rotina real e te dar uma
-                resposta binária: você serve ou não para o jogo.
+                sua lógica, testar sua aderência à rotina real e te dar a
+                resposta: você tem ou não apitidão para a área de tecnologia.
               </p>
             </div>
           </div>
