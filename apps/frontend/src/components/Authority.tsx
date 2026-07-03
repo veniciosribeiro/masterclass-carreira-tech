@@ -32,7 +32,7 @@ export const Authority: React.FC = () => {
 
         {/* Text Column - Moved to Right */}
         <div className="order-2 lg:order-2">
-          <div className="inline-flex items-center gap-2 mb-2 text-primary font-mono text-sm tracking-widest uppercase font-bold">
+          <div className="inline-flex items-center gap-2 mb-8 text-primary font-mono text-sm tracking-widest uppercase font-bold">
             <VerifiedUserIcon className="text-sm" />
             Quem Vai Conduzir Essa Masterclass
           </div>
@@ -42,20 +42,28 @@ export const Authority: React.FC = () => {
           </h2>
 
           <div className="relative mb-8">
-            <p className="text-gray-400 text-lg mb-8 font-light">
-              Coordenador de Engenharia de Software, mentor e especialista em
-              evolução de carreira.
-            </p>
-
             <p className="text-gray-400 italic text-lg leading-relaxed">
-              Não sou influencer vendedor de curso. Sou Gestor e uso essa visão
-              para blindar profissionais contra erros de carreira, ajudando-os a
-              encontrar seu caminho na área de tecnologia e a se desenvolverem
-              profissionalmente.
+              <span className="text-primary">
+                Não sou influencer vendedor de curso
+              </span>
+              . Em 20 anos, eu contratei, demiti e promovi 700+ profissionais de
+              tecnologia. Sei exatamente o que o mercado procura — e o que
+              descarta nos primeiros 30 segundos de um currículo. Essa
+              masterclass é o resumo de 20 anos de decisões de contratação. Não
+              é teoria — é o que funciona na prática.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8 border-y border-border-dark py-6">
+          <div className="relative mb-8 ">
+            <p className="text-gray-400 italic text-lg leading-relaxed border-l-4 border-primary pl-6">
+              Criei a Masterclass Test-Drive Da Carreira Tech porque cansei de
+              ver pessoas competentes e com potencial completamente perdidas,
+              sem orientação, sem saber se tem aptidão e como ingressar na
+              tecnologia.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 border-y border-border-dark py-6">
             <div>
               <div className="text-3xl md:text-4xl font-bold text-white mb-1 font-mono">
                 +20
@@ -80,15 +88,6 @@ export const Authority: React.FC = () => {
                 Currículos Analisados
               </div>
             </div>
-          </div>
-
-          <div className="relative">
-            <p className="text-gray-400 italic text-lg leading-relaxed border-l-4 border-primary pl-6">
-              Criei a Masterclass Test-Drive Da Carreira Tech porque cansei de
-              ver pessoas competentes e com potencial completamente perdidas,
-              sem orientação, sem saber se tem aptidão e como ingressar na
-              tecnologia.
-            </p>
           </div>
         </div>
       </div>

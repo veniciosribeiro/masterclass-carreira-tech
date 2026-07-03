@@ -22,7 +22,7 @@ export const Syllabus: React.FC = () => {
               <VisibilityIcon />
             </div>
             <h3 className="font-bold text-lg mb-2 text-white font-mono">
-              01. Manual Anti-Ilusão (PDF)
+              01. A Verdade que Ninguém Te Conta
             </h3>
             <p className="text-sm text-gray-400">
               A vacina contra promessas falsas. A verdade nua e crua sobre
@@ -35,12 +35,11 @@ export const Syllabus: React.FC = () => {
               <DnsIcon />
             </div>
             <h3 className="font-bold text-lg mb-2 text-white font-mono">
-              02. Checklist de Hardware Econômico
+              02. Você Não Precisa de PC de R$ 10k
             </h3>
             <p className="text-sm text-gray-400">
-              Pare de achar que precisa de um PC de R$ 10k. Receba um Checklist
-              do que você realmente precisa para começar sem gastar um centavo a
-              mais do que o necessário.
+              Receba um Checklist do que você realmente precisa para começar sem
+              gastar um centavo a mais do que o necessário.
             </p>
           </div>
           <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-[#1c2128] transition-all duration-300 group">
@@ -48,7 +47,7 @@ export const Syllabus: React.FC = () => {
               <AttachMoneyIcon />
             </div>
             <h3 className="font-bold text-lg mb-2 text-white font-mono">
-              03. Calculadora de Viabilidade Financeira
+              03. Saiba em Quantos Meses o Investimento se Paga
             </h3>
             <p className="text-sm text-gray-400">
               Matemática contra a ansiedade. Insira o valor do curso que você
@@ -61,7 +60,7 @@ export const Syllabus: React.FC = () => {
               <QuizIcon />
             </div>
             <h3 className="font-bold text-lg mb-2 text-white font-mono">
-              04. Seu Laudo de Aptidão Técnica
+              04. O Veredito: Tech é Pra Você ou Não?
             </h3>
             <p className="text-sm text-gray-400">
               O Veredito. Não é um certificado de participação. É um documento
