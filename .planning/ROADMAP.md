@@ -128,4 +128,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 Plans:
 
 - [x] 06-01-PLAN.md — Adicionar botão "Receber por E-mail" na tela de resultados e integrar com endpoint existente
-- [ ] 06-02-PLAN.md — Corrigir mismatch de rota no backend (remover segmento duplicado /send-results)
+- [x] 06-02-PLAN.md — Corrigir mismatch de rota no backend (remover segmento duplicado /send-results)
