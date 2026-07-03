@@ -12,7 +12,11 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: [ 'CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-techcareer}' ]
+      test:
+        [
+          'CMD-SHELL',
+          'pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-techcareer}',
+        ]
       start_period: 30s
       interval: 5s
       timeout: 5s
@@ -33,6 +37,7 @@ services:
       DATABASE_URL: postgres://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-postgres}@postgres:5432/${POSTGRES_DB:-techcareer}
       JWT_SECRET: ${JWT_SECRET:-_X-iYqwFNHF8VtANRxeA-5E-hgiR3PwboAm4HVBWoRQ}
       NODE_ENV: production
+      FRONTEND_URL: ${FRONTEND_URL}
       PORT: 4000
       # SMTP Configuration
       SMTP_HOST: ${SMTP_HOST:-mail.foconoobjetivo.com}
