@@ -4,6 +4,7 @@ import { Hero } from './Hero';
 import { RealityCheck } from './RealityCheck';
 import { ProtocolOverview } from './ProtocolOverview';
 import { Syllabus } from './Syllabus';
+import { AptitudeReportHighlight } from './AptitudeReportHighlight';
 import { Authority } from './Authority';
 import { Pricing } from './Pricing';
 
@@ -24,6 +25,7 @@ export const LandingPage: React.FC = () => {
       <RealityCheck />
       <ProtocolOverview />
       <Syllabus />
+      <AptitudeReportHighlight />
       <Pricing />
       <Authority />
       <Suspense fallback={<div className="min-h-[200px]" />}>

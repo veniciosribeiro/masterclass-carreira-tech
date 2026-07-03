@@ -4,6 +4,7 @@ import { HeroV2 } from './HeroV2';
 import { DiagnosisV2 } from './DiagnosisV2';
 import { MindsetShiftV2 } from './MindsetShiftV2';
 import { MethodologyV2 } from './MethodologyV2';
+import { AptitudeReportHighlight } from '../AptitudeReportHighlight';
 import { AuthorityV2 } from './AuthorityV2';
 import { OfferV2 } from './OfferV2';
 import { FinalCTA_V2 } from './FinalCTA_V2';
@@ -27,6 +28,7 @@ export const LandingPageV2: React.FC = () => {
       <DiagnosisV2 />
       <MindsetShiftV2 />
       <MethodologyV2 />
+      <AptitudeReportHighlight />
       <AuthorityV2 />
       <OfferV2 />
       <Suspense fallback={<div className="min-h-[200px]" />}>
