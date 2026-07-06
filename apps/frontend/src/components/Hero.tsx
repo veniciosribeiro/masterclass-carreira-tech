@@ -21,9 +21,9 @@ export const Hero: React.FC = () => {
             qual área faz sentido pro seu perfil.
           </h1>
           <p className="text-gray-400 font-light text-lg md:text-lg max-w-3xl mx-auto lg:mx-0 font-light">
-            Você verá a realidade da profissão sem filtro, fará testes práticos
-            sem código e recebe um Relatório personalizado com seu plano de
-            próximos passos.
+            Você sai com a resposta definitiva sobre sua aptidão e um plano
+            concreto de próximos passos — depois de ver a rotina real, derrubar
+            o mito do PC de R$ 10k e testar sua lógica sem código.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
             <button
