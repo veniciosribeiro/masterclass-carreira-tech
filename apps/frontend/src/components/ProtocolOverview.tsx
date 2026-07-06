@@ -13,7 +13,7 @@ export const ProtocolOverview: React.FC = () => {
   return (
     <section
       className="bg-surface-dark py-10 px-6 overflow-hidden relative"
-      id="overview"
+      id="mechanism"
     >
       {/* Background Grid */}
       <div
