@@ -30,7 +30,7 @@ export const Hero: React.FC = () => {
               onClick={() => scrollToSection('pricing')}
               className="flex items-center justify-center h-14 px-8 rounded-lg bg-primary hover:bg-green-400 text-[#0D1117] text-base font-bold transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(25,230,94,0.2)] font-mono uppercase"
             >
-              &gt; Participar da Masterclass &lt;
+              &gt; Quero Minha Resposta &lt;
             </button>
             <div className="flex items-center justify-center sm:justify-start gap-2 text-md text-primary px-4 font-mono">
               <VerifiedIcon className="text-primary" />

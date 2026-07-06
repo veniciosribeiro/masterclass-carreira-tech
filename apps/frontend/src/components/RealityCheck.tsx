@@ -14,8 +14,8 @@ export const RealityCheck: React.FC = () => {
             com <span className="text-primary">Aptidão</span>.
           </h2>
           <p className="text-gray-400 mt-4 font-light text-md">
-            Influenciadores Digitais faturam alto vendendo cursos e promessas,
-            mas a realidade é que a maioria é enganada pelo Hype do mercado.
+            Influenciadores Digitais faturam alto vendendo cursos e promessas
+            falsas.
           </p>
         </div>
 
@@ -41,7 +41,7 @@ export const RealityCheck: React.FC = () => {
               <p className="text-gray-400">
                 Troque promessas vazias por critérios técnicos. Vamos validar
                 sua lógica, testar sua aderência à rotina real e te dar a
-                resposta: você tem ou não apitidão para a área de tecnologia.
+                resposta: você tem ou não aptidão para a área de tecnologia.
               </p>
             </div>
           </div>
@@ -105,8 +105,8 @@ export const RealityCheck: React.FC = () => {
               <div className="absolute bottom-0 left-0 w-2 h-2 bg-gray-500 rounded-full -ml-1 -mb-1"></div>
             </div>
             <div className="flex justify-between text-xs text-gray-500 font-mono mt-4">
-              <span>Resultado</span>
-              <span>Tempo</span>
+              <span>Meses estudando</span>
+              <span>Confiança na carreira</span>
             </div>
           </div>
         </div>

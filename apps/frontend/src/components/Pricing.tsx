@@ -13,9 +13,9 @@ export const Pricing: React.FC = () => {
             A Matemática da sua Decisão
           </h2>
           <p className="text-gray-400 text-md">
-            Saber que a tecnologia NÃO é para você vale tanto quanto saber que
-            É. Ambas as respostas te libertam. A única ação que sai cara é
-            continuar na dúvida.
+            Saber que a tecnologia é para você vale tanto quanto saber que não
+            é. Ambas as respostas te libertam. A única ação que sai cara é
+            continuar sem resposta.
           </p>
         </div>
 
