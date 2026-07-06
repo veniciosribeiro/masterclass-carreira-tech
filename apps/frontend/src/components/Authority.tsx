@@ -21,10 +21,10 @@ export const Authority: React.FC = () => {
             />
             <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-8">
               <div className="font-mono text-white text-xl font-bold">
-                Venicios.sys
+                Venicios Ribeiro
               </div>
               <div className="font-mono text-primary text-sm">
-                Root Administrator
+                Mentor e Coordenador de Engenharia de Software
               </div>
             </div>
           </div>
@@ -38,15 +38,12 @@ export const Authority: React.FC = () => {
           </div>
 
           <h2 className="text-3xl md:text-5xl font-bold mb-4 font-mono leading-tight text-white">
-            Venicios <span className="text-gray-500">[Ribeiro]</span>
+            Não sou influencer vendedor de curso
           </h2>
 
           <div className="relative mb-8">
             <p className="text-gray-400 italic text-lg leading-relaxed">
-              <span className="text-primary">
-                Não sou influencer vendedor de curso
-              </span>
-              . Em 20 anos, eu contratei, demiti e promovi 700+ profissionais de
+              Em 20 anos, eu contratei, demiti e promovi 700+ profissionais de
               tecnologia. Sei exatamente o que o mercado procura — e o que
               descarta nos primeiros 30 segundos de um currículo. Essa
               masterclass é o resumo de 20 anos de decisões de contratação. Não
@@ -69,7 +66,8 @@ export const Authority: React.FC = () => {
                 +20
               </div>
               <div className="text-xs text-gray-400 uppercase tracking-wider">
-                Anos de Experiência
+                Anos de Experiência - Sei como o mercado funciona e tenho
+                cicatriz de guerra real.
               </div>
             </div>
             <div>
@@ -77,7 +75,8 @@ export const Authority: React.FC = () => {
                 +500
               </div>
               <div className="text-xs text-gray-400 uppercase tracking-wider">
-                Sessões de Mentoria Realizadas
+                Sessões de Mentoria Realizadas - Sei o que te trava e o que te
+                destrava.
               </div>
             </div>
             <div>
@@ -85,7 +84,8 @@ export const Authority: React.FC = () => {
                 +700
               </div>
               <div className="text-xs text-gray-400 uppercase tracking-wider">
-                Currículos Analisados
+                Currículos Analisados - Sei o que te contrata e o que te
+                descarta em 30 segundos.
               </div>
             </div>
           </div>

@@ -10,13 +10,14 @@ export const FAQ: React.FC = () => {
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-10">
           <span className="text-primary font-bold tracking-widest uppercase text-xs font-mono border border-primary/30 px-2 py-1 rounded bg-primary/10">
-            Central de Suporte
+            Antes de Decidir
           </span>
           <h2 className="text-3xl font-bold text-center mt-6 text-white font-mono">
             Perguntas Frequentes
           </h2>
         </div>
         <div className="space-y-4">
+          {/* FAQ 1: Acesso */}
           <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
@@ -30,15 +31,17 @@ export const FAQ: React.FC = () => {
               <span className="text-primary font-mono text-xs block mb-2">
                 // Response:
               </span>
-              O acesso é imediato. Assim que seu pagamento for aprovado, você
-              receberá um e-mail com suas credenciais de login para nossa
-              plataforma de alunos. Você pode começar a masterclass em minutos.
+              Imediato. Assim que o pagamento for aprovado, você recebe um
+              e-mail com suas credenciais. Acesso liberado em minutos — sem
+              espera, sem burocracia.
             </div>
           </details>
+
+          {/* FAQ 2: Disponibilidade */}
           <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
-                &gt; Por quanto tempo o conteúdo fica disponível?
+                &gt; Por quanto tempo fica disponível?
               </span>
               <span className="transition group-open:rotate-180 text-primary">
                 <ExpandMoreIcon />
@@ -48,16 +51,16 @@ export const FAQ: React.FC = () => {
               <span className="text-primary font-mono text-xs block mb-2">
                 // Response:
               </span>
-              Você tem acesso vitalício on-demand a esta edição da masterclass.
-              Assista no seu próprio ritmo, retroceda e revisite os módulos
-              sempre que precisar de uma revisão sobre os conceitos ou
-              configuração de infraestrutura.
+              Acesso vitalício on-demand. Assista no seu ritmo, reveja os
+              módulos quantas vezes quiser. A masterclass é sua para sempre.
             </div>
           </details>
+
+          {/* FAQ 3: E se não for pra mim? */}
           <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
-                &gt; Tem suporte para dúvidas?
+                &gt; E se eu descobrir que tech não é pra mim?
               </span>
               <span className="transition group-open:rotate-180 text-primary">
                 <ExpandMoreIcon />
@@ -67,16 +70,19 @@ export const FAQ: React.FC = () => {
               <span className="text-primary font-mono text-xs block mb-2">
                 // Response:
               </span>
-              Sim! Cada aula tem uma seção de comentários dedicada onde nossa
-              equipe e comunidade interagem. Para problemas técnicos com sua
-              conta, também fornecemos um e-mail de suporte dedicado para
-              garantir que você nunca fique preso.
+              Então você acabou de economizar R$50 mil e 4 anos numa faculdade
+              errada — por apenas R$97. Essa é exatamente a função da
+              Masterclass: te dar a resposta, seja ela qual for. Saber que{' '}
+              <strong>não</strong> é pra você vale tanto quanto saber que{' '}
+              <strong>é</strong>. Ambas te libertam da paralisia.
             </div>
           </details>
+
+          {/* FAQ 4: Já comprei cursos */}
           <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
-                &gt; Já comprei cursos, serve para mim?
+                &gt; Já comprei cursos e não terminei. Serve pra mim?
               </span>
               <span className="transition group-open:rotate-180 text-primary">
                 <ExpandMoreIcon />
@@ -86,16 +92,18 @@ export const FAQ: React.FC = () => {
               <span className="text-primary font-mono text-xs block mb-2">
                 // Response:
               </span>
-              Com certeza. Se você comprou cursos mas nunca os terminou ou se
-              sentiu "perdido", isso é exatamente o que você precisa. Funciona
-              como um filtro estratégico para ajudá-lo a entender o "porquê" e o
-              "como" da indústria antes de se atolar em sintaxe novamente.
+              É exatamente pra você. Se você comprou cursos mas nunca terminou
+              ou se sentiu perdido no meio do caminho, a Masterclass funciona
+              como um filtro estratégico. Ela te ajuda a entender o "porquê" e o
+              "como" da indústria antes de se atolar em sintaxe de novo.
             </div>
           </details>
+
+          {/* FAQ 5: Pré-requisitos */}
           <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
-                &gt; O teste de lógica emite certificado?
+                &gt; Preciso saber programar ou ter notebook potente?
               </span>
               <span className="transition group-open:rotate-180 text-primary">
                 <ExpandMoreIcon />
@@ -105,11 +113,31 @@ export const FAQ: React.FC = () => {
               <span className="text-primary font-mono text-xs block mb-2">
                 // Response:
               </span>
-              Sim. Ao concluir o módulo final, você receberá seu{' '}
-              <strong>Relatório de Aptidão</strong> personalizado. Este
-              documento certifica suas capacidades de raciocínio lógico e pode
-              ser uma adição poderosa ao seu portfólio profissional, mesmo fora
-              de tech.
+              Não. Zero conhecimento prévio. E no Módulo 2 você descobre que não
+              precisa de PC de R$10k — qualquer notebook com SSD e 8GB de RAM já
+              resolve. O teste de aptidão é 100% conceitual, sem escrever uma
+              linha de código.
+            </div>
+          </details>
+
+          {/* FAQ 6: Garantia */}
+          <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
+            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
+              <span className="font-mono text-sm md:text-base">
+                &gt; Tem garantia?
+              </span>
+              <span className="transition group-open:rotate-180 text-primary">
+                <ExpandMoreIcon />
+              </span>
+            </summary>
+            <div className="text-gray-400 p-6 pt-0 leading-relaxed border-t border-transparent group-open:border-border-dark group-open:pt-6 font-light">
+              <span className="text-primary font-mono text-xs block mb-2">
+                // Response:
+              </span>
+              Sim. 30 dias de garantia incondicional. Se após assistir a
+              Masterclass você sentir que não valeu os R$97, devolvemos 100% do
+              seu investimento. Sem perguntas, sem burocracia. O risco é todo
+              nosso.
             </div>
           </details>
         </div>
