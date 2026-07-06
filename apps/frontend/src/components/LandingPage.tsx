@@ -3,7 +3,6 @@ import { Header } from './Header';
 import { Hero } from './Hero';
 import { RealityCheck } from './RealityCheck';
 import { ProtocolOverview } from './ProtocolOverview';
-import { Syllabus } from './Syllabus';
 import { AptitudeReportHighlight } from './AptitudeReportHighlight';
 import { Authority } from './Authority';
 import { Pricing } from './Pricing';
@@ -24,7 +23,6 @@ export const LandingPage: React.FC = () => {
       <Hero />
       <RealityCheck />
       <ProtocolOverview />
-      <Syllabus />
       <AptitudeReportHighlight />
       <Pricing />
       <Authority />
