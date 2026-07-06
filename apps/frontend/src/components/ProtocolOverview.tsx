@@ -32,11 +32,12 @@ export const ProtocolOverview: React.FC = () => {
             O Protocolo de Desbloqueio
           </span>
           <h2 className="text-3xl md:text-4xl font-black mt-6 text-white font-mono leading-tight">
-            Para cada trava dúvida,{' '}
-            <span className="text-primary">uma chave de acesso.</span>
+            Para cada receio que te trava,{' '}
+            <span className="text-primary">uma resposta que destrava.</span>
           </h2>
           <p className="text-gray-400 mt-6 font-light text-md">
-            Você precisa de um método que elimine as suas dúvidas.
+            Cada módulo da Masterclass elimina uma barreira específica — da
+            rotina real ao teste de aptidão.
           </p>
         </div>
 
@@ -45,21 +46,18 @@ export const ProtocolOverview: React.FC = () => {
           <div className="grid md:grid-cols-2 bg-surface-dark border border-border-dark rounded-2xl overflow-hidden shadow-lg group hover:border-primary/30 transition-all duration-500">
             {/* Left: The Fear */}
             <div className="p-8 border-b md:border-b-0 md:border-r border-border-dark bg-[#0D1117] flex flex-col justify-center relative">
-              <div className="absolute top-0 right-0 p-4 opacity-5 text-red-500 font-mono text-6xl font-black select-none pointer-events-none">
-                ERROR 403
-              </div>
               <div className="flex items-start gap-4 mb-4">
                 <div className="size-12 rounded-lg bg-red-900/20 text-red-400 flex items-center justify-center shrink-0 border border-red-900/30">
                   <SentimentWorriedIcon className="text-2xl" />
                 </div>
                 <div>
                   <h4 className="font-bold text-xl text-red-400 font-mono mb-2">
-                    Trava: "Tenho medo da rotina real"
+                    "Tenho medo da rotina real"
                   </h4>
                   <p className="text-gray-400 font-light leading-relaxed">
                     "Vejo influenciadores trabalhando 4h por dia na praia
-                    ganhando 5k. E se a realidade for muito mais estressante e
-                    eu não aguentar a pressão?"
+                    ganhando 5k mas e se a realidade for muito mais estressante
+                    e eu não aguentar a pressão?"
                   </p>
                 </div>
               </div>
@@ -98,7 +96,7 @@ export const ProtocolOverview: React.FC = () => {
                   <div>
                     <div className="flex items-center gap-2 mb-1">
                       <h5 className="font-bold text-base text-primary font-mono">
-                        Entregável: "A Verdade que Ninguém Te Conta"
+                        Entregável: "A Curva Real de Ganhos"
                       </h5>
                       <div className="text-[9px] font-mono text-gray-500 bg-gray-900/30 py-0.5 px-2 rounded border border-gray-700/30 uppercase">
                         PDF
@@ -119,20 +117,17 @@ export const ProtocolOverview: React.FC = () => {
           <div className="grid md:grid-cols-2 bg-surface-dark border border-border-dark rounded-2xl overflow-hidden shadow-lg group hover:border-primary/30 transition-all duration-500">
             {/* Left: The Fear */}
             <div className="p-8 border-b md:border-b-0 md:border-r border-border-dark bg-[#0D1117] flex flex-col justify-center relative">
-              <div className="absolute top-0 right-0 p-4 opacity-5 text-red-500 font-mono text-6xl font-black select-none pointer-events-none">
-                ERROR 500
-              </div>
               <div className="flex items-start gap-4 mb-4">
                 <div className="size-12 rounded-lg bg-red-900/20 text-red-400 flex items-center justify-center shrink-0 border border-red-900/30">
                   <LaptopIcon className="text-2xl" />
                 </div>
                 <div>
                   <h4 className="font-bold text-xl text-red-400 font-mono mb-2">
-                    Trava: "Meu computador é fraco"
+                    "Meu computador é fraco e não domino inglês"
                   </h4>
                   <p className="text-gray-400 font-light leading-relaxed">
-                    "Não tenho dinheiro para comprar um MacBook de 15 mil. Meu
-                    inglês não é fluente. Acho que estou velho demais para
+                    "Não tenho dinheiro para comprar um computador de 10 mil.
+                    Meu inglês não é fluente. Acho que estou velho demais para
                     competir com os mais novos."
                   </p>
                 </div>
@@ -192,16 +187,13 @@ export const ProtocolOverview: React.FC = () => {
           <div className="grid md:grid-cols-2 bg-surface-dark border border-border-dark rounded-2xl overflow-hidden shadow-lg group hover:border-primary/30 transition-all duration-500">
             {/* Left: The Fear */}
             <div className="p-8 border-b md:border-b-0 md:border-r border-border-dark bg-[#0D1117] flex flex-col justify-center relative">
-              <div className="absolute top-0 right-0 p-4 opacity-5 text-red-500 font-mono text-6xl font-black select-none pointer-events-none">
-                ERROR 402
-              </div>
               <div className="flex items-start gap-4 mb-4">
                 <div className="size-12 rounded-lg bg-red-900/20 text-red-400 flex items-center justify-center shrink-0 border border-red-900/30">
                   <AttachMoneyIcon className="text-2xl" />
                 </div>
                 <div>
                   <h4 className="font-bold text-xl text-red-400 font-mono mb-2">
-                    Trava: "Tenho medo de rasgar dinheiro"
+                    "Tenho medo de rasgar dinheiro"
                   </h4>
                   <p className="text-gray-400 font-light leading-relaxed">
                     "Não sei se faço faculdade de 4 anos ou um bootcamp de 2 mil
@@ -246,8 +238,8 @@ export const ProtocolOverview: React.FC = () => {
                   <div>
                     <div className="flex items-center gap-2 mb-1">
                       <h5 className="font-bold text-base text-primary font-mono">
-                        Entregável: "Saiba em Quantos Meses o Investimento se
-                        Paga"
+                        Entregável: "Calculadora de ROI - Quando seu dinheiro
+                        volta?"
                       </h5>
                       <div className="text-[9px] font-mono text-gray-500 bg-gray-900/30 py-0.5 px-2 rounded border border-gray-700/30 uppercase">
                         Calculadora
@@ -268,16 +260,13 @@ export const ProtocolOverview: React.FC = () => {
           <div className="grid md:grid-cols-2 bg-surface-dark border border-border-dark rounded-2xl overflow-hidden shadow-lg group hover:border-primary/30 transition-all duration-500">
             {/* Left: The Fear */}
             <div className="p-8 border-b md:border-b-0 md:border-r border-border-dark bg-[#0D1117] flex flex-col justify-center relative">
-              <div className="absolute top-0 right-0 p-4 opacity-5 text-red-500 font-mono text-6xl font-black select-none pointer-events-none">
-                ERROR 404
-              </div>
               <div className="flex items-start gap-4 mb-4">
                 <div className="size-12 rounded-lg bg-red-900/20 text-red-400 flex items-center justify-center shrink-0 border border-red-900/30">
                   <PsychologyAltIcon className="text-2xl" />
                 </div>
                 <div>
                   <h4 className="font-bold text-xl text-red-400 font-mono mb-2">
-                    Trava: "Sou de Humanas"
+                    "Não sei se isso é pra mim"
                   </h4>
                   <p className="text-gray-400 font-light leading-relaxed">
                     "Acho que preciso ser um gênio em matemática avançada para
@@ -328,9 +317,9 @@ export const ProtocolOverview: React.FC = () => {
                       </div>
                     </div>
                     <p className="text-gray-500 text-sm font-light">
-                      O Veredito. Não é um certificado de participação. É um
-                      documento atestando se sua lógica é compatível com a
-                      exigência do mercado. Sua prova de segurança.
+                      Não é certificado de participação. É um laudo atestando se
+                      sua lógica é compatível com o mercado — com seu perfil e
+                      próximos passos.
                     </p>
                   </div>
                 </div>
