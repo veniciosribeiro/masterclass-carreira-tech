@@ -5,6 +5,7 @@ import {
   ArrowForwardIcon,
 } from '../icons';
 import { STARTER_CHECKOUT_URL, PREMIUM_CHECKOUT_URL } from './bussolaConfig';
+import { trackEvent } from '../../utils/metaPixel';
 
 export const BussolaPricing: React.FC = () => {
   return (
@@ -122,6 +123,13 @@ export const BussolaPricing: React.FC = () => {
 
               <a
                 href={STARTER_CHECKOUT_URL}
+                onClick={() =>
+                  trackEvent('InitiateCheckout', {
+                    content_name: 'Starter',
+                    value: 597,
+                    currency: 'BRL',
+                  })
+                }
                 className="w-full mt-8 h-14 rounded bg-primary hover:bg-green-400 text-[#0D1117] font-bold transition-all font-mono uppercase text-lg tracking-wide flex items-center justify-center gap-2"
               >
                 <span>Quero o Starter</span>
@@ -189,6 +197,13 @@ export const BussolaPricing: React.FC = () => {
 
               <a
                 href={PREMIUM_CHECKOUT_URL}
+                onClick={() =>
+                  trackEvent('InitiateCheckout', {
+                    content_name: 'Premium',
+                    value: 997,
+                    currency: 'BRL',
+                  })
+                }
                 className="w-full mt-8 h-14 rounded bg-primary hover:bg-green-400 text-[#0D1117] font-bold shadow-[0_0_15px_rgba(25,230,94,0.3)] transition-all font-mono uppercase text-lg tracking-wide flex items-center justify-center gap-2 relative z-10"
               >
                 <span>Quero o Premium</span>

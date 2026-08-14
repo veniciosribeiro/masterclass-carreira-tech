@@ -1,10 +1,13 @@
 import React from 'react';
+import { MetaPixel } from '../analytics/MetaPixel';
+import { BUSSOLA_PIXEL_ID } from '../../utils/metaPixel';
 import { WEBINAR_COMMUNITY_LINK } from './sementeConfig';
 import { SementeFooter } from './SementeFooter';
 
 export const ObrigadoSemente: React.FC = () => {
   return (
     <div className="min-h-screen font-display bg-background-dark text-text-main overflow-x-hidden antialiased flex flex-col">
+      <MetaPixel pixelId={BUSSOLA_PIXEL_ID} />
       <section className="flex-1 flex items-center justify-center px-6 py-16">
         <div className="max-w-2xl w-full text-center">
           <div className="text-6xl mb-6">✅</div>

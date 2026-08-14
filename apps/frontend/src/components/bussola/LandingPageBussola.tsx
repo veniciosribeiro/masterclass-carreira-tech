@@ -1,4 +1,6 @@
 import React, { Suspense } from 'react';
+import { MetaPixel } from '../analytics/MetaPixel';
+import { BUSSOLA_PIXEL_ID } from '../../utils/metaPixel';
 import { BussolaHeader } from './BussolaHeader';
 import { BussolaHero } from './BussolaHero';
 import { BussolaOutcome } from './BussolaOutcome';
@@ -22,6 +24,7 @@ const BussolaFooter = React.lazy(() =>
 export const LandingPageBussola: React.FC = () => {
   return (
     <div className="min-h-screen font-display bg-background-dark text-text-main overflow-x-hidden antialiased">
+      <MetaPixel pixelId={BUSSOLA_PIXEL_ID} />
       <BussolaHeader />
       <BussolaHero />
       <BussolaOutcome />

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { registerForWebinar } from '../../services/apiClient';
+import { trackEvent } from '../../utils/metaPixel';
 
 export const SementeForm: React.FC = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ export const SementeForm: React.FC = () => {
 
     try {
       await registerForWebinar(name.trim(), email.trim());
+      trackEvent('Lead');
       navigate('/webinario-carreira-tech/obrigado');
     } catch (err) {
       console.error('[SEMENTE_FORM] Failed to register:', err);
