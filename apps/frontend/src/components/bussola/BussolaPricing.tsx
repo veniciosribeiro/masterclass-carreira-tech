@@ -4,6 +4,7 @@ import {
   WorkspacePremiumIcon,
   ArrowForwardIcon,
 } from '../icons';
+import { STARTER_CHECKOUT_URL, PREMIUM_CHECKOUT_URL } from './bussolaConfig';
 
 export const BussolaPricing: React.FC = () => {
   return (
@@ -119,10 +120,13 @@ export const BussolaPricing: React.FC = () => {
                 </div>
               </div>
 
-              <button className="w-full mt-8 h-14 rounded bg-primary hover:bg-green-400 text-[#0D1117] font-bold transition-all font-mono uppercase text-lg tracking-wide flex items-center justify-center gap-2">
+              <a
+                href={STARTER_CHECKOUT_URL}
+                className="w-full mt-8 h-14 rounded bg-primary hover:bg-green-400 text-[#0D1117] font-bold transition-all font-mono uppercase text-lg tracking-wide flex items-center justify-center gap-2"
+              >
                 <span>Quero o Starter</span>
                 <ArrowForwardIcon />
-              </button>
+              </a>
             </div>
 
             {/* Premium */}
@@ -183,10 +187,13 @@ export const BussolaPricing: React.FC = () => {
                 </div>
               </div>
 
-              <button className="w-full mt-8 h-14 rounded bg-primary hover:bg-green-400 text-[#0D1117] font-bold shadow-[0_0_15px_rgba(25,230,94,0.3)] transition-all font-mono uppercase text-lg tracking-wide flex items-center justify-center gap-2 relative z-10">
+              <a
+                href={PREMIUM_CHECKOUT_URL}
+                className="w-full mt-8 h-14 rounded bg-primary hover:bg-green-400 text-[#0D1117] font-bold shadow-[0_0_15px_rgba(25,230,94,0.3)] transition-all font-mono uppercase text-lg tracking-wide flex items-center justify-center gap-2 relative z-10"
+              >
                 <span>Quero o Premium</span>
                 <ArrowForwardIcon />
-              </button>
+              </a>
               <p className="text-xs text-gray-500 mt-4 text-center relative z-10">
                 Apenas 10 vagas na turma inaugural
               </p>
