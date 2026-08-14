@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { PageTitle } from '../seo/PageTitle';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
 import { getProfileLabel, getProfileEmoji } from '../../test/profileLabels';
@@ -230,6 +231,7 @@ export const AdminDashboard: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background-dark font-display text-text-main flex flex-col">
+      <PageTitle title="Painel Administrativo — Carreira Tech" />
       <Header />
 
       <main className="flex-grow container mx-auto px-4 py-8 mt-20">

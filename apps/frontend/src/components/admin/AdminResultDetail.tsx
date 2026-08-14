@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { PageTitle } from '../seo/PageTitle';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
 import { getProfileLabel, getProfileEmoji } from '../../test/profileLabels';
@@ -179,6 +180,7 @@ export const AdminResultDetail: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background-dark">
+      <PageTitle title="Detalhe do Resultado — Carreira Tech" />
       <Header />
 
       <main className="max-w-3xl mx-auto px-4 py-10">

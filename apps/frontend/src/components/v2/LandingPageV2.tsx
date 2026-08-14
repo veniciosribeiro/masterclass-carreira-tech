@@ -1,4 +1,5 @@
 import React, { Suspense } from 'react';
+import { PageTitle } from '../seo/PageTitle';
 import { Header } from '../Header'; // Reuse Header
 import { HeroV2 } from './HeroV2';
 import { DiagnosisV2 } from './DiagnosisV2';
@@ -23,6 +24,7 @@ const FAQ = React.lazy(() =>
 export const LandingPageV2: React.FC = () => {
   return (
     <div className="min-h-screen font-display bg-background-dark text-text-main overflow-x-hidden antialiased">
+      <PageTitle title="Masterclass Test-Drive da Carreira Tech" />
       <Header />
       <HeroV2 />
       <DiagnosisV2 />

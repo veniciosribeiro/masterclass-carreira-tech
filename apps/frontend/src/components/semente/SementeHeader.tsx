@@ -11,8 +11,10 @@ export const SementeHeader: React.FC = () => {
             <TerminalIcon className="text-3xl" />
           </div>
           <h2 className="text-lg font-bold tracking-tight text-white hidden sm:block font-mono">
-            Webinário Gratuito — Carreira{' '}
-            <span className="text-primary">Tech</span>_
+            Webinário —{' '}
+            <span className="text-primary">
+              Aceleração de Carreira Para Desenvolvedores
+            </span>
           </h2>
         </div>
         <nav className="hidden md:flex items-center gap-8 font-mono text-sm">
