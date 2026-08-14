@@ -2,6 +2,9 @@ import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { LandingPage } from './components/LandingPage';
 import { LandingPageV2 } from './components/v2/LandingPageV2';
+import { LandingPageBussola } from './components/bussola/LandingPageBussola';
+import { LandingPageSemente } from './components/semente/LandingPageSemente';
+import { ObrigadoSemente } from './components/semente/ObrigadoSemente';
 import { AdminDashboard } from './components/admin/Dashboard';
 import { AdminResultDetail } from './components/admin/AdminResultDetail';
 
@@ -18,6 +21,15 @@ const App: React.FC = () => {
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/v2" element={<LandingPageV2 />} />
+      <Route
+        path="/bussola-aceleracao-de-carreira-para-desenvolvedores"
+        element={<LandingPageBussola />}
+      />
+      <Route path="/webinario-carreira-tech" element={<LandingPageSemente />} />
+      <Route
+        path="/webinario-carreira-tech/obrigado"
+        element={<ObrigadoSemente />}
+      />
       <Route
         path="/teste"
         element={

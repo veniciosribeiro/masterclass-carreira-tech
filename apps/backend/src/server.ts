@@ -12,6 +12,7 @@ import { emailRoutes } from './routes/email.js';
 import { adminRoutes } from './routes/admin.js';
 import { publicRoutes } from './routes/public.js';
 import { healthRoutes } from './routes/health.js';
+import { webinarRoutes } from './routes/webinar.js';
 
 const app = Fastify({
   logger: {
@@ -41,6 +42,7 @@ const start = async () => {
     await app.register(resultRoutes, { prefix: '/api/results' });
     await app.register(emailRoutes, { prefix: '/api' });
     await app.register(publicRoutes, { prefix: '/api/public' });
+    await app.register(webinarRoutes, { prefix: '/api/webinar' });
     // Let's stick to adding admin routes only and not changing email routes unless necessary.
     await app.register(adminRoutes, { prefix: '/api/admin' });
 

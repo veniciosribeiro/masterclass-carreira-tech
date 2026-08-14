@@ -34,6 +34,16 @@ model TestResult {
   @@map("test_results")
 }
 
+model WebinarRegistration {
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String
+  email     String   @unique
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("webinar_registrations")
+  @@index([email])
+}
+
 model TestSession {
   id                String   @id @default(uuid()) @db.Uuid
   userEmail         String   @map("user_email")

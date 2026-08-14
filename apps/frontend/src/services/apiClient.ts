@@ -69,6 +69,25 @@ export const getPublicPdfUrl = (sessionId: string) => {
 };
 
 /**
+ * Registers a lead for the Webinário Semente.
+ */
+export async function registerForWebinar(
+  name: string,
+  email: string
+): Promise<void> {
+  const response = await fetch(`${API_BASE}/webinar/register`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, email }),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text().catch(() => 'Unknown error');
+    throw new Error(`Failed to register for webinar: ${errorText}`);
+  }
+}
+
+/**
  * Centralized HTTP client for the Fastify API.
  * Automatically injects the JWT Authorization header when available.
  */
