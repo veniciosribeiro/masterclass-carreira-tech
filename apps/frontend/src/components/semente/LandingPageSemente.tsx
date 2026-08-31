@@ -6,7 +6,6 @@ import { SementeHeader } from './SementeHeader';
 import { SementeHero } from './SementeHero';
 import { SementeRealityCheck } from './SementeRealityCheck';
 import { SementeProtocolOverview } from './SementeProtocolOverview';
-import { SementeToolkit } from './SementeToolkit';
 import { SementeInscricao } from './SementeInscricao';
 import { SementeAuthority } from './SementeAuthority';
 
@@ -26,7 +25,6 @@ export const LandingPageSemente: React.FC = () => {
       <SementeHero />
       <SementeRealityCheck />
       <SementeProtocolOverview />
-      <SementeToolkit />
       <SementeInscricao />
       <SementeAuthority />
       <Suspense fallback={<div className="min-h-[200px]" />}>

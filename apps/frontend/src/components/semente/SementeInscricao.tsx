@@ -30,7 +30,7 @@ export const SementeInscricao: React.FC = () => {
               <ul className="space-y-6">
                 <li className="flex justify-between items-center group">
                   <span className="text-gray-400 group-hover:text-white transition-colors">
-                    Sessão ao vivo com Venicios Ribeiro
+                    Sessão ao vivo
                   </span>
                   <span className="font-mono text-primary font-bold">
                     Incluso
@@ -38,7 +38,7 @@ export const SementeInscricao: React.FC = () => {
                 </li>
                 <li className="flex justify-between items-center group">
                   <span className="text-gray-400 group-hover:text-white transition-colors">
-                    As 4 respostas desta página
+                    Os 4 erros que travam sua carreira
                   </span>
                   <span className="font-mono text-primary font-bold">
                     Incluso
@@ -67,7 +67,7 @@ export const SementeInscricao: React.FC = () => {
                   Investimento
                 </span>
                 <span className="text-2xl font-black text-primary font-mono">
-                  Gratuito
+                  R$ 0
                 </span>
               </div>
             </div>
@@ -83,6 +83,9 @@ export const SementeInscricao: React.FC = () => {
                 Sem custo, sem pegadinha. Só nome e e-mail.
               </p>
               <SementeForm />
+              <span className="text-2xl text-gray-400 text-sm font-mono mt-4 block">
+                03 de setembro • 20h • transmissão ao vivo
+              </span>
             </div>
           </div>
         </div>

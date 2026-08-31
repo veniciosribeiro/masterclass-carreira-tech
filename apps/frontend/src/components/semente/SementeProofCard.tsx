@@ -30,11 +30,11 @@ export const SementeProofCard: React.FC = () => {
             <span className="text-gray-500 line-through decoration-red-500 decoration-2">
               4 anos
             </span>{' '}
-            pra ser promovido. Foi promovido em{' '}
+            pra ser promovido. Recebeu um aumento e foi promovido em{' '}
             <span className="text-primary font-bold">12 meses</span>.
           </p>
           <span className="inline-block mt-4 text-xs font-mono text-primary bg-primary/10 py-1 px-3 rounded border border-primary/20 uppercase">
-            + 4 erros que te impedem de ser promovido
+            + 4 padrões que podem estar mantendo sua carreira parada
           </span>
         </div>
 

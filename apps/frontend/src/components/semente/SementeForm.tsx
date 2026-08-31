@@ -54,7 +54,7 @@ export const SementeForm: React.FC = () => {
           disabled={submitting}
           className="h-14 rounded-lg bg-primary hover:bg-green-400 text-[#0D1117] text-base font-bold transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(25,230,94,0.2)] font-mono uppercase disabled:opacity-60 disabled:hover:scale-100"
         >
-          {submitting ? 'Enviando...' : 'Quero Minha Vaga'}
+          {submitting ? 'Enviando...' : 'GARANTIR MINHA VAGA GRATUITA'}
         </button>
       </div>
     </form>

@@ -12,7 +12,7 @@ export const SementeAuthority: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl transform -rotate-3 scale-105 opacity-50"></div>
           <div className="relative rounded-xl overflow-hidden border border-border-dark shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">
             <img
-              src="/assets/images/venicios-profile.webp"
+              src="/assets/images/VENICIOS(5).jpg"
               width={400}
               height={500}
               alt="Venicios Ribeiro - Mentor de Carreira Tech"
@@ -36,23 +36,27 @@ export const SementeAuthority: React.FC = () => {
           </div>
 
           <h2 className="text-3xl md:text-5xl font-bold mb-4 font-mono leading-tight text-white">
-            Não sou influencer vendedor de curso
+            Eu já estive dos dois lados da mesa.
           </h2>
 
-          <div className="relative mb-8">
-            <p className="text-gray-400 italic text-lg leading-relaxed">
+          <div className="relative mb-4 text-gray-400 italic text-lg leading-relaxed">
+            <p className="mb-4">
+              Eu conheço o sentimento de quem está esperando o reconhecimento e
+              ele não vem. Já vivi a frustração de entregar um bom trabalho e
+              acreditar que isso seria percebido naturalmente.
+            </p>
+            <p className="mb-4">
               Estou na área de tecnologia há mais de 20 anos: 12 como
-              programador e 8 em posições de liderança. Hoje sou Coordenador de
-              Engenharia de Software no maior banco da América Latina, onde
-              entrei como Tech Lead. Conduzi mais de 500 sessões de mentoria,
-              analisei mais de 700 currículos e participei de decisões de
-              contratação, promoção e desligamento — sei o que separa quem é
-              reconhecido de quem fica invisível, porque estive dos dois lados
-              da mesa.
+              programador e 8 em posições de liderança.
+            </p>
+            <p>
+              Hoje sou Coordenador de Engenharia de Software no maior banco da
+              América Latina. Sei o que separa quem é reconhecido de quem fica
+              invisível, porque estive dos dois lados da mesa.
             </p>
           </div>
 
-          <div className="relative mb-8">
+          <div className="relative mb-4">
             <p className="text-gray-400 italic text-lg leading-relaxed border-l-4 border-primary pl-6">
               Criei esse Webinário porque cansei de ver profissionais
               competentes trabalhando duro e continuando invisíveis, sem saber o
@@ -60,7 +64,7 @@ export const SementeAuthority: React.FC = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 border-y border-border-dark py-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 border-y border-border-dark py-4">
             <div>
               <div className="text-3xl md:text-4xl font-bold text-white mb-1 font-mono">
                 +20

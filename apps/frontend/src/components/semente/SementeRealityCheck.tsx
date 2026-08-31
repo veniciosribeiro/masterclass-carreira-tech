@@ -7,16 +7,11 @@ export const SementeRealityCheck: React.FC = () => {
       <div className="max-w-7xl mx-auto flex flex-col gap-12">
         <div className="text-center max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 font-mono">
-            O "Cemitério das Carreiras Estagnadas" está cheio de gente que
-            confundiu{' '}
-            <span className="text-gray-600 line-through decoration-red-500 decoration-2">
-              Esforço
-            </span>{' '}
-            com <span className="text-primary">Reconhecimento</span>.
+            Entregar mais não produz clareza sobre sua prontidão para o próximo
+            nível.
           </h2>
           <p className="text-gray-400 mt-4 font-light text-md">
-            "Você precisa aparecer mais" virou o conselho padrão sobre carreira.
-            Só que ninguém explica o que isso significa na prática.
+            Trabalhar mais não resolve quando o problema não é performance.
           </p>
         </div>
 
@@ -40,10 +35,10 @@ export const SementeRealityCheck: React.FC = () => {
                 <VerifiedIcon />A Realidade no Webinário
               </h4>
               <p className="text-gray-400">
-                Visibilidade não é mudar quem você é, falar mais alto ou virar
-                outra pessoa. É consequência de tornar o seu trabalho
-                compreensível para quem participa das decisões sobre a sua
-                carreira.
+                Visibilidade não é falar mais alto, virar outra pessoa ou se
+                transformar em influencer. É tornar seu trabalho e seu
+                desenvolvimento compreensíveis para quem participa das decisões
+                sobre sua carreira.
               </p>
             </div>
           </div>
@@ -60,14 +55,14 @@ export const SementeRealityCheck: React.FC = () => {
                 preserveAspectRatio="none"
               >
                 <text
-                  x="190"
+                  x="260"
                   y="10"
                   fill="#19e65e"
                   fontSize="13"
                   fontFamily="monospace"
                   fontWeight="bold"
                 >
-                  Quem Muda a Abordagem
+                  Direção + evidência
                 </text>
 
                 <path
@@ -78,14 +73,14 @@ export const SementeRealityCheck: React.FC = () => {
                 />
 
                 <text
-                  x="190"
+                  x="260"
                   y="250"
                   fill="#ef4444"
                   fontSize="13"
                   fontFamily="monospace"
                   fontWeight="bold"
                 >
-                  Quem Só Entrega Mais
+                  Esforço sem direção
                 </text>
 
                 <path
@@ -100,8 +95,8 @@ export const SementeRealityCheck: React.FC = () => {
               <div className="absolute bottom-0 left-0 w-2 h-2 bg-gray-500 rounded-full -ml-1 -mb-1"></div>
             </div>
             <div className="flex justify-between text-xs text-gray-500 font-mono mt-4">
-              <span>Meses entregando</span>
               <span>Reconhecimento percebido</span>
+              <span>Tempo</span>
             </div>
           </div>
         </div>

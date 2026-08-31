@@ -15,17 +15,16 @@ export const SementeHero: React.FC = () => {
       ></div>
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center relative z-10">
         <div className="flex flex-col gap-6 text-center lg:text-left">
-          <span className="inline-block self-center lg:self-start text-primary font-bold tracking-widest uppercase text-xs font-mono border border-primary/30 px-2 py-1 rounded bg-primary/10">
+          <span className="inline-block self-center lg:self-start text-primary font-bold tracking-widest uppercase text-lg font-mono border border-primary/30 px-2 py-1 rounded bg-primary/10">
             Webinário gratuito e ao vivo
           </span>
           <h1 className="text-4xl md:text-5xl lg:text-5xl font-black leading-tight tracking-tight font-mono">
-            Seja Reconhecido à Altura do Profissional que Você É
+            Para desenvolvedores que entregam muito mas não são promovidos.
           </h1>
           <p className="text-gray-400 font-light text-lg md:text-lg max-w-3xl mx-auto lg:mx-0">
-            Para desenvolvedores que entregam muito e recebem bons feedbacks,
-            mas não são promovidos. Descubra por que isso acontece — e o que
-            fazer para avançar, sem depender apenas de trabalhar mais ou esperar
-            que alguém perceba o seu valor.
+            Entenda quais são os 4 erros que fazem muitos desenvolvedores
+            permanecerem estagnados, e o que fazer para avançar sem depender
+            apenas de entregar mais ou esperar que alguém perceba o seu valor.
           </p>
           <p className="text-sm text-gray-500 font-mono">
             {WEBINAR_DATE_LABEL}

@@ -28,12 +28,14 @@ export const SementeProtocolOverview: React.FC = () => {
             O Que Você Vai Ver ao Vivo
           </span>
           <h2 className="text-3xl md:text-4xl font-black mt-6 text-white font-mono leading-tight">
-            Para cada travamento da sua carreira,{' '}
-            <span className="text-primary">um diagnóstico claro.</span>
+            Você{' '}
+            <span className="text-gray-500 line-through decoration-red-500 decoration-2">
+              não precisa
+            </span>{' '}
+            de mais uma lista de coisas para estudar.
           </h2>
           <p className="text-gray-400 mt-6 font-light text-md">
-            O Webinário existe para explicar a raiz de exatamente estes quatro
-            pontos.
+            Precisa descobrir o que realmente está travando o próximo passo.
           </p>
         </div>
 
@@ -47,7 +49,7 @@ export const SementeProtocolOverview: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-xl text-red-400 font-mono mb-2">
-                    "Entrego bem, mas nada muda no reconhecimento"
+                    "Entrego muito, mas nada muda"
                   </h4>
                   <p className="text-gray-400 font-light leading-relaxed">
                     Você acredita que a entrega fala por si mesma. Mas continua
@@ -66,9 +68,6 @@ export const SementeProtocolOverview: React.FC = () => {
                     <h4 className="font-bold text-xl text-white font-mono">
                       Por Que Entregar Não Vira Evidência
                     </h4>
-                    <div className="text-[10px] font-mono text-blue-400 bg-blue-900/10 py-0.5 px-2 rounded border border-blue-900/20 uppercase">
-                      Ao Vivo
-                    </div>
                   </div>
                   <p className="text-gray-400 font-light leading-relaxed">
                     A diferença entre o que você faz e o que fica visível,
@@ -108,9 +107,6 @@ export const SementeProtocolOverview: React.FC = () => {
                     <h4 className="font-bold text-xl text-white font-mono">
                       A Armadilha do Feedback Genérico
                     </h4>
-                    <div className="text-[10px] font-mono text-purple-400 bg-purple-900/10 py-0.5 px-2 rounded border border-purple-900/20 uppercase">
-                      Ao Vivo
-                    </div>
                   </div>
                   <p className="text-gray-400 font-light leading-relaxed">
                     Por que "continue assim" não é uma direção — e por que essa
@@ -149,9 +145,6 @@ export const SementeProtocolOverview: React.FC = () => {
                     <h4 className="font-bold text-xl text-white font-mono">
                       Por Que "Quero Crescer" Não É um Destino
                     </h4>
-                    <div className="text-[10px] font-mono text-green-400 bg-green-900/10 py-0.5 px-2 rounded border border-green-900/20 uppercase">
-                      Ao Vivo
-                    </div>
                   </div>
                   <p className="text-gray-400 font-light leading-relaxed">
                     Por que "crescer" é uma direção vaga — e por que, sem um
@@ -190,9 +183,6 @@ export const SementeProtocolOverview: React.FC = () => {
                     <h4 className="font-bold text-xl text-white font-mono">
                       Por Que Tentar Tudo Trava Você
                     </h4>
-                    <div className="text-[10px] font-mono text-primary bg-primary/10 py-0.5 px-2 rounded border border-primary/20 uppercase">
-                      Ao Vivo
-                    </div>
                   </div>
                   <p className="text-gray-400 font-light leading-relaxed">
                     Por que tentar desenvolver tudo ao mesmo tempo divide sua
