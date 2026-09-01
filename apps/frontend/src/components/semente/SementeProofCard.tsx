@@ -23,7 +23,7 @@ export const SementeProofCard: React.FC = () => {
         <div className="text-center py-3">
           <span className="inline-flex items-center gap-1.5 text-primary font-bold tracking-widest uppercase text-xs font-mono border border-primary/30 px-3 py-1.5 rounded bg-primary/10 mb-4">
             <VerifiedIcon className="text-sm" />
-            Estudos de Caso Reais
+            Entenda como
           </span>
           <p className="text-white text-xl font-mono leading-relaxed">
             Um desenvolvedor que achava que levaria{' '}
@@ -33,34 +33,17 @@ export const SementeProofCard: React.FC = () => {
             pra ser promovido. Recebeu um aumento e foi promovido em{' '}
             <span className="text-primary font-bold">12 meses</span>.
           </p>
-          <span className="inline-block mt-4 text-xs font-mono text-primary bg-primary/10 py-1 px-3 rounded border border-primary/20 uppercase">
-            + 4 padrões que podem estar mantendo sua carreira parada
+          <div className="w-2/3 mt-5 mx-auto h-px bg-[#30363D]" />
+
+          <span className="inline-block mt-5 text-xs font-mono text-primary bg-primary/10 py-1 px-3 rounded border border-primary/20 uppercase">
+            ENTREGAVA MUITO. TINHA COMPETÊNCIA TÉCNICA. MESMO ASSIM, NÃO
+            AVANÇAVA.
           </span>
         </div>
 
-        <div className="w-2/3 mx-auto h-px bg-[#30363D]" />
-
-        <div className="bg-[#161B22] border border-primary/30 rounded p-5 space-y-4">
-          <div className="flex justify-between items-center">
-            <span className="text-sm text-gray-400 font-sans">Formato</span>
-            <span className="text-base text-white font-sans font-bold">
-              Transmissão ao vivo
-            </span>
-          </div>
-          <div className="flex justify-between items-center">
-            <span className="text-sm text-gray-400 font-sans">
-              Investimento
-            </span>
-            <span className="text-base text-primary font-sans font-bold">
-              Gratuito
-            </span>
-          </div>
-        </div>
-
-        <div className="mt-1 pt-4 border-t border-dashed border-[#30363D] flex items-center justify-between">
-          <span className="text-xs text-gray-500 font-mono">Carreira Tech</span>
-          <span className="text-xs text-primary font-mono font-bold uppercase">
-            Válido para 1 pessoa
+        <div className="pt-4 border-t border-dashed border-[#30363D] flex justify-center items-center">
+          <span className="text-sm text-gray-500 font-mono text-center">
+            ESTUDO DE CASO REAL
           </span>
         </div>
       </div>

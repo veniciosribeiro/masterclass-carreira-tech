@@ -7,11 +7,11 @@ export const SementeRealityCheck: React.FC = () => {
       <div className="max-w-7xl mx-auto flex flex-col gap-12">
         <div className="text-center max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 font-mono">
-            Entregar mais não produz clareza sobre sua prontidão para o próximo
-            nível.
+            Entregar muito não prova que você está pronto para o próximo nível.
           </h2>
           <p className="text-gray-400 mt-4 font-light text-md">
-            Trabalhar mais não resolve quando o problema não é performance.
+            E “você precisa aparecer mais” não ajuda quando ninguém explica o
+            que precisa ficar visível.
           </p>
         </div>
 
@@ -20,25 +20,27 @@ export const SementeRealityCheck: React.FC = () => {
             <div className="p-10 rounded-xl bg-surface-dark border border-red-900/30 relative overflow-hidden group">
               <div className="absolute left-0 top-0 w-1 h-full bg-red-600"></div>
               <h4 className="text-red-400 font-bold font-mono mb-2 flex items-center gap-2">
-                <ErrorIcon />O Conselho Genérico
+                <ErrorIcon />
+                "Você precisa aparecer mais."
               </h4>
               <p className="text-gray-400">
-                "Você precisa aparecer mais." Sem critérios, sem evidências
-                esperadas, sem próximos passos. Você recebe uma cobrança — e tem
-                que interpretar sozinho o que fazer com ela.
+                É um feedback genérico que não ajuda a entender o que precisa
+                ser feito para avançar. Você vai entender o que isso realmente
+                significa e como transformar esse tipo de feedback em direção de
+                carreira.
               </p>
             </div>
 
             <div className="p-10 rounded-xl bg-surface-dark border border-primary/30 relative overflow-hidden group">
               <div className="absolute left-0 top-0 w-1 h-full bg-primary"></div>
               <h4 className="text-primary font-bold font-mono mb-2 flex items-center gap-2">
-                <VerifiedIcon />A Realidade no Webinário
+                <VerifiedIcon />
+                Visibilidade não é falar mais
               </h4>
               <p className="text-gray-400">
-                Visibilidade não é falar mais alto, virar outra pessoa ou se
-                transformar em influencer. É tornar seu trabalho e seu
-                desenvolvimento compreensíveis para quem participa das decisões
-                sobre sua carreira.
+                É tornar o que você entrega, como você atua e o impacto que
+                produz compreensíveis para quem participa das decisões sobre sua
+                carreira.
               </p>
             </div>
           </div>
