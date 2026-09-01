@@ -2,7 +2,7 @@
  * Meta Pixel — público Webinário Carreira Tech + Bússola (CM-P010, A2.4).
  * Separado do público da Masterclass para não misturar audiências/lookalikes.
  */
-export const BUSSOLA_PIXEL_ID = '1029265373246794';
+export const BUSSOLA_PIXEL_ID = '2915608258822003';
 
 type Fbq = ((...args: unknown[]) => void) & {
   callMethod?: (...args: unknown[]) => void;
