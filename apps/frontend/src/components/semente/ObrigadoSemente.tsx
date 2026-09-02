@@ -1,11 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { PageTitle } from '../seo/PageTitle';
 import { MetaPixel } from '../analytics/MetaPixel';
-import { BUSSOLA_PIXEL_ID } from '../../utils/metaPixel';
+import { BUSSOLA_PIXEL_ID, trackEvent } from '../../utils/metaPixel';
 import { WEBINAR_COMMUNITY_LINK } from './sementeConfig';
 import { SementeFooter } from './SementeFooter';
 
+interface LocationState {
+  inscriptionData?: {
+    name: string;
+    email: string;
+  };
+}
+
 export const ObrigadoSemente: React.FC = () => {
+  const location = useLocation();
+  const state = location.state as LocationState | null;
+  const inscriptionData = state?.inscriptionData;
+
+  useEffect(() => {
+    // Disparar evento de Lead com os dados de inscrição
+    if (inscriptionData) {
+      trackEvent('Lead', {
+        value: 0.0,
+        currency: 'BRL',
+        source: 'webinar_semente',
+      });
+      console.log(
+        '[OBRIGADO_SEMENTE] Lead tracked for:',
+        inscriptionData.email
+      );
+    }
+  }, [inscriptionData]);
   return (
     <div className="min-h-screen font-display bg-background-dark text-text-main overflow-x-hidden antialiased flex flex-col">
       <PageTitle title="Inscrição Confirmada — Webinário Carreira Tech" />
