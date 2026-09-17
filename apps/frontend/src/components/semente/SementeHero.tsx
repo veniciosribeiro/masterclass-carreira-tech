@@ -22,9 +22,9 @@ export const SementeHero: React.FC = () => {
             Para desenvolvedores que entregam muito mas não são promovidos.
           </h1>
           <p className="text-gray-400 font-light text-lg md:text-lg max-w-3xl mx-auto lg:mx-0">
-            Entenda quais são os 4 erros que fazem muitos desenvolvedores
-            permanecerem estagnados, e o que fazer para avançar sem depender
-            apenas de entregar mais ou esperar que alguém perceba o seu valor.
+            Entenda quais são os 4 erros que bloqueiam a sua promoção, e o que
+            fazer para avançar sem depender apenas de entregar mais ou esperar
+            que o seu gestor perceba o seu valor.
           </p>
           <div className="flex justify-center lg:justify-start pt-4">
             <button
