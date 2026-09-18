@@ -77,6 +77,10 @@ interface EventsApiResponse {
   external_id?: string;
   fbc?: string;
   fbp?: string;
+  fn?: string;
+  ln?: string;
+  em?: string;
+  ph?: string;
   [key: string]: unknown;
 }
 
@@ -302,6 +306,13 @@ function initializePixel(pixelId: string): Promise<void> {
       zp: init.zp || '',
       country: init.country || '',
       external_id: resolvedExternalId || '',
+      // Perfil já conhecido do usuário (visitante recorrente com Lead
+      // anterior) — alimenta o Advanced Matching do Pixel, não só o CAPI
+      // do servidor. Só inclui os campos que existem, igual o track.js.
+      ...(init.fn ? { fn: init.fn } : {}),
+      ...(init.ln ? { ln: init.ln } : {}),
+      ...(init.em ? { em: init.em } : {}),
+      ...(init.ph ? { ph: init.ph } : {}),
     });
   })();
   pixelReadyPromises.set(pixelId, promise);
