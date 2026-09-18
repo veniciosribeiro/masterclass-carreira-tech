@@ -38,6 +38,10 @@ services:
       JWT_SECRET: ${JWT_SECRET:-_X-iYqwFNHF8VtANRxeA-5E-hgiR3PwboAm4HVBWoRQ}
       NODE_ENV: production
       FRONTEND_URL: ${FRONTEND_URL}
+      # "localhost" aqui dentro do container é o próprio container — a API
+      # Laravel local roda no host, fora deste compose, então precisa do
+      # hostname especial do Docker Desktop pra alcançar o host.
+      META_EVENTS_API_URL: http://host.docker.internal:8083/events/send
       PORT: 4000
       # SMTP Configuration
       SMTP_HOST: ${SMTP_HOST:-mail.foconoobjetivo.com}
@@ -62,9 +66,12 @@ services:
     build:
       context: .
       dockerfile: apps/frontend/Dockerfile
-      # Pass VITE_API_URL as a build argument so it's baked into the static files
+      # VITE_* precisa ser build arg, não env var de runtime — o Vite baka
+      # esses valores nos arquivos estáticos durante o build; o nginx só
+      # serve os arquivos prontos depois, sem processar env vars.
       args:
         VITE_API_URL: ${VITE_API_URL:-http://localhost:4000/api}
+        VITE_META_EVENTS_API_URL: ${VITE_META_EVENTS_API_URL:-http://localhost:8083/events/send}
     container_name: techcareer-frontend
     restart: unless-stopped
     ports:

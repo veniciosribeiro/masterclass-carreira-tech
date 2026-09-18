@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { PageTitle } from '../seo/PageTitle';
 import { MetaPixel } from '../analytics/MetaPixel';
-import { BUSSOLA_PIXEL_ID, trackEvent } from '../../utils/metaPixel';
+import { BUSSOLA_PIXEL_ID, mirrorServerEvent } from '../../utils/metaPixel';
 import { WEBINAR_COMMUNITY_LINK } from './sementeConfig';
 import { SementeFooter } from './SementeFooter';
 
@@ -11,6 +11,7 @@ interface LocationState {
     name: string;
     email: string;
   };
+  eventId?: string | null;
 }
 
 export const ObrigadoSemente: React.FC = () => {
@@ -19,19 +20,25 @@ export const ObrigadoSemente: React.FC = () => {
   const inscriptionData = state?.inscriptionData;
 
   useEffect(() => {
-    // Disparar evento de Lead com os dados de inscrição
+    // O Lead em si já foi reportado ao Meta CAPI pelo backend, no momento
+    // do /register (ver SementeForm.tsx) — mais confiável do que depender
+    // só deste efeito, que pode nunca rodar (ad blocker, acesso direto na
+    // URL sem state de navegação, etc). Aqui só espelhamos no Pixel do
+    // browser com o mesmo eventID, pra deduplicação e visibilidade em
+    // tempo real no Ads Manager.
     if (inscriptionData) {
-      trackEvent('Lead', {
-        value: 0.0,
-        currency: 'BRL',
-        source: 'webinar_semente',
-      });
+      void mirrorServerEvent(
+        BUSSOLA_PIXEL_ID,
+        'Lead',
+        { value: 0.0, currency: 'BRL', source: 'webinar_semente' },
+        state?.eventId ?? null
+      );
       console.log(
-        '[OBRIGADO_SEMENTE] Lead tracked for:',
+        '[OBRIGADO_SEMENTE] Lead mirrored for:',
         inscriptionData.email
       );
     }
-  }, [inscriptionData]);
+  }, [inscriptionData, state?.eventId]);
   return (
     <div className="min-h-screen font-display bg-background-dark text-text-main overflow-x-hidden antialiased flex flex-col">
       <PageTitle title="Inscrição Confirmada — Webinário Carreira Tech" />

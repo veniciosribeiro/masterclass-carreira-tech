@@ -5,7 +5,24 @@ import {
   ArrowForwardIcon,
 } from '../icons';
 import { STARTER_CHECKOUT_URL, PREMIUM_CHECKOUT_URL } from './bussolaConfig';
-import { trackEvent } from '../../utils/metaPixel';
+import { sendEvent } from '../../utils/metaPixel';
+
+// Segura o redirect por um instante pra dar tempo do POST pro events API
+// (e o fbq('track') correspondente) completarem antes do browser navegar
+// pra fora da página. Mesmo padrão do track.js pro clique de checkout.
+const CHECKOUT_REDIRECT_DELAY_MS = 1500;
+
+function handleCheckoutClick(
+  event: React.MouseEvent<HTMLAnchorElement>,
+  redirectUrl: string,
+  params: Record<string, unknown>
+): void {
+  event.preventDefault();
+  void sendEvent('InitiateCheckout', params);
+  setTimeout(() => {
+    window.location.href = redirectUrl;
+  }, CHECKOUT_REDIRECT_DELAY_MS);
+}
 
 export const BussolaPricing: React.FC = () => {
   return (
@@ -123,8 +140,8 @@ export const BussolaPricing: React.FC = () => {
 
               <a
                 href={STARTER_CHECKOUT_URL}
-                onClick={() =>
-                  trackEvent('InitiateCheckout', {
+                onClick={(e) =>
+                  handleCheckoutClick(e, STARTER_CHECKOUT_URL, {
                     content_name: 'Starter',
                     value: 597,
                     currency: 'BRL',
@@ -197,8 +214,8 @@ export const BussolaPricing: React.FC = () => {
 
               <a
                 href={PREMIUM_CHECKOUT_URL}
-                onClick={() =>
-                  trackEvent('InitiateCheckout', {
+                onClick={(e) =>
+                  handleCheckoutClick(e, PREMIUM_CHECKOUT_URL, {
                     content_name: 'Premium',
                     value: 997,
                     currency: 'BRL',
