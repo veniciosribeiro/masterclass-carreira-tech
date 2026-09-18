@@ -157,11 +157,6 @@ export function getResolvedExternalId(): string | null {
   return resolvedExternalId;
 }
 
-function generateFbp(): string {
-  const random = Math.floor(Math.random() * 1e10);
-  return `fb.1.${Date.now()}.${random}`;
-}
-
 function captureFbcFromUrl(): string | null {
   if (typeof window === 'undefined') return null;
   const fbclid = new URLSearchParams(window.location.search).get('fbclid');
@@ -177,12 +172,21 @@ function extractFbclid(fbc: string): string | null {
  * Mantém _fbp/_fbc vivos independente do fbevents.js ter carregado — se o
  * clique veio de um anúncio novo (fbclid mudou), atualiza _fbc; senão só
  * renova o TTL. Roda no boot e depois de cada evento.
+ *
+ * Nunca FABRICA um _fbp novo quando ele não existe — só renova o TTL do
+ * que já está lá. Gerar um valor às pressas aqui, antes de dar tempo do
+ * servidor responder, é exatamente a corrida que sobrescrevia o histórico
+ * correto no banco: a events API é quem decide (restaura do histórico do
+ * usuário, ou gera um novo se realmente não existir em lugar nenhum) e o
+ * client adota o que ela devolver via adoptResolvedFbpFbc().
  */
 function syncFbpFbc(): void {
   if (typeof document === 'undefined') return;
 
   const existingFbp = readCookie('_fbp');
-  writeCookie('_fbp', existingFbp || generateFbp(), FBP_FBC_TTL_MS);
+  if (existingFbp) {
+    writeCookie('_fbp', existingFbp, FBP_FBC_TTL_MS);
+  }
 
   const existingFbc = readCookie('_fbc');
   const capturedFbc = captureFbcFromUrl();
