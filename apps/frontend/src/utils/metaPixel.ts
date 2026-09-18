@@ -1,3 +1,5 @@
+import { useEffect, useRef, type RefObject } from 'react';
+
 /**
  * Meta Pixel — público Webinário Carreira Tech + Bússola (CM-P010, A2.4).
  * Separado do público da Masterclass para não misturar audiências/lookalikes.
@@ -333,4 +335,39 @@ export async function mirrorServerEvent(
     { content_ids: [CONTENT_ID], ...data },
     eventId ? { eventID: eventId } : undefined
   );
+}
+
+/**
+ * Anexa um IntersectionObserver ao elemento do ref devolvido e dispara
+ * `eventName` (via trackEvent — Pixel + CAPI com dedup) na primeira vez que
+ * ele entra na viewport, uma única vez. Mesmo padrão do IntersectionObserver
+ * de ViewContent/AddToWishlist do track.js, adaptado pra hook do React.
+ */
+export function useTrackOnVisible<T extends HTMLElement = HTMLElement>(
+  eventName: string,
+  params?: Record<string, unknown>
+): RefObject<T | null> {
+  const ref = useRef<T>(null);
+  const firedRef = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || typeof IntersectionObserver === 'undefined') return;
+
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting && !firedRef.current) {
+          firedRef.current = true;
+          trackEvent(eventName, params);
+          observer.unobserve(el);
+        }
+      }
+    });
+
+    observer.observe(el);
+    return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- dispara só uma vez por elemento; params não precisa re-executar o effect
+  }, [eventName]);
+
+  return ref;
 }
