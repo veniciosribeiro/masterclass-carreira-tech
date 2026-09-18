@@ -24,17 +24,19 @@ const CONTENT_ID = import.meta.env.VITE_META_EVENTS_CONTENT_ID || '123456';
 // domínio pai do host atual (ex.: carreira-tech.foconoobjetivo.com) pra
 // esses cookies serem gravados e viajarem junto no fetch pra events API.
 const COOKIE_DOMAIN = '.foconoobjetivo.com';
-const EXTERNAL_ID_TTL_MS = 400 * 24 * 60 * 60 * 1000; // 400 dias — teto máx. de cookie do Chrome
 const FBP_FBC_TTL_MS = 90 * 24 * 60 * 60 * 1000; // 90 dias — padrão do Meta Pixel pra _fbp/_fbc
 
-// Mesmo nome usado pelo track.js. Atenção: a api.foconoobjetivo.com/events/
-// send devolve um Set-Cookie userId=...; HttpOnly na resposta (credentials:
-// 'include' faz o browser aceitar) — isso sobrescreve/blinda o cookie
-// JS-gravável de mesmo nome no mesmo domínio+path assim que a primeira
-// resposta chega. Se isso acontecer de novo, apagar o cookie userId
-// existente no browser destrava — mas ele pode voltar a ser blindado na
-// próxima resposta da API, já que os dois lados usam o mesmo nome.
-const EXTERNAL_ID_COOKIE_NAME = 'userId';
+// O external_id/userId NÃO é mais gerenciado por cookie aqui — a
+// api.foconoobjetivo.com/events/send já mantém um cookie userId próprio
+// (HttpOnly, setado pelo middleware EnsureUserIdCookie), que é a fonte de
+// verdade: viaja automaticamente em toda requisição via credentials:
+// 'include', sobrevive ao teto de 7 dias/24h do ITP do Safari (que só
+// afeta cookies escritos por JS), e o servidor já ignora qualquer userId
+// que a gente mande no corpo em favor desse cookie. Só guardamos aqui o
+// valor que a resposta do 'Init' devolve, pra poder repassar pro nosso
+// próprio backend quando ele precisar chamar a events API server-a-servidor
+// (essa chamada não carrega o cookie do navegador, então precisa do valor
+// explícito) — ver getResolvedExternalId().
 
 // Eventos que não são padrão do Meta viram fbq('trackCustom', ...) em vez de
 // fbq('track', ...). Lista portada do track.js; nenhum é usado hoje, mas
@@ -72,6 +74,7 @@ interface EventsApiResponse {
   st?: string;
   zp?: string;
   country?: string;
+  external_id?: string;
   [key: string]: unknown;
 }
 
@@ -137,24 +140,19 @@ function writeCookie(name: string, value: string, ttlMs: number): void {
   document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/${domainAttr}; SameSite=Lax`;
 }
 
-// Fixado na primeira leitura da sessão de página — sem isso, duas chamadas
-// de getExternalId() próximas o suficiente (ex.: efeitos duplicados pelo
-// React.StrictMode em dev) podiam ler o cookie antes da escrita anterior
-// "assentar" e gerar dois UUIDs diferentes no mesmo carregamento de página.
-let cachedExternalId: string | null = null;
+// Preenchido a partir da resposta do 'Init' (ver initializePixel) — nunca
+// gerado no client.
+let resolvedExternalId: string | null = null;
 
 /**
- * Identificador estável de usuário (external_id), persistido por até 400
- * dias — sobrevive à limpeza de _fbp/_fbc e é a chave de match mais forte
- * do Meta.
+ * external_id que a api.foconoobjetivo.com resolveu pra essa sessão
+ * (cookie HttpOnly dela, ecoado na resposta do 'Init'). Só existe depois
+ * do handshake inicial ter completado; null até lá. Uso principal: repassar
+ * pro nosso próprio backend nas chamadas servidor-a-servidor (ex.: Lead em
+ * /webinar/register), que não têm acesso ao cookie do navegador.
  */
-export function getExternalId(): string {
-  if (cachedExternalId) return cachedExternalId;
-
-  const existing = readCookie(EXTERNAL_ID_COOKIE_NAME);
-  cachedExternalId = existing || crypto.randomUUID();
-  writeCookie(EXTERNAL_ID_COOKIE_NAME, cachedExternalId, EXTERNAL_ID_TTL_MS);
-  return cachedExternalId;
+export function getResolvedExternalId(): string | null {
+  return resolvedExternalId;
 }
 
 function generateFbp(): string {
@@ -212,7 +210,6 @@ async function postToEventsApi(
       event_source_url: window.location.href,
       _fbc: readCookie('_fbc'),
       _fbp: readCookie('_fbp'),
-      userId: getExternalId(),
       ...data,
     };
 
@@ -274,12 +271,13 @@ function initializePixel(pixelId: string): Promise<void> {
   promise = (async () => {
     ensureFbqScript();
     const init = (await sendEvent('Init')) ?? {};
+    resolvedExternalId = init.external_id ?? null;
     window.fbq?.('init', pixelId, {
       ct: init.ct || '',
       st: init.st || '',
       zp: init.zp || '',
       country: init.country || '',
-      external_id: getExternalId(),
+      external_id: resolvedExternalId || '',
     });
   })();
   pixelReadyPromises.set(pixelId, promise);

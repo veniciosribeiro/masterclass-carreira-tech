@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { registerForWebinar } from '../../services/apiClient';
-import { getExternalId, readCookie } from '../../utils/metaPixel';
+import { getResolvedExternalId, readCookie } from '../../utils/metaPixel';
 
 export const SementeForm: React.FC = () => {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ export const SementeForm: React.FC = () => {
       const { eventId } = await registerForWebinar(name.trim(), email.trim(), {
         fbc: readCookie('_fbc'),
         fbp: readCookie('_fbp'),
-        externalId: getExternalId(),
+        externalId: getResolvedExternalId() ?? undefined,
       });
       navigate('/webinario-carreira-tech/obrigado', {
         state: {
