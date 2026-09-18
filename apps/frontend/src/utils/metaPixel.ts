@@ -75,6 +75,8 @@ interface EventsApiResponse {
   zp?: string;
   country?: string;
   external_id?: string;
+  fbc?: string;
+  fbp?: string;
   [key: string]: unknown;
 }
 
@@ -224,10 +226,28 @@ async function postToEventsApi(
       throw new Error(`events API returned ${response.status}`);
     }
 
-    return (await response.json()) as EventsApiResponse;
+    const responseData = (await response.json()) as EventsApiResponse;
+    adoptResolvedFbpFbc(responseData);
+    return responseData;
   } catch (err) {
     console.error(`[metaPixel] failed to send ${eventType}:`, err);
     return null;
+  }
+}
+
+/**
+ * A events API resolve _fbc/_fbp do lado servidor (fbclid novo na URL, ou
+ * restaurado do último valor conhecido do usuário quando o cookie local
+ * expirou — _fbp/_fbc escritos por JS são limitados a 7 dias/24h pelo ITP
+ * do Safari). Adota esse valor no cookie local em toda resposta, pra não
+ * ficar gerando um _fbp novo à toa quando o servidor já sabia o certo.
+ */
+function adoptResolvedFbpFbc(responseData: EventsApiResponse): void {
+  if (responseData.fbp) {
+    writeCookie('_fbp', responseData.fbp, FBP_FBC_TTL_MS);
+  }
+  if (responseData.fbc) {
+    writeCookie('_fbc', responseData.fbc, FBP_FBC_TTL_MS);
   }
 }
 
