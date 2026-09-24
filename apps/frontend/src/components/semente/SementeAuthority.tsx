@@ -29,39 +29,34 @@ export const SementeAuthority: React.FC = () => {
         </div>
 
         <div className="order-2 lg:order-2">
-          <div className="inline-flex items-center gap-2 mb-3 text-primary font-mono text-3xl md:text-3xl tracking-widest uppercase font-bold">
-            <h2>Já estive dos dois lados da mesa.</h2>
+          <div className="inline-flex items-center gap-2 mb-3 text-3xl md:text-3xl tracking-widest font-bold">
+            <h2 className="text-3xl md:text-3xl font-bold font-mono">
+              Eu também já acreditei que fazer um bom trabalho seria suficiente.
+            </h2>
           </div>
 
-          <div className="relative mb-4 text-gray-400 italic text-lg leading-relaxed">
-            <p className="mb-3">
-              Também passei por isso e conheço a frustração de quem está
-              esperando o reconhecimento e ele não vem. Acreditava que entregar
-              muito era suficiente e seria percebido naturalmente.
-            </p>
+          <div className="relative mb-4 text-gray-300 text-lg leading-relaxed">
             <p className="mb-3">
               Estou na área de tecnologia há mais de 20 anos: 12 como
-              programador e 8 em posições de liderança.
-            </p>
-            <p>
-              Hoje sou Coordenador de Engenharia de Software no maior banco da
-              América Latina. Sei o que separa quem é reconhecido de quem fica
-              invisível, porque estive dos dois lados da mesa.
+              desenvolvedor e 8 em posições de liderança. Vivi a frustração de
+              esperar que o trabalho fosse percebido naturalmente e,
+              posteriormente, passei a acompanhar profissionais e participar de
+              decisões sobre desenvolvimento, desempenho e carreira.
             </p>
           </div>
 
           <div className="relative mb-6">
-            <p className="text-gray-400 italic text-lg leading-relaxed border-l-4 border-primary pl-6">
+            <p className="text-gray-300 italic text-lg leading-relaxed border-l-4 border-primary pl-6">
               Criei esse Webinário porque cansei de ver profissionais
-              competentes trabalhando duro e continuando invisíveis, sem saber o
-              que realmente precisa mudar.
+              competentes trabalhando muito e continuando invisíveis, sem saber
+              o que realmente precisa mudar.
             </p>
           </div>
 
-          <div className="grid grid-cols-3 md:grid-cols-3 gap-6 border-y border-border-dark py-4">
+          <div className="grid grid-cols-2 md:grid-cols-2 gap-6 border-y border-border-dark py-4">
             <div>
-              <div className="text-3xl md:text-3xl font-bold text-white mb-1 font-mono">
-                20+
+              <div className="text-2xl md:text-2xl font-bold text-white mb-1 font-mono">
+                +20
               </div>
               <div className="text-xs text-gray-400 uppercase tracking-wider">
                 <p className="text-sm text-white mb-2">ANOS EM TECNOLOGIA</p>
@@ -70,21 +65,14 @@ export const SementeAuthority: React.FC = () => {
               </div>
             </div>
             <div>
-              <div className="text-3xl md:text-3xl font-bold text-white mb-1 font-mono">
-                500+
+              <div className="text-2xl md:text-2xl font-bold text-white mb-1 font-mono">
+                +500
               </div>
               <div className="text-xs text-gray-400 uppercase tracking-wider">
                 <p className="text-sm text-white mb-2">SESSÕES DE MENTORIA</p>
-                <p>SEI O QUE TE TRAVA E O QUE TE DESTRAVA</p>
-              </div>
-            </div>
-            <div>
-              <div className="text-3xl md:text-3xl font-bold text-white mb-1 font-mono">
-                700+
-              </div>
-              <div className="text-xs text-gray-400 uppercase tracking-wider">
-                <p className="text-sm text-white mb-2">CURRÍCULOS ANALISADOS</p>
-                <p>SEI O QUE TE ELIMINA E O QUE TE DESTACA</p>
+                <p>
+                  ACOMPANHANDO O DESENVOLVIMENTO DE PROFISSIONAIS DE TECNOLOGIA
+                </p>
               </div>
             </div>
           </div>
