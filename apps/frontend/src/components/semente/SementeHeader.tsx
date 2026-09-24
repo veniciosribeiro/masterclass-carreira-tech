@@ -47,7 +47,7 @@ export const SementeHeader: React.FC = () => {
           onClick={() => scrollToSection('inscricao')}
           className="flex items-center justify-center rounded-lg h-10 px-6 bg-primary hover:bg-green-400 transition-colors text-[#0D1117] text-sm font-bold tracking-wide font-mono uppercase"
         >
-          <span>&gt; Garantir_Vaga</span>
+          <span>&gt; PARTICIPAR DO WEBINÁRIO</span>
         </button>
       </div>
     </header>
