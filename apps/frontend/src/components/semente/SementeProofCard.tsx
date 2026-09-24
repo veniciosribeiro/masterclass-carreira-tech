@@ -7,7 +7,7 @@ export const SementeProofCard: React.FC = () => {
       {/* Glow Effect */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[460px] bg-primary/20 blur-[100px] rounded-full pointer-events-none opacity-50" />
 
-      <div className="relative w-full max-w-lg bg-[#0D1117] border border-[#30363D] shadow-2xl rounded-sm transform transition-transform duration-700 hover:scale-[1.02] md:rotate-y-[-12deg] md:rotate-x-[5deg] hover:rotate-0 p-8 flex flex-col gap-5 overflow-hidden">
+      <div className="relative w-full max-w-xl bg-[#0D1117] border border-[#30363D] shadow-2xl rounded-sm transform transition-transform duration-700 hover:scale-[1.02] md:rotate-y-[-12deg] md:rotate-x-[5deg] hover:rotate-0 p-10 flex flex-col gap-6 overflow-hidden">
         {/* Top Accent Line */}
         <div className="absolute top-0 left-0 w-full h-1 bg-primary" />
 
@@ -20,12 +20,12 @@ export const SementeProofCard: React.FC = () => {
           </span>
         </div>
 
-        <div className="text-center py-3">
+        <div className="text-center py-4">
           <span className="inline-flex items-center gap-1.5 text-primary font-bold tracking-widest uppercase text-xs font-mono border border-primary/30 px-3 py-1.5 rounded bg-primary/10 mb-4">
             <VerifiedIcon className="text-sm" />
             Entenda como
           </span>
-          <p className="text-white text-xl font-mono leading-relaxed">
+          <p className="text-white text-2xl font-mono leading-relaxed">
             Um desenvolvedor que achava que levaria{' '}
             <span className="text-gray-500 line-through decoration-red-500 decoration-2">
               4 anos
