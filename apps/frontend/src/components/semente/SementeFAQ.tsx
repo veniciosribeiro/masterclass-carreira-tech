@@ -57,25 +57,6 @@ export const SementeFAQ: React.FC = () => {
           <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
-                &gt; Isso é uma venda disfarçada?
-              </span>
-              <span className="transition group-open:rotate-180 text-primary">
-                <ExpandMoreIcon />
-              </span>
-            </summary>
-            <div className="text-gray-400 p-6 pt-0 leading-relaxed border-t border-transparent group-open:border-border-dark group-open:pt-6 font-light">
-              <span className="text-primary font-mono text-xs block mb-2">
-                // Response:
-              </span>
-              O Webinário é conteúdo real, de graça, sobre os quatro pontos
-              desta página. No final, você conhece uma oferta para quem quiser
-              ir além — sem obrigação nenhuma de comprar.
-            </div>
-          </details>
-
-          <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
-            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
-              <span className="font-mono text-sm md:text-base">
                 &gt; E se meu gestor não souber conduzir uma conversa de
                 carreira?
               </span>
