@@ -41,8 +41,19 @@ window.__earlyEventsInit=p;
 
   return {
     name: 'early-events-init',
-    transformIndexHtml() {
-      return [{ tag: 'script', children: script, injectTo: 'head' }];
+    // 'pre' + inserção logo depois do <meta charset>: um script inline só
+    // executa quando não há folha de estilo pendente antes dele, então se ele
+    // ficasse depois do <link rel="stylesheet"> (onde o Vite injeta o CSS) o
+    // Init esperaria o CSS baixar — medido: com CSS atrasado em 1,5s o Init
+    // saía em 1,5s. O charset tem que continuar nos primeiros 1024 bytes.
+    transformIndexHtml: {
+      order: 'pre',
+      handler(html) {
+        const tag = `<script>${script}</script>`;
+        return /<meta charset[^>]*>/i.test(html)
+          ? html.replace(/(<meta charset[^>]*>)/i, `$1\n    ${tag}`)
+          : html.replace('<head>', `<head>\n    ${tag}`);
+      },
     },
   };
 }
