@@ -20,6 +20,12 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
  * atrás do download do bundle. O metaPixel.ts consome a promise em
  * window.__earlyEventsInit e, se ela falhar, refaz o request normalmente.
  *
+ * O fetch é async (o script executa em microssegundos e só dispara o request)
+ * e vai pra outra origem, então não bloqueia o parse nem disputa conexão com
+ * o CSS/JS. Em link lento ele ainda divide a banda com esses recursos, por
+ * isso `priority: 'low'` — medido em celular emulado (150ms, 1,6Mbps, CPU 4x)
+ * o FCP com o script ficou dentro do ruído (~1,5-1,6s nos dois casos).
+ *
  * Só nas rotas que montam <MetaPixel>. _fbc/_fbp seguem como cookies — a API
  * resolve o fbclid da URL e gera o _fbp sozinha (ResolveFbpFbc) e o client
  * adota o valor devolvido.
@@ -34,7 +40,7 @@ function earlyEventsInit(env: Record<string, string>): Plugin {
   const script = `(function(){try{
 if(!/^(${routes})(\\/|$)/.test(location.pathname))return;
 function c(n){var m=document.cookie.match(new RegExp('(?:^|; )'+n+'=([^;]*)'));return m?decodeURIComponent(m[1]):null}
-var p=fetch(${JSON.stringify(url)},{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify({contentId:${JSON.stringify(contentId)},eventType:'Init',event_source_url:location.href,_fbc:c('_fbc'),_fbp:c('_fbp')})}).then(function(r){if(!r.ok)throw new Error('events API returned '+r.status);return r.json()});
+var p=fetch(${JSON.stringify(url)},{method:'POST',credentials:'include',priority:'low',headers:{'Content-Type':'application/json'},body:JSON.stringify({contentId:${JSON.stringify(contentId)},eventType:'Init',event_source_url:location.href,_fbc:c('_fbc'),_fbp:c('_fbp')})}).then(function(r){if(!r.ok)throw new Error('events API returned '+r.status);return r.json()});
 p.catch(function(){});
 window.__earlyEventsInit=p;
 }catch(e){}})();`;
