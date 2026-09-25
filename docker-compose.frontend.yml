@@ -9,3 +9,7 @@ services:
       - '${FRONTEND_PORT:-3000}:3000'
     environment:
       API_UPSTREAM: ${API_UPSTREAM}
+      # Purge do cache do Cloudflare depois do deploy (post-deployment command)
+      CF_API_TOKEN: ${CF_API_TOKEN:-}
+      CF_ZONE_ID: ${CF_ZONE_ID:-}
+      CF_PURGE_HOSTS: ${CF_PURGE_HOSTS:-carreira-tech.foconoobjetivo.com}

@@ -21,6 +21,10 @@ RUN npm run build
 FROM nginx:alpine
 COPY --from=builder /app/apps/frontend/dist /usr/share/nginx/html
 COPY apps/frontend/nginx.conf /etc/nginx/templates/default.conf.template
+# Purge do cache do Cloudflare, chamado como "Post-deployment command" no Coolify
+# (ver o cabeçalho do script). Sem CF_API_TOKEN/CF_ZONE_ID não faz nada.
+COPY apps/frontend/purge-cf-cache.sh /usr/local/bin/purge-cf-cache
+RUN chmod +x /usr/local/bin/purge-cf-cache
 EXPOSE 3000
 CMD ["nginx", "-g", "daemon off;"]
 
