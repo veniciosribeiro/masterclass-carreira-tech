@@ -30,12 +30,8 @@ const FBP_FBC_TTL_MS = 90 * 24 * 60 * 60 * 1000; // 90 dias — padrão do Meta 
 // (HttpOnly, setado pelo middleware EnsureUserIdCookie), que é a fonte de
 // verdade: viaja automaticamente em toda requisição via credentials:
 // 'include', sobrevive ao teto de 7 dias/24h do ITP do Safari (que só
-// afeta cookies escritos por JS), e o servidor já ignora qualquer userId
-// que a gente mande no corpo em favor desse cookie. Só guardamos aqui o
-// valor que a resposta do 'Init' devolve, pra poder repassar pro nosso
-// próprio backend quando ele precisar chamar a events API server-a-servidor
-// (essa chamada não carrega o cookie do navegador, então precisa do valor
-// explícito) — ver getResolvedExternalId().
+// afeta cookies escritos por JS). Todo evento sai direto do navegador, então
+// o cookie, o IP e o User-Agent do visitante chegam à events API sozinhos.
 
 // Eventos que não são padrão do Meta viram fbq('trackCustom', ...) em vez de
 // fbq('track', ...). Lista portada do track.js; nenhum é usado hoje, mas
@@ -92,6 +88,9 @@ interface EventsApiResponse {
 // aguardar essa promise pra garantir que fbq('init', ...) já foi chamado
 // antes, mesmo que os dois efeitos disparem no mesmo commit do React.
 const pixelReadyPromises = new Map<string, Promise<void>>();
+// Último conjunto de Advanced Matching passado ao fbq('init'), pra um novo
+// init (ex.: depois de capturar em/fn/ln no Lead) não perder os campos antigos.
+let pixelMatchData: Record<string, unknown> = {};
 
 function ensureFbqScript(): void {
   if (typeof window === 'undefined' || window.fbq) return;
@@ -116,9 +115,10 @@ function ensureFbqScript(): void {
   //
   // Contrapartida: o Pixel só aceita UM PageView explícito por carregamento
   // de página (o segundo é descartado em silêncio — só o caminho automático
-  // de SPA pode repetir). Numa navegação client-side (ex.: /obrigado) o
-  // nosso PageView explícito, com o eventID do servidor, não chega ao
-  // browser; o do CAPI segue valendo, sem duplicata.
+  // de SPA pode repetir). Numa navegação client-side o nosso PageView
+  // explícito, com o eventID do servidor, não chega ao browser (o do CAPI
+  // segue valendo, sem duplicata). Por isso a ida pra /obrigado, depois do
+  // Lead, é uma recarga completa (window.location.assign em SementeForm).
   fbq.disablePushState = true;
 
   window.fbq = fbq;
@@ -161,21 +161,6 @@ function writeCookie(name: string, value: string, ttlMs: number): void {
   const domain = resolveCookieDomain();
   const domainAttr = domain ? `; domain=${domain}` : '';
   document.cookie = `${name}=${encodeURIComponent(value)}; expires=${expires}; path=/${domainAttr}; SameSite=Lax`;
-}
-
-// Preenchido a partir da resposta do 'Init' (ver initializePixel) — nunca
-// gerado no client.
-let resolvedExternalId: string | null = null;
-
-/**
- * external_id que a api.foconoobjetivo.com resolveu pra essa sessão
- * (cookie HttpOnly dela, ecoado na resposta do 'Init'). Só existe depois
- * do handshake inicial ter completado; null até lá. Uso principal: repassar
- * pro nosso próprio backend nas chamadas servidor-a-servidor (ex.: Lead em
- * /webinar/register), que não têm acesso ao cookie do navegador.
- */
-export function getResolvedExternalId(): string | null {
-  return resolvedExternalId;
 }
 
 function captureFbcFromUrl(): string | null {
@@ -301,11 +286,23 @@ function adoptResolvedFbpFbc(responseData: EventsApiResponse): void {
   }
 }
 
+interface SendEventOptions {
+  userData?: Record<string, unknown>;
+  eventSourceUrl?: string;
+}
+
 /**
  * Envia o evento pra api.foconoobjetivo.com/events/send (que repassa pro
  * Meta CAPI) e espelha no Pixel do browser com o mesmo eventID devolvido,
  * pra deduplicação. 'Init' é um handshake privado com o backend de eventos
  * (retorna geo pra Advanced Matching) e não dispara fbq.
+ *
+ * `data` vai pro servidor e pro fbq (parâmetros do evento). `userData` (em,
+ * fn, ln, ph…) vai pro servidor, que faz o hash antes de mandar pro CAPI, e
+ * pro Pixel como Advanced Matching (novo fbq('init') antes do track — o
+ * fbevents faz o hash sozinho). Nunca entra nos parâmetros do evento, que
+ * não são hasheados. `eventSourceUrl` fixa a URL do evento quando ele é
+ * disparado depois de uma navegação (o padrão é a location no momento do POST).
  *
  * Todo evento que não é o próprio 'Init' espera o handshake terminar antes de
  * sair. Sem isso, um evento disparado logo no carregamento corre contra o
@@ -316,15 +313,25 @@ function adoptResolvedFbpFbc(responseData: EventsApiResponse): void {
  */
 export async function sendEvent(
   eventType: string,
-  data: Record<string, unknown> = {}
+  data: Record<string, unknown> = {},
+  { userData = {}, eventSourceUrl }: SendEventOptions = {}
 ): Promise<EventsApiResponse | null> {
   if (typeof window === 'undefined') return null;
 
   if (eventType !== 'Init') await initializePixel(BUSSOLA_PIXEL_ID);
 
-  const responseData = await postToEventsApi(eventType, data);
+  const responseData = await postToEventsApi(eventType, {
+    ...(eventSourceUrl ? { event_source_url: eventSourceUrl } : {}),
+    ...data,
+    ...userData,
+  });
   if (!responseData) return null;
   if (eventType === 'Init') return responseData;
+
+  if (Object.keys(userData).length > 0) {
+    pixelMatchData = { ...pixelMatchData, ...userData };
+    window.fbq?.('init', BUSSOLA_PIXEL_ID, pixelMatchData);
+  }
 
   if (CUSTOM_EVENT_TYPES.has(eventType)) {
     window.fbq?.('trackCustom', eventType, data, {
@@ -350,13 +357,12 @@ function initializePixel(pixelId: string): Promise<void> {
   promise = (async () => {
     ensureFbqScript();
     const init = (await sendEvent('Init')) ?? {};
-    resolvedExternalId = init.external_id ?? null;
-    window.fbq?.('init', pixelId, {
+    pixelMatchData = {
       ct: init.ct || '',
       st: init.st || '',
       zp: init.zp || '',
       country: init.country || '',
-      external_id: resolvedExternalId || '',
+      external_id: init.external_id || '',
       // Perfil já conhecido do usuário (visitante recorrente com Lead
       // anterior) — alimenta o Advanced Matching do Pixel, não só o CAPI
       // do servidor. Só inclui os campos que existem, igual o track.js.
@@ -364,7 +370,8 @@ function initializePixel(pixelId: string): Promise<void> {
       ...(init.ln ? { ln: init.ln } : {}),
       ...(init.em ? { em: init.em } : {}),
       ...(init.ph ? { ph: init.ph } : {}),
-    });
+    };
+    window.fbq?.('init', pixelId, pixelMatchData);
   })();
   pixelReadyPromises.set(pixelId, promise);
   return promise;
@@ -394,31 +401,6 @@ export function trackEvent(
 ): void {
   if (typeof window === 'undefined') return;
   void sendEvent(eventName, params);
-}
-
-/**
- * Espelha no Pixel do browser um evento que já foi reportado ao Meta CAPI
- * pelo backend (ex.: Lead server-side em /webinar/register), usando o
- * mesmo eventID pra deduplicação. Aguarda fbq('init', ...) ter rodado —
- * necessário porque este espelho normalmente dispara de um useEffect
- * separado do <MetaPixel>, que pode não ter terminado a inicialização
- * ainda no mesmo commit do React.
- */
-export async function mirrorServerEvent(
-  pixelId: string,
-  eventType: string,
-  data: Record<string, unknown>,
-  eventId: string | null
-): Promise<void> {
-  if (typeof window === 'undefined') return;
-
-  await initializePixel(pixelId);
-  window.fbq?.(
-    'track',
-    eventType,
-    { content_ids: [CONTENT_ID], ...data },
-    eventId ? { eventID: eventId } : undefined
-  );
 }
 
 /**

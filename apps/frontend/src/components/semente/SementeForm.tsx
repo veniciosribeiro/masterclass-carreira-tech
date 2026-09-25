@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { registerForWebinar } from '../../services/apiClient';
-import { getResolvedExternalId, readCookie } from '../../utils/metaPixel';
+import { sendEvent } from '../../utils/metaPixel';
+
+// Teto de espera pelo Lead antes de sair da página: uma API lenta não pode
+// travar o usuário no botão.
+const LEAD_MAX_WAIT_MS = 1500;
 
 export const SementeForm: React.FC = () => {
-  const navigate = useNavigate();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [submitting, setSubmitting] = useState(false);
@@ -16,26 +18,46 @@ export const SementeForm: React.FC = () => {
     setSubmitting(true);
 
     try {
-      const { eventId } = await registerForWebinar(name.trim(), email.trim(), {
-        fbc: readCookie('_fbc'),
-        fbp: readCookie('_fbp'),
-        externalId: getResolvedExternalId() ?? undefined,
-      });
-      navigate('/webinario-carreira-tech/obrigado', {
-        state: {
-          inscriptionData: {
-            name: name.trim(),
-            email: email.trim(),
-          },
-          eventId,
-        },
-      });
+      const fullName = name.trim();
+      const cleanEmail = email.trim();
+      await registerForWebinar(fullName, cleanEmail);
+
+      // Lead direto do navegador, como o PageView: IP, User-Agent e cookie
+      // são os do visitante. Precisa terminar antes de sair da página, porque
+      // a navegação abaixo recarrega tudo. A URL é capturada aqui porque o
+      // payload só é montado depois do await do Init, e o Lead deve levar a
+      // página do formulário, não a de obrigado.
+      const eventSourceUrl = window.location.href;
+      const nameParts = fullName.toLowerCase().split(/\s+/).filter(Boolean);
+      await Promise.race([
+        sendEvent(
+          'Lead',
+          { value: 0, currency: 'BRL', source: 'webinar_semente' },
+          {
+            eventSourceUrl,
+            userData: {
+              em: cleanEmail.toLowerCase(),
+              fn: nameParts[0],
+              ...(nameParts.length > 1
+                ? { ln: nameParts[nameParts.length - 1] }
+                : {}),
+            },
+          }
+        ),
+        new Promise((resolve) => setTimeout(resolve, LEAD_MAX_WAIT_MS)),
+      ]);
+
+      // Recarga completa (não navigate): o Pixel só aceita um PageView
+      // explícito por carregamento, então numa navegação client-side o
+      // PageView de /obrigado nunca chegaria ao browser (ver metaPixel.ts).
+      window.location.assign('/webinario-carreira-tech/obrigado');
     } catch (err) {
       console.error('[SEMENTE_FORM] Failed to register:', err);
       setError(
         'Não conseguimos concluir sua inscrição agora. Tente novamente em instantes.'
       );
-    } finally {
+      // Só reabilita no erro: no sucesso a página recarrega, e reabilitar
+      // antes disso deixaria dar um segundo clique no meio da navegação.
       setSubmitting(false);
     }
   };

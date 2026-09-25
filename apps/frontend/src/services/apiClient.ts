@@ -68,39 +68,22 @@ export const getPublicPdfUrl = (sessionId: string) => {
   return `${API_BASE}/public/results/${sessionId}/pdf`;
 };
 
-interface RegisterWebinarIdentity {
-  fbc?: string | null;
-  fbp?: string | null;
-  externalId?: string;
-}
-
 interface RegisterWebinarResult {
   registered: boolean;
-  eventId: string | null;
 }
 
 /**
- * Registers a lead for the Webinário Semente. Forwards Meta Pixel identity
- * signals (fbc/fbp/external_id) so the backend can report a server-side
- * Lead event; the returned eventId is used to mirror the same event on the
- * browser Pixel (dedup).
+ * Registers a lead for the Webinário Semente. O evento Lead do Meta não passa
+ * por aqui — o formulário o dispara direto do navegador (ver SementeForm).
  */
 export async function registerForWebinar(
   name: string,
-  email: string,
-  identity: RegisterWebinarIdentity = {}
+  email: string
 ): Promise<RegisterWebinarResult> {
   const response = await fetch(`${API_BASE}/webinar/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      name,
-      email,
-      fbc: identity.fbc ?? undefined,
-      fbp: identity.fbp ?? undefined,
-      externalId: identity.externalId,
-      eventSourceUrl: window.location.href,
-    }),
+    body: JSON.stringify({ name, email }),
   });
 
   if (!response.ok) {
