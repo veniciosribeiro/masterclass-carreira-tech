@@ -5,7 +5,6 @@ import {
   ArrowForwardIcon,
   RefreshIcon,
 } from '../icons';
-import { useTrackOnVisible } from '../../utils/metaPixel';
 
 const DISCOVERY_CARDS = [
   {
@@ -43,13 +42,8 @@ const DISCOVERY_CARDS = [
 ];
 
 export const SementeProtocolOverview: React.FC = () => {
-  const descobertasRef = useTrackOnVisible<HTMLElement>('ViewContent', {
-    content_name: 'descobertas',
-  });
-
   return (
     <section
-      ref={descobertasRef}
       className="bg-surface-dark py-10 px-6 overflow-hidden relative"
       id="descobertas"
     >

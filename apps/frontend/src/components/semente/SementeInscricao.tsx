@@ -1,10 +1,21 @@
 import React from 'react';
+import { useTrackOnVisible } from '../../utils/metaPixel';
 import { SementeForm } from './SementeForm';
 import { WEBINAR_DATE_LABEL_2 } from './sementeConfig';
 
 export const SementeInscricao: React.FC = () => {
+  // ViewContent quando o usuário de fato chega à seção de inscrição (30% dela
+  // na tela). Precisa ser uma fração, não 1px: em desktop a seção anterior
+  // já espia por 2px na primeira tela e disparava o evento no carregamento.
+  const inscricaoRef = useTrackOnVisible<HTMLElement>(
+    'ViewContent',
+    { content_name: 'inscricao' },
+    { threshold: 0.3 }
+  );
+
   return (
     <section
+      ref={inscricaoRef}
       className="px-6 py-10 bg-[#050709] border-t border-border-dark"
       id="inscricao"
     >
