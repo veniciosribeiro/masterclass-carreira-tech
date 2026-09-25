@@ -1,4 +1,5 @@
 import { useEffect, useRef, type RefObject } from 'react';
+import { DEFAULT_CONTENT_ID, DEFAULT_EVENTS_API_URL } from './metaEventsConfig';
 
 /**
  * Meta Pixel — público Webinário Carreira Tech + Bússola (CM-P010, A2.4).
@@ -11,14 +12,12 @@ import { useEffect, useRef, type RefObject } from 'react';
  */
 export const BUSSOLA_PIXEL_ID = '2915608258822003';
 
+// Os defaults ficam em metaEventsConfig.ts porque o vite.config.ts também os
+// usa (Init antecipado no index.html) e precisa dos mesmos valores.
 const EVENTS_API_URL =
-  import.meta.env.VITE_META_EVENTS_API_URL ||
-  'https://api.foconoobjetivo.com/events/send';
-// Content_id oficial da masterclass. Ainda não está cadastrado em
-// config/conversions.php na API de eventos (só tem 5074373, 4728662 e
-// 1234567) — precisa ser adicionado lá, mapeado pro BUSSOLA_PIXEL_ID, senão
-// cai no pixel/token default do .env em vez do certo.
-const CONTENT_ID = import.meta.env.VITE_META_EVENTS_CONTENT_ID || '123456';
+  import.meta.env.VITE_META_EVENTS_API_URL || DEFAULT_EVENTS_API_URL;
+const CONTENT_ID =
+  import.meta.env.VITE_META_EVENTS_CONTENT_ID || DEFAULT_CONTENT_ID;
 
 // Domínio raiz compartilhado por todas as propriedades — precisa ser um
 // domínio pai do host atual (ex.: carreira-tech.foconoobjetivo.com) pra
@@ -66,6 +65,9 @@ declare global {
   interface Window {
     fbq?: Fbq;
     _fbq?: Fbq;
+    // Promise do POST 'Init' disparado por um <script> inline do index.html
+    // (ver vite.config.ts), antes do bundle JS terminar de baixar.
+    __earlyEventsInit?: Promise<EventsApiResponse>;
   }
 }
 
@@ -224,11 +226,36 @@ function syncFbpFbc(): void {
   }
 }
 
+/**
+ * Pega (uma única vez) o Init que o index.html já disparou antes do bundle
+ * carregar. Assim o handshake — o request mais lento da sessão, já que paga
+ * a conexão fria até a origem — roda em paralelo com o download do JS em vez
+ * de só começar depois do React montar.
+ */
+function takeEarlyInit(): Promise<EventsApiResponse> | null {
+  if (typeof window === 'undefined') return null;
+  const early = window.__earlyEventsInit ?? null;
+  window.__earlyEventsInit = undefined;
+  return early;
+}
+
 async function postToEventsApi(
   eventType: string,
   data: Record<string, unknown>
 ): Promise<EventsApiResponse | null> {
   try {
+    const early = eventType === 'Init' ? takeEarlyInit() : null;
+    if (early) {
+      try {
+        const earlyData = await early;
+        adoptResolvedFbpFbc(earlyData);
+        return earlyData;
+      } catch (err) {
+        // Falhou (rede, CORS, 5xx) — cai no request normal abaixo.
+        console.warn('[metaPixel] early Init failed, retrying:', err);
+      }
+    }
+
     const payload = {
       contentId: CONTENT_ID,
       eventType,
