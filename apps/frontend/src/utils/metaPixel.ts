@@ -59,6 +59,7 @@ type Fbq = ((...args: unknown[]) => void) & {
   queue?: unknown[];
   loaded?: boolean;
   version?: string;
+  disablePushState?: boolean;
 };
 
 declare global {
@@ -103,6 +104,20 @@ function ensureFbqScript(): void {
   fbq.queue = [];
   fbq.loaded = true;
   fbq.version = '2.0';
+  // Por padrão o fbevents.js intercepta history.pushState/replaceState e
+  // popstate e dispara um PageView por conta própria a cada um — inclusive
+  // em clique de âncora (#seção) e no navigate() do React Router. Esse
+  // PageView automático sai com um eventID gerado pelo Pixel
+  // (ob3_plugin-set_..., OpenBridge), sem par no servidor, então nunca é
+  // deduplicado com o PageView do CAPI: conta em dobro e infla o número de
+  // PageViews a cada clique no menu.
+  //
+  // Contrapartida: o Pixel só aceita UM PageView explícito por carregamento
+  // de página (o segundo é descartado em silêncio — só o caminho automático
+  // de SPA pode repetir). Numa navegação client-side (ex.: /obrigado) o
+  // nosso PageView explícito, com o eventID do servidor, não chega ao
+  // browser; o do CAPI segue valendo, sem duplicata.
+  fbq.disablePushState = true;
 
   window.fbq = fbq;
   window._fbq = fbq;
