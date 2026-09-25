@@ -279,12 +279,21 @@ function adoptResolvedFbpFbc(responseData: EventsApiResponse): void {
  * Meta CAPI) e espelha no Pixel do browser com o mesmo eventID devolvido,
  * pra deduplicação. 'Init' é um handshake privado com o backend de eventos
  * (retorna geo pra Advanced Matching) e não dispara fbq.
+ *
+ * Todo evento que não é o próprio 'Init' espera o handshake terminar antes de
+ * sair. Sem isso, um evento disparado logo no carregamento corre contra o
+ * Init: o cookie userId ainda não existe, a API gera um external_id novo só
+ * pra ele (usuário fantasma, diferente do Init/PageView) e o fbq('track')
+ * pode rodar antes do fbq('init'). Também evita um preflight CORS extra em
+ * paralelo, que o navegador só consegue cachear depois do primeiro terminar.
  */
 export async function sendEvent(
   eventType: string,
   data: Record<string, unknown> = {}
 ): Promise<EventsApiResponse | null> {
   if (typeof window === 'undefined') return null;
+
+  if (eventType !== 'Init') await initializePixel(BUSSOLA_PIXEL_ID);
 
   const responseData = await postToEventsApi(eventType, data);
   if (!responseData) return null;
@@ -388,33 +397,52 @@ export async function mirrorServerEvent(
 /**
  * Anexa um IntersectionObserver ao elemento do ref devolvido e dispara
  * `eventName` (via trackEvent — Pixel + CAPI com dedup) na primeira vez que
- * ele entra na viewport, uma única vez. Mesmo padrão do IntersectionObserver
- * de ViewContent/AddToWishlist do track.js, adaptado pra hook do React.
+ * ele fica visível, uma única vez. Mesmo padrão do IntersectionObserver de
+ * ViewContent/AddToWishlist do track.js, adaptado pra hook do React.
+ *
+ * `threshold` é a fração do elemento que precisa estar na tela (0 a 1). Com
+ * o padrão (0), 1px visível já dispara — numa tela de 900px de altura isso
+ * bastava pra um evento "de scroll" sair no carregamento, sem o usuário
+ * rolar. Cuidado com frações altas em seções mais altas que a viewport: se
+ * a fração nunca puder ser atingida (ex.: 0.5 numa seção com o dobro da
+ * altura da tela), o evento nunca dispara.
  */
 export function useTrackOnVisible<T extends HTMLElement = HTMLElement>(
   eventName: string,
-  params?: Record<string, unknown>
+  params?: Record<string, unknown>,
+  options?: { threshold?: number }
 ): RefObject<T | null> {
   const ref = useRef<T>(null);
   const firedRef = useRef(false);
+  const threshold = options?.threshold ?? 0;
 
   useEffect(() => {
     const el = ref.current;
     if (!el || typeof IntersectionObserver === 'undefined') return;
 
-    const observer = new IntersectionObserver((entries) => {
-      for (const entry of entries) {
-        if (entry.isIntersecting && !firedRef.current) {
-          firedRef.current = true;
-          trackEvent(eventName, params);
-          observer.unobserve(el);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          // A 1ª notificação de um observer chega com isIntersecting=true
+          // mesmo abaixo do threshold (basta 1px sobreposto) — por isso a
+          // fração também é conferida aqui.
+          if (
+            entry.isIntersecting &&
+            entry.intersectionRatio >= threshold &&
+            !firedRef.current
+          ) {
+            firedRef.current = true;
+            trackEvent(eventName, params);
+            observer.unobserve(el);
+          }
         }
-      }
-    });
+      },
+      { threshold }
+    );
 
     observer.observe(el);
     return () => observer.disconnect();
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- dispara só uma vez por elemento; params não precisa re-executar o effect
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- dispara só uma vez por elemento; params e threshold não precisam re-executar o effect
   }, [eventName]);
 
   return ref;
