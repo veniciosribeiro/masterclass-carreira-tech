@@ -38,10 +38,6 @@ services:
       JWT_SECRET: ${JWT_SECRET:-_X-iYqwFNHF8VtANRxeA-5E-hgiR3PwboAm4HVBWoRQ}
       NODE_ENV: production
       FRONTEND_URL: ${FRONTEND_URL}
-      # "localhost" aqui dentro do container é o próprio container — a API
-      # Laravel local roda no host, fora deste compose, então precisa do
-      # hostname especial do Docker Desktop pra alcançar o host.
-      META_EVENTS_API_URL: http://host.docker.internal:8083/events/send
       PORT: 4000
       # SMTP Configuration
       SMTP_HOST: ${SMTP_HOST:-mail.foconoobjetivo.com}
