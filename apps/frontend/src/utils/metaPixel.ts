@@ -255,6 +255,11 @@ async function postToEventsApi(
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
+      // Sem isso, uma navegação logo depois do envio (ex.: window.location.assign
+      // no SementeForm, depois do Lead) cancela esse fetch se ele ainda estiver em
+      // voo — o evento nunca chega na events API, mesmo o resto do fluxo (cadastro
+      // do webinário, entrega pro n8n/Mautic) tendo completado normalmente.
+      keepalive: true,
     });
 
     if (!response.ok) {
