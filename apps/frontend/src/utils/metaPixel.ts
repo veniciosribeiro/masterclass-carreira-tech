@@ -91,6 +91,11 @@ const pixelReadyPromises = new Map<string, Promise<void>>();
 // Último conjunto de Advanced Matching passado ao fbq('init'), pra um novo
 // init (ex.: depois de capturar em/fn/ln no Lead) não perder os campos antigos.
 let pixelMatchData: Record<string, unknown> = {};
+// external_id que a events API resolveu pra esse visitante (cookie userId
+// dela, HttpOnly — não dá pra ler direto do document.cookie). Guardado aqui
+// pra quem precisar do mesmo id que vai virar o `users.external_id` na
+// laravel-api (ex.: vincular um cadastro nosso a esse usuário lá).
+let resolvedExternalId: string | null = null;
 
 function ensureFbqScript(): void {
   if (typeof window === 'undefined' || window.fbq) return;
@@ -283,6 +288,9 @@ async function postToEventsApi(
  * ficar gerando um _fbp novo à toa quando o servidor já sabia o certo.
  */
 function adoptResolvedFbpFbc(responseData: EventsApiResponse): void {
+  if (responseData.external_id) {
+    resolvedExternalId = responseData.external_id;
+  }
   if (responseData.fbp) {
     writeCookie('_fbp', responseData.fbp, FBP_FBC_TTL_MS);
   }
@@ -380,6 +388,22 @@ function initializePixel(pixelId: string): Promise<void> {
   })();
   pixelReadyPromises.set(pixelId, promise);
   return promise;
+}
+
+/**
+ * O external_id que a events API resolveu pra esse visitante (o mesmo que vai
+ * virar `users.external_id` na laravel-api). Espera o handshake Init terminar
+ * se ainda não tiver rodado — na prática já está pronto antes disso, porque
+ * o Init antecipado do index.html roda em paralelo ao carregamento do bundle.
+ * Usado por quem precisa gravar esse id no nosso próprio banco (ex.:
+ * WebinarRegistration), pra ter um vínculo durável entre as duas bases mesmo
+ * que o Lead do Meta CAPI (fire-and-forget) não chegue lá.
+ */
+export async function getExternalId(): Promise<string | null> {
+  if (!resolvedExternalId) {
+    await initializePixel(BUSSOLA_PIXEL_ID);
+  }
+  return resolvedExternalId;
 }
 
 /**

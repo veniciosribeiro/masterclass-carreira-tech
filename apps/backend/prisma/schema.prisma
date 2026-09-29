@@ -35,11 +35,17 @@ model TestResult {
 }
 
 model WebinarRegistration {
-  id        String   @id @default(uuid()) @db.Uuid
-  name      String
-  email     String   @unique
-  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
-  events    WebinarRegistrationEvent[]
+  id         String   @id @default(uuid()) @db.Uuid
+  name       String
+  email      String   @unique
+  // O mesmo external_id que a events API (laravel-api) usa pra essa pessoa —
+  // vínculo direto e durável entre as duas bases, independente do Lead do
+  // Meta CAPI (disparado pelo navegador, pode falhar/atrasar) ter chegado lá
+  // ou não. Sem isso, só dava pra rastrear por e-mail, e se o `users` da
+  // laravel-api não tivesse sido atualizado, não dava pra saber quem era.
+  externalId String?  @map("external_id")
+  createdAt  DateTime @default(now()) @map("created_at") @db.Timestamptz
+  events     WebinarRegistrationEvent[]
 
   @@map("webinar_registrations")
   @@index([email])

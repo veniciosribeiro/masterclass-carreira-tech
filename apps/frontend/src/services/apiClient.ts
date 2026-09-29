@@ -78,12 +78,17 @@ interface RegisterWebinarResult {
  */
 export async function registerForWebinar(
   name: string,
-  email: string
+  email: string,
+  externalId?: string | null
 ): Promise<RegisterWebinarResult> {
   const response = await fetch(`${API_BASE}/webinar/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ name, email }),
+    body: JSON.stringify({
+      name,
+      email,
+      ...(externalId ? { externalId } : {}),
+    }),
   });
 
   if (!response.ok) {

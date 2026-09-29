@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { registerForWebinar } from '../../services/apiClient';
-import { sendEvent } from '../../utils/metaPixel';
+import { getExternalId, sendEvent } from '../../utils/metaPixel';
 
 // Teto de espera pelo Lead antes de sair da página: uma API lenta não pode
 // travar o usuário no botão.
@@ -20,7 +20,15 @@ export const SementeForm: React.FC = () => {
     try {
       const fullName = name.trim();
       const cleanEmail = email.trim();
-      await registerForWebinar(fullName, cleanEmail);
+
+      // Resolve o external_id (o mesmo id que a events API vai usar pro Lead
+      // abaixo) ANTES de registrar, pra guardar o vínculo direto na
+      // inscrição — mesmo que o Lead falhe/demore depois, ainda sabemos
+      // exatamente qual usuário da laravel-api é esse. Normalmente já está
+      // pronto aqui, porque o Init antecipado do index.html roda em paralelo
+      // ao carregamento do bundle.
+      const externalId = await getExternalId();
+      await registerForWebinar(fullName, cleanEmail, externalId);
 
       // Lead direto do navegador, como o PageView: IP, User-Agent e cookie
       // são os do visitante. Precisa terminar antes de sair da página, porque
