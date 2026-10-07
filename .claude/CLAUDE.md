@@ -360,6 +360,15 @@ Several landing page variants exist under different routes, plus the test flow a
 - **Responsive**: mobile-first approach with Tailwind breakpoints
 - **No CSS Modules**: pure Tailwind utility classes only
 
+## Repositório como área de trabalho operacional
+
+Este diretório também serve de base para trabalho de infraestrutura que **não** faz parte de `apps/*`:
+
+- A API de eventos/atribuição (Meta CAPI, sGTM, painel Filament) vive no repositório separado `~/projects/laravel-api`, não aqui. Este repo só tem o frontend e o backend Fastify do teste/webinário.
+- Arquivos soltos não versionados (compose do Coolify, planos `*.md`, exports CSV/ZIP, dumps SQL) ficam em `trabalho/` (no `.gitignore`); não deixar na raiz. `Trace-*.json` também é ignorado. Vários contêm **PII real** (`sales_history_*.csv`, `Export_Contact.csv`, `contacts_export_*.zip`, dumps) — nunca fazer `git add .`/`git add -A`, nunca versionar nem colar o conteúdo deles.
+- Stack operada via Coolify (Hostinger/OVH): n8n, Mautic, Chatwoot, Twenty CRM (um workspace por empresa), Formbricks, SigNoz. Acesso, armadilhas e decisões estão na memória do projeto (`MEMORY.md`); consulte-a antes de mexer em qualquer um deles.
+- Antes de alterar fluxos n8n, bancos ou dados de CRM: fazer backup primeiro e confirmar com o usuário qualquer ação destrutiva (apagar volumes Docker, `down -v`, DELETE permanente no Twenty).
+
 ## Development Tips
 
 - Backend uses hot-reload via `tsx watch` for instant changes

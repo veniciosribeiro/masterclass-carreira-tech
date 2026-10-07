@@ -28,3 +28,6 @@ dist-ssr
 
 # Traces do DevTools (Performance) — pesados e locais
 Trace-*.json
+
+# Pasta de trabalho operacional (compose do Coolify, planos, exports com PII, dumps)
+/trabalho/
