@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import { PageTitle } from './seo/PageTitle';
+import { ROUTE_TITLES } from '../seo/routeTitles';
 import { Header } from './Header';
 import { Hero } from './Hero';
 import { RealityCheck } from './RealityCheck';
@@ -20,7 +21,7 @@ const Footer = React.lazy(() =>
 export const LandingPage: React.FC = () => {
   return (
     <div className="min-h-screen font-display bg-background-dark text-text-main overflow-x-hidden antialiased">
-      <PageTitle title="Masterclass Test-Drive da Carreira Tech" />
+      <PageTitle title={ROUTE_TITLES['/']} />
       <Header />
       <Hero />
       <RealityCheck />

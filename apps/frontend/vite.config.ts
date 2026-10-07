@@ -3,6 +3,7 @@ import { fileURLToPath } from 'url';
 import { defineConfig, loadEnv, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
+import { ROUTE_TITLES } from './src/seo/routeTitles';
 import {
   DEFAULT_CONTENT_ID,
   DEFAULT_EVENTS_API_URL,
@@ -64,6 +65,51 @@ window.__earlyEventsInit=p;
   };
 }
 
+const escapeHtml = (v: string) =>
+  v.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+/**
+ * Grava, no build, uma cópia do index.html por rota estática com o <title>
+ * certo (`dist/<rota>/index.html`). O Nginx serve essa cópia no lugar do
+ * index.html genérico (try_files $uri/), então o título já vem no HTML: o
+ * page_view do GA, os previews de link e os crawlers não dependem do React
+ * montar para ver o título da página. O <PageTitle> segue cuidando das
+ * navegações internas e das rotas dinâmicas.
+ */
+function routeHtml(): Plugin {
+  return {
+    name: 'route-html',
+    apply: 'build',
+    enforce: 'post',
+    generateBundle: {
+      order: 'post',
+      handler(_, bundle) {
+        const index = bundle['index.html'];
+        if (!index || index.type !== 'asset') return;
+        const html = String(index.source);
+
+        for (const [route, title] of Object.entries(ROUTE_TITLES)) {
+          if (route === '/') {
+            index.source = html.replace(
+              /<title>[^<]*<\/title>/,
+              `<title>${escapeHtml(title)}</title>`
+            );
+            continue;
+          }
+          this.emitFile({
+            type: 'asset',
+            fileName: `${route.slice(1)}/index.html`,
+            source: html.replace(
+              /<title>[^<]*<\/title>/,
+              `<title>${escapeHtml(title)}</title>`
+            ),
+          });
+        }
+      },
+    },
+  };
+}
+
 export default defineConfig(({ mode }) => ({
   server: {
     port: 3000,
@@ -79,6 +125,7 @@ export default defineConfig(({ mode }) => ({
     tailwindcss(),
     react(),
     earlyEventsInit(loadEnv(mode, __dirname, 'VITE_')),
+    routeHtml(),
   ],
   resolve: {
     alias: {

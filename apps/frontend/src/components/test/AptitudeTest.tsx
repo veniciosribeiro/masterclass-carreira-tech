@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { PageTitle } from '../seo/PageTitle';
+import { ROUTE_TITLES } from '../../seo/routeTitles';
 import { Answer, TestResult } from '../../test/testTypes';
 import { calculateScores, determineProfile } from '../../test/scoring';
 import {
@@ -241,7 +242,7 @@ export const AptitudeTest: React.FC = () => {
 
   return (
     <>
-      <PageTitle title="Teste de Aptidão para Programação — Carreira Tech" />
+      <PageTitle title={ROUTE_TITLES['/teste']} />
       {phase === 'welcome' && <WelcomeScreen onStart={handleStart} />}
       {phase === 'questions' && (
         <QuestionStepper

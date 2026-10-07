@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import { PageTitle } from '../seo/PageTitle';
+import { ROUTE_TITLES } from '../../seo/routeTitles';
 import { MetaPixel } from '../analytics/MetaPixel';
 import { BUSSOLA_PIXEL_ID } from '../../utils/metaPixel';
 import { BussolaHeader } from './BussolaHeader';
@@ -25,7 +26,11 @@ const BussolaFooter = React.lazy(() =>
 export const LandingPageBussola: React.FC = () => {
   return (
     <div className="min-h-screen font-display bg-background-dark text-text-main overflow-x-hidden antialiased">
-      <PageTitle title="Bússola — Aceleração de Carreira para Desenvolvedores" />
+      <PageTitle
+        title={
+          ROUTE_TITLES['/bussola-aceleracao-de-carreira-para-desenvolvedores']
+        }
+      />
       <MetaPixel pixelId={BUSSOLA_PIXEL_ID} />
       <BussolaHeader />
       <BussolaHero />

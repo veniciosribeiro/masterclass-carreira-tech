@@ -1,5 +1,6 @@
 import React from 'react';
 import { PageTitle } from '../seo/PageTitle';
+import { ROUTE_TITLES } from '../../seo/routeTitles';
 import { MetaPixel } from '../analytics/MetaPixel';
 import { BUSSOLA_PIXEL_ID } from '../../utils/metaPixel';
 import { WEBINAR_COMMUNITY_LINK } from './sementeConfig';
@@ -8,7 +9,7 @@ import { SementeFooter } from './SementeFooter';
 export const ObrigadoSemente: React.FC = () => {
   return (
     <div className="min-h-screen font-display bg-background-dark text-text-main overflow-x-hidden antialiased flex flex-col">
-      <PageTitle title="Inscrição Confirmada — Webinário Carreira Tech" />
+      <PageTitle title={ROUTE_TITLES['/webinario-carreira-tech/obrigado']} />
       <MetaPixel pixelId={BUSSOLA_PIXEL_ID} />
       <section className="flex-1 flex items-center justify-center px-6 py-16">
         <div className="max-w-2xl w-full text-center">
