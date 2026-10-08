@@ -36,7 +36,10 @@ export const SementeForm: React.FC = () => {
       // payload só é montado depois do await do Init, e o Lead deve levar a
       // página do formulário, não a de obrigado.
       const eventSourceUrl = window.location.href;
-      const nameParts = fullName.toLowerCase().split(/\s+/).filter(Boolean);
+      // O nome vai como a pessoa digitou: a laravel-api guarda assim (CRM e demais
+      // canais) e só põe em minúsculas o que manda à Meta. O Pixel do navegador
+      // recebe a versão em minúsculas (ver sendEvent).
+      const nameParts = fullName.trim().split(/\s+/).filter(Boolean);
       await Promise.race([
         sendEvent(
           'Lead',

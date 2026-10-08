@@ -305,6 +305,23 @@ interface SendEventOptions {
 }
 
 /**
+ * Dados do usuário para o Advanced Matching do Pixel: nome em minúsculas. O
+ * servidor recebe o nome como digitado e normaliza por conta própria o que
+ * manda à Meta; o Pixel do navegador precisa da mesma forma, senão o hash do
+ * nome não casa entre os dois canais.
+ */
+function pixelUserData(
+  userData: Record<string, unknown>
+): Record<string, unknown> {
+  const result = { ...userData };
+  for (const key of ['fn', 'ln']) {
+    const value = result[key];
+    if (typeof value === 'string') result[key] = value.trim().toLowerCase();
+  }
+  return result;
+}
+
+/**
  * Envia o evento pra api.foconoobjetivo.com/events/send (que repassa pro
  * Meta CAPI) e espelha no Pixel do browser com o mesmo eventID devolvido,
  * pra deduplicação. 'Init' é um handshake privado com o backend de eventos
@@ -342,7 +359,7 @@ export async function sendEvent(
   if (eventType === 'Init') return responseData;
 
   if (Object.keys(userData).length > 0) {
-    pixelMatchData = { ...pixelMatchData, ...userData };
+    pixelMatchData = { ...pixelMatchData, ...pixelUserData(userData) };
     window.fbq?.('init', BUSSOLA_PIXEL_ID, pixelMatchData);
   }
 
@@ -379,8 +396,10 @@ function initializePixel(pixelId: string): Promise<void> {
       // Perfil já conhecido do usuário (visitante recorrente com Lead
       // anterior) — alimenta o Advanced Matching do Pixel, não só o CAPI
       // do servidor. Só inclui os campos que existem, igual o track.js.
-      ...(init.fn ? { fn: init.fn } : {}),
-      ...(init.ln ? { ln: init.ln } : {}),
+      ...pixelUserData({
+        ...(init.fn ? { fn: init.fn } : {}),
+        ...(init.ln ? { ln: init.ln } : {}),
+      }),
       ...(init.em ? { em: init.em } : {}),
       ...(init.ph ? { ph: init.ph } : {}),
     };
