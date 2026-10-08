@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { registerForWebinar } from '../../services/apiClient';
 import { getExternalId, sendEvent } from '../../utils/metaPixel';
+import { SEMENTE_LEAD_STORAGE_KEY } from './sementeConfig';
 
 // Teto de espera pelo Lead antes de sair da página: uma API lenta não pode
 // travar o usuário no botão.
@@ -59,6 +60,18 @@ export const SementeForm: React.FC = () => {
         ),
         new Promise((resolve) => setTimeout(resolve, LEAD_MAX_WAIT_MS)),
       ]);
+
+      // Deixa o lead na sessão para a página de obrigado montar o link
+      // personalizado da pesquisa. Se o storage não estiver disponível (modo
+      // privado, etc.), a página de obrigado apenas omite o cartão da pesquisa.
+      try {
+        sessionStorage.setItem(
+          SEMENTE_LEAD_STORAGE_KEY,
+          JSON.stringify({ name: fullName, email: cleanEmail })
+        );
+      } catch {
+        // sem storage: segue sem o cartão da pesquisa
+      }
 
       // Recarga completa (não navigate): o Pixel só aceita um PageView
       // explícito por carregamento, então numa navegação client-side o

@@ -12,7 +12,7 @@ export const ROUTE_TITLES = {
   '/webinario-carreira-tech':
     'Webinário Gratuito — Aceleração de Carreira Para Desenvolvedores',
   '/webinario-carreira-tech/obrigado':
-    'Inscrição Confirmada — Webinário Gratuito — Aceleração de Carreira Para Desenvolvedores',
+    'Inscrição Realizada — Webinário Gratuito — Aceleração de Carreira Para Desenvolvedores',
   '/teste':
     'Teste de Aptidão para Programação — Masterclass Test-Drive da Carreira Tech',
   '/admin': 'Painel Administrativo — Masterclass Test-Drive da Carreira Tech',
