@@ -305,7 +305,8 @@ interface SendEventOptions {
 }
 
 /**
- * Dados do usuário para o Advanced Matching do Pixel: nome em minúsculas. O
+ * Dados do usuário para o Advanced Matching do Pixel: nome em minúsculas e sem
+ * o nome completo (que só interessa ao servidor). O
  * servidor recebe o nome como digitado e normaliza por conta própria o que
  * manda à Meta; o Pixel do navegador precisa da mesma forma, senão o hash do
  * nome não casa entre os dois canais.
@@ -313,7 +314,7 @@ interface SendEventOptions {
 function pixelUserData(
   userData: Record<string, unknown>
 ): Record<string, unknown> {
-  const result = { ...userData };
+  const { full_name: _fullName, ...result } = userData;
   for (const key of ['fn', 'ln']) {
     const value = result[key];
     if (typeof value === 'string') result[key] = value.trim().toLowerCase();

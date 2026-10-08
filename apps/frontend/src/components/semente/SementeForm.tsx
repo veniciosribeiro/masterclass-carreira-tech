@@ -48,6 +48,8 @@ export const SementeForm: React.FC = () => {
             eventSourceUrl,
             userData: {
               em: cleanEmail.toLowerCase(),
+              // Nome completo como digitado, para o CRM e os demais canais.
+              full_name: nameParts.join(' '),
               fn: nameParts[0],
               ...(nameParts.length > 1
                 ? { ln: nameParts[nameParts.length - 1] }
