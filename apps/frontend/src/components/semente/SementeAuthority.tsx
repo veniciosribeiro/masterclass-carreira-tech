@@ -6,8 +6,8 @@ export const SementeAuthority: React.FC = () => {
       className="bg-background-dark py-10 px-6 text-white border-y border-border-dark"
       id="mentor"
     >
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 items-center">
-        <div className="order-1 lg:order-1 relative">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-[32rem_1fr] gap-10 items-center">
+        <div className="order-1 lg:order-1 relative w-full max-w-lg mx-auto lg:max-w-none lg:mx-0">
           <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl transform -rotate-3 scale-105 opacity-50"></div>
           <div className="relative rounded-xl overflow-hidden border border-border-dark shadow-2xl grayscale hover:grayscale-0 transition-all duration-700">
             <img

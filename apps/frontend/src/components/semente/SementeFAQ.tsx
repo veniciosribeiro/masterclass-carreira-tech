@@ -7,7 +7,7 @@ export const SementeFAQ: React.FC = () => {
       className="px-6 py-10 bg-background-dark border-t border-border-dark"
       id="faq"
     >
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10">
           <span className="text-primary font-bold tracking-widest uppercase text-xs font-mono border border-primary/30 px-2 py-1 rounded bg-primary/10">
             Antes de se Inscrever

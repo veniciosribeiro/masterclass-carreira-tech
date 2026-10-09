@@ -40,7 +40,7 @@ export const SementeInscricao: React.FC = () => {
       className="px-6 py-10 bg-[#050709] border-t border-border-dark"
       id="inscricao"
     >
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-black leading-tight font-mono text-white mb-4">
             Ao final do webinário, você entenderá:
