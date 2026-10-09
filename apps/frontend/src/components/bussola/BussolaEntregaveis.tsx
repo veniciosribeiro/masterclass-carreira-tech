@@ -7,14 +7,23 @@ import {
   TimerIcon,
   ShieldLockIcon,
   RefreshIcon,
+  LaptopIcon,
 } from '../icons';
 
 const entregaveis = [
   {
     title: 'Curso completo ao vivo',
-    description: '5 módulos, 14 aulas e 5 checkpoints ao longo de 5 semanas.',
+    description:
+      '5 módulos, 14 aulas e 5 checkpoints ao longo de 5 semanas, com um encontro ao vivo por semana.',
     icon: PlayArrowIcon,
     color: 'blue',
+  },
+  {
+    title: 'Aulas gravadas',
+    description:
+      'Os encontros são gravados e cada aula é editada e liberada em até 2 dias, para quem não puder assistir ao vivo.',
+    icon: LaptopIcon,
+    color: 'orange',
   },
   {
     title: 'Kits, exercícios e templates',
@@ -38,16 +47,16 @@ const entregaveis = [
     color: 'orange',
   },
   {
-    title: 'Aulão coletivo quinzenal',
+    title: 'Mentoria ao vivo em grupo',
     description:
       'Dúvidas, estudos de caso e aplicação do método em diferentes contextos.',
     icon: TimerIcon,
     color: 'blue',
   },
   {
-    title: 'Grupo privado por 6 meses',
+    title: 'Comunidade privada por 12 meses',
     description:
-      'Espaço para continuidade, troca e acompanhamento depois das cinco semanas.',
+      'Espaço para network, troca de experiências e compartilhamento de vagas e suporte.',
     icon: ShieldLockIcon,
     color: 'purple',
   },
@@ -73,7 +82,7 @@ const colorClasses = {
 export const BussolaEntregaveis: React.FC = () => {
   return (
     <section
-      className="px-6 py-10 lg:py-16 bg-[#0d1117] border-b border-border-dark"
+      className="px-6 py-10 lg:py-16 bg-surface-dark border-b border-border-dark"
       id="entregaveis"
     >
       <div className="max-w-7xl mx-auto">
@@ -95,17 +104,19 @@ export const BussolaEntregaveis: React.FC = () => {
             return (
               <div
                 key={item.title}
-                className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-[#1c2128] transition-all duration-300 group"
+                className="bg-background-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-[#1c2128] transition-all duration-300 group"
               >
-                <div
-                  className={`size-12 rounded border flex items-center justify-center mb-4 ${colorClasses[item.color]}`}
-                >
-                  <Icon />
+                <div className="flex items-center gap-4 mb-4">
+                  <div
+                    className={`size-12 rounded border flex items-center justify-center shrink-0 ${colorClasses[item.color]}`}
+                  >
+                    <Icon />
+                  </div>
+                  <h3 className="font-bold text-lg text-white font-mono">
+                    {item.title}
+                  </h3>
                 </div>
-                <h3 className="font-bold text-lg mb-2 text-white font-mono">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-gray-400">{item.description}</p>
+                <p className="text-gray-400">{item.description}</p>
               </div>
             );
           })}

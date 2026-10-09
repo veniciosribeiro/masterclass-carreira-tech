@@ -5,7 +5,7 @@ import { ExpandMoreIcon } from '../icons';
 export const BussolaFAQ: React.FC = () => {
   return (
     <section
-      className="px-6 py-10 lg:py-16 bg-background-dark border-t border-border-dark"
+      className="px-6 py-10 lg:py-16 bg-surface-dark border-t border-border-dark"
       id="faq"
     >
       <div className="max-w-3xl mx-auto">
@@ -18,7 +18,7 @@ export const BussolaFAQ: React.FC = () => {
           </h2>
         </div>
         <div className="space-y-4">
-          <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
+          <details className="group bg-background-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Isso é um curso de programação?
@@ -37,7 +37,7 @@ export const BussolaFAQ: React.FC = () => {
             </div>
           </details>
 
-          <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
+          <details className="group bg-background-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Quanto tempo dura?
@@ -50,12 +50,32 @@ export const BussolaFAQ: React.FC = () => {
               <span className="text-primary font-mono text-xs block mb-2">
                 // Response:
               </span>
-              A turma inaugural acontece ao longo de 5 semanas, com encontros ao
-              vivo e atividades de aplicação entre as aulas.
+              A turma inaugural acontece ao longo de 5 semanas, com um encontro
+              ao vivo por semana, de até 3 horas, com até 2 horas de aula e o
+              restante para dúvidas, além de atividades de aplicação entre as
+              aulas.
             </div>
           </details>
 
-          <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
+          <details className="group bg-background-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
+            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
+              <span className="font-mono text-sm md:text-base">
+                &gt; E se eu não puder assistir ao vivo?
+              </span>
+              <span className="transition group-open:rotate-180 text-primary">
+                <ExpandMoreIcon />
+              </span>
+            </summary>
+            <div className="text-gray-400 p-6 pt-0 leading-relaxed border-t border-transparent group-open:border-border-dark group-open:pt-6 font-light">
+              <span className="text-primary font-mono text-xs block mb-2">
+                // Response:
+              </span>
+              Sem problema. Os encontros ao vivo são gravados e cada aula é
+              editada e liberada em até 2 dias, para você assistir quando puder.
+            </div>
+          </details>
+
+          <details className="group bg-background-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Preciso estar buscando promoção?
@@ -74,7 +94,7 @@ export const BussolaFAQ: React.FC = () => {
             </div>
           </details>
 
-          <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
+          <details className="group bg-background-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Posso parcelar?
@@ -92,7 +112,7 @@ export const BussolaFAQ: React.FC = () => {
             </div>
           </details>
 
-          <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
+          <details className="group bg-background-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Qual a diferença entre Starter e Premium?
@@ -110,7 +130,7 @@ export const BussolaFAQ: React.FC = () => {
             </div>
           </details>
 
-          <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
+          <details className="group bg-background-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Por que o Premium tem apenas 10 vagas?
@@ -128,7 +148,7 @@ export const BussolaFAQ: React.FC = () => {
             </div>
           </details>
 
-          <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
+          <details className="group bg-background-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; E se eu não gostar?
@@ -146,7 +166,7 @@ export const BussolaFAQ: React.FC = () => {
             </div>
           </details>
 
-          <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
+          <details className="group bg-background-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Como funciona o suporte?

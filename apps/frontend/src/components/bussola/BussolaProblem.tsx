@@ -24,7 +24,10 @@ const boxes = [
 
 export const BussolaProblem: React.FC = () => {
   return (
-    <section className="px-6 py-10 lg:py-16 bg-[#0b0e11]" id="diagnostico">
+    <section
+      className="px-6 py-10 lg:py-16 bg-background-dark"
+      id="diagnostico"
+    >
       <div className="max-w-5xl mx-auto flex flex-col gap-10">
         <div className="text-center max-w-2xl mx-auto flex flex-col gap-4">
           <span className="inline-block self-center text-primary font-bold tracking-widest uppercase text-xs font-mono border border-primary/30 px-2 py-1 rounded bg-primary/10">
@@ -49,13 +52,15 @@ export const BussolaProblem: React.FC = () => {
                 key={box.title}
                 className="bg-surface-dark p-6 rounded-xl shadow-sm border border-red-900/30 hover:border-red-900/50 transition-all duration-300 group"
               >
-                <div className="size-12 rounded bg-red-900/20 border border-red-900/50 text-red-400 flex items-center justify-center mb-4">
-                  <Icon />
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="size-12 rounded bg-red-900/20 border border-red-900/50 text-red-400 flex items-center justify-center shrink-0">
+                    <Icon />
+                  </div>
+                  <h3 className="font-bold text-lg text-red-400 font-mono uppercase tracking-wide">
+                    {box.title}
+                  </h3>
                 </div>
-                <h3 className="font-bold text-lg mb-2 text-red-400 font-mono uppercase tracking-wide">
-                  {box.title}
-                </h3>
-                <p className="text-sm text-gray-400">{box.description}</p>
+                <p className="text-gray-400">{box.description}</p>
               </div>
             );
           })}

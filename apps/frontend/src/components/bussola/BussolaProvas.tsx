@@ -8,7 +8,7 @@ import {
 
 export const BussolaProvas: React.FC = () => {
   return (
-    <section className="px-6 py-10 bg-surface-dark" id="provas">
+    <section className="px-6 py-10 bg-background-dark" id="provas">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10">
           <span className="text-primary font-bold tracking-widest uppercase text-xs font-mono border border-primary/30 px-2 py-1 rounded bg-primary/10">
@@ -24,13 +24,15 @@ export const BussolaProvas: React.FC = () => {
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-[#1c2128] transition-all duration-300 group">
-            <div className="size-12 rounded bg-blue-900/20 border border-blue-900/50 text-blue-400 flex items-center justify-center mb-4 group-hover:text-blue-300">
-              <WorkIcon />
+            <div className="flex items-center gap-4 mb-4">
+              <div className="size-12 rounded bg-blue-900/20 border border-blue-900/50 text-blue-400 flex items-center justify-center shrink-0 group-hover:text-blue-300">
+                <WorkIcon />
+              </div>
+              <h3 className="font-bold text-lg text-white font-mono">
+                Desenvolvedor Júnior
+              </h3>
             </div>
-            <h3 className="font-bold text-lg mb-2 text-white font-mono">
-              Desenvolvedor Júnior
-            </h3>
-            <p className="text-sm text-gray-400 mb-4">
+            <p className="text-gray-400 mb-4">
               Entregava muito, mas colocava toda a responsabilidade do avanço na
               gestão e não entendia os critérios por trás das decisões.
             </p>
@@ -39,13 +41,15 @@ export const BussolaProvas: React.FC = () => {
             </span>
           </div>
           <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-[#1c2128] transition-all duration-300 group">
-            <div className="size-12 rounded bg-purple-900/20 border border-purple-900/50 text-purple-400 flex items-center justify-center mb-4 group-hover:text-purple-300">
-              <VisibilityIcon />
+            <div className="flex items-center gap-4 mb-4">
+              <div className="size-12 rounded bg-purple-900/20 border border-purple-900/50 text-purple-400 flex items-center justify-center shrink-0 group-hover:text-purple-300">
+                <VisibilityIcon />
+              </div>
+              <h3 className="font-bold text-lg text-white font-mono">
+                Invisível para Quem Decidia
+              </h3>
             </div>
-            <h3 className="font-bold text-lg mb-2 text-white font-mono">
-              Invisível para Quem Decidia
-            </h3>
-            <p className="text-sm text-gray-400 mb-4">
+            <p className="text-gray-400 mb-4">
               Fazia boas entregas, mas seu impacto não era percebido pelos pares
               e por outras lideranças envolvidas na decisão.
             </p>
@@ -54,13 +58,15 @@ export const BussolaProvas: React.FC = () => {
             </span>
           </div>
           <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-[#1c2128] transition-all duration-300 group">
-            <div className="size-12 rounded bg-green-900/20 border border-green-900/50 text-green-400 flex items-center justify-center mb-4 group-hover:text-green-300">
-              <ArrowForwardIcon />
+            <div className="flex items-center gap-4 mb-4">
+              <div className="size-12 rounded bg-green-900/20 border border-green-900/50 text-green-400 flex items-center justify-center shrink-0 group-hover:text-green-300">
+                <ArrowForwardIcon />
+              </div>
+              <h3 className="font-bold text-lg text-white font-mono">
+                Estagiário
+              </h3>
             </div>
-            <h3 className="font-bold text-lg mb-2 text-white font-mono">
-              Estagiário
-            </h3>
-            <p className="text-sm text-gray-400 mb-4">
+            <p className="text-gray-400 mb-4">
               Não tinha direção clara sobre o que precisava construir para
               sustentar sua efetivação.
             </p>
@@ -69,13 +75,15 @@ export const BussolaProvas: React.FC = () => {
             </span>
           </div>
           <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-[#1c2128] transition-all duration-300 group">
-            <div className="size-12 rounded bg-orange-900/20 border border-orange-900/50 text-orange-400 flex items-center justify-center mb-4 group-hover:text-orange-300">
-              <WorkspacePremiumIcon />
+            <div className="flex items-center gap-4 mb-4">
+              <div className="size-12 rounded bg-orange-900/20 border border-orange-900/50 text-orange-400 flex items-center justify-center shrink-0 group-hover:text-orange-300">
+                <WorkspacePremiumIcon />
+              </div>
+              <h3 className="font-bold text-lg text-white font-mono">
+                Pleno Rumo a Sênior
+              </h3>
             </div>
-            <h3 className="font-bold text-lg mb-2 text-white font-mono">
-              Pleno Rumo a Sênior
-            </h3>
-            <p className="text-sm text-gray-400 mb-4">
+            <p className="text-gray-400 mb-4">
               O gestor direto já o via como pronto, mas ainda faltavam
               evidências capazes de sustentar a decisão diante dos demais
               envolvidos.

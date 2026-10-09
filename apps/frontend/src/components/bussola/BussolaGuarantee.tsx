@@ -24,7 +24,7 @@ const steps = [
 
 export const BussolaGuarantee: React.FC = () => {
   return (
-    <section className="py-10 lg:py-16 bg-surface-dark border-b border-border-dark">
+    <section className="py-10 lg:py-16 bg-background-dark border-b border-border-dark">
       <div className="max-w-2xl mx-auto px-6 text-center">
         <div className="inline-flex items-center justify-center p-6 rounded-full bg-[#19e65e]/5 border border-[#19e65e]/20 mb-6 relative">
           <div className="absolute inset-0 bg-[#19e65e]/20 blur-xl rounded-full"></div>
@@ -37,7 +37,7 @@ export const BussolaGuarantee: React.FC = () => {
         <div className="flex flex-col items-stretch">
           {steps.map((step, index) => (
             <React.Fragment key={step.label}>
-              <div className="bg-background-dark border border-border-dark rounded-xl p-6 text-left">
+              <div className="bg-surface-dark border border-border-dark rounded-xl p-6 text-left">
                 <span className="inline-block text-xs font-mono text-primary bg-primary/10 py-1 px-3 rounded border border-primary/20 uppercase mb-3">
                   {step.label}
                 </span>

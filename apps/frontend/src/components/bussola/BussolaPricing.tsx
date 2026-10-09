@@ -27,7 +27,7 @@ function handleCheckoutClick(
 export const BussolaPricing: React.FC = () => {
   return (
     <section
-      className="px-6 py-10 bg-[#050709] border-t border-border-dark"
+      className="px-6 py-10 bg-surface-dark border-t border-border-dark"
       id="pricing"
     >
       <div className="max-w-7xl mx-auto">
@@ -44,7 +44,7 @@ export const BussolaPricing: React.FC = () => {
           </p>
         </div>
 
-        <div className="overflow-hidden rounded-xl border border-border-dark bg-surface-dark shadow-2xl">
+        <div className="overflow-hidden rounded-xl border border-border-dark bg-background-dark shadow-2xl">
           <div className="grid md:grid-cols-2">
             {/* Starter */}
             <div className="p-8 md:p-12 border-b md:border-b-0 md:border-r border-border-dark bg-[#0d1117]/50">
@@ -92,7 +92,7 @@ export const BussolaPricing: React.FC = () => {
                 </li>
                 <li className="flex justify-between items-center group">
                   <span className="text-gray-400 group-hover:text-white transition-colors">
-                    Aulões coletivos quinzenais
+                    Mentoria ao vivo em grupo
                   </span>
                   <span className="font-mono text-primary font-bold whitespace-nowrap ml-4">
                     Incluso
@@ -108,7 +108,7 @@ export const BussolaPricing: React.FC = () => {
                 </li>
                 <li className="flex justify-between items-center group">
                   <span className="text-gray-400 group-hover:text-white transition-colors">
-                    Grupo privado por 6 meses
+                    Comunidade privada por 12 meses
                   </span>
                   <span className="font-mono text-primary font-bold whitespace-nowrap ml-4">
                     Incluso

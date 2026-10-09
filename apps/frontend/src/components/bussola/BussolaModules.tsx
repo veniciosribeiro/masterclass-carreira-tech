@@ -46,10 +46,10 @@ export const BussolaModules: React.FC = () => {
     },
     {
       number: '04',
-      title: 'Gargalos 20/80',
+      title: 'Alavancas 20/80',
       outcome: 'Decida o que merece sua energia primeiro.',
       description:
-        'Priorize os poucos gargalos que mais limitam seu avanço em vez de tentar desenvolver tudo ao mesmo tempo.',
+        'Priorize as poucas alavancas que mais destravam seu avanço em vez de tentar desenvolver tudo ao mesmo tempo.',
       icon: RefreshIcon,
       color: 'primary' as const,
     },
@@ -66,7 +66,7 @@ export const BussolaModules: React.FC = () => {
 
   return (
     <section
-      className="px-6 py-16 bg-[#0d1117] border-b border-border-dark"
+      className="px-6 py-16 bg-surface-dark border-b border-border-dark"
       id="jornada"
     >
       <div className="max-w-5xl mx-auto">
@@ -89,7 +89,7 @@ export const BussolaModules: React.FC = () => {
             return (
               <div
                 key={module.number}
-                className="bg-surface-dark border border-border-dark rounded-xl p-6 hover:border-primary/50 transition-colors"
+                className="bg-background-dark border border-border-dark rounded-xl p-6 hover:border-primary/50 transition-colors"
               >
                 <div className="flex items-start gap-6">
                   <div className="text-5xl font-black text-primary font-mono">
@@ -114,12 +114,6 @@ export const BussolaModules: React.FC = () => {
             );
           })}
         </div>
-
-        <p className="text-center text-sm text-gray-500 font-mono mt-10 tracking-wide">
-          5 semanas <span className="text-primary">•</span> 14 aulas{' '}
-          <span className="text-primary">•</span> 5 checkpoints{' '}
-          <span className="text-primary">•</span> Ao vivo
-        </p>
       </div>
     </section>
   );
