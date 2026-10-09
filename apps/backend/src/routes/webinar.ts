@@ -1,4 +1,5 @@
 import type { FastifyInstance } from 'fastify';
+import { isN8nConfigured } from '../services/n8nWebhook.js';
 import {
   RegisterWebinarBody,
   type RegisterWebinarBodyType,
@@ -36,6 +37,11 @@ export async function webinarRoutes(app: FastifyInstance) {
           data: {
             registrationId: registration.id,
             eventName,
+            // Sem a integração com o n8n configurada o evento fica guardado como
+            // 'skipped': o worker só entrega 'pending', então nada é reenviado em
+            // massa se a variável voltar, e o payload continua disponível para
+            // reenvio manual (basta voltar o status para 'pending').
+            status: isN8nConfigured() ? 'pending' : 'skipped',
             payload: {
               event: eventName,
               version: 1,
