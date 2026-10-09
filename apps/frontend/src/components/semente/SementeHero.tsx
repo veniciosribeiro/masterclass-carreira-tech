@@ -18,12 +18,13 @@ export const SementeHero: React.FC = () => {
             {WEBINAR_DATE_LABEL_1}
           </span>
           <h1 className="text-3xl md:text-5xl lg:text-5xl font-black leading-tight tracking-tight font-mono">
-            Entenda por que boas entregas nem sempre se transformam em
-            reconhecimento.
+            Promoção não é prêmio por entregar bem.
           </h1>
           <p className="text-gray-400 font-light text-lg md:text-lg max-w-3xl mx-auto lg:mx-0">
-            E o que precisa mudar para que um desenvolvedor que já entrega bem
-            seja reconhecido e promovido.
+            Há 8 anos eu participo das decisões sobre a carreira de
+            desenvolvedores. Neste Webinário eu mostro o que quem decide precisa
+            enxergar para te ver pronto para o próximo nível ou para ser
+            reconhecido.
           </p>
         </div>
         <div className="relative flex justify-center items-center">

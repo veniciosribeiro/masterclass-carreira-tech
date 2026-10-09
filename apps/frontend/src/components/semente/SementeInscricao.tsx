@@ -1,7 +1,28 @@
 import React from 'react';
 import { useTrackOnVisible } from '../../utils/metaPixel';
+import { WorkspacePremiumIcon } from '../icons';
 import { SementeForm } from './SementeForm';
 import { WEBINAR_DATE_LABEL_2 } from './sementeConfig';
+
+// O que a pessoa leva do Webinário. A frase é montada como
+// "{lead} {strong} {tail}", com o trecho do meio em destaque.
+const LEARNINGS = [
+  {
+    lead: 'Por que',
+    strong: 'entregar mais não está te aproximando',
+    tail: 'da promoção.',
+  },
+  {
+    lead: 'O que',
+    strong: 'quem decide a sua promoção olha,',
+    tail: 'e quase ninguém te conta.',
+  },
+  {
+    lead: 'Por que',
+    strong: 'ter visibilidade não é ficar se vendendo.',
+    tail: '',
+  },
+];
 
 export const SementeInscricao: React.FC = () => {
   // ViewContent quando o usuário de fato chega à seção de inscrição (30% dela
@@ -21,7 +42,7 @@ export const SementeInscricao: React.FC = () => {
     >
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-10 max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-black mb-4 font-mono">
+          <h2 className="text-3xl md:text-4xl font-black leading-tight font-mono text-white mb-4">
             Ao final do webinário, você entenderá:
           </h2>
         </div>
@@ -30,46 +51,37 @@ export const SementeInscricao: React.FC = () => {
           <div className="grid md:grid-cols-1">
             {/* Left Side: O que está incluso */}
             <div className="p-8 border-b md:border-b-0 md:border-r border-border-dark bg-[#0d1117]/50">
-              <ul className="space-y-6">
-                <li className="flex justify-between items-center group">
-                  <span className="text-gray-400 group-hover:text-white transition-colors">
-                    Por que{' '}
-                    <strong className="text-white">
-                      boas entregas nem sempre demonstram prontidão
-                    </strong>{' '}
-                    para o próximo nível.
-                  </span>
-                </li>
-                <li className="flex justify-between items-center group">
-                  <span className="text-gray-400 group-hover:text-white transition-colors">
-                    Como{' '}
-                    <strong className="text-white">
-                      feedbacks vazios, falta de direção e foco disperso
-                    </strong>{' '}
-                    podem dificultar o avanço.
-                  </span>
-                </li>
-                <li className="flex justify-between items-center group">
-                  <span className="text-gray-400 group-hover:text-white transition-colors">
-                    O{' '}
-                    <strong className="text-white">
-                      caminho para conquistar reconhecimento e avançar na
-                      carreira
-                    </strong>{' '}
-                    sem depender apenas de entregar mais ou esperar que alguém
-                    perceba o seu valor.
-                  </span>
-                </li>
-              </ul>
+              <div className="grid md:grid-cols-3 gap-4">
+                {LEARNINGS.map(({ lead, strong, tail }, i) => (
+                  <div
+                    key={strong}
+                    className="relative p-6 rounded-xl bg-surface-dark border border-border-dark hover:border-primary/30 transition-all duration-500 overflow-hidden"
+                  >
+                    <div className="absolute top-0 left-0 w-full h-1 bg-primary/60"></div>
+                    <span className="block text-primary font-mono font-bold text-xl mb-3">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <p className="text-gray-400 leading-relaxed">
+                      {lead} <strong className="text-white">{strong}</strong>
+                      {tail ? ` ${tail}` : ''}
+                    </p>
+                  </div>
+                ))}
+              </div>
 
-              <div className="mt-6 pt-6 border-t border-dashed border-border-dark flex justify-between items-center">
-                <span className="text-gray-400 group-hover:text-white transition-colors">
-                  O encontro inclui{' '}
-                  <strong className="text-white">casos reais</strong> de
-                  desenvolvedores em diferentes momentos da carreira que
-                  receberam{' '}
-                  <strong className="text-white">aumento e promoção</strong>.
-                </span>
+              <div className="mt-6">
+                <div className="p-6 rounded-xl bg-surface-dark border border-primary/30 relative overflow-hidden">
+                  <div className="absolute left-0 top-0 w-1 h-full bg-primary"></div>
+                  <h4 className="text-primary font-bold font-mono text-lg mb-2 flex items-center gap-2">
+                    <WorkspacePremiumIcon />
+                    Casos reais
+                  </h4>
+                  <p className="text-gray-400">
+                    Desenvolvedores em diferentes momentos da carreira que
+                    receberam <strong className="text-white">aumento</strong> e{' '}
+                    <strong className="text-white">promoção</strong>.
+                  </p>
+                </div>
               </div>
 
               <div className="text-3xl mt-6 pt-6 border-t border-dashed border-border-dark flex justify-between items-center">

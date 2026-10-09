@@ -30,7 +30,7 @@ export const SementeAuthority: React.FC = () => {
 
         <div className="order-2 lg:order-2">
           <div className="inline-flex items-center gap-2 mb-3 text-3xl md:text-3xl tracking-widest font-bold">
-            <h2 className="text-3xl md:text-3xl font-bold font-mono">
+            <h2 className="text-3xl md:text-4xl font-black leading-tight font-mono text-white">
               Eu também já acreditei que fazer um bom trabalho seria suficiente.
             </h2>
           </div>

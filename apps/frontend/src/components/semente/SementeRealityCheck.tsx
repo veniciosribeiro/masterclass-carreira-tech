@@ -6,7 +6,7 @@ export const SementeRealityCheck: React.FC = () => {
     <section className="px-6 py-10 bg-[#0b0e11]" id="realidade">
       <div className="max-w-7xl mx-auto flex flex-col gap-12">
         <div className="text-center max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-3xl font-bold font-mono">
+          <h2 className="text-3xl md:text-4xl font-black leading-tight font-mono text-white">
             Como demonstrar seu valor quando as expectativas não estão claras?
           </h2>
         </div>
