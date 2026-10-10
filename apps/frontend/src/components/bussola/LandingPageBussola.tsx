@@ -9,7 +9,6 @@ import { BussolaOutcome } from './BussolaOutcome';
 import { BussolaProblem } from './BussolaProblem';
 import { BussolaModules } from './BussolaModules';
 import { BussolaProvas } from './BussolaProvas';
-import { BussolaEntregaveis } from './BussolaEntregaveis';
 import { BussolaAuthority } from './BussolaAuthority';
 import { BussolaPricing } from './BussolaPricing';
 
@@ -38,7 +37,6 @@ export const LandingPageBussola: React.FC = () => {
       <BussolaProblem />
       <BussolaModules />
       <BussolaProvas />
-      <BussolaEntregaveis />
       <BussolaAuthority />
       <BussolaPricing />
       <Suspense fallback={<div className="min-h-[200px]" />}>

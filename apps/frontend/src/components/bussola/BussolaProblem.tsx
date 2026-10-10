@@ -28,7 +28,7 @@ export const BussolaProblem: React.FC = () => {
       className="px-6 py-10 lg:py-16 bg-background-dark"
       id="diagnostico"
     >
-      <div className="max-w-5xl mx-auto flex flex-col gap-10">
+      <div className="max-w-7xl mx-auto flex flex-col gap-10">
         <div className="text-center max-w-2xl mx-auto flex flex-col gap-4">
           <span className="inline-block self-center text-primary font-bold tracking-widest uppercase text-xs font-mono border border-primary/30 px-2 py-1 rounded bg-primary/10">
             Diagnóstico

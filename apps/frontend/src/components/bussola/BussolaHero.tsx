@@ -23,7 +23,7 @@ export const BussolaHero: React.FC = () => {
         }}
       ></div>
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[380px] max-w-full bg-primary/10 blur-[120px] rounded-full pointer-events-none"></div>
-      <div className="max-w-6xl mx-auto flex flex-col items-center gap-6 text-center relative z-10">
+      <div className="max-w-7xl mx-auto flex flex-col items-center gap-6 text-center relative z-10">
         <span className="inline-block text-primary font-bold tracking-widest uppercase text-xs font-mono border border-primary/30 px-2 py-1 rounded bg-primary/10">
           TURMA INAUGURAL • 50 VAGAS
         </span>

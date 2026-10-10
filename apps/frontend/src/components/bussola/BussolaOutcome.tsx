@@ -9,7 +9,7 @@ import { BussolaProofCard } from './BussolaProofCard';
 export const BussolaOutcome: React.FC = () => {
   return (
     <section className="px-6 py-10 lg:py-16 bg-surface-dark border-b border-border-dark">
-      <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
         <div className="relative flex justify-center items-center w-full">
           <div className="absolute -inset-4 bg-primary/20 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
           <BussolaProofCard />

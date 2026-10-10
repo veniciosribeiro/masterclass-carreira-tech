@@ -69,7 +69,7 @@ export const BussolaModules: React.FC = () => {
       className="px-6 py-16 bg-surface-dark border-b border-border-dark"
       id="jornada"
     >
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 max-w-2xl mx-auto">
           <span className="text-primary font-bold tracking-widest uppercase text-xs font-mono border border-primary/30 px-2 py-1 rounded bg-primary/10">
             A Jornada Bússola
@@ -91,22 +91,29 @@ export const BussolaModules: React.FC = () => {
                 key={module.number}
                 className="bg-background-dark border border-border-dark rounded-xl p-6 hover:border-primary/50 transition-colors"
               >
-                <div className="flex items-start gap-6">
-                  <div className="text-5xl font-black text-primary font-mono">
-                    {module.number}
-                  </div>
-                  <div
-                    className={`size-12 rounded-lg flex items-center justify-center shrink-0 border ${colorClasses[module.color]}`}
-                  >
-                    <Icon className="text-2xl" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-sm text-primary font-mono uppercase tracking-widest mb-1">
+                <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:gap-6">
+                  <div className="flex items-center gap-4 lg:items-start lg:gap-6">
+                    <div className="text-4xl lg:text-5xl font-black text-primary font-mono">
+                      {module.number}
+                    </div>
+                    <div
+                      className={`size-12 rounded-lg flex items-center justify-center shrink-0 border ${colorClasses[module.color]}`}
+                    >
+                      <Icon className="text-2xl" />
+                    </div>
+                    <h3 className="lg:hidden flex-1 text-base font-bold text-primary font-mono uppercase tracking-wider leading-snug">
                       {module.title}
                     </h3>
-                    <h4 className="text-xl font-bold text-white mb-2">
-                      {module.outcome}
-                    </h4>
+                  </div>
+                  <div className="flex-1 lg:grid lg:grid-cols-[2fr_3fr] lg:gap-10 lg:items-center">
+                    <div>
+                      <h3 className="hidden lg:block text-sm text-primary font-mono uppercase tracking-widest mb-1">
+                        {module.title}
+                      </h3>
+                      <h4 className="text-xl font-bold text-white mb-2 lg:mb-0">
+                        {module.outcome}
+                      </h4>
+                    </div>
                     <p className="text-gray-400">{module.description}</p>
                   </div>
                 </div>

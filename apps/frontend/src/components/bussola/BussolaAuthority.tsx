@@ -4,7 +4,7 @@ import { VerifiedUserIcon } from '../icons';
 export const BussolaAuthority: React.FC = () => {
   return (
     <section
-      className="bg-background-dark py-10 px-6 text-white border-y border-border-dark"
+      className="bg-surface-dark py-10 px-6 text-white border-y border-border-dark"
       id="mentor"
     >
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
@@ -15,7 +15,7 @@ export const BussolaAuthority: React.FC = () => {
               src="/assets/images/venicios-profile.webp"
               width={400}
               height={500}
-              alt="Venicios Ribeiro - Coordenador de Engenharia de Software"
+              alt="Venicios Ribeiro - Criador do Método Bússola"
               className="w-full h-auto object-cover aspect-[3/3]"
             />
             <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-8">
@@ -36,28 +36,10 @@ export const BussolaAuthority: React.FC = () => {
           </div>
 
           <h2 className="text-3xl md:text-5xl font-bold mb-4 font-mono leading-tight text-white">
-            Eu conheço essa decisão dos dois lados da mesa.
+            Já estive onde você está. E depois, do outro lado da mesa.
           </h2>
 
-          <div className="relative mb-8">
-            <p className="text-gray-400 italic text-lg leading-relaxed">
-              Passei anos construindo minha carreira como desenvolvedor e depois
-              assumindo posições de liderança, participando de decisões sobre
-              contratação, desenvolvimento e avanço profissional.
-            </p>
-          </div>
-
-          <div className="relative mb-8">
-            <p className="text-gray-400 italic text-lg leading-relaxed border-l-4 border-primary pl-6">
-              A Bússola não nasceu de uma teoria sobre como carreira deveria
-              funcionar. Nasceu acompanhando desenvolvedores que trabalhavam
-              muito, mas não conseguiam transformar aquilo que desejavam
-              profissionalmente em uma jornada clara para chegar até lá. Foi
-              desse padrão que nasceu o Método Bússola.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 border-y border-border-dark py-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 border-y border-border-dark py-6 mb-8">
             <div>
               <div className="text-3xl md:text-4xl font-bold text-white mb-1 font-mono">
                 +20
@@ -84,6 +66,21 @@ export const BussolaAuthority: React.FC = () => {
                 fica parado.
               </div>
             </div>
+          </div>
+          <div className="relative mb-8">
+            <p className="text-gray-400 italic text-lg leading-relaxed">
+              Passei anos como desenvolvedor e depois em posições de liderança,
+              participando de decisões de contratação, promoção e desligamento.
+            </p>
+          </div>
+
+          <div className="relative">
+            <p className="text-gray-400 italic text-lg leading-relaxed border-l-4 border-primary pl-6">
+              A Bússola não nasceu de uma teoria. Nasceu acompanhando
+              desenvolvedores que trabalhavam muito, mas não conseguiam
+              transformar o que desejavam em uma jornada clara. Desse padrão
+              nasceu o Método Bússola, que aplico em mentorias individuais.
+            </p>
           </div>
         </div>
       </div>

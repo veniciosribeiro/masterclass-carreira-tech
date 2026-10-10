@@ -5,7 +5,7 @@ import { ExpandMoreIcon } from '../icons';
 export const BussolaFAQ: React.FC = () => {
   return (
     <section
-      className="px-6 py-10 lg:py-16 bg-surface-dark border-t border-border-dark"
+      className="px-6 py-10 lg:py-16 bg-background-dark border-t border-border-dark"
       id="faq"
     >
       <div className="max-w-3xl mx-auto">
@@ -18,7 +18,7 @@ export const BussolaFAQ: React.FC = () => {
           </h2>
         </div>
         <div className="space-y-4">
-          <details className="group bg-background-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
+          <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Isso é um curso de programação?
@@ -37,7 +37,7 @@ export const BussolaFAQ: React.FC = () => {
             </div>
           </details>
 
-          <details className="group bg-background-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
+          <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Quanto tempo dura?
@@ -57,7 +57,7 @@ export const BussolaFAQ: React.FC = () => {
             </div>
           </details>
 
-          <details className="group bg-background-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
+          <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; E se eu não puder assistir ao vivo?
@@ -75,7 +75,7 @@ export const BussolaFAQ: React.FC = () => {
             </div>
           </details>
 
-          <details className="group bg-background-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
+          <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Preciso estar buscando promoção?
@@ -94,7 +94,7 @@ export const BussolaFAQ: React.FC = () => {
             </div>
           </details>
 
-          <details className="group bg-background-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
+          <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Posso parcelar?
@@ -112,10 +112,10 @@ export const BussolaFAQ: React.FC = () => {
             </div>
           </details>
 
-          <details className="group bg-background-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
+          <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
-                &gt; Qual a diferença entre Starter e Premium?
+                &gt; Qual a diferença entre a Bússola e a mentoria individual?
               </span>
               <span className="transition group-open:rotate-180 text-primary">
                 <ExpandMoreIcon />
@@ -125,15 +125,18 @@ export const BussolaFAQ: React.FC = () => {
               <span className="text-primary font-mono text-xs block mb-2">
                 // Response:
               </span>
-              O método é o mesmo. O Premium acrescenta acompanhamento
-              individual, revisão de CV e orientação de LinkedIn.
+              A mentoria individual (R$5.997) tem acompanhamento 1:1
+              personalizado. A Bússola é a mesma jornada e o mesmo método, em
+              grupo: você tem suporte por e-mail, mentoria ao vivo em grupo e
+              duas revisões escritas do seu plano, mas não acompanhamento
+              individual contínuo.
             </div>
           </details>
 
-          <details className="group bg-background-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
+          <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
-                &gt; Por que o Premium tem apenas 10 vagas?
+                &gt; E se eu quiser mudar de empresa?
               </span>
               <span className="transition group-open:rotate-180 text-primary">
                 <ExpandMoreIcon />
@@ -143,12 +146,32 @@ export const BussolaFAQ: React.FC = () => {
               <span className="text-primary font-mono text-xs block mb-2">
                 // Response:
               </span>
-              Porque inclui uma sessão individual de 90 minutos e, nesta turma
-              inaugural, a capacidade desse acompanhamento é limitada.
+              Você escolhe a rota. O curso tem a trilha LinkedIn Irresistível e
+              a trilha CV à Prova de ATS, e a trilha da Influência é para quem
+              quer crescer onde está. Mesmo quem fica pode usar as de saída para
+              seguir ativo no mercado.
             </div>
           </details>
 
-          <details className="group bg-background-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
+          <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
+            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
+              <span className="font-mono text-sm md:text-base">
+                &gt; Quanto custa depois da turma inaugural?
+              </span>
+              <span className="transition group-open:rotate-180 text-primary">
+                <ExpandMoreIcon />
+              </span>
+            </summary>
+            <div className="text-gray-400 p-6 pt-0 leading-relaxed border-t border-transparent group-open:border-border-dark group-open:pt-6 font-light">
+              <span className="text-primary font-mono text-xs block mb-2">
+                // Response:
+              </span>
+              Na turma inaugural, R$297. Depois dela, a Bússola passa a custar
+              R$597. As condições da turma inaugural valem só para esta turma.
+            </div>
+          </details>
+
+          <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; E se eu não gostar?
@@ -166,7 +189,7 @@ export const BussolaFAQ: React.FC = () => {
             </div>
           </details>
 
-          <details className="group bg-background-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
+          <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
             <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Como funciona o suporte?
@@ -179,8 +202,9 @@ export const BussolaFAQ: React.FC = () => {
               <span className="text-primary font-mono text-xs block mb-2">
                 // Response:
               </span>
-              O programa inclui suporte por e-mail durante a jornada e aulões
-              coletivos quinzenais para dúvidas e estudos de caso.
+              O programa inclui suporte por e-mail durante a jornada e a
+              mentoria ao vivo em grupo, com encontro mensal para você trazer o
+              seu caso e tirar dúvidas gerais.
             </div>
           </details>
         </div>
