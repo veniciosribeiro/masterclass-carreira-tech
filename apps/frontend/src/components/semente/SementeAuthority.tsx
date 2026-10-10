@@ -22,7 +22,7 @@ export const SementeAuthority: React.FC = () => {
                 Venicios Ribeiro
               </div>
               <div className="font-mono text-primary text-sm">
-                Coordenador de Engenharia de Software
+                12 anos como desenvolvedor • 8 em liderança
               </div>
             </div>
           </div>
@@ -37,11 +37,11 @@ export const SementeAuthority: React.FC = () => {
 
           <div className="relative mb-4 text-gray-300 text-lg leading-relaxed">
             <p className="mb-3">
-              Estou na área de tecnologia há mais de 20 anos: 12 como
-              desenvolvedor e 8 em posições de liderança. Vivi a frustração de
-              esperar que o trabalho fosse percebido naturalmente e,
-              posteriormente, passei a acompanhar profissionais e participar de
-              decisões sobre desenvolvimento, desempenho e carreira.
+              Tenho mais de 20 anos de tecnologia: 12 como desenvolvedor e 8 em
+              posições de liderança. Vivi a frustração de esperar que o trabalho
+              fosse percebido naturalmente e, posteriormente, passei a
+              acompanhar profissionais e participar de decisões sobre
+              desenvolvimento, desempenho e carreira.
             </p>
           </div>
 

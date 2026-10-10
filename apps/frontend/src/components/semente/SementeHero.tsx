@@ -21,7 +21,7 @@ export const SementeHero: React.FC = () => {
             Promoção não é prêmio por entregar bem.
           </h1>
           <p className="text-gray-400 font-light text-lg md:text-lg max-w-3xl mx-auto lg:mx-0">
-            Há 8 anos eu participo das decisões sobre a carreira de
+            Por 8 anos eu participei das decisões sobre a carreira de
             desenvolvedores. Neste Webinário eu mostro o que quem decide precisa
             enxergar para te ver pronto para o próximo nível ou para ser
             reconhecido.
