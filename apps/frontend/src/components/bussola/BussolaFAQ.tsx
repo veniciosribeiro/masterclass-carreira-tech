@@ -107,8 +107,8 @@ export const BussolaFAQ: React.FC = () => {
               <span className="text-primary font-mono text-xs block mb-2">
                 // Response:
               </span>
-              Sim. O pagamento pode ser feito por Pix ou cartão, com
-              parcelamento em até 12x no cartão e juros da operadora.
+              Sim. O pagamento pode ser feito por Pix ou cartão. À vista, são
+              R$297; no cartão, em até 12x de R$30,68, com juros da operadora.
             </div>
           </details>
 
@@ -126,9 +126,11 @@ export const BussolaFAQ: React.FC = () => {
                 // Response:
               </span>
               A mentoria individual (R$5.997) tem acompanhamento 1:1
-              personalizado. A Bússola é a mesma jornada e o mesmo método, em
-              grupo: você tem suporte por e-mail, mentoria ao vivo em grupo e
-              duas revisões escritas do seu plano, mas não acompanhamento
+              personalizado. A Bússola entrega o mesmo método, em grupo. Na
+              mentoria individual, a ordem da jornada parte do diagnóstico de
+              cada pessoa; na Bússola, a jornada é a mesma para todos. Você tem
+              suporte por e-mail, duas revisões escritas do seu plano e, como
+              bônus, a mentoria ao vivo em grupo, mas não acompanhamento
               individual contínuo.
             </div>
           </details>
@@ -146,8 +148,8 @@ export const BussolaFAQ: React.FC = () => {
               <span className="text-primary font-mono text-xs block mb-2">
                 // Response:
               </span>
-              Você escolhe a rota. O curso tem a trilha LinkedIn Irresistível e
-              a trilha CV à Prova de ATS, e a trilha da Influência é para quem
+              Você escolhe a rota. Entre os bônus, tem o LinkedIn Irresistível e
+              o Currículo à Prova de ATS, e a Trilha da Influência é para quem
               quer crescer onde está. Mesmo quem fica pode usar as de saída para
               seguir ativo no mercado.
             </div>
