@@ -30,7 +30,7 @@ function handleCheckoutClick(
 const BONUSES: { name: string; desc: string; value: number }[] = [
   {
     name: 'Mentoria ao vivo em grupo',
-    desc: 'Encontro mensal ao vivo, gravado e disponível para sempre.',
+    desc: 'Encontros mensais ao vivo por 24 meses + gravação dos encontros para sempre.',
     value: 497,
   },
   {
@@ -157,17 +157,15 @@ export const BussolaPricing: React.FC = () => {
           {MENTORING.map((item) => (
             <div
               key={item.name}
-              className="flex md:block gap-4 rounded-xl border border-border-dark bg-surface-dark p-5 md:p-6"
+              className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1 md:gap-y-3 rounded-xl border border-border-dark bg-surface-dark p-5 md:p-6"
             >
-              <span className="shrink-0 w-11 h-11 rounded-lg bg-primary/10 border border-primary/30 text-primary text-2xl flex items-center justify-center md:mb-4">
+              <span className="row-span-2 md:row-span-1 shrink-0 w-11 h-11 rounded-lg bg-primary/10 border border-primary/30 text-primary text-2xl flex items-center justify-center">
                 <item.icon />
               </span>
-              <div>
-                <h4 className="font-bold text-white font-mono mb-1 md:mb-2">
-                  {item.name}
-                </h4>
-                <p className="text-gray-400 text-sm">{item.desc}</p>
-              </div>
+              <h4 className="font-bold text-white font-mono md:self-center">
+                {item.name}
+              </h4>
+              <p className="text-gray-400 text-sm md:col-span-2">{item.desc}</p>
             </div>
           ))}
         </div>
