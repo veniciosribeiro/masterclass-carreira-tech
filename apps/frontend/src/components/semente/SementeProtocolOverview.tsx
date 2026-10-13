@@ -7,17 +7,18 @@ import {
 } from '../icons';
 
 // Cenas do dia a dia, não conceitos: cada uma corresponde a um dos quatro
-// erros do Bloco 5 do Roteiro do Webinário, na língua de quem os vive.
+// erros do Bloco 5 do Roteiro do Webinário, na língua de quem os vive. As
+// frases entre aspas são literais de mentorados (Frases_Literais_Avatar_v1.0).
 const DISCOVERY_CARDS = [
   {
     icon: VisibilityIcon,
     iconClass: 'bg-blue-900/20 text-blue-400 border-blue-900/30',
-    text: 'Você entrega muito, mas ninguém na sala da decisão sabe o que você fez.',
+    text: '"Eu entrego pra caramba e ninguém vê." E, na sala da decisão, ninguém sabe o que você fez.',
   },
   {
     icon: PsychologyIcon,
     iconClass: 'bg-purple-900/20 text-purple-400 border-purple-900/30',
-    text: 'Te dizem "continue assim" ou "apareça mais", e você não sabe o que mudar.',
+    text: '"Meu gestor só fala que estou indo bem, mas nunca me diz o que falta."',
   },
   {
     icon: ArrowForwardIcon,
@@ -51,6 +52,10 @@ export const SementeProtocolOverview: React.FC = () => {
           <h2 className="text-3xl md:text-4xl font-black leading-tight font-mono text-white">
             Você se reconhece em alguma destas situações?
           </h2>
+          <p className="text-gray-400 text-lg mt-6">
+            "Parece que todo mundo cresce, menos eu." Se você já pensou isso,
+            pelo menos uma destas cenas é a sua.
+          </p>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-6">

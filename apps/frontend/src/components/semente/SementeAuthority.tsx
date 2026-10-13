@@ -21,9 +21,6 @@ export const SementeAuthority: React.FC = () => {
               <div className="font-mono text-white text-xl font-bold">
                 Venicios Ribeiro
               </div>
-              <div className="font-mono text-primary text-sm">
-                12 anos como desenvolvedor • 8 em liderança
-              </div>
             </div>
           </div>
         </div>
@@ -38,22 +35,22 @@ export const SementeAuthority: React.FC = () => {
           <div className="relative mb-4 text-gray-300 text-lg leading-relaxed">
             <p className="mb-3">
               Tenho mais de 20 anos de tecnologia: 12 como desenvolvedor e 8 em
-              posições de liderança. Vivi a frustração de esperar que o trabalho
-              fosse percebido naturalmente e, posteriormente, passei a
-              acompanhar profissionais e participar de decisões sobre
-              desenvolvimento, desempenho e carreira.
+              liderança. Durante muito tempo eu entreguei muito e continuei
+              invisível. Depois passei para o outro lado da mesa e vi, em
+              decisões de contratação, promoção e desligamento, o que quem
+              decide realmente enxerga.
             </p>
           </div>
 
           <div className="relative mb-6">
             <p className="text-gray-300 italic text-lg leading-relaxed border-l-4 border-primary pl-6">
-              Criei esse Webinário porque cansei de ver profissionais
+              Criei este webinário porque cansei de ver profissionais
               competentes trabalhando muito e continuando invisíveis, sem saber
               o que realmente precisa mudar.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-2 gap-6 border-y border-border-dark py-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 border-y border-border-dark py-4">
             <div>
               <div className="text-2xl md:text-2xl font-bold text-white mb-1 font-mono">
                 +20
@@ -73,6 +70,25 @@ export const SementeAuthority: React.FC = () => {
                 <p>
                   ACOMPANHANDO O DESENVOLVIMENTO DE PROFISSIONAIS DE TECNOLOGIA
                 </p>
+              </div>
+            </div>
+            <div>
+              <div className="text-2xl md:text-2xl font-bold text-white mb-1 font-mono">
+                +700
+              </div>
+              <div className="text-xs text-gray-400 uppercase tracking-wider">
+                <p className="text-sm text-white mb-2">CURRÍCULOS ANALISADOS</p>
+              </div>
+            </div>
+            <div>
+              <div className="text-2xl md:text-2xl font-bold text-white mb-1 font-mono">
+                8
+              </div>
+              <div className="text-xs text-gray-400 uppercase tracking-wider">
+                <p className="text-sm text-white mb-2">
+                  ANOS EM DECISÕES DE CARREIRA
+                </p>
+                <p>CONTRATAÇÃO, PROMOÇÃO E DESLIGAMENTO</p>
               </div>
             </div>
           </div>

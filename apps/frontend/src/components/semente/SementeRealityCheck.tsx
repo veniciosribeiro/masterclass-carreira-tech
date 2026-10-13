@@ -7,8 +7,14 @@ export const SementeRealityCheck: React.FC = () => {
       <div className="max-w-7xl mx-auto flex flex-col gap-12">
         <div className="text-center max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-black leading-tight font-mono text-white">
-            Como demonstrar seu valor quando as expectativas não estão claras?
+            A decisão sobre a sua promoção acontece numa sala em que você não
+            está.
           </h2>
+          <p className="text-gray-400 text-lg mt-6">
+            Na minha experiência, quem participa dessa conversa fala do que
+            consegue enxergar de você. Se só quem senta ao seu lado entende o
+            seu trabalho, quem defende você chega com pouco material.
+          </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -34,9 +40,8 @@ export const SementeRealityCheck: React.FC = () => {
               Visibilidade não é falar mais
             </h4>
             <p className="text-gray-400">
-              É tornar sua atuação, suas decisões e o impacto que produz
-              compreensíveis para quem participa das decisões sobre sua
-              carreira.
+              É tornar o seu trabalho e o impacto dele compreensíveis para quem
+              participa das decisões sobre a sua carreira.
             </p>
           </div>
         </div>

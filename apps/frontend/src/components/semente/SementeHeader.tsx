@@ -11,7 +11,6 @@ export const SementeHeader: React.FC = () => {
             <TerminalIcon className="text-3xl" />
           </div>
           <h2 className="text-lg font-bold tracking-tight text-white hidden sm:block font-mono">
-            Webinário —{' '}
             <span className="text-primary">
               Aceleração de Carreira Para Desenvolvedores
             </span>
@@ -26,9 +25,9 @@ export const SementeHeader: React.FC = () => {
           </a>
           <a
             className="text-gray-400 hover:text-primary transition-colors"
-            href="#descobertas"
+            href="#inscricao"
           >
-            ./O_Que_Voce_Vai_Ver
+            ./O_Que_Você_Vai_Ver
           </a>
           <a
             className="text-gray-400 hover:text-primary transition-colors"
@@ -47,7 +46,7 @@ export const SementeHeader: React.FC = () => {
           onClick={() => scrollToSection('inscricao')}
           className="flex items-center justify-center rounded-lg h-10 px-6 bg-primary hover:bg-green-400 transition-colors text-[#0D1117] text-sm font-bold tracking-wide font-mono uppercase"
         >
-          <span>&gt; PARTICIPAR DO WEBINÁRIO</span>
+          <span>&gt; QUERO MINHA VAGA</span>
         </button>
       </div>
     </header>

@@ -1,5 +1,7 @@
-export const WEBINAR_DATE_LABEL_1 = 'WEBINÁRIO GRATUITO PARA DESENVOLVEDORES';
-export const WEBINAR_DATE_LABEL_2 = 'ao vivo • 15 de outubro • 20h';
+export const WEBINAR_DATE_LABEL_1 =
+  'WEBINÁRIO GRATUITO • QUI, 15/10 • 20H (BRASÍLIA)';
+export const WEBINAR_DATE_LABEL_2 =
+  'ao vivo • quinta, 15 de outubro • 20h (Brasília)';
 export const WEBINAR_COMMUNITY_LINK =
   'https://chat.whatsapp.com/HnRvQdjQoc6D8xu6rj3R98';
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { CheckCircleIcon } from '../icons';
 import { SementeForm } from './SementeForm';
-import { WEBINAR_DATE_LABEL_2 } from './sementeConfig';
 
 // Duplicado de SementeProofCard — mesma moldura visual (glow, borda,
 // linha de destaque no topo), mas o conteúdo é o formulário de inscrição
@@ -23,17 +22,12 @@ export const SementeFormCard: React.FC = () => {
           </span>
           <span className="inline-flex items-center gap-1.5 text-primary font-bold tracking-widest uppercase text-xs font-mono border border-primary/30 px-3 py-1.5 rounded bg-primary/10">
             <CheckCircleIcon className="text-sm" />
-            Vagas gratuitas e limitadas
+            Vagas limitadas
           </span>
         </div>
 
+        {/* Sem data aqui: ela já está em destaque no texto do hero, ao lado. */}
         <SementeForm />
-
-        <div className="pt-3 border-t border-dashed border-[#30363D] flex justify-center items-center">
-          <span className="inline-block self-center lg:self-start tracking-widest uppercase text-sm font-mono px-2 py-1">
-            {WEBINAR_DATE_LABEL_2}
-          </span>
-        </div>
       </div>
     </div>
   );

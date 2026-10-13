@@ -19,12 +19,21 @@ export const SementeHero: React.FC = () => {
           </span>
           <h1 className="text-3xl md:text-5xl lg:text-5xl font-black leading-tight tracking-tight font-mono">
             Promoção não é prêmio por entregar bem.
+            {/* A premissa (linha 1) sozinha deixa a pergunta "então é prêmio
+                pelo quê?" aberta; a promessa (linha 2) fecha no próprio título. */}
+            <span className="block mt-4 text-lg md:text-2xl text-primary font-bold">
+              Descubra o que quem decide precisa enxergar para considerar você
+              pronto para o próximo nível.
+            </span>
           </h1>
-          <p className="text-gray-400 font-light text-lg md:text-lg max-w-3xl mx-auto lg:mx-0">
-            Por 8 anos eu participei das decisões sobre a carreira de
-            desenvolvedores. Neste Webinário eu mostro o que quem decide precisa
-            enxergar para te ver pronto para o próximo nível ou para ser
-            reconhecido.
+          {/* Hero com três níveis só: título, promessa e autoridade. A data
+              fica no selo acima; o "sem se vender" é respondido na seção
+              seguinte e no FAQ. A autoridade responde ao "quem é você para
+              saber?" que a promessa provoca: por isso começa ligada a ela. */}
+          <p className="text-gray-400 font-light text-lg max-w-3xl mx-auto lg:mx-0">
+            Eu sei o que eles enxergam porque estive dos dois lados da mesa: 12
+            anos como desenvolvedor e 8 participando de decisões de contratação,
+            promoção e desligamento.
           </p>
         </div>
         <div className="relative flex justify-center items-center">

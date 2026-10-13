@@ -4,8 +4,10 @@ import { WorkspacePremiumIcon } from '../icons';
 import { SementeForm } from './SementeForm';
 import { WEBINAR_DATE_LABEL_2 } from './sementeConfig';
 
-// O que a pessoa leva do Webinário. A frase é montada como
-// "{lead} {strong} {tail}", com o trecho do meio em destaque.
+// O que a pessoa leva do webinário. A frase é montada como
+// "{lead} {strong} {tail}", com o trecho do meio em destaque. O último item
+// cumpre a promessa do Bloco 1 ("por onde esse caminho começa") sem ensinar
+// o como, que fica no curso.
 const LEARNINGS = [
   {
     lead: 'Por que',
@@ -14,13 +16,18 @@ const LEARNINGS = [
   },
   {
     lead: 'O que',
-    strong: 'quem decide a sua promoção olha',
-    tail: 'na hora de decidir.',
+    strong: 'quem decide enxerga, e não enxerga, em você',
+    tail: 'na hora de discutir a sua promoção. Pelo que vi em 8 anos.',
   },
   {
-    lead: 'O que',
-    strong: 'visibilidade quer dizer,',
-    tail: 'sem precisar se vender.',
+    lead: 'Os',
+    strong: '4 erros mais comuns',
+    tail: 'que afastam desenvolvedores do reconhecimento.',
+  },
+  {
+    lead: 'Por onde',
+    strong: 'começar a construir o seu plano,',
+    tail: 'sem depender de entregar mais ou de esperar que alguém perceba.',
   },
 ];
 
@@ -43,7 +50,7 @@ export const SementeInscricao: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-10 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-black leading-tight font-mono text-white mb-4">
-            Ao final do webinário, você entenderá:
+            O que você vai ver ao vivo:
           </h2>
         </div>
 
@@ -51,7 +58,7 @@ export const SementeInscricao: React.FC = () => {
           <div className="grid md:grid-cols-1">
             {/* Left Side: O que está incluso */}
             <div className="p-8 border-b md:border-b-0 md:border-r border-border-dark bg-[#0d1117]/50">
-              <div className="grid md:grid-cols-3 gap-4">
+              <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
                 {LEARNINGS.map(({ lead, strong, tail }, i) => (
                   <div
                     key={strong}
@@ -77,18 +84,19 @@ export const SementeInscricao: React.FC = () => {
                     Casos reais
                   </h4>
                   <p className="text-gray-400">
-                    Desenvolvedores em diferentes momentos da carreira que
-                    receberam <strong className="text-white">aumento</strong> e{' '}
+                    Você vai ver 4 casos reais e anonimizados de
+                    desenvolvedores, em níveis diferentes, que receberam{' '}
+                    <strong className="text-white">aumento</strong> e{' '}
                     <strong className="text-white">promoção</strong>.
                   </p>
                 </div>
               </div>
 
               <div className="text-3xl mt-6 pt-6 border-t border-dashed border-border-dark flex justify-between items-center">
-                <span className="font-mono text-gray-500 uppercase">
-                  Investimento
+                <span className="font-mono text-gray-500 uppercase">Valor</span>
+                <span className="font-black text-primary font-mono">
+                  Gratuito
                 </span>
-                <span className="font-black text-primary font-mono">R$ 0</span>
               </div>
             </div>
 
@@ -102,6 +110,8 @@ export const SementeInscricao: React.FC = () => {
               <SementeForm />
               <span className="text-1xl text-gray-400 font-mono mt-4 block text-center">
                 {WEBINAR_DATE_LABEL_2}
+                <span className="hidden sm:inline"> • </span>
+                <span className="block sm:inline">cerca de 1 hora</span>
               </span>
             </div>
           </div>
