@@ -76,10 +76,10 @@ export const BussolaAuthority: React.FC = () => {
 
           <div className="relative">
             <p className="text-gray-400 italic text-lg leading-relaxed border-l-4 border-primary pl-6">
-              A Bússola não nasceu de uma teoria. Nasceu acompanhando
-              desenvolvedores que trabalhavam muito, mas não conseguiam
-              transformar o que desejavam em uma jornada clara. Desse padrão
-              nasceu o Método Bússola, que aplico em mentorias individuais.
+              A Bússola nasceu acompanhando desenvolvedores que trabalhavam
+              muito, mas não conseguiam transformar o que desejavam em uma
+              jornada clara. Desse padrão nasceu o Método Bússola, que aplico em
+              mentorias individuais.
             </p>
           </div>
         </div>

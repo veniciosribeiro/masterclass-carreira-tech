@@ -14,13 +14,13 @@ const LEARNINGS = [
   },
   {
     lead: 'O que',
-    strong: 'quem decide a sua promoção olha,',
-    tail: 'e quase ninguém te conta.',
+    strong: 'quem decide a sua promoção olha',
+    tail: 'na hora de decidir.',
   },
   {
-    lead: 'Por que',
-    strong: 'ter visibilidade não é ficar se vendendo.',
-    tail: '',
+    lead: 'O que',
+    strong: 'visibilidade quer dizer,',
+    tail: 'sem precisar se vender.',
   },
 ];
 

@@ -213,8 +213,7 @@ export const BussolaFAQ: React.FC = () => {
 
         <div className="mt-16 text-center flex flex-col items-center gap-6">
           <h3 className="text-2xl md:text-3xl font-bold text-white font-mono leading-tight max-w-xl">
-            Seu próximo nível pode continuar sendo uma expectativa — ou pode se
-            tornar um destino.
+            Defina o seu destino e comece pela turma inaugural.
           </h3>
           <button
             onClick={() => scrollToSection('pricing')}

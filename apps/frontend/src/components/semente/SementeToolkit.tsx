@@ -13,7 +13,8 @@ export const SementeToolkit: React.FC = () => {
             Mais 3 Desenvolvedores, o Mesmo Problema
           </h2>
           <p className="text-gray-400 mt-4 font-light">
-            Três níveis diferentes. Todos há anos sem reconhecimento.
+            Três níveis diferentes. Todos entregavam e não eram reconhecidos à
+            altura.
           </p>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
@@ -26,7 +27,7 @@ export const SementeToolkit: React.FC = () => {
             </h3>
             <p className="text-sm text-gray-400">
               Buscava uma promoção, mas não entendia os critérios usados na
-              decisão — e colocava a responsabilidade só na gestão. 3 anos sem
+              decisão, e colocava a responsabilidade só na gestão. 3 anos sem
               nenhum reconhecimento.
             </p>
           </div>
@@ -39,7 +40,7 @@ export const SementeToolkit: React.FC = () => {
             </h3>
             <p className="text-sm text-gray-400">
               Entregava bem, mas o trabalho continuava invisível pros pares e
-              pros outros gestores — como se nada daquilo existisse.
+              pros outros gestores, como se nada daquilo existisse.
             </p>
           </div>
           <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-[#1c2128] transition-all duration-300 group">
@@ -56,8 +57,8 @@ export const SementeToolkit: React.FC = () => {
           </div>
         </div>
         <p className="text-gray-500 text-sm italic text-center mt-8 max-w-2xl mx-auto">
-          Três profissionais, três situações diferentes — mas a mesma sensação
-          de estar preso no mesmo lugar.
+          Três situações diferentes e a mesma sensação de estar preso no mesmo
+          lugar.
         </p>
       </div>
     </section>

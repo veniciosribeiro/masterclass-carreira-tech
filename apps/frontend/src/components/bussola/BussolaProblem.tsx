@@ -65,15 +65,6 @@ export const BussolaProblem: React.FC = () => {
             );
           })}
         </div>
-
-        <div className="text-center bg-surface-dark border border-primary/30 rounded-xl p-8 max-w-3xl mx-auto">
-          <p className="text-xl md:text-2xl font-bold text-white font-mono leading-snug">
-            O problema não é necessariamente trabalhar pouco.{' '}
-            <span className="text-primary">
-              É trabalhar sem uma jornada que organize o seu avanço.
-            </span>
-          </p>
-        </div>
       </div>
     </section>
   );

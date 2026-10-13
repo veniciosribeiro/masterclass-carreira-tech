@@ -32,9 +32,8 @@ export const BussolaHero: React.FC = () => {
           <span className="text-primary">pronto para o próximo nível.</span>
         </h1>
         <p className="text-gray-300 font-light text-lg md:text-lg max-w-3xl mx-auto">
-          Você não avança na carreira perseguindo reconhecimento. Você define um
-          destino e percorre uma jornada que produz evidências de que está
-          pronto para sustentar o próximo nível.
+          Você define um destino e percorre uma jornada que produz evidências de
+          que está pronto para sustentar o próximo nível.
         </p>
         <div className="pt-4">
           <button

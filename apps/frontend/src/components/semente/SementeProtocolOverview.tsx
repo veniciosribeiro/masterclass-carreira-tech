@@ -49,7 +49,7 @@ export const SementeProtocolOverview: React.FC = () => {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-10 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-black leading-tight font-mono text-white">
-            Se você se reconhece em alguma dessas, o problema não é capacidade.
+            Você se reconhece em alguma destas situações?
           </h2>
         </div>
 

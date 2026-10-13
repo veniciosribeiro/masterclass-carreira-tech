@@ -144,8 +144,7 @@ export const BussolaPricing: React.FC = () => {
             Turma Inaugural
           </span>
           <h2 className="text-3xl md:text-5xl font-black mt-6 font-mono leading-tight">
-            A escolha é sua: continuar invisível ou ser quem a liderança lembra
-            na hora de promover?
+            Na hora de promover, a liderança precisa ter o que lembrar de você.
           </h2>
           <p className="text-primary font-black font-mono text-xl md:text-3xl leading-snug mt-5">
             A Bússola tem tudo que você precisa + bônus exclusivos da turma
