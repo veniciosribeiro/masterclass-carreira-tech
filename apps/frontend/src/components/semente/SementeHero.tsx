@@ -1,6 +1,6 @@
 import React from 'react';
 import { SementeFormCard } from './SementeFormCard';
-import { WEBINAR_DATE_LABEL_1 } from './sementeConfig';
+import { WEBINAR_DATE_LABEL_1, WEBINAR_DATE_SHORT } from './sementeConfig';
 
 export const SementeHero: React.FC = () => {
   return (
@@ -16,6 +16,8 @@ export const SementeHero: React.FC = () => {
         <div className="flex flex-col gap-6 text-center lg:text-left">
           <span className="inline-block self-center lg:self-start text-primary tracking-widest uppercase text-md font-mono border border-primary/30 px-2 py-1 rounded bg-primary/10">
             {WEBINAR_DATE_LABEL_1}
+            <span className="hidden sm:inline"> • </span>
+            <span className="block sm:inline">{WEBINAR_DATE_SHORT}</span>
           </span>
           <h1 className="text-3xl md:text-5xl lg:text-5xl font-black leading-tight tracking-tight font-mono">
             Promoção não é prêmio por entregar bem.
@@ -26,14 +28,16 @@ export const SementeHero: React.FC = () => {
               pronto para o próximo nível.
             </span>
           </h1>
-          {/* Hero com três níveis só: título, promessa e autoridade. A data
-              fica no selo acima; o "sem se vender" é respondido na seção
-              seguinte e no FAQ. A autoridade responde ao "quem é você para
-              saber?" que a promessa provoca: por isso começa ligada a ela. */}
+          {/* Hero com três níveis só: premissa, promessa e para quem é. Num
+              opt-in gratuito a dúvida que trava é "isso serve para mim?", não
+              "quem é você?": a autoridade fica na seção do mentor. Esta linha
+              é a única seleção do público no celular (o header esconde o
+              título), então precisa nomear o desenvolvedor. A cena é a
+              abertura do Bloco 1 e a frase literal 6. */}
           <p className="text-gray-400 font-light text-lg max-w-3xl mx-auto lg:mx-0">
-            Eu sei o que eles enxergam porque estive dos dois lados da mesa: 12
-            anos como desenvolvedor e 8 participando de decisões de contratação,
-            promoção e desligamento.
+            Para desenvolvedores que entregam, ouvem "você está indo bem,
+            continue assim" e saem da conversa sem saber o que falta para o
+            próximo passo.
           </p>
         </div>
         <div className="relative flex justify-center items-center">

@@ -7,8 +7,9 @@ import {
 } from '../icons';
 
 // Cenas do dia a dia, não conceitos: cada uma corresponde a um dos quatro
-// erros do Bloco 5 do Roteiro do Webinário, na língua de quem os vive. As
-// frases entre aspas são literais de mentorados (Frases_Literais_Avatar_v1.0).
+// erros do Bloco 5 do Roteiro do Webinário, na língua de quem os vive. A do
+// cartão 1 é literal de mentorado (Frases_Literais_Avatar_v1.0); a do 2 vem do
+// Erro 2 do roteiro, porque o "continue assim" já está no hero.
 const DISCOVERY_CARDS = [
   {
     icon: VisibilityIcon,
@@ -18,7 +19,7 @@ const DISCOVERY_CARDS = [
   {
     icon: PsychologyIcon,
     iconClass: 'bg-purple-900/20 text-purple-400 border-purple-900/30',
-    text: '"Meu gestor só fala que estou indo bem, mas nunca me diz o que falta."',
+    text: 'Você lista as suas entregas, pede um ajuste de cargo e escuta: "Isso vai ser visto em breve."',
   },
   {
     icon: ArrowForwardIcon,

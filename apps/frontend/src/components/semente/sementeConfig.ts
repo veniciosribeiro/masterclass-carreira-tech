@@ -1,5 +1,7 @@
-export const WEBINAR_DATE_LABEL_1 =
-  'WEBINÁRIO GRATUITO • QUI, 15/10 • 20H (BRASÍLIA)';
+// Selo do hero em duas partes: no celular cada uma vai numa linha, para a
+// quebra não deixar um "•" solto no fim da primeira.
+export const WEBINAR_DATE_LABEL_1 = 'WEBINÁRIO GRATUITO';
+export const WEBINAR_DATE_SHORT = 'QUI, 15/10 • 20H (BRASÍLIA)';
 export const WEBINAR_DATE_LABEL_2 =
   'ao vivo • quinta, 15 de outubro • 20h (Brasília)';
 export const WEBINAR_COMMUNITY_LINK =
