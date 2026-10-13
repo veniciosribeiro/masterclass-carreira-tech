@@ -43,11 +43,11 @@ export const Authority: React.FC = () => {
 
           <div className="relative mb-8">
             <p className="text-gray-400 italic text-lg leading-relaxed">
-              Em 20 anos, eu contratei, demiti e promovi 700+ profissionais de
-              tecnologia. Sei exatamente o que o mercado procura — e o que
-              descarta nos primeiros 30 segundos de um currículo. Essa
-              masterclass é o resumo de 20 anos de decisões de contratação. Não
-              é teoria — é o que funciona na prática.
+              Em 20 anos, eu contratei, demiti e promovi dezenas de
+              profissionais de tecnologia. Sei exatamente o que o mercado
+              procura — e o que descarta nos primeiros 30 segundos de um
+              currículo. Essa masterclass é o resumo de 20 anos de decisões de
+              contratação. Não é teoria — é o que funciona na prática.
             </p>
           </div>
 
