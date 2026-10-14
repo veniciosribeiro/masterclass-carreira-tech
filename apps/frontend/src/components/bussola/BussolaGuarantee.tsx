@@ -6,7 +6,7 @@ const steps = [
     label: '7 Dias',
     title: 'Decida depois de entrar',
     description:
-      'Entre, conheça a metodologia e veja a experiência por dentro. Se decidir que não faz sentido para você, solicite o reembolso integral dentro dos primeiros 7 dias.',
+      'Entre, conheça a metodologia e veja a experiência por dentro. Se decidir que não faz sentido para você, solicite o reembolso integral até 7 dias depois da primeira aula (07/11).',
   },
   {
     label: '90 Dias',

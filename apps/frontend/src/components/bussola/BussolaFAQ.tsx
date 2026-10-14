@@ -186,7 +186,8 @@ export const BussolaFAQ: React.FC = () => {
               <span className="text-primary font-mono text-xs block mb-2">
                 // Response:
               </span>
-              Você possui 7 dias de garantia incondicional para solicitar o
+              A garantia incondicional vale até 7 dias depois da primeira aula
+              (31/10), ou seja, até 07/11. Nesse prazo você pode solicitar o
               reembolso integral.
             </div>
           </details>

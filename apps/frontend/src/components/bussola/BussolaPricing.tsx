@@ -34,7 +34,7 @@ const BONUSES: { name: string; desc: string; value: number }[] = [
     value: 497,
   },
   {
-    name: 'Comunidade privada por 12 meses',
+    name: 'Comunidade privada por 24 meses',
     desc: 'Network, troca de experiências, vagas e suporte.',
     value: 397,
   },
@@ -329,7 +329,7 @@ export const BussolaPricing: React.FC = () => {
                   <ArrowForwardIcon />
                 </a>
                 <p className="text-sm md:text-base text-white mt-4">
-                  50 vagas na turma inaugural • 7 dias de garantia incondicional
+                  50 vagas na turma inaugural • Garantia incondicional até 07/11
                 </p>
               </div>
             </div>
