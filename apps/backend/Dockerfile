@@ -13,8 +13,11 @@ RUN npm run build:bundle
 # Stage 2: Prisma Dependencies (Clean install for CLI & Client)
 FROM node:20-alpine AS prisma-libs
 WORKDIR /app
-# Install prisma CLI, Client, and runtime dependencies (pg, adapter, etc)
-RUN npm install prisma@7.4.0 @prisma/client@7.4.0 pg @prisma/adapter-pg dotenv
+# Install prisma CLI, Client, and runtime dependencies (pg, adapter, etc).
+# prisma, @prisma/client e @prisma/adapter-pg precisam estar na mesma versão
+# (a de apps/backend/package.json); sem pin o adapter vinha na última e o
+# client ficava para trás.
+RUN npm install prisma@7.10.0 @prisma/client@7.10.0 @prisma/adapter-pg@7.10.0 pg dotenv
 
 # Copy schema and config for generation
 COPY apps/backend/prisma ./prisma
