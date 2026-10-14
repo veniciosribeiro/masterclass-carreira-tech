@@ -259,7 +259,11 @@ The aptitude test evaluates 3 pillars to determine 1 of 7 tech profiles:
 
 Business logic (questions, scoring) lives in `apps/frontend/src/test/` (frontend) and is mirrored in `apps/backend/src/common/` (backend) — no shared package, keep both in sync manually.
 
-Vitest and Supertest are present as backend devDependencies but no test files exist yet; both packages' `test` script is currently a placeholder (`echo 'No tests yet'`). If adding tests, use Vitest.
+Tests use Vitest in both packages (`npm run test` at the root runs both). Scope today: the webinar page, the Bússola sales page and their APIs; the aptitude test (masterclass) is not covered yet.
+
+- **Backend** (`apps/backend/tests`): API tests with `app.inject` against a real Postgres (`buildApp()` in `src/app.ts`; `server.ts` only starts it). Needs `TEST_DATABASE_URL` (or `DATABASE_URL`) pointing to a database with "test" in its name (the helper refuses anything else, because the tests truncate the webinar tables), with migrations applied. Includes the n8n payload contract (`webinar-event-contract.test.ts`): if a field of the event changes, update the n8n flow together with the test.
+- **Frontend** (`apps/frontend/tests`): Vitest + jsdom + Testing Library (Pixel/events logic, form, checkout click, thank-you page).
+- **E2E** (`e2e/`, Playwright): `E2E_DATABASE_URL=… npm run e2e` (builds backend and frontend against the local API, starts both servers). All external traffic is blocked or mocked (events API, Meta, Cakto). In CI it runs as a warning job in parallel (`continue-on-error`), it never blocks CI or deploy.
 
 ## Database
 

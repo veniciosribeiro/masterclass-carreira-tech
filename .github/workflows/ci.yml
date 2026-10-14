@@ -97,6 +97,22 @@ jobs:
   test:
     name: Unit & Integration Tests
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: techcareer_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d techcareer_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql://postgres:test@localhost:5432/techcareer_test
+      TEST_DATABASE_URL: postgresql://postgres:test@localhost:5432/techcareer_test
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -113,8 +129,84 @@ jobs:
       - name: Generate Prisma Client
         run: npm run prisma:generate -w @techcareer/backend
 
+      - name: Apply database migrations
+        run: npx prisma migrate deploy
+        working-directory: apps/backend
+
       - name: Run Tests
         run: npm run test
+
+  # E2E (Playwright) das páginas do webinário e da Bússola. É só um aviso:
+  # roda em paralelo com os outros jobs, nenhum job depende dele e uma falha
+  # aqui não bloqueia o CI nem o deploy (continue-on-error).
+  e2e:
+    name: E2E (aviso)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:15-alpine
+        env:
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: techcareer_e2e
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d techcareer_e2e"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql://postgres:test@localhost:5432/techcareer_e2e
+      E2E_DATABASE_URL: postgresql://postgres:test@localhost:5432/techcareer_e2e
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma Client
+        run: npm run prisma:generate -w @techcareer/backend
+
+      - name: Apply database migrations
+        run: npx prisma migrate deploy
+        working-directory: apps/backend
+
+      - name: Build backend
+        run: npm run build -w @techcareer/backend
+
+      - name: Build frontend (API local)
+        run: npm run build -w @techcareer/frontend
+        env:
+          VITE_API_URL: http://127.0.0.1:4100/api
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Run E2E tests
+        run: npx playwright test
+
+      - name: Upload Playwright report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
 
   security:
     name: Security Audit

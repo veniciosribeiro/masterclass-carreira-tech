@@ -6,10 +6,12 @@
     "rootDir": "."
   },
   "include": [
-    "src/**/*",
-    "scripts/**/*",
-    "prisma/**/*",
+    "esbuild.config.cjs",
     "prisma.config.ts",
-    "esbuild.config.cjs"
+    "prisma/**/*",
+    "scripts/**/*",
+    "src/**/*",
+    "tests/**/*",
+    "vitest.config.ts"
   ]
 }

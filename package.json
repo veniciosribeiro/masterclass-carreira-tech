@@ -14,13 +14,16 @@
     "format:check": "npm run format:check --workspaces",
     "test": "npm run test --workspaces",
     "typecheck": "npm run typecheck --workspaces",
-    "prepare": "husky"
+    "prepare": "husky",
+    "e2e": "npm run build -w @techcareer/backend && VITE_API_URL=http://127.0.0.1:4100/api npm run build -w @techcareer/frontend && playwright test",
+    "e2e:rapido": "playwright test"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.0",
+    "eslint": "^9.39.2",
     "husky": "^9.1.7",
     "lint-staged": "^15.5.2",
-    "prettier": "3.8.1",
-    "eslint": "^9.39.2"
+    "prettier": "3.8.1"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
