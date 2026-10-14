@@ -1,0 +1,9 @@
+# Carreira Tech
+
+> Conteúdo de Venicios Ribeiro sobre carreira para desenvolvedores: webinário gratuito e a mentoria Bússola.
+
+## Páginas
+
+- [Webinário Gratuito — Aceleração de Carreira Para Desenvolvedores](https://carreira-tech.foconoobjetivo.com/webinario-carreira-tech): inscrição no webinário gratuito.
+- [Bússola — Aceleração de Carreira Para Desenvolvedores](https://carreira-tech.foconoobjetivo.com/bussola-aceleracao-de-carreira-para-desenvolvedores): página da mentoria.
+- [Política de Privacidade](https://carreira-tech.foconoobjetivo.com/politica-de-privacidade): como os dados são tratados.

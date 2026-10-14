@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /teste
+
+Sitemap: https://carreira-tech.foconoobjetivo.com/sitemap.xml
