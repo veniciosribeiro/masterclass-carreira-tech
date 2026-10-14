@@ -4,5 +4,6 @@ import { afterEach } from 'vitest';
 
 afterEach(() => {
   cleanup();
-  sessionStorage.clear();
+  // O teste de pré-render roda em ambiente node, sem sessionStorage.
+  if (typeof sessionStorage !== 'undefined') sessionStorage.clear();
 });
