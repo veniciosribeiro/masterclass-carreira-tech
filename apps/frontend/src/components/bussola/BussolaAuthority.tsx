@@ -15,6 +15,7 @@ export const BussolaAuthority: React.FC = () => {
               src="/assets/images/venicios-profile.webp"
               width={400}
               height={500}
+              loading="lazy"
               alt="Venicios Ribeiro - Criador do Método Bússola"
               className="w-full h-auto object-cover aspect-[3/3]"
             />

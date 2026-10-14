@@ -158,6 +158,8 @@ app.post<{ Body: FooBodyType; Params: BarType }>('/foo', {
 - Path alias: `@/*` maps to `apps/frontend/src/*` (not the package root)
 - Dev proxy: `/api` → `http://localhost:4000`
 - Build: `cssCodeSplit` enabled, manual vendor chunk for `react`/`react-dom`
+- Rotas são chunks próprios (`React.lazy` no `App.tsx`); o plugin `routeHtml` grava `dist/<rota>/index.html` com o título e `<link rel="modulepreload">` do chunk da rota.
+- `npm run build` também pré-renderiza as landing pages (`src/entry-server.tsx` + `scripts/prerender.mjs`, saída temporária em `build/ssr/`, ignorada por git/ESLint/Prettier): o HTML do hero já vem pronto e o `index.tsx` hidrata (`hydrateRoot`) quando o root tem conteúdo. Só entram rotas cujo conteúdo não varia por visitante (`PRERENDER_ROUTES`); `dist/index.html` fica com o root vazio porque é o fallback do Nginx das demais rotas. Conteúdo que dependa de `window`/data/storage no render causa divergência de hidratação (erro #418): o E2E `prerender.spec.ts` pega.
 
 ### Environment Variables
 

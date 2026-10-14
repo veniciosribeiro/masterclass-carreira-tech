@@ -14,6 +14,7 @@ export const SementeAuthority: React.FC = () => {
               src="/assets/images/venicios-profile-1024.webp"
               width={400}
               height={500}
+              loading="lazy"
               alt="Venicios Ribeiro - Mentor de Carreira Tech"
               className="w-full h-auto object-cover aspect-[3/3]"
             />

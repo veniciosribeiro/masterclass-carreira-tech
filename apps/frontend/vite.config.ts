@@ -1,6 +1,6 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { defineConfig, loadEnv, type Plugin } from 'vite';
+import { defineConfig, loadEnv, type Plugin, type Rollup } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { ROUTE_TITLES } from './src/seo/routeTitles';
@@ -75,7 +75,26 @@ const escapeHtml = (v: string) =>
  * page_view do GA, os previews de link e os crawlers não dependem do React
  * montar para ver o título da página. O <PageTitle> segue cuidando das
  * navegações internas e das rotas dinâmicas.
+ *
+ * As rotas são chunks separados (React.lazy no App.tsx). Sem ajuda, o
+ * navegador só descobriria o chunk da rota depois de baixar e executar o
+ * bundle principal (uma cascata a mais no caminho do primeiro render). Por
+ * isso cada cópia também ganha <link rel="modulepreload"> do chunk da rota e
+ * das dependências estáticas dele, que baixam em paralelo com o bundle.
  */
+const ROUTE_COMPONENTS: Record<string, string> = {
+  '/': 'src/components/LandingPage.tsx',
+  '/v2': 'src/components/v2/LandingPageV2.tsx',
+  '/bussola-aceleracao-de-carreira-para-desenvolvedores':
+    'src/components/bussola/LandingPageBussola.tsx',
+  '/webinario-carreira-tech': 'src/components/semente/LandingPageSemente.tsx',
+  '/webinario-carreira-tech/obrigado':
+    'src/components/semente/ObrigadoSemente.tsx',
+  '/teste': 'src/components/test/AptitudeTest.tsx',
+  '/admin': 'src/components/admin/Dashboard.tsx',
+  '/politica-de-privacidade': 'src/components/legal/PrivacyPolicy.tsx',
+};
+
 function routeHtml(): Plugin {
   return {
     name: 'route-html',
@@ -87,22 +106,56 @@ function routeHtml(): Plugin {
         const index = bundle['index.html'];
         if (!index || index.type !== 'asset') return;
         const html = String(index.source);
+        const chunks = Object.values(bundle).filter(
+          (f): f is Rollup.OutputChunk => f.type === 'chunk'
+        );
+        const entry = chunks.find((c) => c.isEntry);
+
+        // Chunk da rota + dependências estáticas (recursivo), menos o que o
+        // HTML já carrega por ser do entry.
+        const preloadTags = (route: string) => {
+          const source = ROUTE_COMPONENTS[route];
+          const chunk = chunks.find((c) =>
+            Object.keys(c.modules).some((m) => m.endsWith(`/${source}`))
+          );
+          if (!chunk || chunk === entry) return '';
+          const skip = new Set<string>(
+            entry ? [entry.fileName, ...entry.imports] : []
+          );
+          const files = new Set<string>();
+          const visit = (name: string) => {
+            if (skip.has(name) || files.has(name)) return;
+            const c = bundle[name];
+            if (!c || c.type !== 'chunk') return;
+            files.add(name);
+            c.imports.forEach(visit);
+          };
+          visit(chunk.fileName);
+          return [...files]
+            .map((f) => `<link rel="modulepreload" crossorigin href="/${f}" />`)
+            .join('\n    ');
+        };
+
+        const render = (route: string, title: string) => {
+          const withTitle = html.replace(
+            /<title>[^<]*<\/title>/,
+            `<title>${escapeHtml(title)}</title>`
+          );
+          const tags = preloadTags(route);
+          return tags
+            ? withTitle.replace('</head>', `${tags}\n  </head>`)
+            : withTitle;
+        };
 
         for (const [route, title] of Object.entries(ROUTE_TITLES)) {
           if (route === '/') {
-            index.source = html.replace(
-              /<title>[^<]*<\/title>/,
-              `<title>${escapeHtml(title)}</title>`
-            );
+            index.source = render(route, title);
             continue;
           }
           this.emitFile({
             type: 'asset',
             fileName: `${route.slice(1)}/index.html`,
-            source: html.replace(
-              /<title>[^<]*<\/title>/,
-              `<title>${escapeHtml(title)}</title>`
-            ),
+            source: render(route, title),
           });
         }
       },
@@ -110,7 +163,7 @@ function routeHtml(): Plugin {
   };
 }
 
-export default defineConfig(({ mode }) => ({
+export default defineConfig(({ mode, isSsrBuild }) => ({
   server: {
     port: 3000,
     host: '0.0.0.0',
@@ -137,9 +190,12 @@ export default defineConfig(({ mode }) => ({
     minify: 'esbuild',
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-        },
+        // No build SSR o React fica externo (node_modules), sem chunk vendor.
+        manualChunks: isSsrBuild
+          ? undefined
+          : {
+              vendor: ['react', 'react-dom'],
+            },
       },
     },
   },

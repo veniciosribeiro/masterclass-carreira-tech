@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { PageTitle } from '../seo/PageTitle';
 import { ROUTE_TITLES } from '../../seo/routeTitles';
 import { MetaPixel } from '../analytics/MetaPixel';
@@ -9,13 +9,8 @@ import { SementeRealityCheck } from './SementeRealityCheck';
 import { SementeProtocolOverview } from './SementeProtocolOverview';
 import { SementeInscricao } from './SementeInscricao';
 import { SementeAuthority } from './SementeAuthority';
-
-const SementeFAQ = React.lazy(() =>
-  import('./SementeFAQ').then((m) => ({ default: m.SementeFAQ }))
-);
-const SementeFooter = React.lazy(() =>
-  import('./SementeFooter').then((m) => ({ default: m.SementeFooter }))
-);
+import { SementeFAQ } from './SementeFAQ';
+import { SementeFooter } from './SementeFooter';
 
 export const LandingPageSemente: React.FC = () => {
   return (
@@ -28,10 +23,8 @@ export const LandingPageSemente: React.FC = () => {
       <SementeProtocolOverview />
       <SementeInscricao />
       <SementeAuthority />
-      <Suspense fallback={<div className="min-h-[200px]" />}>
-        <SementeFAQ />
-        <SementeFooter />
-      </Suspense>
+      <SementeFAQ />
+      <SementeFooter />
     </div>
   );
 };
