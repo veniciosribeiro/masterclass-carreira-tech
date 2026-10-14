@@ -89,7 +89,7 @@ const COURSE: { name: string; desc: string }[] = [
   },
   {
     name: 'Ao vivo e gravado',
-    desc: 'Um encontro por semana, de até 3 horas. Cada aula é editada e liberada em até 2 dias.',
+    desc: 'Um encontro por semana, de até 3 horas. Cada aula é editada e liberada em até 2 dias úteis.',
   },
 ];
 

@@ -71,7 +71,8 @@ export const BussolaFAQ: React.FC = () => {
                 // Response:
               </span>
               Sem problema. Os encontros ao vivo são gravados e cada aula é
-              editada e liberada em até 2 dias, para você assistir quando puder.
+              editada, sem as pausas longas e as respostas de alunos, e liberada
+              em até 2 dias úteis, para você assistir quando puder.
             </div>
           </details>
 
