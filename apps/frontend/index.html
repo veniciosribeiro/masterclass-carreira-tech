@@ -20,6 +20,31 @@
       href="/fonts/inter-700.woff2"
       crossorigin
     />
+
+    <!-- GTM servido pelo nosso sGTM (gtm.foconoobjetivo.com), contêiner [WEB]
+         Carreira Tech (só o GA4). Entra depois
+         do load e quando o navegador está ocioso, para não competir com o
+         primeiro render (LCP/TBT). -->
+    <script>
+      window.addEventListener('load', function () {
+        function loadGtm() {
+          (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0],
+              j = d.createElement(s);
+            j.async = true;
+            j.src = 'https://gtm.foconoobjetivo.com/gtm.js?id=' + i;
+            f.parentNode.insertBefore(j, f);
+          })(window, document, 'script', 'dataLayer', 'GTM-KNSNX28C');
+        }
+        if (window.requestIdleCallback) {
+          requestIdleCallback(loadGtm, { timeout: 2000 });
+        } else {
+          setTimeout(loadGtm, 0);
+        }
+      });
+    </script>
   </head>
 
   <body>
