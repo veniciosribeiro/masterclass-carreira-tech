@@ -79,7 +79,8 @@ interface RegisterWebinarResult {
 export async function registerForWebinar(
   name: string,
   email: string,
-  externalId?: string | null
+  externalId?: string | null,
+  consent?: { marketingConsent: boolean; privacyPolicyVersion: string }
 ): Promise<RegisterWebinarResult> {
   const response = await fetch(`${API_BASE}/webinar/register`, {
     method: 'POST',
@@ -88,6 +89,7 @@ export async function registerForWebinar(
       name,
       email,
       ...(externalId ? { externalId } : {}),
+      ...(consent ?? {}),
     }),
   });
 

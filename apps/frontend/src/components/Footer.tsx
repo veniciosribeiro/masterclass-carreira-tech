@@ -1,5 +1,6 @@
 import React from 'react';
 import { TerminalIcon } from './icons';
+import { PRIVACY_POLICY_PATH } from '../utils/privacyPolicy';
 
 export const Footer: React.FC = () => {
   return (
@@ -11,8 +12,16 @@ export const Footer: React.FC = () => {
             Masterclass Test-Drive da Carreira Tech
           </span>
         </div>
-        <div className="text-md font-mono">
-          © {new Date().getFullYear()} Media Labs - CNPJ: 16.577.628/0001-94
+        <div className="text-md font-mono flex flex-col md:flex-row items-center gap-2 md:gap-6">
+          <a
+            href={PRIVACY_POLICY_PATH}
+            className="underline hover:text-primary"
+          >
+            Política de Privacidade
+          </a>
+          <span>
+            © {new Date().getFullYear()} Media Labs - CNPJ: 16.577.628/0001-94
+          </span>
         </div>
       </div>
     </footer>

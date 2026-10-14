@@ -1,6 +1,10 @@
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 import { registerForWebinar } from '../../services/apiClient';
 import { getExternalId, sendEvent } from '../../utils/metaPixel';
+import {
+  PRIVACY_POLICY_PATH,
+  PRIVACY_POLICY_VERSION,
+} from '../../utils/privacyPolicy';
 import { SEMENTE_LEAD_STORAGE_KEY } from './sementeConfig';
 
 // Teto de espera pelo Lead antes de sair da página: uma API lenta não pode
@@ -10,6 +14,8 @@ const LEAD_MAX_WAIT_MS = 1500;
 export const SementeForm: React.FC = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [consent, setConsent] = useState(false);
+  const consentId = useId();
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -29,7 +35,11 @@ export const SementeForm: React.FC = () => {
       // pronto aqui, porque o Init antecipado do index.html roda em paralelo
       // ao carregamento do bundle.
       const externalId = await getExternalId();
-      await registerForWebinar(fullName, cleanEmail, externalId);
+      // A caixa é obrigatória (required): só chega aqui com o aceite marcado.
+      await registerForWebinar(fullName, cleanEmail, externalId, {
+        marketingConsent: consent,
+        privacyPolicyVersion: PRIVACY_POLICY_VERSION,
+      });
 
       // Lead direto do navegador, como o PageView: IP, User-Agent e cookie
       // são os do visitante. Precisa terminar antes de sair da página, porque
@@ -107,6 +117,35 @@ export const SementeForm: React.FC = () => {
           onChange={(e) => setEmail(e.target.value)}
           className="h-12 px-4 rounded-lg bg-background-dark border border-border-dark text-white placeholder-gray-500 focus:outline-none focus:border-primary"
         />
+        {/* Aceite obrigatório e desmarcado por padrão. Por decisão do Expert, o
+            formulário só tem a frase curta: as finalidades e o aviso de que o
+            aceite é condição da inscrição gratuita (LGPD, art. 9º, §3º) ficam
+            na Política. Revogar é pelo descadastro ou pelo e-mail dela. */}
+        <label
+          htmlFor={consentId}
+          className="flex items-start gap-3 text-left text-sm text-gray-400 leading-snug cursor-pointer"
+        >
+          <input
+            id={consentId}
+            type="checkbox"
+            required
+            checked={consent}
+            onChange={(e) => setConsent(e.target.checked)}
+            className="mt-0.5 size-4 shrink-0 accent-primary cursor-pointer"
+          />
+          <span>
+            Li e aceito a{' '}
+            <a
+              href={PRIVACY_POLICY_PATH}
+              target="_blank"
+              rel="noopener"
+              className="text-primary underline hover:text-green-400"
+            >
+              Política de Privacidade
+            </a>
+            .
+          </span>
+        </label>
         {error && <p className="text-red-500 text-sm">{error}</p>}
         <button
           type="submit"

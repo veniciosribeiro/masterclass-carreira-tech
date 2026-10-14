@@ -16,6 +16,7 @@ export const ROUTE_TITLES = {
   '/teste':
     'Teste de Aptidão para Programação — Masterclass Test-Drive da Carreira Tech',
   '/admin': 'Painel Administrativo — Masterclass Test-Drive da Carreira Tech',
+  '/politica-de-privacidade': 'Política de Privacidade — Carreira Tech',
 } as const;
 
 export type RouteTitlePath = keyof typeof ROUTE_TITLES;

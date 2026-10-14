@@ -8,6 +8,12 @@ export const RegisterWebinarBody = Type.Object({
   // bases, independente do Lead do Meta CAPI (disparado pelo navegador)
   // ter chegado lá ou não.
   externalId: Type.Optional(Type.String({ minLength: 1 })),
+  // Caixa "quero receber conteúdos e ofertas" do formulário (desmarcada por
+  // padrão) e a versão da Política de Privacidade que a pessoa tinha na tela.
+  marketingConsent: Type.Optional(Type.Boolean()),
+  privacyPolicyVersion: Type.Optional(
+    Type.String({ minLength: 1, maxLength: 32 }),
+  ),
 });
 export type RegisterWebinarBodyType = Static<typeof RegisterWebinarBody>;
 

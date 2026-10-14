@@ -1,5 +1,6 @@
 import React from 'react';
 import { TerminalIcon } from '../icons';
+import { PRIVACY_POLICY_PATH } from '../../utils/privacyPolicy';
 
 export const SementeFooter: React.FC = () => {
   return (
@@ -11,8 +12,16 @@ export const SementeFooter: React.FC = () => {
             Venicios Ribeiro — Carreira Tech
           </span>
         </div>
-        <div className="text-md font-mono">
-          © {new Date().getFullYear()} Venicios Ribeiro — Carreira Tech
+        <div className="text-md font-mono flex flex-col md:flex-row items-center gap-2 md:gap-6">
+          <a
+            href={PRIVACY_POLICY_PATH}
+            className="underline hover:text-primary"
+          >
+            Política de Privacidade
+          </a>
+          <span>
+            © {new Date().getFullYear()} Venicios Ribeiro — Carreira Tech
+          </span>
         </div>
       </div>
     </footer>

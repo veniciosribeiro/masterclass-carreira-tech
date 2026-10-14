@@ -1,5 +1,6 @@
 import React from 'react';
 import { TerminalIcon } from '../icons';
+import { PRIVACY_POLICY_PATH } from '../../utils/privacyPolicy';
 
 export const BussolaFooter: React.FC = () => {
   return (
@@ -11,8 +12,14 @@ export const BussolaFooter: React.FC = () => {
             Bússola — Aceleração de Carreira para Desenvolvedores
           </span>
         </div>
-        <div className="text-md font-mono">
-          © {new Date().getFullYear()} Venicios Ribeiro — Bússola
+        <div className="text-md font-mono flex flex-col md:flex-row items-center gap-2 md:gap-6">
+          <a
+            href={PRIVACY_POLICY_PATH}
+            className="underline hover:text-primary"
+          >
+            Política de Privacidade
+          </a>
+          <span>© {new Date().getFullYear()} Venicios Ribeiro — Bússola</span>
         </div>
       </div>
     </footer>

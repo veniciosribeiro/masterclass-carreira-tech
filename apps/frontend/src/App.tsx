@@ -7,6 +7,7 @@ import { LandingPageSemente } from './components/semente/LandingPageSemente';
 import { ObrigadoSemente } from './components/semente/ObrigadoSemente';
 import { AdminDashboard } from './components/admin/Dashboard';
 import { AdminResultDetail } from './components/admin/AdminResultDetail';
+import { PrivacyPolicy } from './components/legal/PrivacyPolicy';
 
 const AptitudeTest = React.lazy(() =>
   import('./components/test/AptitudeTest').then((m) => ({
@@ -26,6 +27,7 @@ const App: React.FC = () => {
         element={<LandingPageBussola />}
       />
       <Route path="/webinario-carreira-tech" element={<LandingPageSemente />} />
+      <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
       <Route
         path="/webinario-carreira-tech/obrigado"
         element={<ObrigadoSemente />}

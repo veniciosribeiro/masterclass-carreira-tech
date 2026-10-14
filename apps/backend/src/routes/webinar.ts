@@ -16,6 +16,15 @@ export async function webinarRoutes(app: FastifyInstance) {
       const email = request.body.email.trim();
       const normalizedEmail = email.toLowerCase().trim();
       const externalId = request.body.externalId?.trim() || undefined;
+      // Só o aceite é gravado: uma nova inscrição com a caixa desmarcada não
+      // revoga um consentimento anterior (revogação é pedido explícito).
+      const consent = request.body.marketingConsent
+        ? {
+            marketingConsent: true,
+            marketingConsentAt: new Date(),
+            privacyPolicyVersion: request.body.privacyPolicyVersion ?? null,
+          }
+        : {};
 
       const existing = await app.prisma.webinarRegistration.findUnique({
         where: { email: normalizedEmail },
@@ -26,8 +35,8 @@ export async function webinarRoutes(app: FastifyInstance) {
           where: { email: normalizedEmail },
           // Só sobrescreve o external_id quando o navegador mandou um novo
           // (nunca apaga um valor já conhecido por falta dele numa chamada).
-          update: { name, ...(externalId ? { externalId } : {}) },
-          create: { name, email: normalizedEmail, externalId },
+          update: { name, ...(externalId ? { externalId } : {}), ...consent },
+          create: { name, email: normalizedEmail, externalId, ...consent },
         });
         const eventName = existing
           ? 'webinar.registration.updated'
@@ -52,6 +61,13 @@ export async function webinarRoutes(app: FastifyInstance) {
               source: 'webinar_semente',
               product: 'webinar_carreira_tech',
               externalId: registration.externalId,
+              // Campos novos e aditivos (a versão do payload segue 1): o
+              // fluxo do n8n precisa usar marketingConsent para decidir se a
+              // pessoa entra nas comunicações de conteúdo e oferta no Mautic.
+              marketingConsent: registration.marketingConsent,
+              marketingConsentAt:
+                registration.marketingConsentAt?.toISOString() ?? null,
+              privacyPolicyVersion: registration.privacyPolicyVersion,
             },
           },
         });
