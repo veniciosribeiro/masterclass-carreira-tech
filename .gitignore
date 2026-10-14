@@ -31,3 +31,7 @@ Trace-*.json
 
 # Pasta de trabalho operacional (compose do Coolify, planos, exports com PII, dumps)
 /trabalho/
+
+# Playwright (E2E)
+playwright-report/
+test-results/
