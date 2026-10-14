@@ -18,12 +18,14 @@ export const LandingPageSemente: React.FC = () => {
       <PageTitle title={ROUTE_TITLES['/webinario-carreira-tech']} />
       <MetaPixel pixelId={BUSSOLA_PIXEL_ID} />
       <SementeHeader />
-      <SementeHero />
-      <SementeRealityCheck />
-      <SementeProtocolOverview />
-      <SementeInscricao />
-      <SementeAuthority />
-      <SementeFAQ />
+      <main>
+        <SementeHero />
+        <SementeRealityCheck />
+        <SementeProtocolOverview />
+        <SementeInscricao />
+        <SementeAuthority />
+        <SementeFAQ />
+      </main>
       <SementeFooter />
     </div>
   );

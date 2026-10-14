@@ -4,7 +4,7 @@ import { PRIVACY_POLICY_PATH } from '../../utils/privacyPolicy';
 
 export const BussolaFooter: React.FC = () => {
   return (
-    <footer className="bg-[#050709] text-gray-500 py-12 px-6 border-t border-border-dark">
+    <footer className="bg-[#050709] text-gray-400 py-12 px-6 border-t border-border-dark">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex items-center gap-2">
           <TerminalIcon className="text-primary" />

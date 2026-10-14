@@ -154,7 +154,7 @@ export const SementeForm: React.FC = () => {
         >
           {submitting ? 'Enviando...' : 'QUERO MINHA VAGA'}
         </button>
-        <p className="text-gray-500 text-sm text-center">
+        <p className="text-gray-400 text-sm text-center">
           O link do Zoom chega no seu e-mail.
         </p>
       </div>

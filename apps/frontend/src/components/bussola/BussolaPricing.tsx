@@ -128,7 +128,7 @@ const stackTotal = bonusTotal + COURSE_VALUE;
 const boxClass =
   'relative flex flex-col overflow-hidden rounded-xl border-2 border-primary/60 bg-surface-dark p-8 shadow-[0_0_40px_rgba(25,230,94,0.12)]';
 const colHeadClass =
-  'relative z-10 grid grid-cols-[1fr_auto_auto] gap-x-5 items-end text-xs font-mono uppercase text-gray-500 pb-2 border-b border-border-dark';
+  'relative z-10 grid grid-cols-[1fr_auto_auto] gap-x-5 items-end text-xs font-mono uppercase text-gray-400 pb-2 border-b border-border-dark';
 const rowClass =
   'grid grid-cols-[1fr_auto_auto] gap-x-5 items-center py-4 border-b border-dashed border-border-dark';
 
@@ -161,9 +161,9 @@ export const BussolaPricing: React.FC = () => {
               <span className="row-span-2 md:row-span-1 shrink-0 w-11 h-11 rounded-lg bg-primary/10 border border-primary/30 text-primary text-2xl flex items-center justify-center">
                 <item.icon />
               </span>
-              <h4 className="font-bold text-white font-mono md:self-center">
+              <h3 className="font-bold text-white font-mono md:self-center">
                 {item.name}
-              </h4>
+              </h3>
               <p className="text-gray-400 text-sm md:col-span-2">{item.desc}</p>
             </div>
           ))}
@@ -203,7 +203,7 @@ export const BussolaPricing: React.FC = () => {
                       {bonus.desc}
                     </span>
                   </div>
-                  <span className="font-mono text-gray-500 line-through whitespace-nowrap text-right">
+                  <span className="font-mono text-gray-400 line-through whitespace-nowrap text-right">
                     {brl(bonus.value)}
                   </span>
                   <span className="font-mono text-primary font-black text-xl whitespace-nowrap text-right">

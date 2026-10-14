@@ -56,7 +56,7 @@ export const SementeToolkit: React.FC = () => {
             </p>
           </div>
         </div>
-        <p className="text-gray-500 text-sm italic text-center mt-8 max-w-2xl mx-auto">
+        <p className="text-gray-400 text-sm italic text-center mt-8 max-w-2xl mx-auto">
           Três situações diferentes e a mesma sensação de estar preso no mesmo
           lugar.
         </p>

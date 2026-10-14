@@ -16,7 +16,7 @@ export const BussolaProofCard: React.FC = () => {
           </span>
           <p className="text-white text-xl font-mono leading-relaxed">
             Um desenvolvedor Pleno que achava que levaria{' '}
-            <span className="text-gray-500 line-through decoration-red-500 decoration-2">
+            <span className="text-gray-400 line-through decoration-red-500 decoration-2">
               4 anos
             </span>{' '}
             pra ser promovido. Foi promovido em{' '}

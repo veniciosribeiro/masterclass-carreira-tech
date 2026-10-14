@@ -26,9 +26,9 @@ export const BussolaOutcome: React.FC = () => {
                 <PsychologyIcon className="text-2xl" />
               </div>
               <div>
-                <h4 className="font-bold text-lg text-white font-mono mb-1">
+                <h2 className="font-bold text-lg text-white font-mono mb-1">
                   Você define o seu próximo nível
-                </h4>
+                </h2>
                 <p className="text-gray-400 font-light leading-relaxed">
                   O crescimento deixa de ser uma intenção vaga e passa a ter um
                   destino profissional concreto.
@@ -41,9 +41,9 @@ export const BussolaOutcome: React.FC = () => {
                 <ArrowForwardIcon className="text-2xl" />
               </div>
               <div>
-                <h4 className="font-bold text-lg text-white font-mono mb-1">
+                <h2 className="font-bold text-lg text-white font-mono mb-1">
                   Você constrói uma jornada até ele
-                </h4>
+                </h2>
                 <p className="text-gray-400 font-light leading-relaxed">
                   Fica claro o que esse destino exige, onde você está e o que
                   precisa priorizar.
@@ -56,9 +56,9 @@ export const BussolaOutcome: React.FC = () => {
                 <WorkspacePremiumIcon className="text-2xl" />
               </div>
               <div>
-                <h4 className="font-bold text-lg text-white font-mono mb-1">
+                <h2 className="font-bold text-lg text-white font-mono mb-1">
                   Você produz evidências de prontidão
-                </h4>
+                </h2>
                 <p className="text-gray-400 font-light leading-relaxed">
                   Sua evolução passa a gerar elementos concretos que sustentam
                   seus próximos movimentos profissionais.
@@ -67,7 +67,7 @@ export const BussolaOutcome: React.FC = () => {
             </div>
           </div>
 
-          <p className="text-xs font-mono text-gray-500 uppercase tracking-widest text-center lg:text-left">
+          <p className="text-xs font-mono text-gray-400 uppercase tracking-widest text-center lg:text-left">
             Destino <span className="text-primary">→</span> Jornada{' '}
             <span className="text-primary">→</span> Evidências{' '}
             <span className="text-primary">→</span> Prontidão

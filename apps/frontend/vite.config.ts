@@ -3,7 +3,7 @@ import { fileURLToPath } from 'url';
 import { defineConfig, loadEnv, type Plugin, type Rollup } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
-import { ROUTE_TITLES } from './src/seo/routeTitles';
+import { ROUTE_DESCRIPTIONS, ROUTE_TITLES } from './src/seo/routeTitles';
 import {
   DEFAULT_CONTENT_ID,
   DEFAULT_EVENTS_API_URL,
@@ -141,10 +141,17 @@ function routeHtml(): Plugin {
             /<title>[^<]*<\/title>/,
             `<title>${escapeHtml(title)}</title>`
           );
+          const desc = ROUTE_DESCRIPTIONS[route];
+          const withDesc = desc
+            ? withTitle.replace(
+                '</title>',
+                `</title>\n    <meta name="description" content="${escapeHtml(desc).replace(/"/g, '&quot;')}" />`
+              )
+            : withTitle;
           const tags = preloadTags(route);
           return tags
-            ? withTitle.replace('</head>', `${tags}\n  </head>`)
-            : withTitle;
+            ? withDesc.replace('</head>', `${tags}\n  </head>`)
+            : withDesc;
         };
 
         for (const [route, title] of Object.entries(ROUTE_TITLES)) {

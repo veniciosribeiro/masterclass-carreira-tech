@@ -32,16 +32,20 @@ export const LandingPageBussola: React.FC = () => {
       />
       <MetaPixel pixelId={BUSSOLA_PIXEL_ID} />
       <BussolaHeader />
-      <BussolaHero />
-      <BussolaOutcome />
-      <BussolaProblem />
-      <BussolaModules />
-      <BussolaProvas />
-      <BussolaAuthority />
-      <BussolaPricing />
-      <Suspense fallback={<div className="min-h-[200px]" />}>
-        <BussolaGuarantee />
-        <BussolaFAQ />
+      <main>
+        <BussolaHero />
+        <BussolaOutcome />
+        <BussolaProblem />
+        <BussolaModules />
+        <BussolaProvas />
+        <BussolaAuthority />
+        <BussolaPricing />
+        <Suspense fallback={<div className="min-h-[200px]" />}>
+          <BussolaGuarantee />
+          <BussolaFAQ />
+        </Suspense>
+      </main>
+      <Suspense fallback={null}>
         <BussolaFooter />
       </Suspense>
     </div>

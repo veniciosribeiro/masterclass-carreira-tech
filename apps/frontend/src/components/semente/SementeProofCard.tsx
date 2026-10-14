@@ -15,7 +15,7 @@ export const SementeProofCard: React.FC = () => {
           <span className="text-xs text-primary font-mono uppercase tracking-widest">
             Passaporte
           </span>
-          <span className="text-xs text-gray-500 font-mono uppercase">
+          <span className="text-xs text-gray-400 font-mono uppercase">
             #Webinário
           </span>
         </div>
@@ -27,7 +27,7 @@ export const SementeProofCard: React.FC = () => {
           </span>
           <p className="text-white text-2xl font-mono leading-relaxed">
             Um desenvolvedor que achava que levaria{' '}
-            <span className="text-gray-500 line-through decoration-red-500 decoration-2">
+            <span className="text-gray-400 line-through decoration-red-500 decoration-2">
               4 anos
             </span>{' '}
             pra ser promovido. Recebeu um aumento e foi promovido em{' '}
@@ -42,7 +42,7 @@ export const SementeProofCard: React.FC = () => {
         </div>
 
         <div className="pt-4 border-t border-dashed border-[#30363D] flex justify-center items-center">
-          <span className="text-sm text-gray-500 font-mono text-center">
+          <span className="text-sm text-gray-400 font-mono text-center">
             ESTUDO DE CASO REAL
           </span>
         </div>

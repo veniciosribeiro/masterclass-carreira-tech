@@ -223,7 +223,7 @@ export const BussolaFAQ: React.FC = () => {
           >
             &gt; QUERO CONSTRUIR MINHA JORNADA &lt;
           </button>
-          <p className="text-sm text-gray-500 font-mono">
+          <p className="text-sm text-gray-400 font-mono">
             Turma inaugural • 50 vagas • Ao vivo • 5 semanas
           </p>
         </div>

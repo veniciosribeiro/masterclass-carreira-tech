@@ -82,7 +82,7 @@ export const ObrigadoSemente: React.FC = () => {
               oficial do Webinário.
             </p>
           </div>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-400">
             Fique de olho na sua caixa de entrada (e no spam) nos próximos dias.
           </p>
         </div>

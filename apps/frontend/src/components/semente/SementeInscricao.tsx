@@ -79,10 +79,10 @@ export const SementeInscricao: React.FC = () => {
               <div className="mt-6">
                 <div className="p-6 rounded-xl bg-surface-dark border border-primary/30 relative overflow-hidden">
                   <div className="absolute left-0 top-0 w-1 h-full bg-primary"></div>
-                  <h4 className="text-primary font-bold font-mono text-lg mb-2 flex items-center gap-2">
+                  <h3 className="text-primary font-bold font-mono text-lg mb-2 flex items-center gap-2">
                     <WorkspacePremiumIcon />
                     Casos reais
-                  </h4>
+                  </h3>
                   <p className="text-gray-400">
                     Você vai ver 4 casos reais e anonimizados de
                     desenvolvedores, em níveis diferentes, que receberam{' '}
@@ -93,7 +93,7 @@ export const SementeInscricao: React.FC = () => {
               </div>
 
               <div className="text-3xl mt-6 pt-6 border-t border-dashed border-border-dark flex justify-between items-center">
-                <span className="font-mono text-gray-500 uppercase">Valor</span>
+                <span className="font-mono text-gray-400 uppercase">Valor</span>
                 <span className="font-black text-primary font-mono">
                   Gratuito
                 </span>
