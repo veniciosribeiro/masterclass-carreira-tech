@@ -34,24 +34,12 @@ export const LandingPageBussola: React.FC = () => {
       <BussolaHeader />
       <main>
         <BussolaHero />
-        <div className="defer-render">
-          <BussolaOutcome />
-        </div>
-        <div className="defer-render">
-          <BussolaProblem />
-        </div>
-        <div className="defer-render">
-          <BussolaModules />
-        </div>
-        <div className="defer-render">
-          <BussolaProvas />
-        </div>
-        <div className="defer-render">
-          <BussolaAuthority />
-        </div>
-        <div className="defer-render">
-          <BussolaPricing />
-        </div>
+        <BussolaOutcome />
+        <BussolaProblem />
+        <BussolaModules />
+        <BussolaProvas />
+        <BussolaAuthority />
+        <BussolaPricing />
         <Suspense fallback={<div className="min-h-[200px]" />}>
           <BussolaGuarantee />
           <BussolaFAQ />
