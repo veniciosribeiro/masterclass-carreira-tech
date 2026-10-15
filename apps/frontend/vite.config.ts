@@ -105,7 +105,20 @@ function routeHtml(): Plugin {
       handler(_, bundle) {
         const index = bundle['index.html'];
         if (!index || index.type !== 'asset') return;
-        const html = String(index.source);
+        // CSS crítico inline: o <link rel="stylesheet"> bloqueia o primeiro
+        // desenho e chega junto com o bundle JS, que então ocupa a CPU antes
+        // de o navegador pintar. Com o CSS (poucos KiB) dentro do HTML, a página
+        // pinta assim que o HTML chega.
+        let html = String(index.source);
+        html = html.replace(
+          /<link rel="stylesheet"[^>]*href="\/([^"]+\.css)"[^>]*>/g,
+          (tag, file) => {
+            const css = bundle[file];
+            return css && css.type === 'asset'
+              ? `<style>${String(css.source)}</style>`
+              : tag;
+          }
+        );
         const chunks = Object.values(bundle).filter(
           (f): f is Rollup.OutputChunk => f.type === 'chunk'
         );
