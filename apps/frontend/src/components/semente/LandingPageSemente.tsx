@@ -20,11 +20,21 @@ export const LandingPageSemente: React.FC = () => {
       <SementeHeader />
       <main>
         <SementeHero />
-        <SementeRealityCheck />
-        <SementeProtocolOverview />
-        <SementeInscricao />
-        <SementeAuthority />
-        <SementeFAQ />
+        <div className="defer-render">
+          <SementeRealityCheck />
+        </div>
+        <div className="defer-render">
+          <SementeProtocolOverview />
+        </div>
+        <div className="defer-render">
+          <SementeInscricao />
+        </div>
+        <div className="defer-render">
+          <SementeAuthority />
+        </div>
+        <div className="defer-render">
+          <SementeFAQ />
+        </div>
       </main>
       <SementeFooter />
     </div>

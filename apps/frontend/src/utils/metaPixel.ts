@@ -129,10 +129,26 @@ function ensureFbqScript(): void {
   window.fbq = fbq;
   window._fbq = fbq;
 
-  const script = document.createElement('script');
-  script.async = true;
-  script.src = 'https://connect.facebook.net/en_US/fbevents.js';
-  document.head.appendChild(script);
+  // O stub acima enfileira fbq('init'/'track') até o fbevents.js chegar, e o
+  // envio ao CAPI (postToEventsApi) não depende dele; então o script (~220 KiB
+  // e ~350 ms de CPU) pode entrar depois do load, quando o navegador está
+  // ocioso, sem competir com o primeiro render. Os eventos enfileirados saem
+  // com o mesmo eventID do servidor, então a deduplicação não muda.
+  const loadScript = () => {
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://connect.facebook.net/en_US/fbevents.js';
+    document.head.appendChild(script);
+  };
+  const whenIdle = () => {
+    if (window.requestIdleCallback) {
+      window.requestIdleCallback(loadScript, { timeout: 2000 });
+    } else {
+      setTimeout(loadScript, 0);
+    }
+  };
+  if (document.readyState === 'complete') whenIdle();
+  else window.addEventListener('load', whenIdle, { once: true });
 }
 
 export function readCookie(name: string): string | null {

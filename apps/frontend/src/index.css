@@ -77,3 +77,15 @@
     transform: translateX(0);
   }
 }
+
+/* Seções abaixo da dobra: o navegador só calcula estilo/layout/pintura delas
+   quando se aproximam da tela (menos trabalho no primeiro render). O `auto`
+   em contain-intrinsic-size guarda a altura real depois de renderizada. */
+.defer-render {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}
+
+.render-all .defer-render {
+  content-visibility: visible;
+}
