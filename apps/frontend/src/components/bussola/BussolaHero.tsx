@@ -5,7 +5,7 @@ import { PlayArrowIcon, TimerIcon, VerifiedUserIcon } from '../icons';
 const infoChips = [
   { icon: PlayArrowIcon, label: 'Ao vivo, com aulas gravadas' },
   { icon: TimerIcon, label: '5 semanas' },
-  { icon: VerifiedUserIcon, label: 'Garantia incondicional até 07/11' },
+  { icon: VerifiedUserIcon, label: 'Garantia incondicional de 30 dias' },
 ];
 
 export const BussolaHero: React.FC = () => {

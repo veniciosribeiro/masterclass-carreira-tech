@@ -329,7 +329,8 @@ export const BussolaPricing: React.FC = () => {
                   <ArrowForwardIcon />
                 </a>
                 <p className="text-sm md:text-base text-white mt-4">
-                  50 vagas na turma inaugural • Garantia incondicional até 07/11
+                  50 vagas na turma inaugural • Inscrições até 27/10, às 23h •
+                  Garantia incondicional de 30 dias
                 </p>
               </div>
             </div>

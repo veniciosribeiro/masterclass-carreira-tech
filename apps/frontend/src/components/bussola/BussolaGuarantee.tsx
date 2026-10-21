@@ -3,10 +3,10 @@ import { ShieldLockIcon } from '../icons';
 
 const steps = [
   {
-    label: '7 Dias',
+    label: '30 Dias',
     title: 'Decida depois de entrar',
     description:
-      'Entre, conheça a metodologia e veja a experiência por dentro. Se decidir que não faz sentido para você, solicite o reembolso integral até 7 dias depois da primeira aula (07/11).',
+      'Entre, conheça a metodologia e veja a experiência por dentro. Se decidir que não faz sentido para você, solicite o reembolso integral em até 30 dias depois da compra.',
   },
   {
     label: '90 Dias',
