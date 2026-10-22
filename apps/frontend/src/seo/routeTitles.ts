@@ -27,7 +27,7 @@ export const ROUTE_DESCRIPTIONS: Record<string, string> = {
   '/v2':
     'Masterclass Test-Drive da Carreira Tech: descubra em 130 minutos se você tem aptidão para programação e qual área faz sentido para o seu perfil.',
   '/bussola-aceleracao-de-carreira-para-desenvolvedores':
-    'Bússola: aceleração de carreira para desenvolvedores. Seja reconhecido como um profissional pronto para o próximo nível, com mentoria, aulas e comunidade.',
+    'Bússola: aceleração de carreira para desenvolvedores. Conquiste sua promoção ou aumento salarial nos próximos 12 meses, com mentoria, aulas e comunidade.',
   '/webinario-carreira-tech':
     'Webinário gratuito para desenvolvedores: descubra o que quem decide precisa enxergar para considerar você pronto para o próximo nível.',
   '/politica-de-privacidade':
