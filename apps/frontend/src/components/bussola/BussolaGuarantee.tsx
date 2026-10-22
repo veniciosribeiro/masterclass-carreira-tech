@@ -9,16 +9,16 @@ const steps = [
       'Entre, conheça a metodologia e veja a experiência por dentro. Se decidir que não faz sentido para você, solicite o reembolso integral em até 30 dias depois da compra.',
   },
   {
-    label: '90 Dias',
+    label: 'Até 6 Meses',
     title: 'Execute a jornada',
     description:
-      'Conclua as aulas e exercícios, execute seu plano e realize os movimentos profissionais previstos. Se cumprir as condições e não atingir os marcos definidos, você recebe uma intervenção corretiva individual.',
+      'Envie seu plano de ação até 3 meses depois da compra e de novo até 6 meses. Depois de cada envio, faça uma sessão individual de diagnóstico.',
   },
   {
-    label: '+90 Dias',
-    title: 'Execute a rota corrigida',
+    label: '12 Meses',
+    title: 'Promoção, aumento ou reembolso',
     description:
-      'Aplique os ajustes, realize novos movimentos e registre as respostas. Cumpridas as condições da garantia sem atingir os critérios previstos, você pode solicitar o reembolso integral do valor pago.',
+      'Assista todas as aulas, participe de pelo menos 6 encontros da mentoria e registre duas conversas de carreira com sua liderança. Se, cumprido tudo isso, você não conquistar promoção nem aumento salarial em 12 meses da compra, devolvemos o valor integral pago.',
   },
 ];
 
@@ -57,8 +57,9 @@ export const BussolaGuarantee: React.FC = () => {
 
         <div className="mt-10 p-6 bg-primary/5 border border-primary/30 rounded-xl">
           <p className="text-white font-bold leading-relaxed">
-            A garantia 90+90 protege quem executa o método, cumpre as condições
-            e ainda assim não alcança os marcos definidos.
+            A garantia de 12 meses protege quem executa o método do começo ao
+            fim. Vale promoção formalizada ou aumento individual, inclusive em
+            outra empresa. Reajuste coletivo, como o dissídio, não conta.
           </p>
         </div>
       </div>
