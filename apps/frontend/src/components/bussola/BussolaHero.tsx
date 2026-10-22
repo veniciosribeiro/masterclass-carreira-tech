@@ -28,12 +28,12 @@ export const BussolaHero: React.FC = () => {
           TURMA INAUGURAL • 50 VAGAS
         </span>
         <h1 className="text-4xl md:text-5xl lg:text-5xl font-black leading-tight tracking-tight font-mono max-w-5xl">
-          Seja reconhecido como um profissional{' '}
-          <span className="text-primary">pronto para o próximo nível.</span>
+          Conquiste sua promoção ou aumento salarial{' '}
+          <span className="text-primary">nos próximos 12 meses.</span>
         </h1>
         <p className="text-gray-300 font-light text-lg md:text-lg max-w-3xl mx-auto">
-          Você define um destino e percorre uma jornada que produz evidências de
-          que está pronto para sustentar o próximo nível.
+          Saia da invisibilidade e mostre à sua liderança que você já está
+          pronto para o próximo nível.
         </p>
         <div className="pt-4">
           <button
