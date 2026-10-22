@@ -56,12 +56,9 @@ export const BussolaGuarantee: React.FC = () => {
         </div>
 
         <div className="mt-10 p-6 bg-primary/5 border border-primary/30 rounded-xl">
-          <p className="text-gray-300 leading-relaxed">
-            A garantia 90+90 não promete promoção ou aumento.
-          </p>
-          <p className="text-white font-bold leading-relaxed mt-1">
-            Ela protege quem executa o método, cumpre as condições e ainda assim
-            não alcança os marcos definidos.
+          <p className="text-white font-bold leading-relaxed">
+            A garantia 90+90 protege quem executa o método, cumpre as condições
+            e ainda assim não alcança os marcos definidos.
           </p>
         </div>
       </div>
