@@ -191,7 +191,8 @@ export const BussolaFAQ: React.FC = () => {
               que cobre a primeira aula (31/10). Nesse prazo você pode solicitar
               o reembolso integral. Depois dela, vale a garantia de resultado de
               12 meses: cumpridos os critérios, sem promoção nem aumento
-              salarial em 12 meses da compra, você recebe o valor integral de
+              salarial em 12 meses da compra (na rota externa, também sem
+              contratação em outra empresa), você recebe o valor integral de
               volta.
             </div>
           </details>

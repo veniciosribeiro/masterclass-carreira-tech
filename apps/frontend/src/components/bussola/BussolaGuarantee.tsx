@@ -24,7 +24,7 @@ const steps = [
     label: '12 Meses',
     title: 'Promoção, aumento ou reembolso',
     description:
-      'Participe ao vivo de pelo menos 6 encontros da mentoria e registre duas conversas de carreira com sua liderança. Se, cumprido tudo isso, você não conquistar promoção nem aumento salarial em 12 meses da compra, devolvemos o valor integral pago.',
+      'Participe ao vivo de pelo menos 6 encontros da mentoria e registre duas conversas de carreira com sua liderança. Se, cumprido tudo isso, você não conquistar promoção nem aumento salarial em 12 meses da compra (na rota externa, nem a contratação em outra empresa), devolvemos o valor integral pago.',
   },
 ];
 
@@ -67,7 +67,8 @@ export const BussolaGuarantee: React.FC = () => {
             fim. Vale promoção formalizada ou aumento individual, inclusive em
             outra empresa. Reajuste coletivo, como o dissídio, não conta. Se
             você escolher a rota externa, seu objetivo passa a ser mudar de
-            empresa, e a contratação em outra empresa já é o resultado.
+            empresa, e a contratação em outra empresa já é o resultado, qualquer
+            que seja o salário.
           </p>
         </div>
       </div>
