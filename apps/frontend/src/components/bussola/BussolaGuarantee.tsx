@@ -9,16 +9,22 @@ const steps = [
       'Entre, conheça a metodologia e veja a experiência por dentro. Se decidir que não faz sentido para você, solicite o reembolso integral em até 30 dias depois da compra.',
   },
   {
-    label: 'Até 6 Meses',
-    title: 'Execute a jornada',
+    label: 'Até 2 Meses',
+    title: 'Assista e monte seu plano',
     description:
-      'Envie seu plano de ação até 3 meses depois da compra e de novo até 6 meses. Depois de cada envio, faça uma sessão individual de diagnóstico.',
+      'Assista todas as aulas e envie seu plano de ação para revisão em até 2 meses depois da compra.',
+  },
+  {
+    label: 'Até 8 Meses',
+    title: 'Execute e ajuste',
+    description:
+      'Execute o plano e faça duas sessões individuais de diagnóstico: a primeira até o 5º mês e a segunda até o 8º.',
   },
   {
     label: '12 Meses',
     title: 'Promoção, aumento ou reembolso',
     description:
-      'Assista todas as aulas, participe de pelo menos 6 encontros da mentoria e registre duas conversas de carreira com sua liderança. Se, cumprido tudo isso, você não conquistar promoção nem aumento salarial em 12 meses da compra, devolvemos o valor integral pago.',
+      'Participe ao vivo de pelo menos 6 encontros da mentoria e registre duas conversas de carreira com sua liderança. Se, cumprido tudo isso, você não conquistar promoção nem aumento salarial em 12 meses da compra, devolvemos o valor integral pago.',
   },
 ];
 
@@ -59,7 +65,9 @@ export const BussolaGuarantee: React.FC = () => {
           <p className="text-white font-bold leading-relaxed">
             A garantia de 12 meses protege quem executa o método do começo ao
             fim. Vale promoção formalizada ou aumento individual, inclusive em
-            outra empresa. Reajuste coletivo, como o dissídio, não conta.
+            outra empresa. Reajuste coletivo, como o dissídio, não conta. Se
+            você escolher a rota externa, seu objetivo passa a ser mudar de
+            empresa, e a contratação em outra empresa já é o resultado.
           </p>
         </div>
       </div>
