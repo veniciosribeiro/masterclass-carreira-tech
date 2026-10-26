@@ -14,7 +14,7 @@ export const AuthorityV2: React.FC = () => {
             height={500}
             loading="lazy"
             alt="Venicios Ribeiro"
-            className="relative rounded-xl border border-border-dark shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 w-full max-w-md mx-auto"
+            className="relative rounded-xl border border-border-dark shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 w-full max-w-md mx-auto -scale-x-100"
           />
         </div>
 

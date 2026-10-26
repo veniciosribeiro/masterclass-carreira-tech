@@ -55,7 +55,7 @@ export const HeroV2: React.FC = () => {
               width={400}
               height={500}
               alt="Venicios Ribeiro"
-              className="w-full h-auto object-cover"
+              className="w-full h-auto object-cover -scale-x-100"
             />
             <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black via-black/80 to-transparent p-6">
               <p className="text-white font-mono text-sm border-l-2 border-primary pl-3">

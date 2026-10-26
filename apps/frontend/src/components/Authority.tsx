@@ -18,7 +18,7 @@ export const Authority: React.FC = () => {
               height={500}
               loading="lazy"
               alt="Venicios Ribeiro - Coordenador de Engenharia de Software"
-              className="w-full h-auto object-cover aspect-[3/3]"
+              className="w-full h-auto object-cover aspect-[3/3] -scale-x-100"
             />
             <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-8">
               <div className="font-mono text-white text-xl font-bold">
