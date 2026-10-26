@@ -51,7 +51,9 @@ export const HeroV2: React.FC = () => {
           <div className="absolute -inset-4 bg-primary/20 rounded-full blur-3xl opacity-40"></div>
           <div className="relative rounded-2xl overflow-hidden border border-border-dark shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 max-w-md mx-auto">
             <img
-              src="/assets/images/venicios-profile.webp"
+              src="/assets/images/venicios-profile-1024.webp"
+              width={400}
+              height={500}
               alt="Venicios Ribeiro"
               className="w-full h-auto object-cover"
             />

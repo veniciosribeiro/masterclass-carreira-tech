@@ -9,7 +9,10 @@ export const AuthorityV2: React.FC = () => {
         <div className="relative order-1 lg:order-1">
           <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-2xl transform -rotate-3 scale-105 opacity-50"></div>
           <img
-            src="/assets/images/venicios-profile.webp"
+            src="/assets/images/venicios-profile-1024.webp"
+            width={400}
+            height={500}
+            loading="lazy"
             alt="Venicios Ribeiro"
             className="relative rounded-xl border border-border-dark shadow-2xl grayscale hover:grayscale-0 transition-all duration-700 w-full max-w-md mx-auto"
           />
