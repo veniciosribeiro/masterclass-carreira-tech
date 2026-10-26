@@ -103,7 +103,6 @@ npm run prisma:migrate -w @techcareer/backend
 ```
 apps/frontend/src/
   components/               # React components (PascalCase .tsx)
-    v2/                     #   Landing page V2 variant
     bussola/                #   "Bússola" landing page variant
     semente/                #   Webinar landing page + thank-you page
     admin/                  #   Admin dashboard (results list, detail view)
@@ -303,7 +302,6 @@ Several landing page variants exist under different routes, plus the test flow a
 
 ```
 /                                                         → LandingPage (V1)
-/v2                                                       → LandingPageV2
 /bussola-aceleracao-de-carreira-para-desenvolvedores      → LandingPageBussola
 /webinario-carreira-tech                                  → LandingPageSemente
 /webinario-carreira-tech/obrigado                         → ObrigadoSemente (thank-you page)
@@ -315,8 +313,8 @@ Several landing page variants exist under different routes, plus the test flow a
 ```
 
 - **V1** (`/`): sections Hero, RealityCheck, ProtocolOverview, Syllabus, Pricing, Authority, Guarantee, FAQ, Footer
-- **V2** (`/v2`): sections HeroV2, DiagnosisV2, MindsetShiftV2, MethodologyV2, AuthorityV2, OfferV2, FinalCTA_V2, Guarantee, FAQ, Footer
-- Guarantee, FAQ, Footer are shared across variants
+- Guarantee, FAQ, Footer are V1 sections (the Bússola and webinar pages have their own)
+- The V2 variant (`/v2`) was removed on 2026-10-26: it was not in use
 
 ### Design System (Dark Theme)
 

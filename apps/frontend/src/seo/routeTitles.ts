@@ -6,7 +6,6 @@
  */
 export const ROUTE_TITLES = {
   '/': 'Masterclass Test-Drive da Carreira Tech',
-  '/v2': 'Masterclass Test-Drive da Carreira Tech',
   '/bussola-aceleracao-de-carreira-para-desenvolvedores':
     'Bússola — Aceleração de Carreira Para Desenvolvedores',
   '/webinario-carreira-tech':
@@ -24,8 +23,6 @@ export type RouteTitlePath = keyof typeof ROUTE_TITLES;
 /** Metadescrição por rota (só as páginas que entram em buscas e compartilhamentos). */
 export const ROUTE_DESCRIPTIONS: Record<string, string> = {
   '/': 'Masterclass Test-Drive da Carreira Tech: descubra em 130 minutos se você tem aptidão para programação e qual área faz sentido para o seu perfil.',
-  '/v2':
-    'Masterclass Test-Drive da Carreira Tech: descubra em 130 minutos se você tem aptidão para programação e qual área faz sentido para o seu perfil.',
   '/bussola-aceleracao-de-carreira-para-desenvolvedores':
     'Bússola: aceleração de carreira para desenvolvedores. Conquiste sua promoção ou aumento salarial nos próximos 12 meses, com mentoria, aulas e comunidade.',
   '/webinario-carreira-tech':

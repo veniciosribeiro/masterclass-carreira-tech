@@ -10,11 +10,6 @@ import { Routes, Route } from 'react-router-dom';
 const LandingPage = React.lazy(() =>
   import('./components/LandingPage').then((m) => ({ default: m.LandingPage }))
 );
-const LandingPageV2 = React.lazy(() =>
-  import('./components/v2/LandingPageV2').then((m) => ({
-    default: m.LandingPageV2,
-  }))
-);
 const LandingPageBussola = React.lazy(() =>
   import('./components/bussola/LandingPageBussola').then((m) => ({
     default: m.LandingPageBussola,
@@ -58,7 +53,6 @@ const App: React.FC = () => {
     <Suspense fallback={LoadingFallback}>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/v2" element={<LandingPageV2 />} />
         <Route
           path="/bussola-aceleracao-de-carreira-para-desenvolvedores"
           element={<LandingPageBussola />}

@@ -11,7 +11,7 @@ export const DEFAULT_EVENTS_API_URL =
 export const DEFAULT_CONTENT_ID = '123456';
 
 // Rotas que montam <MetaPixel>. Só nelas o Init antecipado faz sentido — nas
-// demais (teste, admin, landing V1/V2) o handshake seria uma request à toa.
+// demais (teste, admin, landing V1) o handshake seria uma request à toa.
 export const PIXEL_ROUTE_PREFIXES = [
   '/webinario-carreira-tech',
   '/bussola-aceleracao-de-carreira-para-desenvolvedores',

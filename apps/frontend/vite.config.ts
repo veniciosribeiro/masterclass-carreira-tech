@@ -84,7 +84,6 @@ const escapeHtml = (v: string) =>
  */
 const ROUTE_COMPONENTS: Record<string, string> = {
   '/': 'src/components/LandingPage.tsx',
-  '/v2': 'src/components/v2/LandingPageV2.tsx',
   '/bussola-aceleracao-de-carreira-para-desenvolvedores':
     'src/components/bussola/LandingPageBussola.tsx',
   '/webinario-carreira-tech': 'src/components/semente/LandingPageSemente.tsx',

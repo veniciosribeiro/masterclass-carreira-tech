@@ -15,7 +15,6 @@ import App from './App';
  * do HTML da home e o React descartaria tudo.
  */
 export const PRERENDER_ROUTES = [
-  '/v2',
   '/bussola-aceleracao-de-carreira-para-desenvolvedores',
   '/webinario-carreira-tech',
   '/politica-de-privacidade',

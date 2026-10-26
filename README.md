@@ -8,7 +8,7 @@ O objetivo do projeto é oferecer um "test-drive" prático para quem deseja ingr
 
 Este **aplicativo full-stack** combina:
 
-- **Landing pages otimizadas** para conversão (V1 e V2)
+- **Landing pages otimizadas** para conversão
 - **Teste de aptidão** interativo com 10 perguntas (Lógica, Afinidade e Comportamental)
 - **Relatórios em PDF** personalizados com gráficos e recomendações
 - **Sistema de Autenticação** via whitelist de emails
@@ -36,7 +36,7 @@ Este **aplicativo full-stack** combina:
 
 ```
 techcareer-test-drive/
-├── 📂 components/          # Componentes React (V1, V2, Teste)
+├── 📂 components/          # Componentes React (landing pages, Teste)
 ├── 📂 services/            # API client e lógica de serviços
 ├── 📂 test/                # Lógica de negócio do teste (perguntas, scoring)
 ├── 📂 api/                 # Backend Fastify (server, plugins, routes)

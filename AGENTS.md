@@ -242,16 +242,14 @@ Access controlled by **email whitelist**:
 
 ### Landing Pages
 
-Two versions available via routing:
+Landing page (the V2 variant at `/v2` was removed on 2026-10-26):
 
 - **V1** (`/`): Original landing page with sections: Hero, RealityCheck, ProtocolOverview, Syllabus, Pricing, Authority, Guarantee, FAQ, Footer
-- **V2** (`/v2`): Redesigned version with sections: HeroV2, DiagnosisV2, MindsetShiftV2, MethodologyV2, AuthorityV2, OfferV2, FinalCTA_V2, Guarantee, FAQ, Footer
 
 ### App Routes
 
 ```
 /                    → LandingPage (V1)
-/v2                  → LandingPageV2
 /teste               → AptitudeTest (WelcomeScreen)
 /teste/:sessionId    → AptitudeTest (Resume test)
 /teste/:sessionId/:step → AptitudeTest (Specific step)
@@ -288,7 +286,7 @@ Two versions available via routing:
 
 - **Above-fold**: Header, Hero (loaded immediately)
 - **Below-fold**: Lazy loaded with `React.lazy()` and `Suspense`
-  - Guarantee, FAQ, Footer are shared between V1 and V2
+  - Guarantee, FAQ, Footer
 
 **Test flow components** (in `/components/test/`):
 
