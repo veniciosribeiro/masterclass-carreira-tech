@@ -3,6 +3,7 @@ import { TestResult } from '../../test/testTypes';
 // generatePDF import removed
 import { generateResultJSON } from '../../services/testService';
 import { sendEmailResult, getPublicPdfUrl } from '../../services/apiClient';
+import { AREA_COLORS } from '../../test/profileLabels';
 
 interface ResultsScreenProps {
   result: TestResult;
@@ -15,18 +16,18 @@ const areaLabels: Record<
 > = {
   frontend: {
     label: 'Front-End',
-    color: '#19e65e',
-    bgColor: 'rgba(25,230,94,0.1)',
+    color: AREA_COLORS.frontend.color,
+    bgColor: AREA_COLORS.frontend.soft,
   },
   backend: {
     label: 'Back-End',
-    color: '#3b82f6',
-    bgColor: 'rgba(59,130,246,0.1)',
+    color: AREA_COLORS.backend.color,
+    bgColor: AREA_COLORS.backend.soft,
   },
   dataAI: {
     label: 'Dados & IA',
-    color: '#a855f7',
-    bgColor: 'rgba(168,85,247,0.1)',
+    color: AREA_COLORS.dataAI.color,
+    bgColor: AREA_COLORS.dataAI.soft,
   },
 };
 
@@ -224,7 +225,7 @@ export const ResultsScreen: React.FC<ResultsScreenProps> = ({
           <div className="flex flex-col sm:flex-row gap-4">
             <button
               onClick={handleDownloadPDF}
-              className="w-full sm:flex-1 h-14 px-6 rounded-xl bg-primary hover:bg-green-400 text-[#0D1117] font-bold font-mono text-sm uppercase transition-all hover:scale-[1.02] shadow-[0_0_20px_rgba(25,230,94,0.2)] cursor-pointer flex items-center justify-center gap-2"
+              className="w-full sm:flex-1 h-14 px-6 rounded-xl bg-primary hover:bg-primary-hover text-on-primary font-bold font-mono text-sm uppercase transition-all hover:scale-[1.02] shadow-glow-cta cursor-pointer flex items-center justify-center gap-2"
             >
               <span>📄</span> Baixar Relatório PDF
             </button>

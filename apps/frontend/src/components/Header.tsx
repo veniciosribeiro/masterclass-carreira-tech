@@ -49,7 +49,7 @@ export const Header: React.FC = () => {
         </nav>
         <button
           onClick={() => scrollToSection('pricing')}
-          className="flex items-center justify-center rounded-lg h-10 px-6 bg-primary hover:bg-green-400 transition-colors text-[#0D1117] text-sm font-bold tracking-wide font-mono uppercase"
+          className="flex items-center justify-center rounded-lg h-10 px-6 bg-primary hover:bg-primary-hover transition-colors text-on-primary text-sm font-bold tracking-wide font-mono uppercase"
         >
           <span>&gt; Garantir_Vaga</span>
         </button>

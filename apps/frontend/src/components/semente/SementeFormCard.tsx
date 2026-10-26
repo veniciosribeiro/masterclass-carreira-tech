@@ -12,7 +12,7 @@ export const SementeFormCard: React.FC = () => {
       {/* Glow Effect */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[460px] bg-primary/20 blur-[100px] rounded-full pointer-events-none opacity-50" />
 
-      <div className="relative w-full max-w-lg bg-[#0D1117] border border-[#30363D] shadow-2xl rounded-sm p-6 flex flex-col gap-4 overflow-hidden">
+      <div className="relative w-full max-w-lg bg-background-dark border border-border-dark shadow-2xl rounded-sm p-6 flex flex-col gap-4 overflow-hidden">
         {/* Top Accent Line */}
         <div className="absolute top-0 left-0 w-full h-1 bg-primary" />
 

@@ -17,7 +17,7 @@ export const Syllabus: React.FC = () => {
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-[#1c2128] transition-all duration-300 group">
+          <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-surface-hover transition-all duration-300 group">
             <div className="size-12 rounded bg-blue-900/20 border border-blue-900/50 text-blue-400 flex items-center justify-center mb-4 group-hover:text-blue-300">
               <VisibilityIcon />
             </div>
@@ -30,7 +30,7 @@ export const Syllabus: React.FC = () => {
               filtro do marketing.
             </p>
           </div>
-          <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-[#1c2128] transition-all duration-300 group">
+          <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-surface-hover transition-all duration-300 group">
             <div className="size-12 rounded bg-purple-900/20 border border-purple-900/50 text-purple-400 flex items-center justify-center mb-4 group-hover:text-purple-300">
               <DnsIcon />
             </div>
@@ -42,7 +42,7 @@ export const Syllabus: React.FC = () => {
               gastar um centavo a mais do que o necessário.
             </p>
           </div>
-          <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-[#1c2128] transition-all duration-300 group">
+          <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-surface-hover transition-all duration-300 group">
             <div className="size-12 rounded bg-green-900/20 border border-green-900/50 text-green-400 flex items-center justify-center mb-4 group-hover:text-green-300">
               <AttachMoneyIcon />
             </div>
@@ -55,7 +55,7 @@ export const Syllabus: React.FC = () => {
               a conta não fechar, você não entra.
             </p>
           </div>
-          <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-[#1c2128] transition-all duration-300 relative overflow-hidden group">
+          <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-surface-hover transition-all duration-300 relative overflow-hidden group">
             <div className="size-12 rounded bg-primary/10 border border-primary/30 text-primary flex items-center justify-center mb-4">
               <QuizIcon />
             </div>

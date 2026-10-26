@@ -38,7 +38,7 @@ export const BussolaHero: React.FC = () => {
         <div className="pt-4">
           <button
             onClick={() => scrollToSection('pricing')}
-            className="flex items-center justify-center h-14 px-8 rounded-lg bg-primary hover:bg-green-400 text-[#0D1117] text-base font-bold transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(25,230,94,0.3)] font-mono uppercase"
+            className="flex items-center justify-center h-14 px-8 rounded-lg bg-primary hover:bg-primary-hover text-on-primary text-base font-bold transition-all transform hover:scale-105 shadow-glow-hero font-mono uppercase"
           >
             &gt; QUERO MUDAR DE NÍVEL &lt;
           </button>

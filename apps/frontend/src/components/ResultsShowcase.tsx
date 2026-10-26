@@ -18,7 +18,7 @@ const ChartBar = ({
       <span>{label}</span>
       <span className="font-bold text-white">{value}</span>
     </div>
-    <div className="h-1.5 rounded-sm w-full bg-[#161B22] overflow-hidden">
+    <div className="h-1.5 rounded-sm w-full bg-surface-dark overflow-hidden">
       <div
         className={`h-full rounded-sm ${color} animate-fill-width`}
         style={{ width, animationDelay: delay }}
@@ -52,7 +52,7 @@ export const ResultsShowcase: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left: Feature List */}
           <div className="space-y-8 order-2 lg:order-1">
-            <div className="bg-[#0D1117] p-8 rounded-xl border border-border-dark relative overflow-hidden group hover:border-primary/30 transition-colors">
+            <div className="bg-background-dark p-8 rounded-xl border border-border-dark relative overflow-hidden group hover:border-primary/30 transition-colors">
               <div className="absolute top-0 left-0 w-1 h-full bg-primary/50 group-hover:bg-primary transition-colors"></div>
               <h3 className="text-xl font-bold text-white font-mono mb-4">
                 O que você recebe:
@@ -85,7 +85,7 @@ export const ResultsShowcase: React.FC = () => {
               </ul>
             </div>
 
-            <div className="bg-[#0D1117] p-6 rounded-xl border border-border-dark flex items-center gap-4">
+            <div className="bg-background-dark p-6 rounded-xl border border-border-dark flex items-center gap-4">
               <div className="bg-primary/10 p-3 rounded-full text-primary">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -114,11 +114,11 @@ export const ResultsShowcase: React.FC = () => {
           </div>
 
           {/* Right: PDF 3D Mockup */}
-          <div className="relative perspective-1000 group order-1 lg:order-2 justify-center py-0">
+          <div className="relative perspective-[1000px] group order-1 lg:order-2 justify-center py-0">
             {/* ... 3D Card Content (Keep existing logic) ... */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[400px] bg-primary/20 blur-[100px] rounded-full pointer-events-none opacity-50" />
 
-            <div className="relative bg-[#0D1117] border border-[#30363D] shadow-2xl rounded-sm transform transition-transform duration-700 hover:scale-[1.02] md:rotate-y-[-12deg] md:rotate-x-[5deg] hover:rotate-0 p-5 flex flex-col justify-between overflow-hidden">
+            <div className="relative bg-background-dark border border-border-dark shadow-2xl rounded-sm transform transition-transform duration-700 hover:scale-[1.02] md:rotate-y-[-12deg] md:rotate-x-[5deg] md:hover:rotate-x-0 md:hover:rotate-y-0 p-5 flex flex-col justify-between overflow-hidden">
               {/* Top Accent Line */}
               <div className="absolute top-0 left-0 w-full h-1 bg-primary" />
 
@@ -137,7 +137,7 @@ export const ResultsShowcase: React.FC = () => {
                   </h3>
                 </div>
 
-                <div className="w-2/3 mx-auto h-px bg-[#30363D] my-3" />
+                <div className="w-2/3 mx-auto h-px bg-border-dark my-3" />
 
                 <div className="space-y-1">
                   <div className="text-xs text-gray-300 font-sans">
@@ -150,7 +150,7 @@ export const ResultsShowcase: React.FC = () => {
               </div>
 
               {/* Profile Box */}
-              <div className="mt-6 bg-[#161B22] border border-primary/50 rounded p-4 text-center relative">
+              <div className="mt-6 bg-surface-dark border border-primary/50 rounded p-4 text-center relative">
                 <div className="text-[8px] text-primary uppercase tracking-wider mb-1 font-sans font-bold">
                   Seu Perfil Dominante
                 </div>
@@ -188,7 +188,7 @@ export const ResultsShowcase: React.FC = () => {
               </div>
 
               {/* Footer */}
-              <div className="mt-auto pt-3 border-t border-[#30363D]">
+              <div className="mt-auto pt-3 border-t border-border-dark">
                 <div className="text-sm text-center text-gray-500 font-sans">
                   Masterclass Test-Drive Da Carreira Tech — Documento Oficial
                 </div>
@@ -199,9 +199,6 @@ export const ResultsShowcase: React.FC = () => {
       </div>
 
       <style>{`
-                .perspective-1000 { perspective: 1000px; }
-                .rotate-y-[-12deg] { transform: rotateY(-12deg); }
-                .rotate-x-[5deg] { transform: rotateX(5deg); }
                 @keyframes fill-width {
                     from { width: 0; }
                     to { width: 100%; }

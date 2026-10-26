@@ -36,7 +36,7 @@ export const HeroV2: React.FC = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-6">
             <button
               onClick={() => scrollToSection('pricing')}
-              className="flex items-center justify-center h-16 px-8 rounded-lg bg-primary hover:bg-green-400 text-[#0D1117] text-lg font-bold transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(25,230,94,0.3)] font-mono uppercase tracking-wide"
+              className="flex items-center justify-center h-16 px-8 rounded-lg bg-primary hover:bg-primary-hover text-on-primary text-lg font-bold transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(25,230,94,0.3)] font-mono uppercase tracking-wide"
             >
               QUERO FAZER MEU TEST-DRIVE (R$ 97)
             </button>

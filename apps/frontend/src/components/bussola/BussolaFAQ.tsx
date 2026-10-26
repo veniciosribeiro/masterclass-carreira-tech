@@ -19,7 +19,7 @@ export const BussolaFAQ: React.FC = () => {
         </div>
         <div className="space-y-4">
           <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
-            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
+            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-surface-hover transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Isso é um curso de programação?
               </span>
@@ -38,7 +38,7 @@ export const BussolaFAQ: React.FC = () => {
           </details>
 
           <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
-            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
+            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-surface-hover transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Quanto tempo dura?
               </span>
@@ -58,7 +58,7 @@ export const BussolaFAQ: React.FC = () => {
           </details>
 
           <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
-            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
+            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-surface-hover transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; E se eu não puder assistir ao vivo?
               </span>
@@ -77,7 +77,7 @@ export const BussolaFAQ: React.FC = () => {
           </details>
 
           <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
-            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
+            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-surface-hover transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Preciso estar buscando promoção?
               </span>
@@ -96,7 +96,7 @@ export const BussolaFAQ: React.FC = () => {
           </details>
 
           <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
-            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
+            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-surface-hover transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Posso parcelar?
               </span>
@@ -114,7 +114,7 @@ export const BussolaFAQ: React.FC = () => {
           </details>
 
           <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
-            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
+            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-surface-hover transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Qual a diferença entre a Bússola e a mentoria individual?
               </span>
@@ -137,7 +137,7 @@ export const BussolaFAQ: React.FC = () => {
           </details>
 
           <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
-            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
+            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-surface-hover transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; E se eu quiser mudar de empresa?
               </span>
@@ -157,7 +157,7 @@ export const BussolaFAQ: React.FC = () => {
           </details>
 
           <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
-            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
+            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-surface-hover transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Quanto custa depois da turma inaugural?
               </span>
@@ -175,7 +175,7 @@ export const BussolaFAQ: React.FC = () => {
           </details>
 
           <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
-            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
+            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-surface-hover transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; E se eu não gostar?
               </span>
@@ -198,7 +198,7 @@ export const BussolaFAQ: React.FC = () => {
           </details>
 
           <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
-            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
+            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-surface-hover transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Como funciona o suporte?
               </span>
@@ -223,7 +223,7 @@ export const BussolaFAQ: React.FC = () => {
           </h3>
           <button
             onClick={() => scrollToSection('pricing')}
-            className="flex items-center justify-center h-14 px-8 rounded-lg bg-primary hover:bg-green-400 text-[#0D1117] text-base font-bold transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(25,230,94,0.2)] font-mono uppercase"
+            className="flex items-center justify-center h-14 px-8 rounded-lg bg-primary hover:bg-primary-hover text-on-primary text-base font-bold transition-all transform hover:scale-105 shadow-glow-cta font-mono uppercase"
           >
             &gt; QUERO CONSTRUIR MINHA JORNADA &lt;
           </button>

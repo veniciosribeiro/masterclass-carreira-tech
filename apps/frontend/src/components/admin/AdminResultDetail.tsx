@@ -3,7 +3,11 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { PageTitle } from '../seo/PageTitle';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
-import { getProfileLabel, getProfileEmoji } from '../../test/profileLabels';
+import {
+  getProfileLabel,
+  getProfileEmoji,
+  AREA_COLORS,
+} from '../../test/profileLabels';
 import { questions } from '../../test/questions';
 
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
@@ -51,20 +55,20 @@ const areaConfig = [
   {
     key: 'frontend',
     label: '🎨 Front-End',
-    color: '#3b82f6',
-    bg: 'rgba(59,130,246,0.1)',
+    color: AREA_COLORS.frontend.color,
+    bg: AREA_COLORS.frontend.soft,
   },
   {
     key: 'backend',
     label: '⚙️ Back-End',
-    color: '#22c55e',
-    bg: 'rgba(34,197,94,0.1)',
+    color: AREA_COLORS.backend.color,
+    bg: AREA_COLORS.backend.soft,
   },
   {
     key: 'dataAI',
     label: '📊 Dados & IA',
-    color: '#eab308',
-    bg: 'rgba(234,179,8,0.1)',
+    color: AREA_COLORS.dataAI.color,
+    bg: AREA_COLORS.dataAI.soft,
   },
 ] as const;
 

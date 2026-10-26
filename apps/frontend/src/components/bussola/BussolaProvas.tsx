@@ -23,7 +23,7 @@ export const BussolaProvas: React.FC = () => {
           </p>
         </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-[#1c2128] transition-all duration-300 group">
+          <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-surface-hover transition-all duration-300 group">
             <div className="flex items-center gap-4 mb-4">
               <div className="size-12 rounded bg-blue-900/20 border border-blue-900/50 text-blue-400 flex items-center justify-center shrink-0 group-hover:text-blue-300">
                 <WorkIcon />
@@ -40,7 +40,7 @@ export const BussolaProvas: React.FC = () => {
               Aumento + promoção
             </span>
           </div>
-          <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-[#1c2128] transition-all duration-300 group">
+          <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-surface-hover transition-all duration-300 group">
             <div className="flex items-center gap-4 mb-4">
               <div className="size-12 rounded bg-purple-900/20 border border-purple-900/50 text-purple-400 flex items-center justify-center shrink-0 group-hover:text-purple-300">
                 <VisibilityIcon />
@@ -57,7 +57,7 @@ export const BussolaProvas: React.FC = () => {
               Aumento + promoção
             </span>
           </div>
-          <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-[#1c2128] transition-all duration-300 group">
+          <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-surface-hover transition-all duration-300 group">
             <div className="flex items-center gap-4 mb-4">
               <div className="size-12 rounded bg-green-900/20 border border-green-900/50 text-green-400 flex items-center justify-center shrink-0 group-hover:text-green-300">
                 <ArrowForwardIcon />
@@ -74,7 +74,7 @@ export const BussolaProvas: React.FC = () => {
               Efetivado em 1 ano
             </span>
           </div>
-          <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-[#1c2128] transition-all duration-300 group">
+          <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-surface-hover transition-all duration-300 group">
             <div className="flex items-center gap-4 mb-4">
               <div className="size-12 rounded bg-orange-900/20 border border-orange-900/50 text-orange-400 flex items-center justify-center shrink-0 group-hover:text-orange-300">
                 <WorkspacePremiumIcon />

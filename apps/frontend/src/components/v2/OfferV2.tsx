@@ -57,7 +57,7 @@ export const OfferV2: React.FC = () => {
 
           {/* New Way */}
           <div className="bg-background-dark border border-primary p-8 rounded-2xl relative transform md:-translate-y-4 shadow-[0_0_30px_rgba(25,230,94,0.1)]">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-[#0D1117] px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest whitespace-nowrap">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-on-primary px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest whitespace-nowrap">
               Recomendado
             </div>
             <h3 className="text-xl font-bold text-primary mb-6 font-mono border-b border-primary/30 pb-4">

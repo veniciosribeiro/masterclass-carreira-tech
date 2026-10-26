@@ -320,15 +320,16 @@ Several landing page variants exist under different routes, plus the test flow a
 
 ### Design System (Dark Theme)
 
-**Tailwind CSS v4** with custom tokens:
+**Tailwind CSS v4** with custom tokens, all in the `@theme` block of `apps/frontend/src/index.css` (`tailwind.config.js` is not loaded by v4: a token added there does nothing). Use the token utilities, not arbitrary values (`bg-surface-hover`, not `bg-[#1c2128]`):
 
-- **Primary**: `#19e65e` (green accent)
-- **Background Dark**: `#0D1117` (main background)
-- **Surface Dark**: `#161B22` (cards/sections)
+- **Primary**: `#19e65e` (green accent); `primary-hover` (Tailwind green-400) on hover; `on-primary` (`#0D1117`) for text on a green fill
+- **Background Dark**: `#0D1117` (main background); `background-deep` `#050709` (footers, sign-up block); `background-sunken` `#0B0E11` ("reality check" sections)
+- **Surface Dark**: `#161B22` (cards/sections); `surface-hover` `#1C2128` (hover on FAQ items and rows)
 - **Border Dark**: `#30363D` (dividers/borders)
 - **Text Main**: `#C9D1D9` (body text)
 - **Text Header**: `#FFFFFF` (headers)
 - **Glow Purple**: `#7c3aed` (glow effects)
+- **Area colors** (results screen and admin): `AREA_COLORS` in `src/test/profileLabels.ts`
 
 **Typography**:
 
@@ -339,6 +340,8 @@ Several landing page variants exist under different routes, plus the test flow a
 **Visual Effects**:
 
 - `shadow-glow`: purple glow effect (`0 0 40px -10px rgba(124, 58, 237, 0.5)`)
+- Green glows: `shadow-glow-cta` (form/test CTAs), `shadow-glow-hero` (hero CTA), `shadow-glow-checkout`, `shadow-glow-nav` (test's Próxima), `shadow-glow-option` (selected answer), `shadow-glow-panel` (featured pricing panel)
+- Tilted cards (`md:rotate-x-[5deg] md:rotate-y-[-12deg]` under `perspective-[1000px]`) flatten on hover with `md:hover:rotate-x-0 md:hover:rotate-y-0`; `hover:rotate-0` only resets the `rotate` property in v4
 - Animations: `slideInRight`, `slideInLeft` keyframes
 - **Anti-aliasing**: `antialiased` class on body
 - **Overflow**: `overflow-x-hidden` on main containers

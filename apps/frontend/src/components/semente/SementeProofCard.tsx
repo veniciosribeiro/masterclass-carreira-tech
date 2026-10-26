@@ -3,11 +3,11 @@ import { VerifiedIcon } from '../icons';
 
 export const SementeProofCard: React.FC = () => {
   return (
-    <div className="relative perspective-1000 group flex justify-center w-full">
+    <div className="relative perspective-[1000px] group flex justify-center w-full">
       {/* Glow Effect */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[380px] h-[460px] bg-primary/20 blur-[100px] rounded-full pointer-events-none opacity-50" />
 
-      <div className="relative w-full max-w-xl bg-[#0D1117] border border-[#30363D] shadow-2xl rounded-sm transform transition-transform duration-700 hover:scale-[1.02] md:rotate-y-[-12deg] md:rotate-x-[5deg] hover:rotate-0 p-10 flex flex-col gap-6 overflow-hidden">
+      <div className="relative w-full max-w-xl bg-background-dark border border-border-dark shadow-2xl rounded-sm transform transition-transform duration-700 hover:scale-[1.02] md:rotate-y-[-12deg] md:rotate-x-[5deg] md:hover:rotate-x-0 md:hover:rotate-y-0 p-10 flex flex-col gap-6 overflow-hidden">
         {/* Top Accent Line */}
         <div className="absolute top-0 left-0 w-full h-1 bg-primary" />
 
@@ -33,7 +33,7 @@ export const SementeProofCard: React.FC = () => {
             pra ser promovido. Recebeu um aumento e foi promovido em{' '}
             <span className="text-primary font-bold">12 meses</span>.
           </p>
-          <div className="w-2/3 mt-5 mx-auto h-px bg-[#30363D]" />
+          <div className="w-2/3 mt-5 mx-auto h-px bg-border-dark" />
 
           <span className="inline-block mt-5 text-xs font-mono text-primary bg-primary/10 py-1 px-3 rounded border border-primary/20 uppercase">
             ENTREGAVA MUITO. TINHA COMPETÊNCIA TÉCNICA. MESMO ASSIM, NÃO
@@ -41,18 +41,12 @@ export const SementeProofCard: React.FC = () => {
           </span>
         </div>
 
-        <div className="pt-4 border-t border-dashed border-[#30363D] flex justify-center items-center">
+        <div className="pt-4 border-t border-dashed border-border-dark flex justify-center items-center">
           <span className="text-sm text-gray-400 font-mono text-center">
             ESTUDO DE CASO REAL
           </span>
         </div>
       </div>
-
-      <style>{`
-        .perspective-1000 { perspective: 1000px; }
-        .rotate-y-[-12deg] { transform: rotateY(-12deg); }
-        .rotate-x-[5deg] { transform: rotateX(5deg); }
-      `}</style>
     </div>
   );
 };

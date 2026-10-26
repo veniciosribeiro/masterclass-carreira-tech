@@ -32,8 +32,8 @@ export const BussolaGuarantee: React.FC = () => {
   return (
     <section className="py-10 lg:py-16 bg-surface-dark border-b border-border-dark">
       <div className="max-w-2xl mx-auto px-6 text-center">
-        <div className="inline-flex items-center justify-center p-6 rounded-full bg-[#19e65e]/5 border border-[#19e65e]/20 mb-6 relative">
-          <div className="absolute inset-0 bg-[#19e65e]/20 blur-xl rounded-full"></div>
+        <div className="inline-flex items-center justify-center p-6 rounded-full bg-primary/5 border border-primary/20 mb-6 relative">
+          <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full"></div>
           <ShieldLockIcon className="text-5xl text-primary relative z-10" />
         </div>
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-10 font-mono">

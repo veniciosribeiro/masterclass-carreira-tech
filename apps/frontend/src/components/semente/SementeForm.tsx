@@ -139,7 +139,7 @@ export const SementeForm: React.FC = () => {
               href={PRIVACY_POLICY_PATH}
               target="_blank"
               rel="noopener"
-              className="text-primary underline hover:text-green-400"
+              className="text-primary underline hover:text-primary-hover"
             >
               Política de Privacidade
             </a>
@@ -150,7 +150,7 @@ export const SementeForm: React.FC = () => {
         <button
           type="submit"
           disabled={submitting}
-          className="h-14 rounded-lg bg-primary hover:bg-green-400 text-[#0D1117] text-base font-bold transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(25,230,94,0.2)] font-mono uppercase disabled:opacity-60 disabled:hover:scale-100"
+          className="h-14 rounded-lg bg-primary hover:bg-primary-hover text-on-primary text-base font-bold transition-all transform hover:scale-105 shadow-glow-cta font-mono uppercase disabled:opacity-60 disabled:hover:scale-100"
         >
           {submitting ? 'Enviando...' : 'QUERO MINHA VAGA'}
         </button>

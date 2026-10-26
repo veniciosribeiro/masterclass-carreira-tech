@@ -12,11 +12,11 @@ export const MindsetShiftV2: React.FC = () => {
       ></div>
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
-        <h2 className="text-3xl md:text-5xl font-black text-[#0D1117] mb-8 font-mono leading-tight">
+        <h2 className="text-3xl md:text-5xl font-black text-on-primary mb-8 font-mono leading-tight">
           "SEU MEDO NÃO É COVARDIA. <br /> É INTELIGÊNCIA FINANCEIRA."
         </h2>
 
-        <div className="space-y-4 text-[#0D1117] text-lg md:text-xl font-medium max-w-3xl mx-auto">
+        <div className="space-y-4 text-on-primary text-lg md:text-xl font-medium max-w-3xl mx-auto">
           <p>
             Você não está procrastinando. Você está tentando gerenciar riscos
             sem ter as ferramentas certas.
@@ -31,7 +31,7 @@ export const MindsetShiftV2: React.FC = () => {
           </p>
 
           <div className="mt-8 pt-8 border-t border-black/10 inline-block">
-            <span className="bg-[#0D1117] text-primary px-6 py-3 rounded-lg font-bold font-mono uppercase tracking-widest text-sm">
+            <span className="bg-background-dark text-primary px-6 py-3 rounded-lg font-bold font-mono uppercase tracking-widest text-sm">
               Nós vamos inverter essa lógica
             </span>
           </div>

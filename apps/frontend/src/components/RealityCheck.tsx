@@ -3,7 +3,7 @@ import { ErrorIcon, VerifiedIcon } from './icons';
 
 export const RealityCheck: React.FC = () => {
   return (
-    <section className="px-6 py-10 bg-[#0b0e11]" id="reality">
+    <section className="px-6 py-10 bg-background-sunken" id="reality">
       <div className="max-w-7xl mx-auto flex flex-col gap-12">
         <div className="text-center max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 font-mono">
@@ -46,7 +46,7 @@ export const RealityCheck: React.FC = () => {
             </div>
           </div>
 
-          <div className="relative rounded-xl bg-[#161b22] border border-border-dark p-8 shadow-2xl">
+          <div className="relative rounded-xl bg-surface-dark border border-border-dark p-8 shadow-2xl">
             <h4 className="font-mono text-center text-gray-500 mb-6 text-sm">
               ANÁLISE DE TRAJETÓRIA
             </h4>

@@ -31,7 +31,7 @@ const ChartBar = ({
         <span>{label}</span>
         <span className="font-bold text-white">{value}</span>
       </div>
-      <div className="h-1.5 rounded-sm w-full bg-[#161B22] overflow-hidden">
+      <div className="h-1.5 rounded-sm w-full bg-surface-dark overflow-hidden">
         <div
           className={`h-full rounded-sm ${color} transition-all duration-1000 ease-out`}
           style={{ width: animatedWidth }}
@@ -43,11 +43,11 @@ const ChartBar = ({
 
 export const PDFReportCard: React.FC = () => {
   return (
-    <div className="relative perspective-1000 group flex justify-center w-full">
+    <div className="relative perspective-[1000px] group flex justify-center w-full">
       {/* Glow Effects */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[400px] bg-primary/20 blur-[100px] rounded-full pointer-events-none opacity-50" />
 
-      <div className="relative w-full max-w-[400px] h-[460px] bg-[#0D1117] border border-[#30363D] shadow-2xl rounded-sm transform transition-transform duration-700 hover:scale-[1.02] md:rotate-y-[-12deg] md:rotate-x-[5deg] hover:rotate-0 p-5 flex flex-col justify-between overflow-hidden">
+      <div className="relative w-full max-w-[400px] h-[460px] bg-background-dark border border-border-dark shadow-2xl rounded-sm transform transition-transform duration-700 hover:scale-[1.02] md:rotate-y-[-12deg] md:rotate-x-[5deg] md:hover:rotate-x-0 md:hover:rotate-y-0 p-5 flex flex-col justify-between overflow-hidden">
         {/* Top Accent Line */}
         <div className="absolute top-0 left-0 w-full h-1 bg-primary" />
 
@@ -62,7 +62,7 @@ export const PDFReportCard: React.FC = () => {
             </h3>
           </div>
 
-          <div className="w-2/3 mx-auto h-px bg-[#30363D] my-3" />
+          <div className="w-2/3 mx-auto h-px bg-border-dark my-3" />
 
           <div className="space-y-1">
             <div className="text-xs text-gray-300 font-sans">
@@ -75,7 +75,7 @@ export const PDFReportCard: React.FC = () => {
         </div>
 
         {/* Profile Box */}
-        <div className="mt-4 bg-[#161B22] border border-primary/50 rounded p-4 text-center relative">
+        <div className="mt-4 bg-surface-dark border border-primary/50 rounded p-4 text-center relative">
           <div className="text-[12px] text-primary uppercase tracking-wider mb-1 font-sans font-bold">
             Seu Perfil Dominante
           </div>
@@ -113,18 +113,12 @@ export const PDFReportCard: React.FC = () => {
         </div>
 
         {/* Footer */}
-        <div className="mt-auto pt-3 border-t border-[#30363D]">
+        <div className="mt-auto pt-3 border-t border-border-dark">
           <div className="text-[8px] text-center text-gray-500 font-sans">
             Masterclass Test-Drive Da Carreira Tech — Documento Oficial
           </div>
         </div>
       </div>
-
-      <style>{`
-                .perspective-1000 { perspective: 1000px; }
-                .rotate-y-[-12deg] { transform: rotateY(-12deg); }
-                .rotate-x-[5deg] { transform: rotateX(5deg); }
-            `}</style>
     </div>
   );
 };

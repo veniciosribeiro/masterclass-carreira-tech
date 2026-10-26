@@ -270,7 +270,7 @@ export const QuestionStepper: React.FC<QuestionStepperProps> = ({
             className={`h-11 px-8 rounded-lg font-mono text-sm font-bold transition-all cursor-pointer
               ${
                 canProceed
-                  ? 'bg-primary hover:bg-green-400 text-[#0D1117] shadow-[0_0_15px_rgba(25,230,94,0.2)] hover:scale-[1.02]'
+                  ? 'bg-primary hover:bg-primary-hover text-on-primary shadow-glow-nav hover:scale-[1.02]'
                   : 'bg-surface-dark text-text-main/30 cursor-not-allowed'
               }`}
           >

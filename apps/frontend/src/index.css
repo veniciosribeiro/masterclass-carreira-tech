@@ -32,12 +32,26 @@
 
 @theme {
   --color-primary: #19e65e;
+  --color-primary-hover: oklch(79.2% 0.209 151.711); /* Tailwind green-400 */
+  --color-on-primary: #0d1117; /* text and icons on a primary fill */
   --color-background-dark: #0d1117;
+  --color-background-deep: #050709; /* footers, sign-up block */
+  --color-background-sunken: #0b0e11; /* "reality check" sections */
   --color-surface-dark: #161b22;
+  --color-surface-hover: #1c2128;
   --color-border-dark: #30363d;
   --color-text-main: #c9d1d9;
   --color-text-header: #ffffff;
   --color-glow-purple: #7c3aed;
+
+  /* Green glow behind CTAs, selected answers and the offer panel */
+  --shadow-glow-option: 0 0 15px rgba(25, 230, 94, 0.15);
+  --shadow-glow-nav: 0 0 15px rgba(25, 230, 94, 0.2);
+  --shadow-glow-cta: 0 0 20px rgba(25, 230, 94, 0.2);
+  --shadow-glow-checkout: 0 0 25px rgba(25, 230, 94, 0.35);
+  --shadow-glow-hero: 0 0 30px rgba(25, 230, 94, 0.3);
+  --shadow-glow-panel: 0 0 40px rgba(25, 230, 94, 0.12);
+  --shadow-glow: 0 0 40px -10px rgba(124, 58, 237, 0.5);
 
   --font-display: 'Inter', sans-serif;
   --font-mono:

@@ -19,7 +19,7 @@ export const FAQ: React.FC = () => {
         <div className="space-y-4">
           {/* FAQ 1: Acesso */}
           <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
-            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
+            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-surface-hover transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Como recebo o acesso?
               </span>
@@ -39,7 +39,7 @@ export const FAQ: React.FC = () => {
 
           {/* FAQ 2: Disponibilidade */}
           <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
-            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
+            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-surface-hover transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Por quanto tempo fica disponível?
               </span>
@@ -58,7 +58,7 @@ export const FAQ: React.FC = () => {
 
           {/* FAQ 3: E se não for pra mim? */}
           <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
-            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
+            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-surface-hover transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; E se eu descobrir que tech não é pra mim?
               </span>
@@ -80,7 +80,7 @@ export const FAQ: React.FC = () => {
 
           {/* FAQ 4: Já comprei cursos */}
           <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
-            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
+            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-surface-hover transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Já comprei cursos e não terminei. Serve pra mim?
               </span>
@@ -101,7 +101,7 @@ export const FAQ: React.FC = () => {
 
           {/* FAQ 5: Pré-requisitos */}
           <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
-            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
+            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-surface-hover transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Preciso saber programar ou ter notebook potente?
               </span>
@@ -122,7 +122,7 @@ export const FAQ: React.FC = () => {
 
           {/* FAQ 6: Garantia */}
           <details className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20">
-            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
+            <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-surface-hover transition-colors">
               <span className="font-mono text-sm md:text-base">
                 &gt; Tem garantia?
               </span>

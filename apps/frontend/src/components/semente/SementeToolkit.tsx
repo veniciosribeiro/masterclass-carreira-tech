@@ -18,7 +18,7 @@ export const SementeToolkit: React.FC = () => {
           </p>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
-          <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-[#1c2128] transition-all duration-300 group">
+          <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-surface-hover transition-all duration-300 group">
             <div className="size-12 rounded bg-blue-900/20 border border-blue-900/50 text-blue-400 flex items-center justify-center mb-4 group-hover:text-blue-300">
               <WorkspacePremiumIcon />
             </div>
@@ -31,7 +31,7 @@ export const SementeToolkit: React.FC = () => {
               nenhum reconhecimento.
             </p>
           </div>
-          <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-[#1c2128] transition-all duration-300 group">
+          <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-surface-hover transition-all duration-300 group">
             <div className="size-12 rounded bg-purple-900/20 border border-purple-900/50 text-purple-400 flex items-center justify-center mb-4 group-hover:text-purple-300">
               <WorkspacePremiumIcon />
             </div>
@@ -43,7 +43,7 @@ export const SementeToolkit: React.FC = () => {
               pros outros gestores, como se nada daquilo existisse.
             </p>
           </div>
-          <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-[#1c2128] transition-all duration-300 group">
+          <div className="bg-surface-dark p-6 rounded-xl shadow-sm border border-border-dark hover:border-primary/50 hover:bg-surface-hover transition-all duration-300 group">
             <div className="size-12 rounded bg-green-900/20 border border-green-900/50 text-green-400 flex items-center justify-center mb-4 group-hover:text-green-300">
               <WorkspacePremiumIcon />
             </div>

@@ -4,7 +4,11 @@ import { PageTitle } from '../seo/PageTitle';
 import { ROUTE_TITLES } from '../../seo/routeTitles';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
-import { getProfileLabel, getProfileEmoji } from '../../test/profileLabels';
+import {
+  getProfileLabel,
+  getProfileEmoji,
+  AREA_COLORS,
+} from '../../test/profileLabels';
 
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
 
@@ -218,7 +222,7 @@ export const AdminDashboard: React.FC = () => {
               </div>
               <button
                 type="submit"
-                className="bg-primary hover:bg-green-400 text-black font-bold py-2 rounded-lg transition-colors mt-2"
+                className="bg-primary hover:bg-primary-hover text-black font-bold py-2 rounded-lg transition-colors mt-2"
               >
                 Entrar
               </button>
@@ -281,7 +285,7 @@ export const AdminDashboard: React.FC = () => {
             <button
               type="submit"
               disabled={addStatus === 'loading'}
-              className="bg-primary hover:bg-green-400 text-black font-bold py-2 px-6 rounded-lg transition-colors disabled:opacity-50"
+              className="bg-primary hover:bg-primary-hover text-black font-bold py-2 px-6 rounded-lg transition-colors disabled:opacity-50"
             >
               {addStatus === 'loading' ? 'Adicionando...' : 'Autorizar'}
             </button>
@@ -384,17 +388,17 @@ export const AdminDashboard: React.FC = () => {
                               {
                                 key: 'frontend',
                                 label: '🎨 FE',
-                                color: '#3b82f6',
+                                color: AREA_COLORS.frontend.color,
                               },
                               {
                                 key: 'backend',
                                 label: '⚙️ BE',
-                                color: '#22c55e',
+                                color: AREA_COLORS.backend.color,
                               },
                               {
                                 key: 'dataAI',
                                 label: '📊 AI',
-                                color: '#eab308',
+                                color: AREA_COLORS.dataAI.color,
                               },
                             ] as const
                           ).map(({ key, label, color }) => {

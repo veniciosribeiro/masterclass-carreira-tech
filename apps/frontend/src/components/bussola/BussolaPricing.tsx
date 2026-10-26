@@ -126,7 +126,7 @@ const bonusTotal = BONUSES.reduce((sum, b) => sum + b.value, 0);
 const stackTotal = bonusTotal + COURSE_VALUE;
 
 const boxClass =
-  'relative flex flex-col overflow-hidden rounded-xl border-2 border-primary/60 bg-surface-dark p-8 shadow-[0_0_40px_rgba(25,230,94,0.12)]';
+  'relative flex flex-col overflow-hidden rounded-xl border-2 border-primary/60 bg-surface-dark p-8 shadow-glow-panel';
 const colHeadClass =
   'relative z-10 grid grid-cols-[1fr_auto_auto] gap-x-5 items-end text-xs font-mono uppercase text-gray-400 pb-2 border-b border-border-dark';
 const rowClass =
@@ -323,7 +323,7 @@ export const BussolaPricing: React.FC = () => {
                       currency: 'BRL',
                     })
                   }
-                  className="w-full max-w-2xl mx-auto mt-6 h-14 rounded bg-primary hover:bg-green-400 text-[#0D1117] font-bold shadow-[0_0_25px_rgba(25,230,94,0.35)] transition-all font-mono uppercase text-lg tracking-wide flex items-center justify-center gap-2"
+                  className="w-full max-w-2xl mx-auto mt-6 h-14 rounded bg-primary hover:bg-primary-hover text-on-primary font-bold shadow-glow-checkout transition-all font-mono uppercase text-lg tracking-wide flex items-center justify-center gap-2"
                 >
                   <span>Entrar na turma inaugural</span>
                   <ArrowForwardIcon />

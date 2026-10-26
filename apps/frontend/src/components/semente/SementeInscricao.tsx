@@ -44,7 +44,7 @@ export const SementeInscricao: React.FC = () => {
   return (
     <section
       ref={inscricaoRef}
-      className="px-6 py-10 bg-[#050709] border-t border-border-dark"
+      className="px-6 py-10 bg-background-deep border-t border-border-dark"
       id="inscricao"
     >
       <div className="max-w-7xl mx-auto">
@@ -57,7 +57,7 @@ export const SementeInscricao: React.FC = () => {
         <div className="overflow-hidden rounded-xl border border-border-dark bg-surface-dark shadow-2xl">
           <div className="grid md:grid-cols-1">
             {/* Left Side: O que está incluso */}
-            <div className="p-8 border-b md:border-b-0 md:border-r border-border-dark bg-[#0d1117]/50">
+            <div className="p-8 border-b md:border-b-0 md:border-r border-border-dark bg-background-dark/50">
               <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-4">
                 {LEARNINGS.map(({ lead, strong, tail }, i) => (
                   <div
@@ -101,7 +101,7 @@ export const SementeInscricao: React.FC = () => {
             </div>
 
             {/* Right Side: Formulário */}
-            <div className="p-8 bg-[#161b22] relative overflow-hidden">
+            <div className="p-8 bg-surface-dark relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-[50px] rounded-full pointer-events-none"></div>
 
               <h3 className="text-white font-mono font-bold text-xl mb-4 relative z-10">

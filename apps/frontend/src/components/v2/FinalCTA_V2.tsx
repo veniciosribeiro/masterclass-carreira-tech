@@ -35,7 +35,7 @@ export const FinalCTA_V2: React.FC = () => {
 
         <button
           onClick={() => scrollToSection('pricing')}
-          className="group relative inline-flex items-center justify-center gap-4 px-8 py-5 bg-primary hover:bg-green-400 text-[#0D1117] text-xl font-bold rounded-lg transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(25,230,94,0.4)] font-mono uppercase tracking-wide w-full md:w-auto"
+          className="group relative inline-flex items-center justify-center gap-4 px-8 py-5 bg-primary hover:bg-primary-hover text-on-primary text-xl font-bold rounded-lg transition-all transform hover:scale-105 shadow-[0_0_30px_rgba(25,230,94,0.4)] font-mono uppercase tracking-wide w-full md:w-auto"
         >
           GARANTIR MINHA VAGA NA MASTERCLASS (R$ 97)
           <ArrowForwardIcon className="group-hover:translate-x-1 transition-transform" />

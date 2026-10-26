@@ -54,7 +54,7 @@ export const ObrigadoSemente: React.FC = () => {
                   href={surveyUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center h-14 px-8 rounded-lg border border-primary text-primary hover:bg-primary hover:text-[#0D1117] text-base font-bold transition-all font-mono uppercase"
+                  className="inline-flex items-center justify-center h-14 px-8 rounded-lg border border-primary text-primary hover:bg-primary hover:text-on-primary text-base font-bold transition-all font-mono uppercase"
                 >
                   Responder agora
                 </a>
@@ -73,7 +73,7 @@ export const ObrigadoSemente: React.FC = () => {
               href={WEBINAR_COMMUNITY_LINK}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center h-14 px-8 rounded-lg bg-primary hover:bg-green-400 text-[#0D1117] text-base font-bold transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(25,230,94,0.2)] font-mono uppercase"
+              className="inline-flex items-center justify-center h-14 px-8 rounded-lg bg-primary hover:bg-primary-hover text-on-primary text-base font-bold transition-all transform hover:scale-105 shadow-glow-cta font-mono uppercase"
             >
               Entrar no Grupo
             </a>

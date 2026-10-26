@@ -41,7 +41,7 @@ export const MultipleChoiceQuestion: React.FC<MultipleChoiceQuestionProps> = ({
               className={`w-full text-left p-4 rounded-xl border-2 transition-all duration-200 cursor-pointer group
                 ${
                   isSelected
-                    ? 'border-primary bg-primary/10 shadow-[0_0_15px_rgba(25,230,94,0.15)]'
+                    ? 'border-primary bg-primary/10 shadow-glow-option'
                     : 'border-border-dark bg-surface-dark hover:border-primary/40 hover:bg-surface-dark/80'
                 }`}
             >
@@ -50,7 +50,7 @@ export const MultipleChoiceQuestion: React.FC<MultipleChoiceQuestionProps> = ({
                   className={`flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold font-mono transition-colors
                     ${
                       isSelected
-                        ? 'bg-primary text-[#0D1117]'
+                        ? 'bg-primary text-on-primary'
                         : 'bg-background-dark text-text-main group-hover:text-primary'
                     }`}
                 >

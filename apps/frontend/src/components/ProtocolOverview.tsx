@@ -45,7 +45,7 @@ export const ProtocolOverview: React.FC = () => {
           {/* Bloco 1: Reality Shock + Entregável */}
           <div className="grid md:grid-cols-2 bg-surface-dark border border-border-dark rounded-2xl overflow-hidden shadow-lg group hover:border-primary/30 transition-all duration-500">
             {/* Left: The Fear */}
-            <div className="p-8 border-b md:border-b-0 md:border-r border-border-dark bg-[#0D1117] flex flex-col justify-center relative">
+            <div className="p-8 border-b md:border-b-0 md:border-r border-border-dark bg-background-dark flex flex-col justify-center relative">
               <div className="flex items-start gap-4 mb-4">
                 <div className="size-12 rounded-lg bg-red-900/20 text-red-400 flex items-center justify-center shrink-0 border border-red-900/30">
                   <SentimentWorriedIcon className="text-2xl" />
@@ -64,7 +64,7 @@ export const ProtocolOverview: React.FC = () => {
             </div>
 
             {/* Right: The Solution + Entregável */}
-            <div className="p-8 bg-surface-dark flex flex-col justify-center relative group-hover:bg-[#161b22] transition-colors">
+            <div className="p-8 bg-surface-dark flex flex-col justify-center relative group-hover:bg-surface-dark transition-colors">
               {/* Módulo */}
               <div className="flex items-start gap-4 mb-6">
                 <div className="size-12 rounded-lg bg-blue-900/20 text-blue-400 flex items-center justify-center shrink-0 border border-blue-900/30">
@@ -116,7 +116,7 @@ export const ProtocolOverview: React.FC = () => {
           {/* Bloco 2: Setup / Hardware + Entregável */}
           <div className="grid md:grid-cols-2 bg-surface-dark border border-border-dark rounded-2xl overflow-hidden shadow-lg group hover:border-primary/30 transition-all duration-500">
             {/* Left: The Fear */}
-            <div className="p-8 border-b md:border-b-0 md:border-r border-border-dark bg-[#0D1117] flex flex-col justify-center relative">
+            <div className="p-8 border-b md:border-b-0 md:border-r border-border-dark bg-background-dark flex flex-col justify-center relative">
               <div className="flex items-start gap-4 mb-4">
                 <div className="size-12 rounded-lg bg-red-900/20 text-red-400 flex items-center justify-center shrink-0 border border-red-900/30">
                   <LaptopIcon className="text-2xl" />
@@ -135,7 +135,7 @@ export const ProtocolOverview: React.FC = () => {
             </div>
 
             {/* Right: The Solution + Entregável */}
-            <div className="p-8 bg-surface-dark flex flex-col justify-center relative group-hover:bg-[#161b22] transition-colors">
+            <div className="p-8 bg-surface-dark flex flex-col justify-center relative group-hover:bg-surface-dark transition-colors">
               {/* Módulo */}
               <div className="flex items-start gap-4 mb-6">
                 <div className="size-12 rounded-lg bg-purple-900/20 text-purple-400 flex items-center justify-center shrink-0 border border-purple-900/30">
@@ -186,7 +186,7 @@ export const ProtocolOverview: React.FC = () => {
           {/* Bloco 3: Financial Decision (ROI) + Entregável */}
           <div className="grid md:grid-cols-2 bg-surface-dark border border-border-dark rounded-2xl overflow-hidden shadow-lg group hover:border-primary/30 transition-all duration-500">
             {/* Left: The Fear */}
-            <div className="p-8 border-b md:border-b-0 md:border-r border-border-dark bg-[#0D1117] flex flex-col justify-center relative">
+            <div className="p-8 border-b md:border-b-0 md:border-r border-border-dark bg-background-dark flex flex-col justify-center relative">
               <div className="flex items-start gap-4 mb-4">
                 <div className="size-12 rounded-lg bg-red-900/20 text-red-400 flex items-center justify-center shrink-0 border border-red-900/30">
                   <AttachMoneyIcon className="text-2xl" />
@@ -206,7 +206,7 @@ export const ProtocolOverview: React.FC = () => {
             </div>
 
             {/* Right: The Solution + Entregável */}
-            <div className="p-8 bg-surface-dark flex flex-col justify-center relative group-hover:bg-[#161b22] transition-colors">
+            <div className="p-8 bg-surface-dark flex flex-col justify-center relative group-hover:bg-surface-dark transition-colors">
               {/* Módulo */}
               <div className="flex items-start gap-4 mb-6">
                 <div className="size-12 rounded-lg bg-green-900/20 text-green-400 flex items-center justify-center shrink-0 border border-green-900/30">
@@ -259,7 +259,7 @@ export const ProtocolOverview: React.FC = () => {
           {/* Bloco 4: Logic / Aptitude + Entregável */}
           <div className="grid md:grid-cols-2 bg-surface-dark border border-border-dark rounded-2xl overflow-hidden shadow-lg group hover:border-primary/30 transition-all duration-500">
             {/* Left: The Fear */}
-            <div className="p-8 border-b md:border-b-0 md:border-r border-border-dark bg-[#0D1117] flex flex-col justify-center relative">
+            <div className="p-8 border-b md:border-b-0 md:border-r border-border-dark bg-background-dark flex flex-col justify-center relative">
               <div className="flex items-start gap-4 mb-4">
                 <div className="size-12 rounded-lg bg-red-900/20 text-red-400 flex items-center justify-center shrink-0 border border-red-900/30">
                   <PsychologyAltIcon className="text-2xl" />
@@ -278,7 +278,7 @@ export const ProtocolOverview: React.FC = () => {
             </div>
 
             {/* Right: The Solution + Entregável */}
-            <div className="p-8 bg-surface-dark flex flex-col justify-center relative group-hover:bg-[#161b22] transition-colors">
+            <div className="p-8 bg-surface-dark flex flex-col justify-center relative group-hover:bg-surface-dark transition-colors">
               {/* Módulo */}
               <div className="flex items-start gap-4 mb-6">
                 <div className="size-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0 border border-primary/30">

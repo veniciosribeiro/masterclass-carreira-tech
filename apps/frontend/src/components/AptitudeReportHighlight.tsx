@@ -17,7 +17,7 @@ export const AptitudeReportHighlight: React.FC = () => {
           {/* Left Side: Copy */}
           <div className="space-y-8">
             <div>
-              <span className="inline-flex items-center gap-2 text-primary font-bold tracking-widest uppercase text-xs font-mono border border-primary/30 px-3 py-1.5 rounded-full bg-primary/10 mb-6 shadow-[0_0_15px_rgba(25,230,94,0.15)]">
+              <span className="inline-flex items-center gap-2 text-primary font-bold tracking-widest uppercase text-xs font-mono border border-primary/30 px-3 py-1.5 rounded-full bg-primary/10 mb-6 shadow-glow-option">
                 <AutoAwesomeIcon className="text-sm" />
                 Diferencial Exclusivo
               </span>
@@ -82,7 +82,7 @@ export const AptitudeReportHighlight: React.FC = () => {
               </div>
             </div>
 
-            <div className="p-6 bg-[#0D1117] border border-[#30363D] rounded-xl shadow-lg inline-block w-full">
+            <div className="p-6 bg-background-dark border border-border-dark rounded-xl shadow-lg inline-block w-full">
               <p className="text-gray-400 text-sm leading-relaxed">
                 <strong className="text-white font-mono">
                   Único no mercado:

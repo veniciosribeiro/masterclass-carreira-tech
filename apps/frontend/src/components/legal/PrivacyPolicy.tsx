@@ -47,7 +47,7 @@ const Strong: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 const MailLink: React.FC = () => (
   <a
     href={`mailto:${PRIVACY_CONTROLLER.email}`}
-    className="text-primary underline hover:text-green-400"
+    className="text-primary underline hover:text-primary-hover"
   >
     {PRIVACY_CONTROLLER.email}
   </a>

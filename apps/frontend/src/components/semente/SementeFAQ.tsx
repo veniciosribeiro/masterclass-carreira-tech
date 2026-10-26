@@ -63,7 +63,7 @@ export const SementeFAQ: React.FC = () => {
               key={question}
               className="group bg-surface-dark rounded-lg border border-border-dark overflow-hidden transition-all duration-300 open:border-primary/30 open:ring-1 open:ring-primary/20"
             >
-              <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-[#1c2128] transition-colors">
+              <summary className="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-white text-lg hover:bg-surface-hover transition-colors">
                 <span className="font-mono text-sm md:text-base">
                   &gt; {question}
                 </span>

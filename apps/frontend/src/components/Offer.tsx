@@ -17,7 +17,7 @@ export const Offer: React.FC = () => {
       <div className="max-w-4xl mx-auto relative z-10 text-center">
         <button
           onClick={() => scrollToSection('pricing')}
-          className="w-full md:w-auto h-20 px-12 rounded-lg bg-primary hover:bg-green-400 text-[#0D1117] text-xl md:text-2xl font-black shadow-[0_0_40px_rgba(25,230,94,0.4)] transition-all transform hover:scale-105 font-mono uppercase tracking-wide flex items-center justify-center gap-4 mx-auto"
+          className="w-full md:w-auto h-20 px-12 rounded-lg bg-primary hover:bg-primary-hover text-on-primary text-xl md:text-2xl font-black shadow-[0_0_40px_rgba(25,230,94,0.4)] transition-all transform hover:scale-105 font-mono uppercase tracking-wide flex items-center justify-center gap-4 mx-auto"
         >
           <span>QUERO MEU DIAGNÓSTICO AGORA</span>
           <ArrowForwardIcon className="text-3xl" />

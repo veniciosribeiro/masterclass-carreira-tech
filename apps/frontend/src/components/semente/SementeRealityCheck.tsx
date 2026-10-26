@@ -3,7 +3,7 @@ import { ErrorIcon, VerifiedIcon } from '../icons';
 
 export const SementeRealityCheck: React.FC = () => {
   return (
-    <section className="px-6 py-10 bg-[#0b0e11]" id="realidade">
+    <section className="px-6 py-10 bg-background-sunken" id="realidade">
       <div className="max-w-7xl mx-auto flex flex-col gap-12">
         <div className="text-center max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-black leading-tight font-mono text-white">
